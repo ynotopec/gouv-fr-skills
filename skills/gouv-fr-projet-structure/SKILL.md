@@ -1,6 +1,18 @@
 ---
 name: gouv-fr-projet-structure
 description: "Structure projet, CLI, config OpenCode et variables d'env."
+category: architecture
+version: 0.2.0
+author: gouv-fr-code (etalab-ia), Hermes Agent
+license: MIT
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr-code, project, structure, layout, open-code, opencode, mcp, agent-vm, albert-api, environment]
+    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow, gouv-fr-code-git]
+---
+uv-fr-projet-structure
+description: "Structure projet, CLI, config OpenCode et variables d'env."
 version: 0.2.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT

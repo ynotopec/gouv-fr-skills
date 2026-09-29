@@ -1,6 +1,18 @@
 ---
 name: gouv-fr-qualite-code
 description: Bonnes pratiques de code, lint, formattage et tests pour Fabrique Numérique.
+category: qualite
+version: 0.1.0
+author: gouv-fr-code (etalab-ia), Hermes Agent
+license: MIT
+platforms: [linux, macos, windows]
+metadata:
+  hermes:
+    tags: [gouv-fr-code, quality, lint, format, testing, code-quality]
+    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-lint]
+---
+uv-fr-qualite-code
+description: Bonnes pratiques de code, lint, formattage et tests pour Fabrique Numérique.
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
