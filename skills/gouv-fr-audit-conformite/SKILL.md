@@ -12,18 +12,6 @@ metadata:
     tags: [gouv-fr-code, audit, conformance]
     related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-git]
 ---
-v-fr-audit-conformite
-description: "Audit de conformité d'une app gouv-fr-code."
-version: 0.1.0
-author: Hermes Agent
-license: MIT
-platforms: [linux, macos]
-tags: [gouv-fr-code, audit, conformance]
-metadata:
-  hermes:
-    tags: [gouv-fr-code, audit, conformance]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-git]
----
 
 # Gouv-fr — Audit de conformité d'une application
 

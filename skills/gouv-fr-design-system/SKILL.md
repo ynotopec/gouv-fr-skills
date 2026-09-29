@@ -5,18 +5,7 @@ category: frontend
 version: 0.3.0
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
-    related_skills: [gouv-fr-dsfr-artwork, gouv-fr-dsfr-chart, gouv-fr-dsfr-mail, gouv-fr-code-compliance]
----
-uv-fr-design-system
-description: "Installer et vérifier le design system de l'État (DSFR)."
-version: 0.3.0
-author: Hermes Agent (Nous Research)
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
@@ -29,7 +18,7 @@ Le DSFR est le design system officiel de l'administration française. Ce skill c
 vérification de conformité. Hors périmètre : emails (→ `gouv-fr-dsfr-mail`), graphiques (→ `gouv-fr-dsfr-chart`),
 pictogrammes en détail (→ `gouv-fr-dsfr-artwork`).
 
-## When to Use
+## Quand utiliser
 
 - Construire une interface conforme au design system de l'État français.
 - Installer ou configurer le DSFR (NPM, CDN ou clone).
@@ -38,7 +27,7 @@ pictogrammes en détail (→ `gouv-fr-dsfr-artwork`).
 Don't use for: conception de templates email, visualisation de données, projets hors administration publique (usage
 réservé).
 
-## Prerequisites
+## Prérequis
 
 - Node.js ≥ 18.16.1 et npm (installation NPM), **ou**
 - Internet seulement : intégration CDN jsDelivr (`references/cdn-integration.md`).
@@ -109,7 +98,7 @@ un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 - `npm run build` (depuis le clone) termine sans erreur.
 - Quand un navigateur est dispo : comparer visuellement avec systeme-de-design.gouv.fr.
 
-## References
+## Références
 
 - `references/cdn-integration.md` — recette CDN quand npm est indisponible.
 - `references/verify-no-browser.md` — méthode de vérification sans navigateur.

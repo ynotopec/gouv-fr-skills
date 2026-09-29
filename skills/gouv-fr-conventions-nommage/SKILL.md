@@ -4,11 +4,7 @@ description: Use when creating or reviewing Fabrique Numérique projects — nam
 category: workflow
 allowed-tools: Bash Read
 ---
-ame: gouv-fr-conventions-nommage
-description: Use when creating or reviewing Fabrique Numérique projects — naming conventions, folder architecture,
-TypeScript rules, RESTful API patterns, linting, code quality, deployment, POC-to-production, or project documentation
-allowed-tools: Bash Read
----
+author: Hermes Agent
 
 # CoFabNum Conventions
 
@@ -29,7 +25,7 @@ Best practices for all Fabrique Numérique projects. Language-agnostic unless no
 | Docker | multi-stage, non-root, pinned tags |
 | Deploy | Helm charts on K8s/OpenShift |
 
-## Available Scripts
+## Scripts disponibles
 
 - **`scripts/validate-branch.sh`** — Validates branch name format
   - Usage: `bash scripts/validate-branch.sh` (current branch)
@@ -52,7 +48,7 @@ Progress:
 
 > Short description
 
-## Prerequisites
+## Prérequis
 
 - Node.js 24.x (via proto)
 - pnpm 10.x
@@ -356,7 +352,7 @@ Progress:
 - [ ] Rollback plan documented
 - [ ] DB migrations configured
 
-## Gotchas
+## Pièges
 
 - **Vue components need 2+ words** — `BadgeTypeOrganisme.vue` not `Badge.vue` (except `App.vue`)
 - **Folders are kebab-case but Vue files are PascalCase** — don't mix them

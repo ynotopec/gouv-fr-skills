@@ -5,18 +5,7 @@ category: templates
 version: 0.1.0
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [dsfr, email, template, gouv-fr, mail, accessible]
-    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-theme-tarteaucitron, gouv-fr-code-compliance]
----
-uv-fr-templates-email
-description: Génère des templates email DSFR pour l'État.
-version: 0.1.0
-author: Hermes Agent (Nous Research)
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, email, template, gouv-fr, mail, accessible]
@@ -27,7 +16,7 @@ metadata:
 
 Template d'email officiel conforme au DSFR pour les communications des services gouvernementaux.
 
-## When to Use
+## Quand utiliser
 
 - Créer un email institutionnel officiel d'un service de l'État.
 - Générer un template HTML email responsive et accessible.
@@ -36,7 +25,7 @@ Template d'email officiel conforme au DSFR pour les communications des services 
 
 Don't use for: newsletters marketing grand public, emails hors administration publique.
 
-## Prerequisites
+## Prérequis
 
 - HTML email client (test sur Outlook, Gmail, Apple Mail)
 - Connaissance du DSFR pour personnaliser les couleurs et le logo Marianne

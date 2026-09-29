@@ -4,18 +4,7 @@ description: Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, 
 category: architecture
 version: 0.2.0
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [gouv-fr, stack, framework, vue, nestjs, fastify, fastapi, prisma, eslint, typescript]
-    related_skills: [gouv-fr-code-project, gouv-fr-monorepo, gouv-fr-deploiement]
----
-ouv-fr-stack-technique
-description: Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma,
-ESLint, monorepo. Outils de dev et versions.
-version: 0.2.0
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, stack, framework, vue, nestjs, fastify, fastapi, prisma, eslint, typescript]
@@ -28,13 +17,13 @@ La Fabrique Numérique (Mission Interministérielle) recommande une stack techni
 applications d'État. Cette stack garantit interopérabilité, maintenance à long terme et conformité aux standards du
 numérique public.
 
-## When to Use
+## Quand utiliser
 
 - Lancer un nouveau projet Fabrique Numérique
 - Choisir une librairie ou un framework pour un projet existant
 - Onboarding d'un développeur sur un projet
 
-## Prerequisites
+## Prérequis
 
 - **pnpm** installé (`corepack enable pnpm` ou `npm i -g pnpm`)
 - **proto** — gestionnaire de toolchain (Node, Python, Go, etc.)

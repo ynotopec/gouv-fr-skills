@@ -5,18 +5,7 @@ category: qualite
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [gouv-fr-code, lint, eslint, ruff, editorconfig, prettier, formatting]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-quality]
----
-uv-fr-lint-eslint
-description: Lint et formattage ESLint, Ruff et EditorConfig pour projets Fabrique Numérique.
-version: 0.1.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr-code, lint, eslint, ruff, editorconfig, prettier, formatting]
@@ -27,12 +16,12 @@ metadata:
 
 Conventions de lint et formattage pour les projets JavaScript/TypeScript et Python de la Fabrique Numérique.
 
-## When to Use
+## Quand utiliser
 - Configurer le lint d'un projet neuf ou existant
 - Résoudre des problèmes de lint
 - Standardiser le formattage dans un projet
 
-## Prerequisites
+## Prérequis
 - ESLint ≥ 9 (flat config obligatoire)
 - VS Code avec l'extension ESLint
 - Ruff pour les projets Python

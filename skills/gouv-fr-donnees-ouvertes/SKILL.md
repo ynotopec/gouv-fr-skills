@@ -5,18 +5,7 @@ category: data
 version: 0.1.1
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [data, open-data, sig, json, communication, ref, schema]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance]
----
-uv-fr-donnees-ouvertes
-description: "Données ouvertes publiques du SIG (schémas, JSONL)."
-version: 0.1.1
-author: Hermes Agent (Nous Research)
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [data, open-data, sig, json, communication, ref, schema]
@@ -28,7 +17,7 @@ metadata:
 Dépôt de référence des schémas et jeux de données ouverts publiés par le Service d'Information du Gouvernement (SIG) sur
 data.gouv.fr et schema.data.gouv.fr.
 
-## When to Use
+## Quand utiliser
 
 - Accéder aux données ouvertes de la communication publique française.
 - Structurer ou publier des données selon les schémas du SIG.

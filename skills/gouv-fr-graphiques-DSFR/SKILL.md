@@ -5,18 +5,7 @@ category: frontend
 version: 0.2.0
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [dsfr, chart, data, visualization, vue, graph, graphique]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]
----
-uv-fr-graphiques-DSFR
-description: "Graphiques DSFR en web-components Vue.js (line, bar, pie…)."
-version: 0.2.0
-author: Hermes Agent (Nous Research)
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, chart, data, visualization, vue, graph, graphique]
@@ -28,14 +17,14 @@ metadata:
 DSFR Chart (`@gouvfr/dsfr-chart`) : web-components Vue.js de visualisation conformes au DSFR (thème clair/sombre
 automatique).
 
-## When to Use
+## Quand utiliser
 
 - Intégrer des graphiques (courbes, barres, secteurs, radar…) dans une application DSFR.
 - Représenter des données statistiques publiques dans un tableau de bord accessible.
 
 Don't use for: visualisations hors DSFR ou graphiques interactifs complexes sur mesure (→ D3.js directement).
 
-## Prerequisites
+## Prérequis
 
 - Node.js ≥ 18.16.1 et un `package.json`.
 - Un projet DSFR configuré important au minimum : `dsfr.min.css`, `icons-system.min.css` (dans `utility/icons/`) et l'API JS du DSFR.

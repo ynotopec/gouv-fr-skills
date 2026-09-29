@@ -2,11 +2,9 @@
 name: gouv-fr-backend-fastify
 description: Use when building server projects for Fabrique Numérique — project scaffolding, structure, logging, error handling, OpenAPI docs, and testing patterns
 category: backend
-allowed-tools: Bash Read Write
----
-ame: gouv-fr-backend-fastify
-description: Use when building server projects for Fabrique Numérique — project scaffolding, structure, logging, error
-handling, OpenAPI docs, and testing patterns
+author: Hermes Agent
+license: MIT
+platforms: [linux, macos]
 allowed-tools: Bash Read Write
 ---
 
@@ -14,7 +12,7 @@ allowed-tools: Bash Read Write
 
 Node.js/TypeScript: **Fastify** or **NestJS**. Python: **FastAPI**.
 
-## Available Scripts
+## Scripts disponibles
 
 - **`scripts/scaffold-nestjs.sh`** — Creates a NestJS project with CoFabNum conventions
   - Usage: `bash scripts/scaffold-nestjs.sh <project-name>`
@@ -95,7 +93,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
 See [stack-technique] for full setup. Use `@nestjs/swagger`.
 
-### Gotchas
+### Pièges
 
 - Use `nestjs-pino` not the built-in NestJS logger — it outputs JSON automatically
 - The `HttpExceptionFilter` must be registered in `main.ts`: `app.useGlobalFilters(new HttpExceptionFilter(logger))`
@@ -338,7 +336,7 @@ def test_get_cats():
 
 See [conventions-cofabnum] for the optimized multi-stage Dockerfile template with `uv`.
 
-## Gotchas
+## Pièges
 
 - **NestJS**: Always register the global exception filter in `main.ts`, not just the class definition
 - **Fastify**: JSON Schema validation is mandatory, not optional. Use `@sinclair/typebox` for type inference

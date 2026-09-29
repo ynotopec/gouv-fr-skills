@@ -4,11 +4,7 @@ description: Use when building Vue 3 or Nuxt 3 frontend projects for Fabrique Nu
 category: frontend
 allowed-tools: Read Write Bash
 ---
-ame: gouv-fr-frontend-vue3
-description: Use when building Vue 3 or Nuxt 3 frontend projects for Fabrique Numérique — DSFR compliance, VueDsfr
-scaffolding, composable patterns like toaster, and testing setup
-allowed-tools: Read Write Bash
----
+author: Hermes Agent
 
 # CoFabNum Client Recipes
 
@@ -244,7 +240,7 @@ Utilise les utilitaires et tokens DSFR **au lieu de réinventer le layout en CSS
 </section>
 ```
 
-## Gotchas
+## Pièges
 
 - **DSFR is mandatory** — Ministry of Interior projects must use VueDsfr, not a generic component library
 - **Package name is `@gouvminint/vue-dsfr`, not `@gouvfr/dsfr-vue`** — and components are prefixed `Dsfr*` (`DsfrInput`, `DsfrButton`), not `Fr*`. A plan referencing `@gouvfr/dsfr-vue`/`FrInput` is hallucinated — verify against `package.json` and `node_modules/@gouvminint/vue-dsfr` before coding (see the verification checklist in `AGENTS.md`)
