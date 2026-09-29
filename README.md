@@ -10,44 +10,57 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 
 ## Liste des skills
 
-```
-# Core
-skills/gouv-fr-code/            # Index
-skills/gouv-fr-code-project/    # Structure projet, CLI, OpenCode
-skills/gouv-fr-code-security/   # Sécurité, secrets, gitleaks, TLS
-skills/gouv-fr-code-compliance/ # RGAA, DSFR, RGPD
-skills/gouv-fr-code-workflow/   # Plan mode, task management
-skills/gouv-fr-code-api/        # API REST, OpenAPI, Swagger
-skills/gouv-fr-code-lint/       # ESLint, Ruff, EditorConfig
-skills/gouv-fr-code-quality/    # Bonnes pratiques, tests
-skills/gouv-fr-code-audit/      # Audit de conformité
+### Core
 
-# Development
-skills/gouv-fr-stack/           # Stack technique recommandée (Front/Back/Outils)
-skills/gouv-fr-monorepo/        # pnpm workspaces + Turborepo
-skills/gouv-fr-outils-dev/      # Git, Docker, pnpm, proto, VS Code, uv
-skills/gouv-fr-deploiement/     # Docker rootless, K8s securityContext
-skills/gouv-fr-conventions/     # Conventions CoFabNum complètes
-skills/gouv-fr-ci-cd/           # CI GitHub Actions minimal
-skills/gouv-fr-cicd-fabnum/     # Workflows fabnum-cicd réutilisables
-skills/gouv-fr-recettes-serveur/ # Fastify, NestJS, FastAPI server
-skills/gouv-fr-recettes-client/  # Vue 3, VueDsfr, Nuxt 3
+| Skill | Description |
+|-------|-------------|
+| `skills/gouv-fr-api-rest/` | API REST, OpenAPI, Swagger |
+| `skills/gouv-fr-audit-conformite/` | Audit de conformité |
+| `skills/gouv-fr-code-index/` | Index de l'ensemble des skills |
+| `skills/gouv-fr-compliance-rgaa/` | RGAA, DSFR, RGPD |
+| `skills/gouv-fr-lint-eslint/` | ESLint, Ruff, EditorConfig |
+| `skills/gouv-fr-projet-structure/` | Structure projet, CLI, OpenCode |
+| `skills/gouv-fr-qualite-code/` | Bonnes pratiques, tests |
+| `skills/gouv-fr-securite/` | Sécurité, secrets, gitleaks, TLS |
+| `skills/gouv-fr-workflow-dev/` | Plan mode, task management |
 
-# Cloud Pi Native
-skills/gouv-fr-deploiement-cpin/ # Déploiement Cloud Pi Native complet (console, pipeline, ArgoCD)
-skills/gouv-fr-helm-chart-cpin/  # Helm chart CPiN (OpenShift, Kyverno)
+### Développement
 
-# DSFR
-skills/gouv-fr-dsfr/            # DSFR Système de Design
-skills/gouv-fr-dsfr-artwork/    # Pictogrammes, icônes, visuels DSFR
-skills/gouv-fr-dsfr-chart/      # Graphiques DSFR Vue.js
-skills/gouv-fr-dsfr-mail/       # Templates email DSFR
-skills/gouv-fr-dsfr-theme-tarteaucitron/ # Gestion cookies Tarte au Citron
-skills/gouv-fr-dsfr-vue/        # VueDsfr composants Vue 3
+| Skill | Description |
+|-------|-------------|
+| `skills/gouv-fr-backend-fastify/` | Fastify, NestJS, FastAPI server |
+| `skills/gouv-fr-conventions-nommage/` | Conventions CoFabNum complètes |
+| `skills/gouv-fr-deploiement-docker-k8s/` | Docker rootless, K8s securityContext |
+| `skills/gouv-fr-frontend-vue3/` | Vue 3, VueDsfr, Nuxt 3 |
+| `skills/gouv-fr-github-actions-ci/` | CI GitHub Actions minimal |
+| `skills/gouv-fr-github-actions-reusable/` | Workflows fabnum-cicd réutilisables |
+| `skills/gouv-fr-monorepo-pnpm/` | pnpm workspaces + Turborepo |
+| `skills/gouv-fr-outils-developpement/` | Git, Docker, pnpm, proto, VS Code, uv |
+| `skills/gouv-fr-stack-technique/` | Stack technique recommandée (Front/Back/Outils) |
 
-# Données
-skills/gouv-fr-referentiel-donnees/  # Données ouvertes SIG
-```
+### Cloud Pi Native
+
+| Skill | Description |
+|-------|-------------|
+| `skills/gouv-fr-deploiement-cloud-pi-native/` | Déploiement Cloud Pi Native complet (console, pipeline, ArgoCD) |
+| `skills/gouv-fr-helm-chart/` | Helm chart CPiN (OpenShift, Kyverno) |
+
+### DSFR
+
+| Skill | Description |
+|-------|-------------|
+| `skills/gouv-fr-cookies-rgpd/` | Gestion cookies Tarte au Citron |
+| `skills/gouv-fr-composants-vue/` | VueDsfr composants Vue 3 |
+| `skills/gouv-fr-design-system/` | DSFR Système de Design |
+| `skills/gouv-fr-graphiques-DSFR/` | Graphiques DSFR Vue.js |
+| `skills/gouv-fr-pictogrammes-DSFR/` | Pictogrammes, icônes, visuels DSFR |
+| `skills/gouv-fr-templates-email/` | Templates email DSFR |
+
+### Données
+
+| Skill | Description |
+|-------|-------------|
+| `skills/gouv-fr-donnees-ouvertes/` | Données ouvertes SIG |
 
 ## Installation
 
@@ -60,4 +73,3 @@ cp -r skills/gouv-fr-*/ ~/.hermes/skills/
 
 - Chaque skill dans `skills/gouv-fr-*/` contient un `SKILL.md` avec frontmatter YAML
 - Tous les noms commencent par `gouv-fr-`
-- `skills/gouv-fr-code/SKILL.md` est l'index
