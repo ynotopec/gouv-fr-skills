@@ -1,13 +1,18 @@
 ---
-name: gouv-fr-github-actions-reusable
-description: Use when writing or reviewing GitHub Actions ci.yml/cd.yml with the reusable
-  workflows of dnum-mi/fabnum-cicd — lint, Trivy/Gitleaks scans, Docker build, release-please,
-  Helm chart bump and publish, GitHub App credentials, and the sync-cpin trigger toward
-  Cloud Pi Native
+name: gouv-fr-cicd-fabnum
+description: Use when writing or reviewing GitHub Actions ci.yml/cd.yml with the reusable workflows of dnum-mi/fabnum-cicd — lint, Trivy/Gitleaks scans, Docker build, release-please, Helm chart bump and publish, GitHub App credentials, and the sync-cpin trigger toward Cloud Pi Native
 allowed-tools: Bash Read Write
 ---
 
--------|-------------|
+# CI/CD avec fabnum-cicd
+
+Assembler les workflows réutilisables de [`dnum-mi/fabnum-cicd`](https://github.com/dnum-mi/fabnum-cicd) en un `ci.yml` (pull request) et un `cd.yml` (release + livraison vers Cloud Pi Native).
+Les gabarits de `references/` sont validés contre les entrées et secrets réels des workflows (`@v0`).
+
+## Avant d'écrire : 5 questions
+
+| Question | Conséquence |
+|----------|-------------|
 | Une seule image ou plusieurs (monorepo) ? | plusieurs : `path-filter` + matrice `services` + une paire build/attest par composant |
 | Un chart Helm, et où ? | dans le dépôt : `update-helm-chart` (`RUN_MODE: local`) + `release-helm-local` ; dépôt dédié : `release-helm` ; autre dépôt : `dispatch-helm-chart` |
 | Branches `dev` (rc) et `main` (stable) ? | `ENABLE_PRERELEASE: true` + `sync-prerelease-branch` en dernier job |
