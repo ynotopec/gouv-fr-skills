@@ -73,3 +73,4 @@ cp -r skills/gouv-fr-*/ ~/.hermes/skills/
 
 - Chaque skill dans `skills/gouv-fr-*/` contient un `SKILL.md` avec frontmatter YAML
 - Tous les noms commencent par `gouv-fr-`
+# 🎯 gouv-fr-skills — 27 skills restaurés et corrigés
