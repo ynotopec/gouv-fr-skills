@@ -7,33 +7,7 @@ description: Use when creating or adapting a Helm chart to deploy on Cloud Pi Na
 allowed-tools: Bash Read Write
 ---
 
-# Chart Helm pour Cloud Pi Native
-
-Créer ou adapter un chart qui passe les contraintes OpenShift et les politiques Kyverno de CPiN. Le chart se prépare en 3 temps :
-**squelette** (template tobi) → **surcharge CPiN** (`values-cpin.yaml`) → **vérification** (`helm lint` + `check-cpin-rules.py`).
-
-## Ce qu'il faut savoir d'abord
-
-- Le `template/` de [`this-is-tobi/helm-charts`](https://github.com/this-is-tobi/helm-charts/tree/main/template) est un **squelette à copier**, pas une dépendance. `ocr-api` l'a copié et renommé. Les charts publiés par tobi (`backup-utils`, `cnpg-cluster`, `vso-utils`) sont des utilitaires que l'on peut, eux, déclarer en `dependencies`.
-- Le chart est un **contrat de values** : composants activables (`enabled`), bloc `global`, `extraObjects` en échappatoire pour tout ce que le chart ne modélise pas.
-- **Les défauts du template échouent sur CPiN** (vérifié en rendant le template) : `runAsUser`/`runAsGroup`/`fsGroup: 1000` figés (le SCC OpenShift alloue l'UID par namespace et rejette un UID hors plage) et aucun label `app`/`env`/`tier` (Kyverno `check-labels`, bloquant en prod).
-
-## Créer le chart
-
-1. Copier `template/` vers `<dépôt>/helm/` (ou `charts/<nom>`).
-2. Renommer **partout** : `chartname` → nom du chart, `servicename` → nom du composant (ex. `api`), y compris le dossier `templates/servicename/`. La procédure du README tobi ne couvre pas tous les fichiers : `NOTES.txt`, `values.schema.json`, `test-values*.yaml` et `README.md` contiennent aussi ces noms.
-   ```bash
-   grep -rl "servicename\|chartname" . | xargs sed -i 's/servicename/api/g; s/chartname/monapp/g'
-   ```
-3. Un composant supplémentaire : copier le dossier de templates **et** le bloc de values, puis ajouter une ligne `include "helper.component.validate"` dans `templates/validation.yaml`.
-4. `helm lint .` doit passer avant toute autre modification.
-
-## Surcharge CPiN
-
-Copier [`references/values-cpin.yaml`](references/values-cpin.yaml) (testée sur le template) à côté du chart et l'adapter :
-
-| Sujet | Règle |
-|-------|-------|
+----|-------|
 | UID/GID | mettre `runAsUser`, `runAsGroup`, `fsGroup` (pod et conteneur) à `null` ; garder `runAsNonRoot`, `drop: [ALL]`, `readOnlyRootFilesystem` ; ajouter `seccompProfile: {type: RuntimeDefault}` comme le fait `ocr-api` (absent des défauts du template) |
 | Image | registre Harbor du projet, tag versionné ou digest (`digest` prime sur `tag`), **jamais `latest`** ; l'image doit grouper root (`chown -R <uid>:0` dans le Dockerfile) car l'UID est aléatoire |
 | Labels | `commonLabels` : `app`, `env`, `tier` (exigés), `criticality`, `component` (MIOM) |
