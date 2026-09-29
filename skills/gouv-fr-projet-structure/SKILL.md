@@ -54,11 +54,14 @@ my-app/
 
 ## How OpenCode Loads Gouv-fr
 
-1. **Provider** — OpenCode lit `opencode.json` (projet-level). Le bloc `provider.albert` pointe vers Albert API (`https://albert.api.etalab.gouv.fr/v1`).
+1. **Provider** — OpenCode lit `opencode.json` (projet-level). Le bloc `provider.albert` pointe vers Albert API
+(`https://albert.api.etalab.gouv.fr/v1`).
 2. **Model** — `albert/deepseek-v4-flash` (modèle SecNumCloud intégré).
-3. **MCPs** — 4 connectors opt-in : `data-gouv` (données publiques), `context7` (doc librairies), `playwright` (browser headless), `chrome-devtools` (debug DOM).
+3. **MCPs** — 4 connectors opt-in : `data-gouv` (données publiques), `context7` (doc librairies), `playwright` (browser
+headless), `chrome-devtools` (debug DOM).
 4. **Skills** — `etalab-ia/skills` cloné en cache ; seules les skills sélectionnées sont symlinkées (`skills.txt`).
-5. **Règles** — OpenCode lit `AGENTS.md`. La zone gouv-fr-code (`<!-- gouv-fr-code:agents:start -->` / `<!-- gouv-fr-code:agents:end -->`) est gérée automatiquement.
+5. **Règles** — OpenCode lit `AGENTS.md`. La zone gouv-fr-code (`<!-- gouv-fr-code:agents:start -->` / `<!--
+gouv-fr-code:agents:end -->`) est gérée automatiquement.
 
 ## Key Environment Variables
 

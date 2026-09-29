@@ -11,7 +11,8 @@ metadata:
     related_skills: [gouv-fr-deployment-docker-k8s-cpin, gouv-fr-helm-chart-cpin, gouv-fr-outils-dev, gouv-fr-stack]
 ---
 ouv-fr-deployment-docker-k8s
-description: Docker rootless, K8s securityContext, multi-stage, tags, local K8s dev. Pour Helm : helm-chart-cpin. Pour CPiN console/ArgoCD : deploiement-cpin.
+description: Docker rootless, K8s securityContext, multi-stage, tags, local K8s dev. Pour Helm : helm-chart-cpin. Pour
+CPiN console/ArgoCD : deploiement-cpin.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos, windows]
@@ -32,7 +33,8 @@ Règles pour construire des images prêtes pour Cloud Pi Native (K8s/OpenShift) 
 - Créer ou modifier un Helm chart
 - Configurer un déploiement CPiN
 
-Pour le **chart Helm**, utiliser **`helm-chart-cpin`** ; pour la **console, le mirror, le pipeline DSO et ArgoCD**, utiliser **`deploiement-cpin`** (groupe `dso`).
+Pour le **chart Helm**, utiliser **`helm-chart-cpin`** ; pour la **console, le mirror, le pipeline DSO et ArgoCD**,
+utiliser **`deploiement-cpin`** (groupe `dso`).
 
 ## Prerequisites
 
@@ -49,7 +51,8 @@ Pour le **chart Helm**, utiliser **`helm-chart-cpin`** ; pour la **console, le m
 
 ## Plateforme cible
 
-[Cloud Pi Native](https://cloud-pi-native.fr) est le PaaS cible du Ministère de l'Intérieur, basé sur Kubernetes/OpenShift. Tout projet est conçu **dès sa création** pour :
+[Cloud Pi Native](https://cloud-pi-native.fr) est le PaaS cible du Ministère de l'Intérieur, basé sur
+Kubernetes/OpenShift. Tout projet est conçu **dès sa création** pour :
 
 - la **conteneurisation** de tous les services ;
 - la **sécurité renforcée** avec un minimum de privilèges (**rootless**) ;
@@ -120,7 +123,8 @@ securityContext:
     type: RuntimeDefault
 ```
 
-**Ne pas figer `runAsUser`, `runAsGroup` ni `fsGroup` sur OpenShift/CPiN** : le SCC alloue l'UID par namespace et rejette un UID hors plage. Sur un Kubernetes simple (Kind, k3d), on peut les fixer.
+**Ne pas figer `runAsUser`, `runAsGroup` ni `fsGroup` sur OpenShift/CPiN** : le SCC alloue l'UID par namespace et
+rejette un UID hors plage. Sur un Kubernetes simple (Kind, k3d), on peut les fixer.
 
 ### Helm — structure minimale
 

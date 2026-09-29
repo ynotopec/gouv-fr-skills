@@ -11,7 +11,8 @@ metadata:
     related_skills: [gouv-fr-code-project, gouv-fr-monorepo, gouv-fr-deploiement]
 ---
 ouv-fr-stack-technique
-description: Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma, ESLint, monorepo. Outils de dev et versions.
+description: Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma,
+ESLint, monorepo. Outils de dev et versions.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos, windows]
@@ -23,7 +24,9 @@ metadata:
 
 # Gouv-fr — Stack Technique
 
-La Fabrique Numérique (Mission Interministérielle) recommande une stack technique unifiée pour l'ensemble de ses applications d'État. Cette stack garantit interopérabilité, maintenance à long terme et conformité aux standards du numérique public.
+La Fabrique Numérique (Mission Interministérielle) recommande une stack technique unifiée pour l'ensemble de ses
+applications d'État. Cette stack garantit interopérabilité, maintenance à long terme et conformité aux standards du
+numérique public.
 
 ## When to Use
 
@@ -207,7 +210,8 @@ Crée `prisma/schema.prisma` + `.env` avec `DATABASE_URL`.
 
 #### Prisma 7+
 
-Le générateur par défaut est `prisma-client` (l'ancien `prisma-client-js` est déprécié). Chemin `output` explicite requis. Génère du TypeScript directement dans le projet (pas dans `node_modules`).
+Le générateur par défaut est `prisma-client` (l'ancien `prisma-client-js` est déprécié). Chemin `output` explicite
+requis. Génère du TypeScript directement dans le projet (pas dans `node_modules`).
 
 #### Schema conventions
 

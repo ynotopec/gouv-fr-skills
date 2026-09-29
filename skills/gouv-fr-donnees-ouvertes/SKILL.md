@@ -25,7 +25,8 @@ metadata:
 
 # Référentiel de données de communication publique
 
-Dépôt de référence des schémas et jeux de données ouverts publiés par le Service d'Information du Gouvernement (SIG) sur data.gouv.fr et schema.data.gouv.fr.
+Dépôt de référence des schémas et jeux de données ouverts publiés par le Service d'Information du Gouvernement (SIG) sur
+data.gouv.fr et schema.data.gouv.fr.
 
 ## When to Use
 

@@ -5,7 +5,8 @@ category: frontend
 allowed-tools: Read Write Bash
 ---
 ame: gouv-fr-frontend-vue3
-description: Use when building Vue 3 or Nuxt 3 frontend projects for Fabrique Numérique — DSFR compliance, VueDsfr scaffolding, composable patterns like toaster, and testing setup
+description: Use when building Vue 3 or Nuxt 3 frontend projects for Fabrique Numérique — DSFR compliance, VueDsfr
+scaffolding, composable patterns like toaster, and testing setup
 allowed-tools: Read Write Bash
 ---
 
@@ -32,7 +33,8 @@ pnpm create vue-dsfr
 
 ### Dépendances & setup DSFR (obligatoire)
 
-Le rendu conforme DSFR dépend de la **feuille de style officielle `@gouvfr/dsfr`**, pas du bundle interne de VueDsfr. Pincer les deux dépendances et importer le CSS officiel dans le point d'entrée de l'app :
+Le rendu conforme DSFR dépend de la **feuille de style officielle `@gouvfr/dsfr`**, pas du bundle interne de VueDsfr.
+Pincer les deux dépendances et importer le CSS officiel dans le point d'entrée de l'app :
 
 ```jsonc
 // package.json
@@ -73,7 +75,8 @@ createApp(App).use(VueDsfr).mount('#app')
 
 ### Folder architecture
 
-See [conventions-cofabnum] for the full Vue.js structure. Key: views in folders with co-located tests and sub-components.
+See [conventions-cofabnum] for the full Vue.js structure. Key: views in folders with co-located tests and
+sub-components.
 
 ## Nuxt 3
 
@@ -141,7 +144,8 @@ export const useToaster = () => {
 }
 ```
 
-Les IDs sont générés via `getRandomId('toaster')` importé de VueDsfr — **ne réimplémente pas** ton propre générateur d'ID.
+Les IDs sont générés via `getRandomId('toaster')` importé de VueDsfr — **ne réimplémente pas** ton propre générateur
+d'ID.
 
 ### component: `AppToaster.vue`
 
@@ -194,7 +198,8 @@ toaster.addMessage({ description: 'Saved', type: 'success', closeable: true, tit
 
 ## Form Inputs — DsfrInput
 
-Real `DsfrInputProps` (from `@gouvminint/vue-dsfr`, confirmed against `node_modules/@gouvminint/vue-dsfr/**/DsfrInput.types.d.ts`):
+Real `DsfrInputProps` (from `@gouvminint/vue-dsfr`, confirmed against
+`node_modules/@gouvminint/vue-dsfr/**/DsfrInput**.types.d.ts`):
 
 | Prop | Type | Purpose |
 |------|------|---------|
@@ -216,7 +221,8 @@ Real `DsfrInputProps` (from `@gouvminint/vue-dsfr`, confirmed against `node_modu
 />
 ```
 
-There is **no `native-validators` prop** — validation/error state is driven by `isInvalid` + `hint`/`errorMessage`, handled in your own validation logic (e.g. VeeValidate, Zod).
+There is **no `native-validators` prop** — validation/error state is driven by `isInvalid` + `hint`/`errorMessage`,
+handled in your own validation logic (e.g. VeeValidate, Zod).
 
 ## Layout, typo & tokens DSFR
 
