@@ -1,35 +1,19 @@
 ---
-name: gouv-fr-code-index
-description: Index de l'ensemble des skills gouv-fr-code pour construire une application de l'État.
+name: gouv-fr-code-index-index
+description: "Index des skills gouv-fr-code pour construire une application de l'État."
 version: 0.2.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
-platforms:
-  - linux
-  - macos
+platforms: [linux, macos]
 metadata:
   hermes:
-    tags:
-      - gouv-fr-code
-      - sovereign
-      - france
-      - etat
-      - government
-      - app
-      - build
-      - dsfr
-      - rgaa
-      - index
-    related_skills:
-      - gouv-fr-projet-structure
-      - gouv-fr-securite
-      - gouv-fr-compliance-rgaa
-      - gouv-fr-workflow-dev
+    tags: [gouv-fr-code, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
+    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow, gouv-fr-code-git]
 ---
 
 # gouv-fr — Index Skills
 
-Package complet de skills gouv-fr-code pour construire, auditer et déployer des applications de l'administration française.
+Package complet de skills gouv-fr pour construire, auditer et déployer des applications de l'administration française.
 
 ## Sources
 
