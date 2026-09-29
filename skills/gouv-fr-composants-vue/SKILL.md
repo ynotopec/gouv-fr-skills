@@ -25,7 +25,8 @@ metadata:
 
 # VueDsfr — Composants Vue.js pour le DSFR
 
-VueDsfr (`@gouvminint/vue-dsfr`) : portage en **Vue 3** du Système de Design de l'État français (DSFR). Utilisable comme plugin ou en imports nommés.
+VueDsfr (`@gouvminint/vue-dsfr`) : portage en **Vue 3** du Système de Design de l'État français (DSFR). Utilisable comme
+plugin ou en imports nommés.
 
 ## When to Use
 
@@ -33,7 +34,8 @@ VueDsfr (`@gouvminint/vue-dsfr`) : portage en **Vue 3** du Système de Design de
 - Intégrer des composants DSFR dans un projet Vue 3 / Vue CLI / Nuxt 3.
 - Générer du code Vue SFC conforme DSFR.
 
-Don't use for: visualisation de données (→ `gouv-fr-dsfr-chart`), emails (→ `gouv-fr-dsfr-mail`), ou projets hors administration publique.
+Don't use for: visualisation de données (→ `gouv-fr-dsfr-chart`), emails (→ `gouv-fr-dsfr-mail`), ou projets hors
+administration publique.
 
 ## Prerequisites
 
@@ -97,7 +99,8 @@ Tous les composants sont préfixés `Dsfr` (sauf `VIcon`) :
 | Catégorie | Composants clés |
 |---|---|
 | Navigation | `DsfrHeader`, `DsfrSideMenu`, `DsfrBreadcrumb`, `DsfrNavigation`, `DsfrTabs` |
-| Formulaires | `DsfrInput`, `DsfrSelect`, `DsfrCheckbox`, `DsfrCheckboxSet`, `DsfrRadioButton`, `DsfrRadioButtonSet`, `DsfrToggleSwitch`, `DsfrRange`, `DsfrMultiselect`, `DsfrFileUpload`, `DsfrInputGroup`, `DsfrFieldset` |
+| Formulaires | `DsfrInput`, `DsfrSelect`, `DsfrCheckbox`, `DsfrCheckboxSet`, `DsfrRadioButton`, `DsfrRadioButtonSet`,
+`DsfrToggleSwitch`, `DsfrRange`, `DsfrMultiselect`, `DsfrFileUpload`, `DsfrInputGroup`, `DsfrFieldset` |
 | Boutons | `DsfrButton`, `DsfrButtonGroup`, `DsfrSegmented`, `DsfrSegmentedSet` |
 | Alerts/Notices | `DsfrAlert`, `DsfrNotice`, `DsfrCallout`, `DsfrHighlight` |
 | Badges/Tags | `DsfrBadge`, `DsfrTag`, `DsfrTags` |

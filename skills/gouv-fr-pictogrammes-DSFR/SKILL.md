@@ -25,14 +25,16 @@ metadata:
 
 # DSFR Artwork
 
-Les assets visuels du DSFR (pictogrammes SVG, icônes, motifs décoratifs) sont inclus dans le paquet `@gouvfr/dsfr` — pas de dépôt séparé à installer.
+Les assets visuels du DSFR (pictogrammes SVG, icônes, motifs décoratifs) sont inclus dans le paquet `@gouvfr/dsfr` — pas
+de dépôt séparé à installer.
 
 ## When to Use
 
 - Intégrer un pictogramme ou une icône officielle dans une application DSFR.
 - Ajouter un motif décoratif ou une illustration institutionnelle.
 
-Don't use for: créer des pictogrammes hors charte, usage commercial hors État, logo Marianne (celui-ci est la classe CSS `fr-logo`, gérée par le skill principal).
+Don't use for: créer des pictogrammes hors charte, usage commercial hors État, logo Marianne (celui-ci est la classe CSS
+`fr-logo`, gérée par le skill principal).
 
 ## Quick Reference
 
@@ -57,11 +59,14 @@ npm install @gouvfr/dsfr
 
 ### Classes artwork dans le CSS officiel
 
-Familles réellement définies : `fr-artwork`, `fr-artwork-decorative`, `fr-artwork-background`, `fr-artwork-major`, `fr-artwork-minor`, `fr-artwork-motif` (+ variantes de couleur `--blue-ecume`, `--green-bourgeon`, …). Les éléments décoratifs portent `aria-hidden="true"`.
+Familles réellement définies : `fr-artwork`, `fr-artwork-decorative`, `fr-artwork-background`, `fr-artwork-major`,
+`fr-artwork-minor`, `fr-artwork-motif` (+ variantes de couleur `--blue-ecume`, `--green-bourgeon`, …). Les éléments
+décoratifs portent `aria-hidden="true"`.
 
 ### Icônes
 
-Classes utilitaires `fr-fi-*` / `fr-icon-*` en préfixe ou suffixe de composant (ex. `fr-fi-mail-line`, `fr-btn--github`). Vérifier le nom exact dans `utility.min.css` avant usage.
+Classes utilitaires `fr-fi-*` / `fr-icon-*` en préfixe ou suffixe de composant (ex. `fr-fi-mail-line`,
+`fr-btn--github`). Vérifier le nom exact dans `utility.min.css` avant usage.
 
 ## Pitfalls
 

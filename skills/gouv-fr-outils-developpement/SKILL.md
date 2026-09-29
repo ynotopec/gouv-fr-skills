@@ -11,7 +11,8 @@ metadata:
     related_skills: [gouv-fr-stack, gouv-fr-deploiement, gouv-fr-conventions]
 ---
 ouv-fr-outils-developpement
-description: Installation et configuration des outils dev (Git, Docker, pnpm, proto, VS Code, GitHub CLI, uv, zsh). Vérification d'environnement, branches, commits, Docker Compose.
+description: Installation et configuration des outils dev (Git, Docker, pnpm, proto, VS Code, GitHub CLI, uv, zsh).
+Vérification d'environnement, branches, commits, Docker Compose.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos, windows]
@@ -23,7 +24,8 @@ metadata:
 
 # Gouv-fr — Outils de Développement
 
-Travailler avec les outils de développement utilisés dans les projets Fabrique Numérique : installation, configuration, Git, Docker, pnpm, proto, VS Code, GitHub CLI, etc.
+Travailler avec les outils de développement utilisés dans les projets Fabrique Numérique : installation, configuration,
+Git, Docker, pnpm, proto, VS Code, GitHub CLI, etc.
 
 ## When to Use
 

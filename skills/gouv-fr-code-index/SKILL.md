@@ -20,7 +20,8 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr-code, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
-    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow, gouv-fr-code-git]
+related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow,
+gouv-fr-code-git]
 ---
 
 # gouv-fr — Index Skills

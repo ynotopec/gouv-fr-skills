@@ -5,7 +5,8 @@ category: workflow
 allowed-tools: Bash Read
 ---
 ame: gouv-fr-conventions-nommage
-description: Use when creating or reviewing Fabrique Numérique projects — naming conventions, folder architecture, TypeScript rules, RESTful API patterns, linting, code quality, deployment, POC-to-production, or project documentation
+description: Use when creating or reviewing Fabrique Numérique projects — naming conventions, folder architecture,
+TypeScript rules, RESTful API patterns, linting, code quality, deployment, POC-to-production, or project documentation
 allowed-tools: Bash Read
 ---
 
@@ -105,7 +106,8 @@ Conventional Commits format. French is acceptable.
 - Function/variable: `camelCase`
 - Constant: `SCREAMING_SNAKE_CASE`
 
-Names must be explicit. Avoid single-character names. Prefer English; French allowed when translation is confusing (`demarche`, `affaire`).
+Names must be explicit. Avoid single-character names. Prefer English; French allowed when translation is confusing
+(`demarche`, `affaire`).
 
 ## Folder Architecture
 

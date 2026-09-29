@@ -5,13 +5,16 @@ category: backend
 allowed-tools: Bash Read Write
 ---
 ame: gouv-fr-github-actions-ci
-description: Use when setting up a basic CI pipeline (lint, tests, build) for a Fabrique Numérique project or choosing between custom and reusable GitHub Actions workflows — for fabnum-cicd reusable workflows, releases and Cloud Pi Native sync use the cicd-fabnum skill (dso group)
+description: Use when setting up a basic CI pipeline (lint, tests, build) for a Fabrique Numérique project or choosing
+between custom and reusable GitHub Actions workflows — for fabnum-cicd reusable workflows, releases and Cloud Pi Native
+sync use the cicd-fabnum skill (dso group)
 allowed-tools: Bash Read Write
 ---
 
 # CoFabNum CI/CD
 
-Principes et gabarit de base. Pour assembler les workflows réutilisables de fabnum-cicd (build, scans, release-please, chart Helm, synchro Cloud Pi Native), utiliser le skill **`cicd-fabnum`** (groupe `dso`).
+Principes et gabarit de base. Pour assembler les workflows réutilisables de fabnum-cicd (build, scans, release-please,
+chart Helm, synchro Cloud Pi Native), utiliser le skill **`cicd-fabnum`** (groupe `dso`).
 
 ## Principes
 
@@ -40,7 +43,7 @@ Progress:
 name: gouv-fr-github-actions-ci
 on:
   pull_request:
-    branches: ["**"]
+    branches: ["**"]**
 
 jobs:
   lint:
@@ -77,8 +80,10 @@ jobs:
 
 ## Workflows réutilisables
 
-La Fabrique Numérique maintient [`dnum-mi/fabnum-cicd`](https://github.com/dnum-mi/fabnum-cicd) : privilégier ces workflows plutôt qu'un pipeline sur mesure (cohérence, scans de sécurité).
-Référence : `uses: dnum-mi/fabnum-cicd/.github/workflows/<nom>.yml@v0` — **jamais `@main`** (règle du repo) ; `@v0` est flottant et le dépôt est en `0.x`, figer sur `@v0.20` ou un SHA si besoin de stabilité.
+La Fabrique Numérique maintient [`dnum-mi/fabnum-cicd`](https://github.com/dnum-mi/fabnum-cicd) : privilégier ces
+workflows plutôt qu'un pipeline sur mesure (cohérence, scans de sécurité).
+Référence : `uses: dnum-mi/fabnum-cicd/.github/workflows/<nom>.yml@v0` — **jamais `@main`** (règle du repo) ; `@v0` est
+flottant et le dépôt est en `0.x`, figer sur `@v0.20` ou un SHA si besoin de stabilité.
 Le détail (catalogue, permissions, gabarits `ci.yml`/`cd.yml`, secrets, pièges) est dans `cicd-fabnum`.
 
 ## Pièges

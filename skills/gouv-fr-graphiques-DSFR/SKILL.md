@@ -25,7 +25,8 @@ metadata:
 
 # DSFR Chart — Visualisation de données
 
-DSFR Chart (`@gouvfr/dsfr-chart`) : web-components Vue.js de visualisation conformes au DSFR (thème clair/sombre automatique).
+DSFR Chart (`@gouvfr/dsfr-chart`) : web-components Vue.js de visualisation conformes au DSFR (thème clair/sombre
+automatique).
 
 ## When to Use
 
@@ -69,9 +70,11 @@ Composants vérifiés (tags web-components kebab-case, source : README officiel)
 ## Procédure
 
 1. `npm install @gouvfr/dsfr-chart` ; le paquet est dans `node_modules/@gouvfr/dsfr-chart/`.
-2. Importer les CSS/JS : soit le bundle `Charts`, soit un dossier par type (`LineChart/`, `BarChart/`…) pour ne charger que ce qu'il faut.
+2. Importer les CSS/JS : soit le bundle `Charts`, soit un dossier par type (`LineChart/`, `BarChart/`…) pour ne charger
+que ce qu'il faut.
 3. Utiliser les tags en HTML (web-components) ou comme composants d'un projet Vue 3.
-4. Catalogue complet, props et exemples : [documentation et demo officielles](https://gouvernementfr.github.io/dsfr-chart/).
+4. Catalogue complet, props et exemples : [documentation et demo
+officielles](https://gouvernementfr.github.io/dsfr-chart/).
 
 ## Pitfalls
 

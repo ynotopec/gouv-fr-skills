@@ -25,7 +25,9 @@ metadata:
 
 # DSFR — Système de Design de l'État
 
-Le DSFR est le design system officiel de l'administration française. Ce skill couvre installation (NPM/CDN/clone) et vérification de conformité. Hors périmètre : emails (→ `gouv-fr-dsfr-mail`), graphiques (→ `gouv-fr-dsfr-chart`), pictogrammes en détail (→ `gouv-fr-dsfr-artwork`).
+Le DSFR est le design system officiel de l'administration française. Ce skill couvre installation (NPM/CDN/clone) et
+vérification de conformité. Hors périmètre : emails (→ `gouv-fr-dsfr-mail`), graphiques (→ `gouv-fr-dsfr-chart`),
+pictogrammes en détail (→ `gouv-fr-dsfr-artwork`).
 
 ## When to Use
 
@@ -33,7 +35,8 @@ Le DSFR est le design system officiel de l'administration française. Ce skill c
 - Installer ou configurer le DSFR (NPM, CDN ou clone).
 - Générer ou vérifier du HTML/CSS/JS conforme DSFR.
 
-Don't use for: conception de templates email, visualisation de données, projets hors administration publique (usage réservé).
+Don't use for: conception de templates email, visualisation de données, projets hors administration publique (usage
+réservé).
 
 ## Prerequisites
 
@@ -73,7 +76,8 @@ npm install @gouvfr/dsfr
 
 ### Depuis le clone
 
-`git clone https://github.com/GouvernementFR/dsfr.git` puis `npm install && npm run build`. `dist/` = compilés à distribuer, `src/` = sources Sass/JS, `example/` = snippets HTML, `doc/` = docs composants.
+`git clone https://github.com/GouvernementFR/dsfr.git` puis `npm install && npm run build`. `dist/` = compilés à
+distribuer, `src/` = sources Sass/JS, `example/` = snippets HTML, `doc/` = docs composants.
 
 ### Thème clair / sombre
 
@@ -81,7 +85,9 @@ Bascule automatique selon `prefers-color-scheme` ; forcer avec `data-fr-scheme="
 
 ## Composants
 
-Boutons, alerts, badges, cartes, formulaires, tabs, modals, accordéons, header/sidemenu/mega-menu, breadcrumbs, skiplinks… Liste exhaustive sur [systeme-de-design.gouv.fr](https://www.systeme-de-design.gouv.fr/). Toujours vérifier un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
+Boutons, alerts, badges, cartes, formulaires, tabs, modals, accordéons, header/sidemenu/mega-menu, breadcrumbs,
+skiplinks… Liste exhaustive sur [systeme-de-design.gouv.fr](https://www.systeme-de-design.gouv.fr/). Toujours vérifier
+un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 
 ## Pitfalls
 
