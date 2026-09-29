@@ -1,6 +1,6 @@
 ---
 name: gouv-fr-code-quality
-description: >-
+description: Grille de contrôle qualité pour réviser du code — en particulier du code généré ou co-écrit par une IA — avant de l'accepter dans une base maintenue, et rituel d'hygiène récurrent pour dégonfler la dette.
 category: devops
 tags: []
 version: 1.0.0

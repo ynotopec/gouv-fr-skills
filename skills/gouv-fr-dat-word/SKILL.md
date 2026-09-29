@@ -1,6 +1,6 @@
 ---
 name: gouv-fr-dat-word
-description: >-
+description: Rend un document d'homologation MirAI (DAT, et à terme AIPD/dossier d'homologation) au format Word (.docx) ministériel, en appliquant le modèle officiel avec typographie française, diagrammes mermaid et mise en page professionnelle.
 category: security
 tags: []
 version: 1.0.0
