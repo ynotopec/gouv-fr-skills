@@ -2,6 +2,7 @@
 name: gouv-fr-github-actions-reusable
 description: Use when writing or reviewing GitHub Actions ci.yml/cd.yml with the reusable workflows of dnum-mi/fabnum-cicd — lint, Trivy/Gitleaks scans, Docker build, release-please, Helm chart bump and publish, GitHub App credentials, and the sync-cpin trigger toward Cloud Pi Native
 category: backend
+tags: []
 allowed-tools: Bash Read Write
 ---
 author: Hermes Agent
