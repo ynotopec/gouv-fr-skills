@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-dsfr-mail
+name: gouv-fr-templates-email
 description: Génère des templates email DSFR pour l'État.
 version: 0.1.0
 author: Hermes Agent (Nous Research)

@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-code-audit
+name: gouv-fr-audit-conformite
 description: "Audit de conformité d'une app gouv-fr-code."
 version: 0.1.0
 author: Hermes Agent

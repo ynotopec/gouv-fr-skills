@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-dsfr-vue
+name: gouv-fr-composants-vue
 description: "Installer et utiliser VueDsfr (composants Vue 3 DSFR)."
 version: 1.0.0
 author: Hermes Agent (Nous Research)

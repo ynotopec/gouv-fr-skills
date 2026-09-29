@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-recettes-client
+name: gouv-fr-frontend-vue3
 description: Use when building Vue 3 or Nuxt 3 frontend projects for Fabrique Numérique — DSFR compliance, VueDsfr scaffolding, composable patterns like toaster, and testing setup
 allowed-tools: Read Write Bash
 ---
