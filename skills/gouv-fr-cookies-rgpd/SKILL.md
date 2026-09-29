@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-dsfr-theme-tarteaucitron
+name: gouv-fr-cookies-rgpd
 description: "Gère les cookies d'un site DSFR avec Tarte au Citron."
 version: 0.1.1
 author: Hermes Agent (Nous Research)

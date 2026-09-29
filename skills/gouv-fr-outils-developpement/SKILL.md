@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-outils-dev
+name: gouv-fr-outils-developpement
 description: Installation et configuration des outils dev (Git, Docker, pnpm, proto, VS Code, GitHub CLI, uv, zsh). Vérification d'environnement, branches, commits, Docker Compose.
 version: 0.2.0
 license: MIT

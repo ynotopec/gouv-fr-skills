@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-code-project
+name: gouv-fr-projet-structure
 description: "Structure projet, CLI, config OpenCode et variables d'env."
 version: 0.2.0
 author: gouv-fr-code (etalab-ia), Hermes Agent

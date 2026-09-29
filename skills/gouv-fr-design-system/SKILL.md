@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-dsfr
+name: gouv-fr-design-system
 description: "Installer et vérifier le design system de l'État (DSFR)."
 version: 0.3.0
 author: Hermes Agent (Nous Research)

@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-referentiel-donnees
+name: gouv-fr-donnees-ouvertes
 description: "Données ouvertes publiques du SIG (schémas, JSONL)."
 version: 0.1.1
 author: Hermes Agent (Nous Research)

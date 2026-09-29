@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-code-index-index
+name: gouv-fr-code-index
 description: "Index des skills gouv-fr-code pour construire une application de l'État."
 version: 0.2.0
 author: gouv-fr-code (etalab-ia), Hermes Agent

@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-stack
+name: gouv-fr-stack-technique
 description: Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma, ESLint, monorepo. Outils de dev et versions.
 version: 0.2.0
 license: MIT

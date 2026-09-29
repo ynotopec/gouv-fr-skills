@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-monorepo
+name: gouv-fr-monorepo-pnpm
 description: Architecture monorepo pnpm workspaces et Turborepo : structure, workspaces, turbo.json, cache, filters.
 version: 0.2.0
 license: MIT

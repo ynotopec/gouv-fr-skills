@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-code-quality
+name: gouv-fr-qualite-code
 description: Bonnes pratiques de code, lint, formattage et tests pour Fabrique Numérique.
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent

@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-code-lint
+name: gouv-fr-lint-eslint
 description: Lint et formattage ESLint, Ruff et EditorConfig pour projets Fabrique Numérique.
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent

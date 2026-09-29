@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-code-api
+name: gouv-fr-api-rest
 description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique Numérique.
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent

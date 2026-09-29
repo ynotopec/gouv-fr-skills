@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-dsfr-chart
+name: gouv-fr-graphiques-DSFR
 description: "Graphiques DSFR en web-components Vue.js (line, bar, pie…)."
 version: 0.2.0
 author: Hermes Agent (Nous Research)

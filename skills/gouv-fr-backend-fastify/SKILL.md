@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-recettes-serveur
+name: gouv-fr-backend-fastify
 description: Use when building server projects for Fabrique Numérique — project scaffolding, structure, logging, error handling, OpenAPI docs, and testing patterns
 allowed-tools: Bash Read Write
 ---
@@ -132,7 +132,7 @@ import fp from 'fastify-plugin'
 const myPlugin: FastifyPluginAsync = async (fastify) => {
   fastify.decorate('myUtil', () => { /* ... */ })
 }
-export default fp(myPlugin, { name: 'my-plugin' })
+export default fp(myPlugin, { name: gouv-fr-backend-fastify })
 ```
 
 ### Validation with TypeBox
@@ -142,7 +142,7 @@ import { Type, Static } from '@sinclair/typebox'
 
 const CatSchema = Type.Object({
   id: Type.Number(),
-  name: Type.String({ minLength: 1 }),
+  name: gouv-fr-backend-fastify minLength: 1 }),
   age: Type.Number({ minimum: 0 }),
 })
 type Cat = Static<typeof CatSchema>
@@ -242,7 +242,7 @@ tests/
 from pydantic import BaseModel, Field
 
 class CatBase(BaseModel):
-    name: str = Field(min_length=1, description="Nom du chat")
+    name: gouv-fr-backend-fastify = Field(min_length=1, description="Nom du chat")
     age: int = Field(ge=0)
 
 class CatCreate(CatBase): pass
