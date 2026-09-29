@@ -5,18 +5,7 @@ category: backend
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [gouv-fr-code, api, rest, openapi, swagger, http, routes, logging]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-stack]
----
-uv-fr-api-rest
-description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique Numérique.
-version: 0.1.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr-code, api, rest, openapi, swagger, http, routes, logging]
@@ -27,13 +16,13 @@ metadata:
 
 Conventions pour la conception d'APIs RESTful, la documentation OpenAPI et les tests d'API.
 
-## When to Use
+## Quand utiliser
 - Concevoir une nouvelle API REST
 - Documenter une API avec OpenAPI/Swagger
 - Tester des endpoints d'API avec les fichiers `.rest`
 - Standardiser les réponses d'erreur
 
-## Prerequisites
+## Prérequis
 - Framework choisi : Fastify (TypeScript), NestJS (TypeScript) ou FastAPI (Python)
 - Swagger/OpenAPI configuré dans le framework
 

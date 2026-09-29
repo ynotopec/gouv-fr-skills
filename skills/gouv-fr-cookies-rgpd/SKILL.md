@@ -5,18 +5,7 @@ category: qualite
 version: 0.1.1
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance, gouv-fr-code-security]
----
-uv-fr-cookies-rgpd
-description: "Gère les cookies d'un site DSFR avec Tarte au Citron."
-version: 0.1.1
-author: Hermes Agent (Nous Research)
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]
@@ -27,7 +16,7 @@ metadata:
 
 Thème DSFR pour le gestionnaire de consentement cookies Tarte au Citron.
 
-## When to Use
+## Quand utiliser
 
 - Un site DSFR a besoin d'un gestionnaire de cookies conforme RGPD.
 - Gérer les consentements cookies avec un design DSFR.
@@ -35,7 +24,7 @@ Thème DSFR pour le gestionnaire de consentement cookies Tarte au Citron.
 
 Don't use for: applications sans cookies tiers, gestion de données personnelles autre que les cookies.
 
-## Prerequisites
+## Prérequis
 
 - Tarte au Citron (tarteaucitron.js) disponible dans le projet
 - DSFR installé et configuré

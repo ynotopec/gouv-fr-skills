@@ -5,18 +5,7 @@ category: qualite
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [gouv-fr-code, quality, lint, format, testing, code-quality]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-lint]
----
-uv-fr-qualite-code
-description: Bonnes pratiques de code, lint, formattage et tests pour Fabrique Numérique.
-version: 0.1.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr-code, quality, lint, format, testing, code-quality]
@@ -27,12 +16,12 @@ metadata:
 
 Bonnes pratiques de code, règles de lint, formattage et tests pour les projets Fabrique Numérique.
 
-## When to Use
+## Quand utiliser
 - Écrire du code selon les standards de la Fabrique Numérique
 - Configurer le lint et le formattage d'un projet
 - Ajouter ou modifier des tests
 
-## Prerequisites
+## Prérequis
 - VS Code avec les extensions ESLint et Ruff installées
 - ESLint installé (projet JS/TS) ou Ruff (projet Python)
 - Vitest installé pour les tests

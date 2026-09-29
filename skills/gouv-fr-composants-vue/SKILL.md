@@ -5,18 +5,7 @@ category: frontend
 version: 1.0.0
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
-metadata:
-  hermes:
-    tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]
-    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-chart, gouv-fr-dsfr-mail, gouv-fr-code-compliance]
----
-uv-fr-composants-vue
-description: "Installer et utiliser VueDsfr (composants Vue 3 DSFR)."
-version: 1.0.0
-author: Hermes Agent (Nous Research)
-license: MIT
-platforms: [linux, macos, windows]
+platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]
@@ -28,7 +17,7 @@ metadata:
 VueDsfr (`@gouvminint/vue-dsfr`) : portage en **Vue 3** du Système de Design de l'État français (DSFR). Utilisable comme
 plugin ou en imports nommés.
 
-## When to Use
+## Quand utiliser
 
 - Construire une application Vue 3 conforme DSFR (composants, formulaires, navigation).
 - Intégrer des composants DSFR dans un projet Vue 3 / Vue CLI / Nuxt 3.
@@ -37,7 +26,7 @@ plugin ou en imports nommés.
 Don't use for: visualisation de données (→ `gouv-fr-dsfr-chart`), emails (→ `gouv-fr-dsfr-mail`), ou projets hors
 administration publique.
 
-## Prerequisites
+## Prérequis
 
 - Vue 3 (`vue@^3.4.0`).
 - npm ou yarn/pnpm.
@@ -154,7 +143,7 @@ Les composants VueDsfr nécessitent **toutes** les couches CSS du DSFR :
 - Les événements émettent les événements attendus (`@change`, `@update:modelValue`, etc.) pour les composants formulaires.
 - Le thème clair/sombre (`data-fr-scheme`) est correctement appliqué.
 
-## References
+## Références
 
 - Docs officielles : [docs.vue-ds.fr](https://docs.vue-ds.fr/)
 - Demo : [vue-ds.fr](https://vue-ds.fr/)
