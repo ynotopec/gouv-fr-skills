@@ -10,7 +10,7 @@ platforms: [linux, macos]
 ---
 
 
-# repo-cicd-cpin — brancher un projet existant sur la CI/CD Cloud Pi Native
+# Gouv-fr Repo CI/CD — brancher un projet existant sur la CI/CD Cloud Pi Native
 
 Tu mets en place, dans le projet cible, des workflows GitHub Actions qui **appellent par
 référence** ceux de `dnum-mi/fabnum-cicd`. Le côté Cloud Pi Native (pipeline du miroir GitLab,

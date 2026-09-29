@@ -13,17 +13,17 @@ platforms: [linux, macos]
 # Gen-doc-homologation-doc — rendu .docx ministériel
 
 Cette skill **transforme un contenu d'homologation (Markdown) en `.docx` ministériel**, en s'appuyant
-sur le **modèle officiel** `MODELE_DAT_MirAI.docx` (maintenu dans la skill sœur `dat-generation`).
-Elle est le **pendant « rendu »** de `/dat-generation`, qui produit le **contenu**.
+sur le **modèle officiel** `MODELE_DAT_MirAI.docx` (maintenu dans la skill sœur `gouv-fr-dat-homologation`).
+Elle est le **pendant « rendu »** de `gouv-fr-dat-homologation`, qui produit le **contenu**.
 
 ```
-/dat-generation         →   contenu Markdown fidèle au modèle (DAT_«service»_v0.1.md)
+gouv-fr-dat-homologation         →   contenu Markdown fidèle au modèle (DAT_«service»_v0.1.md)
 /dat-word     →   rendu .docx ministériel sur le modèle (DAT_«service»_v0.1.docx)
 ```
 
 ## Quand l'utiliser
 
-- Après `/dat-generation` (ou tout contenu Markdown respectant la structure du modèle), pour
+- Après `gouv-fr-dat-homologation` (ou tout contenu Markdown respectant la structure du modèle), pour
   produire le livrable Word attendu au dossier d'homologation.
 - Pour n'importe quel service : la skill est **générique** et réutilisable par tous les agents.
 
@@ -32,7 +32,7 @@ Elle est le **pendant « rendu »** de `/dat-generation`, qui produit le **conte
 - **`python-docx`** (`pip install python-docx`). Si l'environnement courant ne l'a pas, l'installer
   dans un venv jetable.
 - Le **modèle** `MODELE_DAT_MirAI.docx`. Par défaut la skill le lit dans la skill sœur
-  (`../dat-generation/dat/MODELE_DAT_MirAI.docx`) ; surchargeable via `--model`.
+  (`..gouv-fr-dat-homologation/dat/MODELE_DAT_MirAI.docx`) ; surchargeable via `--model`.
 - *(Optionnel, pour les diagrammes mermaid)* **`mermaid-cli`** (`npx -y @mermaid-js/mermaid-cli`,
   ou `mmdc` sur le PATH) **+ un Chrome/Chromium local** (auto-détecté ; sinon `--chrome`). Rendu
   **100 % local, aucun service externe**. Absent ⇒ repli automatique en texte à chasse fixe.
@@ -40,7 +40,7 @@ Elle est le **pendant « rendu »** de `/dat-generation`, qui produit le **conte
 - **Logo de la page de garde** : `assets/logo_minint_2020.png` (bloc-marque MININT, fond
   transparent) **versionné dans la skill** — voir « Logo » plus bas. Absent ⇒ rendu sans logo.
 
-## Entrée attendue (contrat avec `/dat-generation`)
+## Entrée attendue (contrat avec `gouv-fr-dat-homologation`)
 
 Un Markdown **fidèle à la structure du modèle**, avec ce mapping de niveaux de titres :
 
@@ -65,11 +65,10 @@ exception, **rendue** : elle **peuple la table de la page de garde** du modèle 
 (réserver l'emphase à l'*italique*) — le gras alourdit la lecture.
 
 > Les garde-fous de contenu (ne jamais inventer, aucune valeur réelle : IP/port d'écoute/hôte/clé,
-> matrice des flux en port standard, `[À CONFIRMER]` / `N/A`) relèvent de `/dat-generation`.
+> matrice des flux en port standard, `[À CONFIRMER]` / `N/A`) relèvent de `gouv-fr-dat-homologation`.
 > Cette skill **ne fait que le rendu** et ne réécrit pas le contenu.
 
-## Usage
-
+## Utilisation
 ```bash
 python render_docx.py \
   --input  private/DAT_«service»_v0.1.md \
@@ -140,7 +139,7 @@ en environnement sandboxé, mais le PNG est écrit avant ; ou via `rsvg-convert`
 ## Limites connues
 
 - Les **encadrés bleus de référence socle « ◆ »** du modèle ne sont pas réinjectés tels quels : le
-  contenu Markdown doit déjà **porter le texte de socle** (conservé par `/dat-generation`).
+  contenu Markdown doit déjà **porter le texte de socle** (conservé par `gouv-fr-dat-homologation`).
 - La table **« Suivi des mises à jour »** est peuplée depuis le bloc de méta du Markdown
   (4 colonnes attendues : Version, Date, Auteurs, Commentaire ; l'**en-tête** reste celui du modèle)
   et placée sur une **page séparée**.
@@ -151,7 +150,7 @@ en environnement sandboxé, mais le PNG est écrit avant ; ou via `rsvg-convert`
 
 ## Maintenance
 
-Le **modèle** et les **garde-fous de contenu** vivent dans `dat-generation`. Cette skill ne porte
+Le **modèle** et les **garde-fous de contenu** vivent dans `gouv-fr-dat-homologation`. Cette skill ne porte
 que la **logique de rendu** (`render_docx.py`). Versionner les évolutions dans `CHANGELOG.md` (format
 `vMAJEUR.MINEUR`). À pousser dans le dépôt de skills partagé `IA-Generative/agent-skills`
 (`skills/dat-word/`) pour être disponible à toute l’équipe.

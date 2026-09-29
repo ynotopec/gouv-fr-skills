@@ -73,7 +73,7 @@ Sortie 1 s'il reste des erreurs. Ce n'est pas Kyverno : les règles sont en **au
 
 ## Versions et publication
 
-- `version` (chart) ≠ `appVersion` (application). Dans le dépôt applicatif, ne pas les bumper à la main : `update-helm-chart` (`RUN_MODE: local`) le fait au release (skill `cicd-fabnum`).
+- `version` (chart) ≠ `appVersion` (application). Dans le dépôt applicatif, ne pas les bumper à la main : `update-helm-chart` (`RUN_MODE: local`) le fait au release (skill `gouv-fr-github-actions-ci`).
 - Régénérer le README (helm-docs) : `lint-helm` échoue si le README diffère du rendu.
 - Publication OCI : `release-helm-local` (ghcr.io) ; le pipeline DSO refait `helm dependency update`, `helm package` puis `helm push` vers Harbor.
 - Dépendances (postgres, redis, CNPG) : `alias` + `condition: <alias>.enabled`, et `HELM_REPOS`/`chart-repos` pour celles en HTTP. Registres autorisés côté cluster : docker.io, harbor, registry.redhat.io, quay.io, bitnami, ghcr.io.
@@ -94,4 +94,4 @@ entrées à garder (par exemple le volume `tmp`).
 
 - Doc interne : `docs/okf/helm/` (anatomie, conventions de values, sécurité et OpenShift, publication), `docs/okf/cloud-pi-native/contraintes-runtime.md` (table Kyverno), `docs/okf/decisions/dependances-chart.md`.
 - Exemple complet : `IA-Generative/ocr-api/helm`.
-- Skills liés (groupe `dso`) : `cicd-fabnum` (bump et publication du chart), `deploiement-cpin` (environnements, ArgoCD, secrets, quotas).
+- Skills liés (groupe `dso`) : `gouv-fr-github-actions-ci` (bump et publication du chart), `gouv-fr-deployment-cloud-pi-native` (environnements, ArgoCD, secrets, quotas).

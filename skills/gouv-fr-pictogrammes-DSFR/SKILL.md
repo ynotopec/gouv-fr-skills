@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, artwork, pictogram, icon, svg, illustration]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]
+    related_skills: [gouv-fr-design-system, gouv-fr-compliance-rgaa]
 ---
 
 # DSFR Artwork
@@ -25,8 +25,7 @@ de dépôt séparé à installer.
 Don't use for: créer des pictogrammes hors charte, usage commercial hors État, logo Marianne (celui-ci est la classe CSS
 `fr-logo`, gérée par le skill principal).
 
-## Quick Reference
-
+## Référence rapide
 ```bash
 npm install @gouvfr/dsfr
 ```
@@ -57,15 +56,13 @@ décoratifs portent `aria-hidden="true"`.
 Classes utilitaires `fr-fi-*` / `fr-icon-*` en préfixe ou suffixe de composant (ex. `fr-fi-mail-line`,
 `fr-btn--github`). Vérifier le nom exact dans `utility.min.css` avant usage.
 
-## Pitfalls
-
-- **Classes inventées** : `fr-artwork-ministery`, `fr-artwork-brand`, `fr-artwork-theme-*` n'existent PAS dans le CSS officiel. Toujours contrôler le nom dans le CSS (cf. `gouv-fr-dsfr/scripts/verify_dsfr.py`).
+## Pièges
+- **Classes inventées** : `fr-artwork-ministery`, `fr-artwork-brand`, `fr-artwork-theme-*` n'existent PAS dans le CSS officiel. Toujours contrôler le nom dans le CSS (cf. `gouv-fr-design-system/scripts/verify_dsfr.py`).
 - Logo Marianne = classe `fr-logo` (SVG inline via le CSS), pas un fichier `marianne.svg` dans artwork.
 - `alt` descriptif obligatoire sur les images signifiantes ; `alt=""` + `aria-hidden="true"` pour le purement décoratif.
 - Les icônes sociales (Bluesky, etc.) sont ajoutées au fil des versions : vérifier la classe dans le CSS de la version épinglée.
 
-## Verification
-
+## Vérification
 - L'image s'affiche (chemin `dist/artwork/...` correct, asset en 200 en HTTP).
 - Chaque classe `fr-*` utilisée est présente dans le CSS officiel (script `verify_dsfr.py`).
 - `alt` présent et pertinent sur les pictogrammes porteurs de sens.

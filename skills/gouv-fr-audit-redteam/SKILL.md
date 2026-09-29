@@ -18,7 +18,7 @@ hostile) **et** en sortie (canary / exfiltration). Un **modèle-juge** tranche l
 cas ambigus. **Tous les artefacts sensibles** (payloads, réponses brutes du modèle,
 synthèses) atterrissent dans **`private/redteam-reports/` (gitignoré)**.
 
-> Complète `/audit-pentest-prep` (durcissement OWASP large) et `/audit-tool-owui`
+> Complète `gouv-fr-audit-pentest` (durcissement OWASP large) et `gouv-fr-audit-openwebui`
 > (identité des tools) : ici on se concentre sur **LLM01 — injection de prompt**.
 
 ## Garde-fous

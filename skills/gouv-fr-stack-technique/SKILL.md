@@ -1,6 +1,6 @@
 ---
 name: gouv-fr-stack-technique
-description: Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma, ESLint, monorepo. Outils de dev et versions.
+description: "Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma, ESLint, monorepo. Outils de dev et versions."
 category: architecture
 version: 0.2.0
 license: MIT
@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, stack, framework, vue, nestjs, fastify, fastapi, prisma, eslint, typescript]
-    related_skills: [gouv-fr-code-project, gouv-fr-monorepo, gouv-fr-deploiement]
+    related_skills: [gouv-fr-projet-structure, gouv-fr-monorepo-pnpm, gouv-fr-deployment-docker-k8s]
 ---
 
 # Gouv-fr — Stack Technique
@@ -29,20 +29,19 @@ numérique public.
 - **proto** — gestionnaire de toolchain (Node, Python, Go, etc.)
 - **uv** — gestionnaire Python (v0.4+)
 
-## How to Run
-
-|| Stack | Commande |
+## Comment lancer
+| Stack | Commande |
 |---|---|---|
 | Vue 3 / DSFR | `pnpm create vue-dsfr mon-app` |
 | FastAPI (Python) | `uv init mon-api` |
 | NestJS (Node.js) | `pnpm create nest-app mon-api` |
 | Fastify (Node.js) | `pnpm create fastify-app mon-api` |
 
-## Quick Reference — Stack recommandée
+## Référence rapide — Stack recommandée
 
 ### Front
 
-|| Catégorie | Choix |
+| Catégorie | Choix |
 |---|---|
 | Framework | Vue 3 ou Nuxt 3 |
 | DSFR | `@gouvminint/vue-dsfr` (portage Vue actif) |
@@ -58,7 +57,7 @@ numérique public.
 
 ### Back — Node.js
 
-|| Catégorie | Choix |
+| Catégorie | Choix |
 |---|---|
 | Framework | Fastify (préféré) ou NestJS |
 | ORM | Prisma (type-safe, migrations intégrées) |
@@ -68,7 +67,7 @@ numérique public.
 
 ### Back — Python
 
-|| Catégorie | Choix |
+| Catégorie | Choix |
 |---|---|
 | Framework | FastAPI |
 | ORM | SQLAlchemy ou Tortoise |
@@ -92,7 +91,7 @@ numérique public.
 
 ### Outils de dev
 
-|| Outil | Usage |
+| Outil | Usage |
 |---|---|
 | proto | Gestionnaire de versions (Node, Python, Go…) — remplace nvm / pyenv |
 | pnpm | Gestionnaire de paquets (v10.x) |
@@ -104,7 +103,7 @@ numérique public.
 
 ### Versions recommandées
 
-|| Langue / Outil | Version |
+| Langue / Outil | Version |
 |---|---|
 | Node.js | 24.x LTS (épinglé via `.prototools`) |
 | pnpm | 10.x |
@@ -115,7 +114,7 @@ numérique public.
 
 ### Package Manager
 
-**pnpm** (v10.x) est le par défaut. Voir [environnement-installation] pour l'installation.
+**pnpm** (v10.x) est le par défaut. Voir [gouv-fr-outils-developpement] pour l'installation.
 
 ### Version Management
 
@@ -259,10 +258,9 @@ Pour les projets manipulants des dates :
 
 Extension VS Code : [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
 
-Créer des fichiers `.rest` pour le test d'API. Voir [conventions] pour le format.
+Créer des fichiers `.rest` pour le test d'API. Voir [gouv-fr-conventions-nommage] pour le format.
 
-## Pitfalls
-
+## Pièges
 - Ne pas utiliser `enum` TypeScript — il génère du JavaScript inutile. Privilégier les unions de littéraux.
 - Toujours épingle les versions dans `.prototools`, `package.json` et `pyproject.toml` / `uv.lock`.
 - Utiliser `pnpm` et **jamais** `npm` (cohérence Fabrique Numérique).
@@ -271,8 +269,7 @@ Créer des fichiers `.rest` pour le test d'API. Voir [conventions] pour le forma
 - **ESLint remplace Prettier** — ne pas installer les deux avec `@antfu/eslint-config`
 - **Flat config** depuis ESLint v9 — pas de `.eslintrc`
 
-## Verification
-
+## Vérification
 1. **Projet Vue** : `pnpm create vue-dsfr` crée un projet fonctionnel avec Vue 3 + VueDsfr
 2. **TypeScript** : `npx tsc --noEmit` ne renvoie aucune erreur en mode strict
 3. **Prisma** : `npx prisma validate` passe sans erreur

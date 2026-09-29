@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance, gouv-fr-code-security]
+    related_skills: [gouv-fr-design-system, gouv-fr-compliance-rgaa, gouv-fr-securite]
 ---
 
 # DSFR Theme Tarte au Citron
@@ -29,8 +29,7 @@ Don't use for: applications sans cookies tiers, gestion de données personnelles
 - Tarte au Citron (tarteaucitron.js) disponible dans le projet
 - DSFR installé et configuré
 
-## Quick Reference
-
+## Référence rapide
 ```html
 <!-- Après les CSS/JS tarteaucitron, ajouter le thème DSFR : -->
 <link rel="stylesheet" href="css/dsfr-tarteaucitron.css">
@@ -44,14 +43,12 @@ Don't use for: applications sans cookies tiers, gestion de données personnelles
 
 Critère de fin : la barre de cookies affiche les couleurs/typographie DSFR, pas le style par défaut.
 
-## Pitfalls
-
+## Pièges
 - Le composant cookie natif du DSFR est en développement : solution intermédiaire à prévoir.
 - L'ordre de chargement des CSS est impératif (tarteaucitron d'abord, thème ensuite).
 - Le thème réduit la police d'icônes aux 3 glyphes utilisés (optimisation du chargement) : ne pas ajouter de classes d'icônes hors de cette sous-police sans vérifier leur rendu.
 
-## Verification
-
+## Vérification
 - La barre de cookies apparaît stylée aux couleurs DSFR.
 - Chaque service choisi (accepter/refuser) configure bien tarteaucitron.
 - Le consentement s'enregistre et persiste entre les pages (cookie `tarteaucitron` présent).

@@ -3,13 +3,13 @@ name: gouv-fr-qualite-code
 description: Bonnes pratiques de code, lint, formattage et tests pour Fabrique Numérique.
 category: qualite
 version: 0.1.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
+author: gouv-fr-code-index (etalab-ia), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, quality, lint, format, testing, code-quality]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-lint]
+    tags: [gouv-fr-code-index, quality, lint, format, testing, code-quality]
+    related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-lint-eslint]
 ---
 
 # Gouv-fr — Qualité de Code
@@ -26,14 +26,14 @@ Bonnes pratiques de code, règles de lint, formattage et tests pour les projets 
 - ESLint installé (projet JS/TS) ou Ruff (projet Python)
 - Vitest installé pour les tests
 
-## How to Run
+## Comment lancer
 - `pnpm lint` pour le lint JS/TS
 - `pnpm lint:fix` pour auto-corriger
 - `pnpm test` pour lancer les tests Vitest
 - `pnpm ruff check` pour le lint Python
 - `pnpm ruff format` pour le formattage Python
 
-## Quick Reference — Règles de code
+## Référence rapide — Règles de code
 
 ### Structure de fichier
 - Lignes ≤ 120 colonnes ; > 140 **proscrites**
@@ -122,14 +122,14 @@ Avant d'ajouter une dépendance, évaluer :
 3. Règles : `E, W, F, I, N, UP, B, C4, SIM`
 4. Ligne max : 88 (équivalent black)
 
-## Pitfalls
+## Pièges
 - ESLint remplace Prettier — ne pas installer Prettier séparément avec `@antfu/eslint-config`
 - Flat config (`eslint.config.js`) depuis ESLint v9 — pas de `.eslintrc`
 - Ruff remplace black, flake8, isort, pyupgrade — ne pas les installer tous ensemble
 - Les tests doivent être mis à jour avec le code, pas après
 - Ne pas ignorer une erreur avec un `catch` vide — au minimum logger
 
-## Verification
+## Vérification
 - `pnpm lint` ne rapporte aucune erreur
 - `pnpm test` passe pour tous les cas
 - `pnpm ruff check` (Python) sans erreur

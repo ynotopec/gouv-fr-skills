@@ -8,8 +8,8 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
-    related_skills: [gouv-fr-design-system, gouv-fr-code-project, gouv-fr-code-security]
+    tags: [gouv-fr-code-index, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
+    related_skills: [gouv-fr-design-system, gouv-fr-projet-structure, gouv-fr-securite]
 ---
 
 # Gouv-fr — Conformité
@@ -33,7 +33,7 @@ Règles d'accessibilité et conformité réglementaire pour les applications de 
 ## RGPD (Protection des données)
 
 - Minimisation des données collectées
-- Pas de traceur tiers sans consentement (gestion cookies : skill `gouv-fr-design-system-theme-tarteaucitron`)
+- Pas de traceur tiers sans consentement (gestion cookies : skill `gouv-fr-cookies-rgpd`)
 - Consentement explicitement recueilli
 - Droit à l'oubli : suppression des données utilisateur
 - Chiffrement des données sensibles

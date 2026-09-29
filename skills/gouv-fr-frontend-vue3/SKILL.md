@@ -72,7 +72,7 @@ createApp(App).use(VueDsfr).mount('#app')
 
 ### Folder architecture
 
-See [conventions-cofabnum] for the full Vue.js structure. Key: views in folders with co-located tests and
+See [gouv-fr-conventions-nommage] for the full Vue.js structure. Key: views in folders with co-located tests and
 sub-components.
 
 ## Nuxt 3
@@ -177,8 +177,7 @@ const close = (id: string) => emit('close-message', id)
 </style>
 ```
 
-### Usage
-
+### Utilisation
 ```vue
 <script setup>
 import AppToaster from '@/components/AppToaster.vue'

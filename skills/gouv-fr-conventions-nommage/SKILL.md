@@ -11,8 +11,7 @@ author: Hermes Agent
 
 Best practices for all Fabrique Numérique projects. Language-agnostic unless noted.
 
-## Quick Reference
-
+## Référence rapide
 | Topic | Key Rule |
 |-------|----------|
 | Branches | `<type>/<kebab-desc>#<ticket>` |

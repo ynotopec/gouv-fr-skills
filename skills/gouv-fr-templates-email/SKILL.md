@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, email, template, gouv-fr, mail, accessible]
-    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-theme-tarteaucitron, gouv-fr-code-compliance]
+    related_skills: [gouv-fr-design-system, gouv-fr-cookies-rgpd, gouv-fr-compliance-rgaa]
 ---
 
 # Template Mail DSFR
@@ -30,8 +30,7 @@ Don't use for: newsletters marketing grand public, emails hors administration pu
 - HTML email client (test sur Outlook, Gmail, Apple Mail)
 - Connaissance du DSFR pour personnaliser les couleurs et le logo Marianne
 
-## Quick Reference
-
+## Référence rapide
 ```bash
 # Clone du repo dsfr-mail
 git clone https://github.com/GouvernementFR/dsfr-mail.git
@@ -78,16 +77,14 @@ Le template supporte le mode sombre via les classes CSS :
 - **iOS/Android** : Support natif responsive
 - **Tables HTML** : Structure robuste pour compatibilité maximale
 
-## Pitfalls
-
+## Pièges
 - Le template n'inclut PAS le code du DSFR lui-même : c'est une adaptation CSS.
 - Il est formellement interdit d'utiliser ce template en dehors des sites de l'État.
 - Les images doivent être hébergées publiquement pour charger dans tous les clients email.
 - Privilégier les styles inline pour Outlook.
 - Les tableaux HTML sont obligatoires pour la structure de mise en page.
 
-## Verification
-
+## Vérification
 - Validator HTML email : [Mail-Tester](https://www.mail-tester.com/) ou [Litmus](https://litmus.com/).
 - L'email s'affiche correctement sur Outlook, Gmail et Apple Mail.
 - Les images se chargent (URLs publiques, pas de local).

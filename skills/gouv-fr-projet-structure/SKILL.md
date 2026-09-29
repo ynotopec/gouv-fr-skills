@@ -3,18 +3,18 @@ name: gouv-fr-projet-structure
 description: "Structure projet, CLI, config OpenCode et variables d'env."
 category: architecture
 version: 0.2.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
+author: gouv-fr-code-index (etalab-ia), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, project, structure, layout, open-code, opencode, mcp, agent-vm, albert-api, environment]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow, gouv-fr-code-git]
+    tags: [gouv-fr-code-index, project, structure, layout, open-code, opencode, mcp, agent-vm, albert-api, environment]
+    related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-workflow-dev, gouv-fr-repo-init]
 ---
 
 # Gouv-fr — Structure du Projet
 
-Architecture du projet gouv-fr-code : layout, intégration OpenCode, CLI, variables d'environnement.
+Architecture du projet gouv-fr-code-index : layout, intégration OpenCode, CLI, variables d'environnement.
 
 ## Project Layout
 
@@ -38,8 +38,8 @@ my-app/
 
 | Verbe | Action | Quand |
 |---|---|---|
-| `gouv-fr-code setup` | Scaffold: AGENTS.md, opencode.json, MCP selection, skills selection | Une fois par projet |
-| `gouv-fr-code run` | Lancer agent OpenCode dans la VM | Par session de codage |
+| `gouv-fr-code-index setup` | Scaffold: AGENTS.md, opencode.json, MCP selection, skills selection | Une fois par projet |
+| `gouv-fr-code-index run` | Lancer agent OpenCode dans la VM | Par session de codage |
 
 ## How OpenCode Loads Gouv-fr
 
@@ -49,8 +49,8 @@ my-app/
 3. **MCPs** — 4 connectors opt-in : `data-gouv` (données publiques), `context7` (doc librairies), `playwright` (browser
 headless), `chrome-devtools` (debug DOM).
 4. **Skills** — `etalab-ia/skills` cloné en cache ; seules les skills sélectionnées sont symlinkées (`skills.txt`).
-5. **Règles** — OpenCode lit `AGENTS.md`. La zone gouv-fr-code (`<!-- gouv-fr-code:agents:start -->` / `<!--
-gouv-fr-code:agents:end -->`) est gérée automatiquement.
+5. **Règles** — OpenCode lit `AGENTS.md`. La zone gouv-fr-code-index (`<!-- gouv-fr-code-index:agents:start -->` / `<!--
+gouv-fr-code-index:agents:end -->`) est gérée automatiquement.
 
 ## Key Environment Variables
 
@@ -69,5 +69,5 @@ gouv-fr-code:agents:end -->`) est gérée automatiquement.
 - **OpenCode** : `https://opencode.ai/docs/fr`
 - **Albert API** : `https://albert.api.etalab.gouv.fr` · docs `https://doc.incubateur.net/alliance/albert-api`
 - **agent-vm** : `https://github.com/sylvinus/agent-vm`
-- **DSFR** : `https://www.systeme-de-design.gouv.fr/` → skill `gouv-fr-dsfr`
+- **DSFR** : `https://www.systeme-de-design.gouv.fr/` → skill `gouv-fr-design-system`
 - **Skills of the State** : `https://github.com/etalab-ia/skills`
