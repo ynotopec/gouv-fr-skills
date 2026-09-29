@@ -1,6 +1,17 @@
 ---
 name: gouv-fr-monorepo-pnpm
 description: Architecture monorepo pnpm workspaces et Turborepo : structure, workspaces, turbo.json, cache, filters.
+category: architecture
+version: 0.2.0
+license: MIT
+platforms: [linux, macos, windows]
+metadata:
+  hermes:
+    tags: [gouv-fr, monorepo, pnpm, turbo, workspace, shared, build-cache]
+    related_skills: [gouv-fr-stack, gouv-fr-code-project]
+---
+ouv-fr-monorepo-pnpm
+description: Architecture monorepo pnpm workspaces et Turborepo : structure, workspaces, turbo.json, cache, filters.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos, windows]
