@@ -6,10 +6,10 @@ version: 0.1.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
-tags: [gouv-fr-code-index, audit, conformance]
+tags: [gouv-fr, audit, conformance]
 metadata:
   hermes:
-    tags: [gouv-fr-code-index, audit, conformance]
+    tags: [gouv-fr, audit, conformance]
     related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-repo-init]
 ---
 

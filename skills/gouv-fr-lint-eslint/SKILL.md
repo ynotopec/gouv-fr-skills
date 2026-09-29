@@ -3,12 +3,12 @@ name: gouv-fr-lint-eslint
 description: Lint et formattage ESLint, Ruff et EditorConfig pour projets Fabrique Numérique.
 category: qualite
 version: 0.1.0
-author: gouv-fr-code-index (etalab-ia), Hermes Agent
+author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code-index, lint, eslint, ruff, editorconfig, prettier, formatting]
+    tags: [gouv-fr, lint, eslint, ruff, editorconfig, prettier, formatting]
     related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-code-quality]
 ---
 

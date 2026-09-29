@@ -1,14 +1,14 @@
 ---
 name: gouv-fr-code-index
-description: "Index des skills gouv-fr-code-index pour construire une application de l'État."
+description: "Index des skills gouv-fr pour construire, auditer et déployer une application de l'État."
 category: architecture
 version: 0.2.0
-author: gouv-fr-code-index (etalab-ia), Hermes Agent
+author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code-index, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
+    tags: [gouv-fr, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
     related_skills: [gouv-fr-projet-structure, gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-workflow-dev, gouv-fr-repo-init]
 ---
 
@@ -19,7 +19,7 @@ Package complet de skills gouv-fr pour construire, auditer et déployer des appl
 ## Sources
 
 - **starter-kit-opencode** (`.agents/skills/dev/*` + `dso/*`) — CoFabNum conventions, stack, CI/CD, CPiN
--  (`gouv-fr-*`) — Core skills gouv-fr-code-index
+- **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — Core skills
 - **Local skills** (migrés) — DSFR, audit, référentiel données
 
 ## Installation

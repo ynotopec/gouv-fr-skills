@@ -3,12 +3,12 @@ name: gouv-fr-api-rest
 description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique Numérique.
 category: backend
 version: 0.1.0
-author: gouv-fr-code-index (etalab-ia), Hermes Agent
+author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code-index, api, rest, openapi, swagger, http, routes, logging]
+    tags: [gouv-fr, api, rest, openapi, swagger, http, routes, logging]
     related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-stack-technique]
 ---
 

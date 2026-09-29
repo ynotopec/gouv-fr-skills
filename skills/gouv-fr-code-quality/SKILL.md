@@ -1,14 +1,16 @@
 ---
 name: gouv-fr-code-quality
-description: Grille de contrôle qualité pour réviser du code — en particulier du code généré ou co-écrit par une IA — avant de l'accepter dans une base maintenue, et rituel d'hygiène récurrent pour dégonfler la dette.
-category: devops
-tags: []
-version: 1.0.0
+description: "Qualité de code : standards au quotidien (fonctions, erreurs, imports, tests) et grille de revue en trois niveaux pour décider ce qu'on accepte dans une base maintenue — cible le code généré par IA et inclut un rituel d'hygiène contre la dette."
+category: qualite
+version: 1.1.0
 author: Hermes Agent (Nous Research)
 license: MIT
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, quality, code-review, ia, dette-technique, lint, tests, standards]
+    related_skills: [gouv-fr-lint-eslint, gouv-fr-conventions-nommage, gouv-fr-projet-structure]
 ---
-
 
 # Contrôle qualité de code (à l'ère de l'IA)
 
@@ -28,6 +30,114 @@ Le code généré par IA est typiquement *syntaxiquement correct et sémantiquem
 opaque* : il compile, les tests passent, mais l'intention est absente, les cas
 limites sont négligés, des fonctions inexistantes sont parfois appelées, et la
 duplication remplace la conception. Cette grille cible précisément ces défauts.
+
+## Standards de code — règles au quotidien
+
+Le code produit au quotidien respecte ces règles ; la grille de revue ci-dessous
+sert à décider ce qu'on accepte dans une base maintenue.
+
+### Structure de fichier
+
+- Lignes ≤ 120 colonnes ; au-delà de 140 **proscrit**
+- `.editorconfig` à la racine (2 espaces, LF, UTF-8, trim trailing whitespace)
+- Dossiers et fichiers en **kebab-case** (exception : composants Vue)
+
+### Fonctions
+
+- **≤ 20 lignes**, un seul but par fonction
+- Noms explicites ; pas de variable d'une seule lettre (sauf identité `x => x`)
+
+### Erreurs
+
+Ne jamais ignorer silencieusement :
+
+```typescript
+// ❌
+try { await fetchData() } catch { }
+
+// ✅
+try { await fetchData() } catch (error) {
+  logger.error(error, 'Erreur')
+  throw error
+}
+```
+
+- Créer des erreurs typées (`NotFoundError`, `ValidationError`)
+- Ne pas se contenter d'un `Error` générique
+
+### Async / await
+
+- Toujours `async/await` plutôt que `.then()` / `.catch()`
+- Paralléliser les opérations indépendantes avec `Promise.all()`
+- `async def` pour les endpoints qui font de l'I/O
+
+### Imports
+
+Ordre imposé, chaque groupe séparé par une ligne vide :
+
+1. Modules Node.js natifs (`node:fs`)
+2. Packages externes (`fastify`, `vue`)
+3. Modules internes (alias `@/`, `~/`)
+4. Modules relatifs (`./`, `../`)
+
+### Constantes
+
+Extraire les valeurs magiques dans des constantes nommées :
+
+```typescript
+// ❌
+if (password.length < 8) { ... }
+
+// ✅
+const MIN_PASSWORD_LENGTH = 8
+if (password.length < MIN_PASSWORD_LENGTH) { ... }
+```
+
+### Early return
+
+Privilégier les retours anticipés pour éviter l'imbrication :
+
+```typescript
+if (!user) return
+if (!user.isActive) return
+// traitement...
+```
+
+### Dépendances
+
+Avant d'ajouter une dépendance, évaluer :
+
+1. Version courante (dernière stable majeure)
+2. Popularité (téléchargements hebdo, étoiles GitHub)
+3. Fréquence de mise à jour (12 mois sans commit = signal d'alerte)
+4. Maintenance (issues ouvertes, réactivité, `SECURITY.md`)
+5. Taille (bundlephobia.com pour npm)
+
+### Tests (obligatoires)
+
+- Tests unitaires dès le début ; d'intégration pour les endpoints API
+- Composants avec Vue Testing Library ; E2E avec Playwright
+- Vitest pour JS/TS, pytest pour Python
+- Couverture ≥ 80 % recommandée
+
+### Configuration du lint
+
+Voir `gouv-fr-lint-eslint` (ESLint flat config, Ruff, EditorConfig) — ne pas
+dupliquer la configuration ici.
+
+### Vérification des standards
+
+- `pnpm lint` sans erreur ; `pnpm test` passe
+- `pnpm ruff check` (Python) sans erreur ; couverture ≥ 80 %
+
+### Pièges
+
+- ESLint remplace Prettier — ne pas installer les deux avec `@antfu/eslint-config`
+- Flat config (`eslint.config.js`) depuis ESLint v9 — plus de `.eslintrc`
+- Ruff remplace black, flake8, isort, pyupgrade — ne pas les cumuler
+- Les tests se mettent à jour avec le code, pas après
+
+---
 
 ## Routage et langue
 

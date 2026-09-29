@@ -2,7 +2,7 @@
 
 Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission Interministérielle).
 
-**40 skills**, tous préfixés `gouv-fr-`. Index complet : [`SKILLS.md`](SKILLS.md).
+**39 skills**, tous préfixés `gouv-fr-`. Index complet : [`SKILLS.md`](SKILLS.md).
 
 ## Origines
 
@@ -61,7 +61,6 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 | [`gouv-fr-compliance-rgaa`](skills/gouv-fr-compliance-rgaa/SKILL.md) | RGAA, DSFR, RGPD |
 | [`gouv-fr-cookies-rgpd`](skills/gouv-fr-cookies-rgpd/SKILL.md) | Cookies Tarte au Citron (RGPD) |
 | [`gouv-fr-lint-eslint`](skills/gouv-fr-lint-eslint/SKILL.md) | ESLint, Ruff, EditorConfig |
-| [`gouv-fr-qualite-code`](skills/gouv-fr-qualite-code/SKILL.md) | Bonnes pratiques, lint, tests |
 
 ### Sécurité & audit
 

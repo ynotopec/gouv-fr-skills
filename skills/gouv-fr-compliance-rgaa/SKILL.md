@@ -8,7 +8,7 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code-index, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
+    tags: [gouv-fr, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
     related_skills: [gouv-fr-design-system, gouv-fr-projet-structure, gouv-fr-securite]
 ---
 
