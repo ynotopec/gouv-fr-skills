@@ -9,14 +9,14 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
-    related_skills: [gouv-fr-dsfr-artwork, gouv-fr-dsfr-chart, gouv-fr-dsfr-mail, gouv-fr-code-compliance]
+    related_skills: [gouv-fr-pictogrammes-DSFR, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa]
 ---
 
 # DSFR — Système de Design de l'État
 
 Le DSFR est le design system officiel de l'administration française. Ce skill couvre installation (NPM/CDN/clone) et
-vérification de conformité. Hors périmètre : emails (→ `gouv-fr-dsfr-mail`), graphiques (→ `gouv-fr-dsfr-chart`),
-pictogrammes en détail (→ `gouv-fr-dsfr-artwork`).
+vérification de conformité. Hors périmètre : emails (→ `gouv-fr-templates-email`), graphiques (→ `gouv-fr-graphiques-DSFR`),
+pictogrammes en détail (→ `gouv-fr-pictogrammes-DSFR`).
 
 ## Quand utiliser
 
@@ -33,8 +33,7 @@ réservé).
 - Internet seulement : intégration CDN jsDelivr (`references/cdn-integration.md`).
 - Python 3 (stdlib seule) pour la vérification sans navigateur : `scripts/verify_dsfr.py`.
 
-## Quick Reference
-
+## Référence rapide
 ```bash
 # NPM (recommandé)
 npm install @gouvfr/dsfr
@@ -78,8 +77,7 @@ Boutons, alerts, badges, cartes, formulaires, tabs, modals, accordéons, header/
 skiplinks… Liste exhaustive sur [systeme-de-design.gouv.fr](https://www.systeme-de-design.gouv.fr/). Toujours vérifier
 un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 
-## Pitfalls
-
+## Pièges
 - **Usage réservé** : le DSFR est réservé aux services de l'État (conditions d'utilisation).
 - **CGU ≥ v1.15.0** : `npm install` déclenche un postinstall exigeant l'acceptation des CGU ; le GitHub Releases ne distribue plus de zip compilé — passer par NPM ou jsDelivr.
 - **Ne jamais inventer les classes** (vérifiées contre le CSS 1.15.3) : bouton primaire = `fr-btn` seul — `fr-btn--primary` N'EXISTE PAS (les modificateurs sont `--secondary`, `--tertiary`, `--tertiary-no-outline`, `--sm`, `--lg`) ; skiplinks = `fr-skiplinks` + `fr-skiplinks__list` (pas `fr-skip-links`, pas `fr-nav__list`) ; breadcrumb = `fr-breadcrumb__list` / `__link` (pas `__item`) ; tagline du header = `fr-header__service-tagline` (`fr-header__service-description` N'EXISTE PAS).
@@ -92,8 +90,7 @@ un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 - **Navigateur indisponible** : Chromium peut manquer (ou `libglib-2.0` système, sans sudo) → vérifier sans navigateur via `references/verify-no-browser.md`.
 - **Préférence** : `npm install` et servir le paquet réel plutôt que recoder le CSS DSFR à la main.
 
-## Verification
-
+## Vérification
 - `python3 scripts/verify_dsfr.py index.html` → zéro classe `fr-*` inconnue, zéro asset manquant (code de retour 0).
 - `npm run build` (depuis le clone) termine sans erreur.
 - Quand un navigateur est dispo : comparer visuellement avec systeme-de-design.gouv.fr.

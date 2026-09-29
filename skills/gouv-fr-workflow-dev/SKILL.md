@@ -8,13 +8,13 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, workflow, plan-mode, task-management, self-improvement, bug-fixing, code-quality]
-    related_skills: [gouv-fr-code-project, gouv-fr-securite, gouv-fr-workflow-dev]
+    tags: [gouv-fr-code-index, workflow, plan-mode, task-management, self-improvement, bug-fixing, code-quality]
+    related_skills: [gouv-fr-projet-structure, gouv-fr-securite, gouv-fr-workflow-dev]
 ---
 
 # Gouv-fr — Workflow
 
-Processus de travail et bonnes pratiques pour le développement d'applications gouv-fr-code.
+Processus de travail et bonnes pratiques pour le développement d'applications gouv-fr-code-index.
 
 ## Plan Mode (3+ étapes ou décision architecture)
 

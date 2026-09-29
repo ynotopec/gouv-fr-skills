@@ -1,15 +1,15 @@
 ---
 name: gouv-fr-code-index
-description: "Index des skills gouv-fr-code pour construire une application de l'État."
+description: "Index des skills gouv-fr-code-index pour construire une application de l'État."
 category: architecture
 version: 0.2.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
+author: gouv-fr-code-index (etalab-ia), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
-    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow, gouv-fr-code-git]
+    tags: [gouv-fr-code-index, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
+    related_skills: [gouv-fr-projet-structure, gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-workflow-dev, gouv-fr-repo-init]
 ---
 
 # gouv-fr — Index Skills
@@ -19,7 +19,7 @@ Package complet de skills gouv-fr pour construire, auditer et déployer des appl
 ## Sources
 
 - **starter-kit-opencode** (`.agents/skills/dev/*` + `dso/*`) — CoFabNum conventions, stack, CI/CD, CPiN
-- **gouv-fr-code-package-mi** (`gouv-fr-code-*`) — Core skills gouv-fr-code
+-  (`gouv-fr-*`) — Core skills gouv-fr-code-index
 - **Local skills** (migrés) — DSFR, audit, référentiel données
 
 ## Installation
@@ -29,8 +29,7 @@ Package complet de skills gouv-fr pour construire, auditer et déployer des appl
 cp -r gouv-fr-*/ ~/.hermes/skills/
 ```
 
-## Verification
-
+## Vérification
 - Chaque répertoire contient un `SKILL.md` avec frontmatter YAML
 - Tous les noms commencent par `gouv-fr-`
 - Les skills ont des tags hermes metadata

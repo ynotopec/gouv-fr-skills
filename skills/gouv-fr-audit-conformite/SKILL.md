@@ -1,16 +1,16 @@
 ---
 name: gouv-fr-audit-conformite
-description: "Audit de conformité d'une app gouv-fr-code."
+description: "Audit de conformité d'une app gouv-fr-code-index."
 category: qualite
 version: 0.1.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
-tags: [gouv-fr-code, audit, conformance]
+tags: [gouv-fr-code-index, audit, conformance]
 metadata:
   hermes:
-    tags: [gouv-fr-code, audit, conformance]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-git]
+    tags: [gouv-fr-code-index, audit, conformance]
+    related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-repo-init]
 ---
 
 # Gouv-fr — Audit de conformité d'une application
@@ -18,8 +18,8 @@ metadata:
 ## Quand utiliser
 
 Quand un utilisateur demande « vérifier conformité avec gouv fr skills » sur une application. C'est une tâche récurrente
-dans les échanges. Les règles documentaires vivent dans les skills user-owned suivants : `gouv-fr-code-security`,
-`gouv-fr-code-compliance`, `gouv-fr-code-git`, `gouv-fr-code-project`, `gouv-fr-code-workflow`. Ce skill porte la
+dans les échanges. Les règles documentaires vivent dans les skills user-owned suivants : `gouv-fr-securite`,
+`gouv-fr-compliance-rgaa`, `gouv-fr-repo-init`, `gouv-fr-projet-structure`, `gouv-fr-workflow-dev`. Ce skill porte la
 procédure de vérification et les pièges concrets. Ne pas éditer ces skills user-owned; les consulter seulement.
 
 ## Ordre de l'audit
@@ -90,7 +90,7 @@ vérifie seulement le dernier commit ne le voit pas. Vérifier commit par commit
 
 ```bash
 cd <repo> && for h in $(git rev-list --reverse HEAD); do
-  git show -s --format='%B' "$h" | grep -q 'Co-Authored-By: gouv-fr-code' || echo "MISSING TRAILER: $h"
+  git show -s --format='%B' "$h" | grep -q 'Co-Authored-By: gouv-fr-code-index' || echo "MISSING TRAILER: $h"
 done
 ```
 
@@ -113,5 +113,5 @@ doit être propre à la fin de l'audit.
 ## À la fin
 
 Quand un écart est corrigé, re-exécuter **toute** la suite : la vérification est de bout en bout. Puis committer la
-correction en Conventional plus trailer. Les skills `gouv-fr-code-*` sont user-owned : ne pas les patcher, recommander
+correction en Conventional plus trailer. Les skills `gouv-fr-*` sont user-owned : ne pas les patcher, recommander
 `hermes curator adopt` si la curation est souhaitée.

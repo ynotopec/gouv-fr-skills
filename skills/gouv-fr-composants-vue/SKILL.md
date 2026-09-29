@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]
-    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-chart, gouv-fr-dsfr-mail, gouv-fr-code-compliance]
+    related_skills: [gouv-fr-design-system, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa]
 ---
 
 # VueDsfr — Composants Vue.js pour le DSFR
@@ -23,7 +23,7 @@ plugin ou en imports nommés.
 - Intégrer des composants DSFR dans un projet Vue 3 / Vue CLI / Nuxt 3.
 - Générer du code Vue SFC conforme DSFR.
 
-Don't use for: visualisation de données (→ `gouv-fr-dsfr-chart`), emails (→ `gouv-fr-dsfr-mail`), ou projets hors
+Don't use for: visualisation de données (→ `gouv-fr-graphiques-DSFR`), emails (→ `gouv-fr-templates-email`), ou projets hors
 administration publique.
 
 ## Prérequis
@@ -32,8 +32,7 @@ administration publique.
 - npm ou yarn/pnpm.
 - Le DSFR CSS (`@gouvfr/dsfr`) installé côté projet.
 
-## Quick Reference
-
+## Référence rapide
 ```bash
 npm install @gouvminint/vue-dsfr
 ```
@@ -126,8 +125,7 @@ Les composants VueDsfr nécessitent **toutes** les couches CSS du DSFR :
 4. `@gouvfr/dsfr/dist/scheme/scheme.min.css` — thèmes clair/sombre
 5. `@gouvminint/vue-dsfr/styles` — styles propres à VueDsfr
 
-## Pitfalls
-
+## Pièges
 - **CSS incomplet** : si l'une des 5 couches CSS manque, les composants se rendent mal (couleurs, icônes, espacements cassés). Toujours importer les 5 couches.
 - **Préfixe `Dsfr`** : tous les composants DSFR-Vue commencent par `Dsfr` (sauf `VIcon`). Ne pas utiliser les classes `fr-*` en direct avec les composants Vue — c'est le composant qui gère les classes.
 - **Plugins Vite** : `vue-ds.fr/composants` décrit un setup Vite avec `unplugin-auto-import` et `unplugin-vue-components` (resolver `vueDsfrComponentResolver`). En mode "sans plugin", enregistrer chaque composant explicitement via `.component()`.
@@ -136,8 +134,7 @@ Les composants VueDsfr nécessitent **toutes** les couches CSS du DSFR :
 - **Le DSFR est réservé à l'État** : ne pas utiliser hors administration publique.
 - **Versionning** : vérifier la version npm la plus récente (`npm view @gouvminint/vue-dsfr version`) — la version exacte importe pour la compatibilité CSS.
 
-## Verification
-
+## Vérification
 - Les composants rendent avec les classes `fr-*` attendues (inspecter le DOM ou utiliser la console Vue DevTools).
 - Les styles sont complets : aucun composant rendu avec des polices cassées, icônes manquantes, ou couleurs par défaut.
 - Les événements émettent les événements attendus (`@change`, `@update:modelValue`, etc.) pour les composants formulaires.

@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [data, open-data, sig, json, communication, ref, schema]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance]
+    related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa]
 ---
 
 # Référentiel de données de communication publique
@@ -25,8 +25,7 @@ data.gouv.fr et schema.data.gouv.fr.
 
 Don't use for: données hors communication publique, schémas sans validation SIG.
 
-## Quick Reference
-
+## Référence rapide
 ```bash
 git clone https://github.com/GouvernementFR/referentiel-donnees-communication-publique.git
 ```
@@ -48,13 +47,11 @@ Pour chaque dataset, le couple fichier de données + `README.md` documentaire :
 - `communiques-de-presse/communiques.jsonl` (format JSONL/NDJSON, schéma dans `schema.json`)
 - `gouvernements-et-ministeres/gouvernements-et-ministeres.json`
 
-## Pitfalls
-
+## Pièges
 - Les données évoluent régulièrement : vérifier `CHANGELOG.md` du dépôt avant usage, ne pas coder en dur une version.
 - Les communiqués de presse sont en JSONL : parser ligne par ligne (une ligne = un objet JSON), jamais le fichier entier comme un seul JSON.
 - Les schémas font autorité sur schema.data.gouv.fr.
 
-## Verification
-
+## Vérification
 - Chaque fichier de données valide contre son `schema.json` (`ajv`, `check-jsonschema`, ou `jsonschema` Python).
 - JSONL : nombre de lignes == nombre d'objets parsés.

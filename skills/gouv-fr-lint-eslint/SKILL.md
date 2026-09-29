@@ -3,13 +3,13 @@ name: gouv-fr-lint-eslint
 description: Lint et formattage ESLint, Ruff et EditorConfig pour projets Fabrique Numérique.
 category: qualite
 version: 0.1.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
+author: gouv-fr-code-index (etalab-ia), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, lint, eslint, ruff, editorconfig, prettier, formatting]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-quality]
+    tags: [gouv-fr-code-index, lint, eslint, ruff, editorconfig, prettier, formatting]
+    related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-code-quality]
 ---
 
 # Gouv-fr — Lint & Formattage
@@ -26,13 +26,13 @@ Conventions de lint et formattage pour les projets JavaScript/TypeScript et Pyth
 - VS Code avec l'extension ESLint
 - Ruff pour les projets Python
 
-## How to Run
+## Comment lancer
 - `pnpm lint` — vérification du lint
 - `pnpm format` — auto-correction
 - `pnpm ruff check` — lint Python
 - `pnpm ruff format` — format Python
 
-## Quick Reference — EditorConfig
+## Référence rapide — EditorConfig
 
 Fichier `.editorconfig` à la racine :
 ```ini
@@ -48,7 +48,7 @@ insert_final_newline = true
 trim_trailing_whitespace = false
 ```
 
-## Quick Reference — ESLint (JS/TS)
+## Référence rapide — ESLint (JS/TS)
 
 ### Installation
 ```bash
@@ -109,7 +109,7 @@ rules: {
 }
 ```
 
-## Quick Reference — Ruff (Python)
+## Référence rapide — Ruff (Python)
 
 ### Installation
 ```bash
@@ -138,14 +138,14 @@ lint = "ruff check ."
 format = "ruff format ."
 ```
 
-## Pitfalls
+## Pièges
 - ESLint remplace Prettier — ne pas installer les deux
 - Flat config (`eslint.config.js`) depuis ESLint v9 — `.eslintrc` est déprécié
 - `no-irregular-whitespace` doit être `'off'` pour permettre les espaces fines insécables
 - Ruff `E501` ignoré car géré par le formatter (line-length dans `[tool.ruff]`)
 - Pour les projets monorepo, la config ESLint doit être au niveau workspace root
 
-## Verification
+## Vérification
 - `pnpm lint` retourne 0 erreurs
 - `pnpm format` n'écrit aucun changement
 - `pnpm ruff check` retourne 0 erreurs (Python)

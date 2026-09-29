@@ -1,20 +1,20 @@
 ---
 name: gouv-fr-securite
 description: "Sécurité : secrets, gitleaks, SQL, TLS, isolation VM."
-category: securite
+category: security
 version: 0.1.1
 author: etalab-ia, Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, security, secrets, gitleaks, sql-injection, tls, dependencies, vm-isolation, cryptography, auth]
-    related_skills: [gouv-fr-code-project, gouv-fr-workflow-dev, gouv-fr-securite]
+    tags: [gouv-fr-code-index, security, secrets, gitleaks, sql-injection, tls, dependencies, vm-isolation, cryptography, auth]
+    related_skills: [gouv-fr-projet-structure, gouv-fr-workflow-dev, gouv-fr-securite]
 ---
 
 # Gouv-fr — Règles de Sécurité
 
-Règles de sécurité non négociables pour les applications gouv-fr-code.
+Règles de sécurité non négociables pour les applications gouv-fr-code-index.
 
 ## Principes
 

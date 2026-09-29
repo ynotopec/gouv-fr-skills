@@ -1,6 +1,4 @@
-# Backup of original local skills
-backup-local-skills/
-
+# Backup des skills locaux originaux (versionné volontairement)
 # Temp
 *.tmp
 *.swp

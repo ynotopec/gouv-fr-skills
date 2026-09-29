@@ -17,7 +17,7 @@ Cette skill **embarque** le modèle et le prompt de référence (anciennement le
 maintenir). Les artefacts vivent à côté de ce fichier :
 
 ```
-skills/dat-generation/
+skills/gouv-fr-dat-homologation/
 ├── SKILL.md          # ce fichier (loader)
 ├── CHANGELOG.md      # versions des modèles/prompts (tags vX.Y du contenu)
 └── dat/
@@ -53,7 +53,7 @@ même convention.
 - **Aucune valeur réelle** dans le document : pas d'IP/port d'écoute réel/hôte/clé/token/bucket ;
   désigner par nom de composant ; matrice des flux = **port standard** du protocole (443/5432/4318…).
 - **LLM01 (injection de prompt) APPLICABLE** dès que le service transmet du contenu non maîtrisé à un
-  LLM, même s'il n'héberge aucun modèle. (cf. skill `/audit-pentest-prep` pour l'audit technique.)
+  LLM, même s'il n'héberge aucun modèle. (cf. skill `gouv-fr-audit-pentest` pour l'audit technique.)
 - **Tracer les sources** (`# source: helm/values.yaml`) en annexe « Provenance » supprimable.
 
 ## Maintenance du contenu de référence

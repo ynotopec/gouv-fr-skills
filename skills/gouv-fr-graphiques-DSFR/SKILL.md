@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, chart, data, visualization, vue, graph, graphique]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]
+    related_skills: [gouv-fr-design-system, gouv-fr-compliance-rgaa]
 ---
 
 # DSFR Chart — Visualisation de données
@@ -29,8 +29,7 @@ Don't use for: visualisations hors DSFR ou graphiques interactifs complexes sur 
 - Node.js ≥ 18.16.1 et un `package.json`.
 - Un projet DSFR configuré important au minimum : `dsfr.min.css`, `icons-system.min.css` (dans `utility/icons/`) et l'API JS du DSFR.
 
-## Quick Reference
-
+## Référence rapide
 ```bash
 npm install @gouvfr/dsfr-chart
 ```
@@ -65,8 +64,7 @@ que ce qu'il faut.
 4. Catalogue complet, props et exemples : [documentation et demo
 officielles](https://gouvernementfr.github.io/dsfr-chart/).
 
-## Pitfalls
-
+## Pièges
 - Intégration CDN sans npm : le bundle « fourre-tout » du README (`Charts/`) n'existe PAS dans le paquet npm ; le bundle complet est `dist/DSFRChart/DSFRChart.js` + `DSFRChart.css` (autonome, 0 import externe, enregistre les custom elements). Chemin jsDelivr exact : `https://cdn.jsdelivr.net/npm/@gouvfr/dsfr-chart@2.1.1/dist/DSFRChart/DSFRChart.js`.
 - Formats vérifiés (README 2.1.1) : `line-chart` multi-séries exige `x` répété par série (`x='[[labels],[labels]]'`) ; `pie-chart` attend `x='[["groupe1","groupe2"]]'` (liste DE listes) et `y='[[v1,v2]]'` ; `bar-chart` empilé : `y` = une liste de valeurs par série.
 - Les attributs `x`/`y`/`name` sont des chaînes JSON : en HTML, delimiter simple (`x='[[…]]'`) et échapper les `&` ; vérifier la cohérence des totaux vs source par reprogrammation (regex + json.loads), pas à l'œil.
@@ -75,8 +73,7 @@ officielles](https://gouvernementfr.github.io/dsfr-chart/).
 - Le thème clair/sombre vient du DSFR parent ; sans le CSS DSFR chargé, les couleurs sont cassées.
 - Ne pas lister « de mémoire » des types de graphiques : le catalogue fait foi (ex. pas de heatmap ni de box-plot dans le README officiel).
 
-## Verification
-
+## Vérification
 - Les graphiques rendent sans erreur console ; les données affichées correspondent aux datasets passés.
 - La bascule clair/sombre fonctionne dans le contexte DSFR.
 - Le rendu est responsive (redimensionner la fenêtre).

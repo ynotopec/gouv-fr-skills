@@ -10,7 +10,7 @@ platforms: [linux, macos]
 ---
 
 
-# audit-tool-owui — identité SSO & credentials pour les tools derrière OpenWebUI
+# Gouv-fr Audit OpenWebUI — identité SSO & credentials pour les tools derrière OpenWebUI
 
 Tu es **ingénieur plateforme & sécurité**. On exploite (ou on s'apprête à créer) un **outil per-user**
 branché derrière une passerelle LLM — typiquement **OpenWebUI** via **MCP** ou un tool server OpenAPI,

@@ -3,13 +3,13 @@ name: gouv-fr-api-rest
 description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique Numérique.
 category: backend
 version: 0.1.0
-author: gouv-fr-code (etalab-ia), Hermes Agent
+author: gouv-fr-code-index (etalab-ia), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, api, rest, openapi, swagger, http, routes, logging]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-stack]
+    tags: [gouv-fr-code-index, api, rest, openapi, swagger, http, routes, logging]
+    related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-stack-technique]
 ---
 
 # Gouv-fr — API RESTful
@@ -26,12 +26,12 @@ Conventions pour la conception d'APIs RESTful, la documentation OpenAPI et les t
 - Framework choisi : Fastify (TypeScript), NestJS (TypeScript) ou FastAPI (Python)
 - Swagger/OpenAPI configuré dans le framework
 
-## How to Run
+## Comment lancer
 - Fastify : `pnpm add @fastify/swagger @fastify/swagger-ui`
 - NestJS : `pnpm add @nestjs/swagger`
 - FastAPI : auto-généré à `/docs` et `/redoc`
 
-## Quick Reference — Nommage des routes
+## Référence rapide — Nommage des routes
 
 ### Règle d'or
 Routes **uniquement avec des noms**, toujours au **pluriel**, jamais de verbes. Le verbe HTTP fait office de verbe.
@@ -50,7 +50,7 @@ Routes **uniquement avec des noms**, toujours au **pluriel**, jamais de verbes. 
 - Verbes dans les routes (`get`, `create`, `update`)
 - Singulier (`/cat` au lieu de `/cats`)
 
-## Quick Reference — Codes HTTP
+## Référence rapide — Codes HTTP
 
 | Code | Signification |
 |---|---|
@@ -64,7 +64,7 @@ Routes **uniquement avec des noms**, toujours au **pluriel**, jamais de verbes. 
 | `429` | Trop de requêtes |
 | `500` | Erreur serveur |
 
-## Quick Reference — Logging
+## Référence rapide — Logging
 
 - Logs sortant en **sortie standard** (stdout) pour les conteneurs
 - Chaque requête loggée avec **temps de réponse**
@@ -95,13 +95,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 ```
 
-## Quick Reference — Réponses d'erreur
+## Référence rapide — Réponses d'erreur
 
 - Réponses en **français** compréhensibles par l'utilisateur
 - Ou clés de dictionnaire (clé → traduction côté client)
 - Centraliser la gestion des erreurs (filter/exception handler)
 
-## Quick Reference — OpenAPI / Swagger
+## Référence rapide — OpenAPI / Swagger
 
 ### Fastify
 ```typescript
@@ -135,7 +135,7 @@ SwaggerModule.setup('documentation', app, document)
 - ReDoc : `/redoc`
 - Généré automatiquement depuis les schémas Pydantic
 
-## Quick Reference — Fichiers `.rest`
+## Référence rapide — Fichiers `.rest`
 
 ### Tester des API dans VS Code
 
@@ -181,14 +181,14 @@ GET {{baseUrl}}/cats
 Authorization: Bearer {{login.response.body.token}}
 ```
 
-## Pitfalls
+## Pièges
 - Toujours utiliser le pluriel dans les routes (`/cats`, pas `/cat`)
 - Ne jamais mettre de verbes dans les routes
 - Codes HTTP : ne pas retourner 200 pour une création (utilisez 201)
 - OpenAPI : la doc doit être mise à jour avec le code, pas l'inverse
 - `.rest` files : ne jamais commité de vrais credentials
 
-## Verification
+## Vérification
 - `curl /docs` affiche la documentation OpenAPI
 - Les routes respectent le format `/ressources` (pluriel, pas de verbes)
 - Tous les endpoints loguent avec temps de réponse
