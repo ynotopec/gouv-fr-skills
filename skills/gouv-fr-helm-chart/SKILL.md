@@ -1,6 +1,9 @@
 ---
-name: gouv-fr-helm-chart-cpin
-description: Use when creating or adapting a Helm chart to deploy on Cloud Pi Native (OpenShift + Kyverno) — starting from the this-is-tobi template, values per environment, securityContext and UID, MIOM labels, Vault secrets via extraObjects, image tags, chart versioning and OCI publication
+name: gouv-fr-helm-chart
+description: Use when creating or adapting a Helm chart to deploy on Cloud Pi Native
+  (OpenShift + Kyverno) — starting from the this-is-tobi template, values per environment,
+  securityContext and UID, MIOM labels, Vault secrets via extraObjects, image tags,
+  chart versioning and OCI publication
 allowed-tools: Bash Read Write
 ---
 

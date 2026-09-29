@@ -1,14 +1,29 @@
 ---
-name: gouv-fr-code-index-api
-description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique Numérique.
+name: gouv-fr-api-rest
+description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique
+  Numérique.
 version: 0.1.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
-platforms: [linux, macos, windows]
+platforms:
+- linux
+- macos
+- windows
 metadata:
   hermes:
-    tags: [gouv-fr-code, api, rest, openapi, swagger, http, routes, logging]
-    related_skills: [gouv-fr-code, gouv-fr-code-project, gouv-fr-code-stack]
+    tags:
+    - gouv-fr-code
+    - api
+    - rest
+    - openapi
+    - swagger
+    - http
+    - routes
+    - logging
+    related_skills:
+    - gouv-fr-code
+    - gouv-fr-code-project
+    - gouv-fr-code-stack
 ---
 
 # Gouv-fr — API RESTful
