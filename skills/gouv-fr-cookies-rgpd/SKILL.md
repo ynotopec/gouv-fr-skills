@@ -1,14 +1,26 @@
 ---
-name: gouv-fr-design-system-theme-tarteaucitron
-description: "Gère les cookies d'un site DSFR avec Tarte au Citron."
+name: gouv-fr-cookies-rgpd
+description: Gère les cookies d'un site DSFR avec Tarte au Citron.
 version: 0.1.1
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
+platforms:
+- linux
+- macos
+- windows
 metadata:
   hermes:
-    tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance, gouv-fr-code-security]
+    tags:
+    - dsfr
+    - cookie
+    - tarteaucitron
+    - rgpd
+    - consent
+    - management
+    related_skills:
+    - gouv-fr-dsfr
+    - gouv-fr-code-compliance
+    - gouv-fr-code-security
 ---
 
 # DSFR Theme Tarte au Citron

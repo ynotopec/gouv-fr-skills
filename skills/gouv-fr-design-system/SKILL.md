@@ -1,14 +1,27 @@
 ---
 name: gouv-fr-design-system
-description: "Installer et vérifier le design system de l'État (DSFR)."
+description: Installer et vérifier le design system de l'État (DSFR).
 version: 0.3.0
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
+platforms:
+- linux
+- macos
+- windows
 metadata:
   hermes:
-    tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
-    related_skills: [gouv-fr-dsfr-artwork, gouv-fr-dsfr-chart, gouv-fr-dsfr-mail, gouv-fr-code-compliance]
+    tags:
+    - dsfr
+    - design-system
+    - etat
+    - gouv-fr
+    - ui
+    - acces
+    related_skills:
+    - gouv-fr-dsfr-artwork
+    - gouv-fr-dsfr-chart
+    - gouv-fr-dsfr-mail
+    - gouv-fr-code-compliance
 ---
 
 # DSFR — Système de Design de l'État

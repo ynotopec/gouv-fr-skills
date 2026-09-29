@@ -1,14 +1,26 @@
 ---
-name: gouv-fr-code-index-workflow
-description: "Workflow : plan mode, tâches, leçons, bug fixing."
+name: gouv-fr-workflow-dev
+description: 'Workflow : plan mode, tâches, leçons, bug fixing.'
 version: 0.1.1
 author: etalab-ia, Hermes Agent
 license: MIT
-platforms: [linux, macos]
+platforms:
+- linux
+- macos
 metadata:
   hermes:
-    tags: [gouv-fr-code, workflow, plan-mode, task-management, self-improvement, bug-fixing, code-quality]
-    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-git]
+    tags:
+    - gouv-fr-code
+    - workflow
+    - plan-mode
+    - task-management
+    - self-improvement
+    - bug-fixing
+    - code-quality
+    related_skills:
+    - gouv-fr-code-project
+    - gouv-fr-code-security
+    - gouv-fr-code-git
 ---
 
 # Gouv-fr — Workflow

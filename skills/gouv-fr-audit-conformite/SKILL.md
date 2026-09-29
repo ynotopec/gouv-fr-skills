@@ -1,15 +1,26 @@
 ---
-name: gouv-fr-code-index-audit
-description: "Audit de conformité d'une app gouv-fr-code."
+name: gouv-fr-audit-conformite
+description: Audit de conformité d'une app gouv-fr-code-index.
 version: 0.1.0
 author: Hermes Agent
 license: MIT
-platforms: [linux, macos]
-tags: [gouv-fr-code, audit, conformance]
+platforms:
+- linux
+- macos
+tags:
+- gouv-fr-code
+- audit
+- conformance
 metadata:
   hermes:
-    tags: [gouv-fr-code, audit, conformance]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-git]
+    tags:
+    - gouv-fr-code
+    - audit
+    - conformance
+    related_skills:
+    - gouv-fr-code-security
+    - gouv-fr-code-compliance
+    - gouv-fr-code-git
 ---
 
 # Gouv-fr — Audit de conformité d'une application

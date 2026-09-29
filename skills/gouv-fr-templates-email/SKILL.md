@@ -1,14 +1,26 @@
 ---
-name: gouv-fr-design-system-mail
+name: gouv-fr-templates-email
 description: Génère des templates email DSFR pour l'État.
 version: 0.1.0
 author: Hermes Agent (Nous Research)
 license: MIT
-platforms: [linux, macos, windows]
+platforms:
+- linux
+- macos
+- windows
 metadata:
   hermes:
-    tags: [dsfr, email, template, gouv-fr, mail, accessible]
-    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-theme-tarteaucitron, gouv-fr-code-compliance]
+    tags:
+    - dsfr
+    - email
+    - template
+    - gouv-fr
+    - mail
+    - accessible
+    related_skills:
+    - gouv-fr-dsfr
+    - gouv-fr-dsfr-theme-tarteaucitron
+    - gouv-fr-code-compliance
 ---
 
 # Template Mail DSFR

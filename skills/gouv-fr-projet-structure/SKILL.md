@@ -1,14 +1,30 @@
 ---
-name: gouv-fr-code-index-project
-description: "Structure projet, CLI, config OpenCode et variables d'env."
+name: gouv-fr-projet-structure
+description: Structure projet, CLI, config OpenCode et variables d'env.
 version: 0.2.0
 author: gouv-fr-code (etalab-ia), Hermes Agent
 license: MIT
-platforms: [linux, macos]
+platforms:
+- linux
+- macos
 metadata:
   hermes:
-    tags: [gouv-fr-code, project, structure, layout, open-code, opencode, mcp, agent-vm, albert-api, environment]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance, gouv-fr-code-workflow, gouv-fr-code-git]
+    tags:
+    - gouv-fr-code
+    - project
+    - structure
+    - layout
+    - open-code
+    - opencode
+    - mcp
+    - agent-vm
+    - albert-api
+    - environment
+    related_skills:
+    - gouv-fr-code-security
+    - gouv-fr-code-compliance
+    - gouv-fr-code-workflow
+    - gouv-fr-code-git
 ---
 
 # Gouv-fr — Structure du Projet
