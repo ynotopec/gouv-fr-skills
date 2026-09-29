@@ -1,10 +1,10 @@
 # Index des skills gouv-fr
 
-**40 skills** — tous préfixés `gouv-fr-`.
+**39 skills** — tous préfixés `gouv-fr-`.
 
 | Catégorie | Compétence | Description |
 |-----------|------------|-------------|
-| Architecture | [`gouv-fr-code-index`](skills/gouv-fr-code-index/SKILL.md) | Index des skills gouv-fr-code-index pour construire une application de l'État |
+| Architecture | [`gouv-fr-code-index`](skills/gouv-fr-code-index/SKILL.md) | Index des skills gouv-fr pour construire, auditer et déployer une application de l'État |
 | Architecture | [`gouv-fr-monorepo-pnpm`](skills/gouv-fr-monorepo-pnpm/SKILL.md) | Architecture monorepo pnpm workspaces et Turborepo : structure, workspaces, turbo |
 | Architecture | [`gouv-fr-projet-structure`](skills/gouv-fr-projet-structure/SKILL.md) | Structure projet, CLI, config OpenCode et variables d'env |
 | Architecture | [`gouv-fr-stack-technique`](skills/gouv-fr-stack-technique/SKILL.md) | Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify, NestJS, FastAPI), TS strict, Prisma, ESLint, |
@@ -24,10 +24,10 @@
 | Frontend / DSFR | [`gouv-fr-graphiques-DSFR`](skills/gouv-fr-graphiques-DSFR/SKILL.md) | Graphiques DSFR en web-components Vue |
 | Frontend / DSFR | [`gouv-fr-pictogrammes-DSFR`](skills/gouv-fr-pictogrammes-DSFR/SKILL.md) | Intègre pictogrammes, icônes et visuels officiels du DSFR |
 | Qualité & conformité | [`gouv-fr-audit-conformite`](skills/gouv-fr-audit-conformite/SKILL.md) | Audit de conformité d'une app gouv-fr-code-index |
+| Qualité & conformité | [`gouv-fr-code-quality`](skills/gouv-fr-code-quality/SKILL.md) | Qualité de code : standards au quotidien (fonctions, erreurs, imports, tests) et grille de revue en trois nive |
 | Qualité & conformité | [`gouv-fr-compliance-rgaa`](skills/gouv-fr-compliance-rgaa/SKILL.md) | Conformité État : RGAA, DSFR, RGPD |
 | Qualité & conformité | [`gouv-fr-cookies-rgpd`](skills/gouv-fr-cookies-rgpd/SKILL.md) | Gère les cookies d'un site DSFR avec Tarte au Citron |
 | Qualité & conformité | [`gouv-fr-lint-eslint`](skills/gouv-fr-lint-eslint/SKILL.md) | Lint et formattage ESLint, Ruff et EditorConfig pour projets Fabrique Numérique |
-| Qualité & conformité | [`gouv-fr-qualite-code`](skills/gouv-fr-qualite-code/SKILL.md) | Bonnes pratiques de code, lint, formattage et tests pour Fabrique Numérique |
 | Sécurité & audit | [`gouv-fr-audit-openwebui`](skills/gouv-fr-audit-openwebui/SKILL.md) | Audite et conçoit les outils per-user derrière OpenWebUI (ou autre passerelle LLM/MCP) — continuité d'identité |
 | Sécurité & audit | [`gouv-fr-audit-pentest`](skills/gouv-fr-audit-pentest/SKILL.md) | Audit & durcissement sécurité avant pen-test |
 | Sécurité & audit | [`gouv-fr-audit-redteam`](skills/gouv-fr-audit-redteam/SKILL.md) | Mène une campagne red-team / prompt-injection (OWASP LLM01) contre un service adossé à un LLM — wizard, route  |
@@ -35,7 +35,6 @@
 | Sécurité & audit | [`gouv-fr-dat-homologation`](skills/gouv-fr-dat-homologation/SKILL.md) | Pré-remplit un document d'homologation MirAI (DAT, et à terme AIPD/dossier d'homologation) à partir du code et |
 | Sécurité & audit | [`gouv-fr-dat-word`](skills/gouv-fr-dat-word/SKILL.md) | Rend un document d'homologation MirAI (DAT, et à terme AIPD/dossier d'homologation) au format Word ( |
 | Sécurité & audit | [`gouv-fr-securite`](skills/gouv-fr-securite/SKILL.md) | Sécurité : secrets, gitleaks, SQL, TLS, isolation VM |
-| DevOps & déploiement | [`gouv-fr-code-quality`](skills/gouv-fr-code-quality/SKILL.md) | Grille de contrôle qualité pour réviser du code — en particulier du code généré ou co-écrit par une IA — avant |
 | DevOps & déploiement | [`gouv-fr-deployment-cloud-pi-native`](skills/gouv-fr-deployment-cloud-pi-native/SKILL.md) | Use when onboarding or deploying an application on Cloud Pi Native — DSO console (project, repositories, envir |
 | DevOps & déploiement | [`gouv-fr-deployment-docker-k8s`](skills/gouv-fr-deployment-docker-k8s/SKILL.md) | Docker rootless, K8s securityContext, multi-stage, tags, local K8s dev |
 | DevOps & déploiement | [`gouv-fr-helm-chart`](skills/gouv-fr-helm-chart/SKILL.md) | Use when creating or adapting a Helm chart to deploy on Cloud Pi Native (OpenShift + Kyverno) — starting from  |

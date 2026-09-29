@@ -1,6 +1,6 @@
 # Revue complète du dépôt gouv-fr-skills
 
-**Date** : 2026-09-29 · **Périmètre** : 40 skills, index, documentation, infrastructure Git
+**Date** : 2026-09-29 · **Périmètre** : 39 skills (40 avant consolidation), index, documentation, infrastructure Git
 **Verdict global** : le dépôt était **cassé sur 12 points bloquants** ; tous corrigés dans ce commit.
 
 ---
@@ -116,17 +116,22 @@ versionné (souhait explicite de conserver la sauvegarde des skills locaux).
 
 ## Points d'attention non bloquants
 
-### Doublon partiel : `gouv-fr-code-quality` / `gouv-fr-qualite-code`
+### Doublon résolu : `gouv-fr-code-quality` / `gouv-fr-qualite-code`
 
-Les deux traitent de la qualité de code mais sous un angle distinct :
+Les deux traitaient de la qualité de code avec un recouvrement net (tests, erreurs,
+dépendances) et des **noms quasi identiques** — source de confusion.
 
-| Skill | Angle | Taille |
-|-------|-------|--------|
-| `gouv-fr-code-quality` | Grille de revue du code généré par IA (dette, maintenabilité) | 13 631 car. |
-| `gouv-fr-qualite-code` | Bonnes pratiques concrètes : lint, formattage, tests | 4 182 car. |
+| Skill | Angle | Taille | Décision |
+|-------|-------|--------|----------|
+| `gouv-fr-code-quality` | Grille de revue + standards | 16 664 car. | **Conservé et enrichi** |
+| `gouv-fr-qualite-code` | Lint, formattage, tests | 4 182 car. | **Fusionné puis supprimé** |
 
-**Recommandation** : conserver les deux mais croiser les renvois, ou fusionner dans
-`gouv-fr-code-quality` si l'on veut réduire la surface. *Non tranché — décision utilisateur.*
+**Résolution** : les règles au quotidien (`qualite-code`) ont été intégrées dans
+`gouv-fr-code-quality` sous la section « Standards de code — règles au quotidien »
+(structure de fichier, fonctions, erreurs, async/await, imports, constantes,
+early return, dépendances, tests). La configuration lint, déjà couverte par
+`gouv-fr-lint-eslint`, n'a pas été dupliquée : renvoi croisé à la place.
+Catégorie corrigée `devops` → `qualite`. Le nom unique lève l'ambiguïté.
 
 ### Fichiers référencés en exemple
 
@@ -145,16 +150,16 @@ pas des fichiers attendus dans le skill lui-même. Aucune action.
 ## Vérifications passées après correction
 
 ```
-✅ 40/40 skills : SKILL.md présent
-✅ 40/40 : frontmatter YAML valide
-✅ 40/40 : name == nom du répertoire
-✅ 40/40 : description et category renseignées
-✅ 40/40 : corps non vide (> 100 caractères)
-✅ 40/40 : aucun header de section en anglais
-✅ 40/40 : related_skills pointent vers des skills existants
-✅ 40/40 : mentions gouv-fr-* dans le corps résolues
+✅ 39/39 skills : SKILL.md présent
+✅ 39/39 : frontmatter YAML valide
+✅ 39/39 : name == nom du répertoire
+✅ 39/39 : description et category renseignées
+✅ 39/39 : corps non vide (> 100 caractères)
+✅ 39/39 : aucun header de section en anglais
+✅ 39/39 : related_skills pointent vers des skills existants
+✅ 39/39 : mentions gouv-fr-* dans le corps résolues
 ✅ 0 lien cassé dans README.md et SKILLS.md
-✅ Hermes resynchronisé (40 skills)
+✅ Hermes resynchronisé (39 skills)
 ```
 
 ## État Git
