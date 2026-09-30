@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-design-system, gouv-fr-compliance-rgaa, gouv-fr-securite]
 ---
 
-# DSFR Theme Tarte au Citron
+# Gouv-fr — Cookies et RGPD (Tarte au Citron)
 
 Thème DSFR pour le gestionnaire de consentement cookies Tarte au Citron.
 

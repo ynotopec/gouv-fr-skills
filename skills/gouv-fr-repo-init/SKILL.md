@@ -2,15 +2,18 @@
 name: gouv-fr-repo-init
 description: Initialise un répertoire vide (ou un projet qui démarre) avec les précautions d'usage — git, .gitignore durci anti-fuite, un dossier private/ gitignoré pour les sorties sensibles, une structure logique lisible par un humain, et un anti-leak LOCAL bloquant (pre-commit gitleaks, binaire, sans licence). À lancer au tout début d'un nouveau repo, avant d'écrire du code ou de committer quoi que ce soit.
 category: workflow
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, git, repo, gitignore, gitleaks, initialisation]
+    related_skills: [gouv-fr-audit-safety, gouv-fr-securite, gouv-fr-workflow-dev]
 ---
 
 
-# repo-init — démarrer un repo proprement et sans fuite
+# Gouv-fr — Initialisation de dépôt
 
 Met en place, sur un répertoire **vide ou quasi vide**, les fondations qu'on
 regrette toujours de ne pas avoir posées avant le premier commit : git, un

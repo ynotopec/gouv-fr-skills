@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-projet-structure, gouv-fr-securite, gouv-fr-workflow-dev]
 ---
 
-# Gouv-fr — Workflow
+# Gouv-fr — Workflow de développement
 
 Processus de travail et bonnes pratiques pour le développement d'applications gouv-fr-code-index.
 

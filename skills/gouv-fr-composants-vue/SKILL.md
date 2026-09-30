@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-design-system, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa]
 ---
 
-# VueDsfr — Composants Vue.js pour le DSFR
+# Gouv-fr — Composants Vue (VueDsfr)
 
 VueDsfr (`@gouvminint/vue-dsfr`) : portage en **Vue 3** du Système de Design de l'État français (DSFR). Utilisable comme
 plugin ou en imports nommés.

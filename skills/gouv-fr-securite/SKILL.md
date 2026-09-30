@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-projet-structure, gouv-fr-workflow-dev, gouv-fr-securite]
 ---
 
-# Gouv-fr — Règles de Sécurité
+# Gouv-fr — Règles de sécurité
 
 Règles de sécurité non négociables pour les applications gouv-fr-code-index.
 

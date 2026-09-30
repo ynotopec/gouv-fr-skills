@@ -1,13 +1,17 @@
 ---
 name: gouv-fr-github-actions-reusable
-description: Use when writing or reviewing GitHub Actions ci.yml/cd.yml with the reusable workflows of dnum-mi/fabnum-cicd — lint, Trivy/Gitleaks scans, Docker build, release-please, Helm chart bump and publish, GitHub App credentials, and the sync-cpin trigger toward Cloud Pi Native
-category: backend
-tags: []
-allowed-tools: Bash Read Write
----
+description: Écrit ou révise des workflows GitHub Actions ci.yml/cd.yml s'appuyant sur les workflows réutilisables dnum-mi/fabnum-cicd — lint, scans Trivy/Gitleaks, build Docker, release-please, bump et publication du chart Helm, credentials GitHub App et déclencheur sync-cpin vers Cloud Pi Native.
+category: devops
+version: 0.2.0
+license: MIT
 author: Hermes Agent
-
-# CI/CD avec fabnum-cicd
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, ci, cd, github-actions, fabnum-cicd, release-please, trivy, gitleaks]
+    related_skills: [gouv-fr-github-actions-ci, gouv-fr-repo-cicd, gouv-fr-helm-chart]
+---
+# Gouv-fr — CI/CD avec fabnum-cicd
 
 Assembler les workflows réutilisables de [`dnum-mi/fabnum-cicd`](https://github.com/dnum-mi/fabnum-cicd) en un `ci.yml`
 (pull request) et un `cd.yml` (release + livraison vers Cloud Pi Native).

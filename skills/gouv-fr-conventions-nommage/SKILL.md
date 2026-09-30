@@ -1,13 +1,17 @@
 ---
 name: gouv-fr-conventions-nommage
-description: Use when creating or reviewing Fabrique Numérique projects — naming conventions, folder architecture, TypeScript rules, RESTful API patterns, linting, code quality, deployment, POC-to-production, or project documentation
+description: Applique les conventions de nommage et d'architecture d'un projet Fabrique Numérique — dossiers, fichiers, TypeScript, API RESTful, lint, qualité, déploiement et documentation.
 category: workflow
-tags: []
-allowed-tools: Bash Read
----
+version: 0.2.0
+license: MIT
 author: Hermes Agent
-
-# CoFabNum Conventions
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, conventions, nommage, architecture, typescript, api-rest]
+    related_skills: [gouv-fr-projet-structure, gouv-fr-lint-eslint, gouv-fr-stack-technique]
+---
+# Gouv-fr — Conventions de nommage et d'architecture
 
 Best practices for all Fabrique Numérique projects. Language-agnostic unless noted.
 

@@ -1,15 +1,18 @@
 ---
 name: gouv-fr-backend-fastify
-description: Use when building server projects for Fabrique Numérique — project scaffolding, structure, logging, error handling, OpenAPI docs, and testing patterns
+description: Construit un serveur pour la Fabrique Numérique (Fastify, NestJS, FastAPI) — échafaudage, structure, journalisation, gestion d'erreurs, doc OpenAPI et tests.
 category: backend
-tags: []
-author: Hermes Agent
+version: 0.2.0
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
-allowed-tools: Bash Read Write
+metadata:
+  hermes:
+    tags: [gouv-fr, backend, fastify, nestjs, fastapi, api, tests]
+    related_skills: [gouv-fr-api-rest, gouv-fr-stack-technique, gouv-fr-securite]
 ---
 
-# CoFabNum Server Recipes
+# Gouv-fr — Backend (Fastify, NestJS, FastAPI)
 
 Node.js/TypeScript: **Fastify** or **NestJS**. Python: **FastAPI**.
 
@@ -137,7 +140,7 @@ import fp from 'fastify-plugin'
 const myPlugin: FastifyPluginAsync = async (fastify) => {
   fastify.decorate('myUtil', () => { /* ... */ })
 }
-export default fp(myPlugin, { name: gouv-fr-backend-fastify })
+export default fp(myPlugin, { name: 'my-plugin' })
 ```
 
 ### Validation with TypeBox
@@ -147,7 +150,7 @@ import { Type, Static } from '@sinclair/typebox'
 
 const CatSchema = Type.Object({
   id: Type.Number(),
-  name: gouv-fr-backend-fastify minLength: 1 }),
+  name: Type.String({ minLength: 1 }),
   age: Type.Number({ minimum: 0 }),
 })
 type Cat = Static<typeof CatSchema>
@@ -247,7 +250,7 @@ tests/
 from pydantic import BaseModel, Field
 
 class CatBase(BaseModel):
-    name: gouv-fr-backend-fastify = Field(min_length=1, description="Nom du chat")
+    name: str = Field(min_length=1, description="Nom du chat")
     age: int = Field(ge=0)
 
 class CatCreate(CatBase): pass

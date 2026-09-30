@@ -1,13 +1,17 @@
 ---
 name: gouv-fr-helm-chart
-description: Use when creating or adapting a Helm chart to deploy on Cloud Pi Native (OpenShift + Kyverno) — starting from the this-is-tobi template, values per environment, securityContext and UID, MIOM labels, Vault secrets via extraObjects, image tags, chart versioning and OCI publication
+description: Crée ou adapte un chart Helm pour déployer sur Cloud Pi Native (OpenShift + Kyverno) — gabarit this-is-tobi, values par environnement, securityContext et UID, labels MIOM, secrets Vault via extraObjects, tags d'image, versionnage du chart et publication OCI.
 category: devops
-tags: []
-allowed-tools: Bash Read Write
----
+version: 0.2.0
+license: MIT
 author: Hermes Agent
-
-# Chart Helm pour Cloud Pi Native
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, helm, kubernetes, openshift, kyverno, vault, cloud-pi-native]
+    related_skills: [gouv-fr-deployment-cloud-pi-native, gouv-fr-deployment-docker-k8s, gouv-fr-repo-cicd]
+---
+# Gouv-fr — Chart Helm (Cloud Pi Native)
 
 Créer ou adapter un chart qui passe les contraintes OpenShift et les politiques Kyverno de CPiN. Le chart se prépare en
 3 temps :

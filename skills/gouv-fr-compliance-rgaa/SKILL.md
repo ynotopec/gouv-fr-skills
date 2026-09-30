@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-design-system, gouv-fr-projet-structure, gouv-fr-securite]
 ---
 
-# Gouv-fr — Conformité
+# Gouv-fr — Conformité (RGAA, DSFR, RGPD)
 
 Règles d'accessibilité et conformité réglementaire pour les applications de l'État.
 

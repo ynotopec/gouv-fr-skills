@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-lint-eslint, gouv-fr-conventions-nommage, gouv-fr-projet-structure]
 ---
 
-# Contrôle qualité de code (à l'ère de l'IA)
+# Gouv-fr — Qualité de code et revue
 
 ## Principe directeur
 

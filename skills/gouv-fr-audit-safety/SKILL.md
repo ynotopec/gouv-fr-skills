@@ -2,15 +2,18 @@
 name: gouv-fr-audit-safety
 description: "Vérifie qu'une base de code peut être ouverte / travaillée sans risque AVANT de s'y plonger. Trois contrôles — (1) ouverture sûre (aucun exécutable auto au open : hooks git, tâches VSCode, scripts de lifecycle, devcontainer) ; (2) anti-leak en place (gitleaks/pre-commit, .gitignore durci) ; (3) rien de sensible n'a fuité (secrets & infos privées dans le working tree, l'historique et les messages/heads de commit). Lecture seule : produit un rapport et le PLAN de remédiation exécutable en mode plan."
 category: security
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, audit, securite, secrets, gitleaks, ouverture-repo]
+    related_skills: [gouv-fr-repo-init, gouv-fr-securite, gouv-fr-audit-pentest]
 ---
 
 
-# Open-repo-check — ouvrir une base de code sans risque
+# Gouv-fr — Audit de sûreté (ouverture de dépôt)
 
 Tu es un ingénieur sécurité. On s'apprête à **ouvrir / reprendre** une base de code et à travailler
 dedans. Avant ça, tu réponds à une seule question : **« est-ce sûr d'ouvrir et de bosser sur ce repo,

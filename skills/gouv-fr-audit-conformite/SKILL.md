@@ -6,7 +6,6 @@ version: 0.1.0
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
-tags: [gouv-fr, audit, conformance]
 metadata:
   hermes:
     tags: [gouv-fr, audit, conformance]
@@ -90,7 +89,7 @@ vérifie seulement le dernier commit ne le voit pas. Vérifier commit par commit
 
 ```bash
 cd <repo> && for h in $(git rev-list --reverse HEAD); do
-  git show -s --format='%B' "$h" | grep -q 'Co-Authored-By: gouv-fr-code-index' || echo "MISSING TRAILER: $h"
+  git show -s --format='%B' "$h" | grep -q 'Co-Authored-By: gouv-fr-code' || echo "MISSING TRAILER: $h"
 done
 ```
 

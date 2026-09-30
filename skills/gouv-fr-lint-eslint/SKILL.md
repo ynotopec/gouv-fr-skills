@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-code-quality]
 ---
 
-# Gouv-fr — Lint & Formattage
+# Gouv-fr — Lint & formattage (ESLint, Ruff)
 
 Conventions de lint et formattage pour les projets JavaScript/TypeScript et Python de la Fabrique Numérique.
 

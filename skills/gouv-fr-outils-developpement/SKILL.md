@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-stack-technique, gouv-fr-deployment-docker-k8s, gouv-fr-conventions-nommage]
 ---
 
-# Gouv-fr — Outils de Développement
+# Gouv-fr — Outils de développement
 
 Travailler avec les outils de développement utilisés dans les projets Fabrique Numérique : installation, configuration,
 Git, Docker, pnpm, proto, VS Code, GitHub CLI, etc.
@@ -129,7 +129,7 @@ tech: mise à jour des dépendances#125
 ### Trailer obligatoire
 
 ```
-Co-Authored-By: gouv-fr-code-index (<id>) <noreply@numerique.gouv.fr>
+Co-Authored-By: gouv-fr-code (<id>) <noreply@numerique.gouv.fr>
 ```
 
 ### Configuration Git

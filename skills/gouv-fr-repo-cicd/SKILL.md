@@ -2,15 +2,18 @@
 name: gouv-fr-repo-cicd
 description: Pose une CI/CD « Cloud Pi Native » sur un projet GitHub existant en APPELANT les workflows réutilisables du dépôt public dnum-mi/fabnum-cicd — pipeline de pull request (lint, scans, build), pipeline de release (release-please, image, synchronisation du miroir GitLab CPiN), épinglage par tag exact et règle Renovate. Ne recopie rien de fabnum-cicd et ne connaît aucun input par cœur — il lit le dépôt au tag résolu à chaque lancement. Lecture seule par défaut — rapport + plan ; n'écrit qu'avec --setup. Ne crée aucun secret, ne pousse rien, n'ouvre aucune PR.
 category: devops
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, ci, cd, cloud-pi-native, fabnum-cicd, github]
+    related_skills: [gouv-fr-github-actions-reusable, gouv-fr-github-actions-ci, gouv-fr-deployment-cloud-pi-native]
 ---
 
 
-# Gouv-fr Repo CI/CD — brancher un projet existant sur la CI/CD Cloud Pi Native
+# Gouv-fr — Brancher un projet sur la CI/CD CPiN
 
 Tu mets en place, dans le projet cible, des workflows GitHub Actions qui **appellent par
 référence** ceux de `dnum-mi/fabnum-cicd`. Le côté Cloud Pi Native (pipeline du miroir GitLab,

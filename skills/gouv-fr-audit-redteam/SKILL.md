@@ -2,15 +2,18 @@
 name: gouv-fr-audit-redteam
 description: Mène une campagne red-team / prompt-injection (OWASP LLM01) contre un service adossé à un LLM — wizard, route /api, agent, connecteur MCP. Mesure si la garde bloque les attaques (entrée ET sortie), avec un modèle-juge, et écrit TOUS les rapports dans private/redteam-reports/ (jamais committés). Lecture seule sur le code ; n'exécute que des requêtes de test contre une cible autorisée.
 category: security
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, audit, redteam, prompt-injection, owasp-llm, llm]
+    related_skills: [gouv-fr-audit-pentest, gouv-fr-audit-openwebui, gouv-fr-securite]
 ---
 
 
-# audit-redteam — éprouver la garde d'un service LLM, sans rien faire fuiter
+# Gouv-fr — Audit red-team (prompt-injection LLM)
 
 Lance une campagne d'attaques (prompt injection / jailbreak / exfiltration) contre
 un service adossé à un LLM et **mesure si la garde bloque** — en entrée (le prompt

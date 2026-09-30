@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-stack-technique, gouv-fr-projet-structure]
 ---
 
-# Gouv-fr — Monorepo
+# Gouv-fr — Monorepo pnpm & Turborepo
 
 Architecture monorepo avec pnpm workspaces et Turborepo pour les projets Fabrique Numérique.
 
