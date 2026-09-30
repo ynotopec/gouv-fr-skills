@@ -19,8 +19,6 @@ Règles pour construire des images prêtes pour Cloud Pi Native (K8s/OpenShift) 
 ## Quand utiliser
 - Créer un Dockerfile pour un projet Fabrique Numérique
 - Déployer sur Kubernetes ou OpenShift
-- Créer ou modifier un Helm chart
-- Configurer un déploiement CPiN
 
 Pour le **chart Helm**, utiliser **`gouv-fr-helm-chart`** ; pour la **console, le mirror, le pipeline DSO et ArgoCD**,
 utiliser **`gouv-fr-deployment-cloud-pi-native`** (groupe `dso`).
@@ -28,13 +26,12 @@ utiliser **`gouv-fr-deployment-cloud-pi-native`** (groupe `dso`).
 ## Prérequis
 - Docker installé pour le build local
 - kubectl/kind/k3d pour le testing local K8s
-- Helm installé pour la gestion des charts
 - Dockerfile existant dans le projet
 
 ## Comment lancer
 - Build : `docker build -t ghcr.io/org/app:tag .`
 - Test local : `kind create cluster` ou `k3d cluster create`
-- Deploy : `helm upgrade --install my-app ./helm`
+- Déploiement : voir `gouv-fr-helm-chart` (chart) et `gouv-fr-deployment-cloud-pi-native` (console, ArgoCD)
 
 ## Plateforme cible
 
@@ -49,12 +46,14 @@ Kubernetes/OpenShift. Tout projet est conçu **dès sa création** pour :
 
 ### Docker (obligatoire, rootless)
 
-- Utiliser des images de base légères : `*-alpine`, `*-slim`, `distroless`
-- Exécuter avec un utilisateur non-root (UID ≥ 1000)
-- Build multi-stage pour séparer build et production
-- Ne pas embarquer de secrets, fichiers de dev ou outils inutiles
-- Écouter sur un port non privilégié (≥ 1024, ex. 8080)
-- Ne jamais utiliser `latest` en production — toujours épingler un tag
+- Image de base légère : `*-alpine`, `*-slim` ou `distroless`
+- Utilisateur **non-root** ; sur OpenShift l'UID est **attribué au démarrage** : les fichiers doivent appartenir au groupe root (`chown -R <uid>:0`, `chmod -R g=u`)
+- Build **multi-stage** — séparer dépendances de build et de production
+- Pas de secrets, fichiers `.env` ou outils de développement dans l'image
+- Port d'écoute **non privilégié** (> 1024, ex. `8080`)
+- Ne jamais utiliser le tag `latest` (Kyverno le bloque en prod) — un tag versionné : version applicative, SHA court, ou digest
+- Dockerfile **dans le dépôt** ; images de base publiques ou reconstruites par la plateforme
+- Scanner les images avec [Trivy](https://trivy.dev/) en CI
 
 ### Dockerfile optimisé (exemple Node.js)
 
@@ -69,7 +68,7 @@ RUN pnpm build
 
 # Production
 FROM docker.io/nginxinc/nginx-unprivileged:1.29-alpine AS prod
-COPY --from-build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 8080
 USER 1001
 ```
@@ -88,8 +87,8 @@ COPY . .
 # Production
 FROM docker.io/python:3.12-slim AS prod
 WORKDIR /app
-COPY --from-build /app/.venv /app/.venv
-COPY --from-build /app/app /app/app
+COPY --from=build /app/.venv /app/.venv
+COPY --from=build /app/app /app/app
 ENV PATH="/app/.venv/bin:$PATH"
 EXPOSE 8080
 USER 1000
@@ -112,55 +111,7 @@ securityContext:
 
 **Ne pas figer `runAsUser`, `runAsGroup` ni `fsGroup` sur OpenShift/CPiN** : le SCC alloue l'UID par namespace et
 rejette un UID hors plage. Sur un Kubernetes simple (Kind, k3d), on peut les fixer.
-
-### Helm — structure minimale
-
-```
-helm/
-├── Chart.yaml          # Métadonnées (nom, version, appVersion)
-├── values.yaml         # Valeurs par défaut
-├── templates/
-│   ├── _helpers.tpl    # Fonctions et labels réutilisables
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── ingress.yaml
-│   ├── configmap.yaml
-│   ├── secret.yaml
-│   ├── hpa.yaml
-│   └── serviceaccount.yaml
-└── values/
-    ├── dev.yaml
-    ├── staging.yaml
-    └── prod.yaml
-```
-
-### Helm — bonnes pratiques
-
-- Utiliser les labels standards Kubernetes (`app.kubernetes.io/name`, etc.) via `_helpers.tpl`
-- Rendre les ressources optionnelles avec `{{- if .Values.* }}`
-- Ne jamais mettre de secrets en clair dans `values.yaml` — utiliser Sealed Secrets ou gestionnaire externe
-- Versionner le chart indépendamment de l'application (`version` ≠ `appVersion`)
-- Valider en CI : `helm lint` et `helm template`
-
-### Cloud Pi Native (PaaS interne)
-
-- Console simplifiée pour déployer sur clusters Kubernetes/OpenShift
-- Orienté conteneurisation, privilèges minimum, compatibilité K8s & OpenShift
-- Utiliser les Helm charts CPiN pour les déploiements
-
-### Docker Compose (dev local)
-
-Pour le développement quotidien, Docker Compose suffit. Reproduire les services de prod (DB, cache, etc.).
-
-### Kubernetes local (optionnel)
-
-Pour reproduire un environnement proche de la production :
-
-| Outil | Description |
-|---|---|
-| [Kind](https://kind.sigs.k8s.io/) | Kubernetes dans des conteneurs Docker |
-| [k3d](https://k3d.io/) | k3s dans Docker — léger et rapide |
-| [Minikube](https://minikube.sigs.k8s.io/) | Cluster K8s local, multi-drivers |
+Détail et surcharge du chart : `gouv-fr-helm-chart`.
 
 ## Procedure — Créer un Dockerfile multi-stage
 
@@ -177,7 +128,6 @@ Pour reproduire un environnement proche de la production :
 - Ne jamais utiliser `latest` pour les images
 - Les secrets doivent venir d'environnement ou de secrets gérés (pas dans le Dockerfile)
 - Les volumes de dev (`node_modules`, `.venv`) ne doivent pas être montés en prod
-- Helm `values.yaml` ne doit jamais contenir de secrets en clair
 - `readOnlyRootFilesystem` peut casser les apps qui écrivent dans `/tmp` — vérifier les besoins
 - **UID figé** — fonctionne en local, rejeté sur OpenShift
 - **Tag `latest`** — bloqué par les politiques Kyverno de CPiN en prod
@@ -187,5 +137,4 @@ Pour reproduire un environnement proche de la production :
 - `docker build -t test .` passe sans erreur
 - `docker run --rm test` démarre sans se crasher
 - Trivy ne rapporte pas de CVE CRITICAL : `trivy image test`
-- Helm chart valide : `helm lint ./helm` et `helm template test ./helm`
 - Tester l'image en lecture seule avant de livrer : `docker run --read-only <image>`
