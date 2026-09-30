@@ -1,12 +1,16 @@
 ---
 name: gouv-fr-github-actions-ci
 description: Use when setting up a basic CI pipeline (lint, tests, build) for a Fabrique Numérique project or choosing between custom and reusable GitHub Actions workflows — for fabnum-cicd reusable workflows, releases and Cloud Pi Native sync use the cicd-fabnum skill (dso group)
-category: backend
-tags: []
-allowed-tools: Bash Read Write
----
+category: devops
+version: 0.2.0
+license: MIT
 author: Hermes Agent
-
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, ci, cd, github-actions, fabnum-cicd, pnpm, workflow]
+    related_skills: [gouv-fr-github-actions-reusable, gouv-fr-repo-cicd, gouv-fr-lint-eslint]
+---
 # CoFabNum CI/CD
 
 Principes et gabarit de base. Pour assembler les workflows réutilisables de fabnum-cicd (build, scans, release-please,
@@ -36,10 +40,10 @@ Progress:
 ## Gabarit CI minimal (pnpm)
 
 ```yaml
-name: gouv-fr-github-actions-ci
+name: CI
 on:
   pull_request:
-    branches: ["**"]**
+    branches: ["**"]
 
 jobs:
   lint:

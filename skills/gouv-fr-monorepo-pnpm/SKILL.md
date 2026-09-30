@@ -122,7 +122,7 @@ pnpm add -Dw turbo
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]**
+      "outputs": ["dist/**"]
     },
     "dev": {
       "cache": false,
@@ -164,7 +164,7 @@ pnpm add -Dw turbo
 - **`dependsOn: ["^build"]`** — le `^` signifie "build all internal dependencies first"
 - **`cache: false` pour dev** — les dev servers ne doivent jamais être cachés
 - **`persistent: true` pour dev** — indique à Turbo que la tâche tourne indéfiniment
-- **Définir** des `outputs` précis** — `dist/**` est le minimum, soyez spécifiques pour éviter les cache misses
+- **Définir des `outputs` précis** — `dist/**` est le minimum, soyez spécifiques pour éviter les cache misses
 - **Utiliser `--filter` en CI** — ne lancer que les packages affectés par la PR
 - **Turborepo cache les résultats de build** — si les `outputs` sont mal définis, le cache sera incorrect
 
