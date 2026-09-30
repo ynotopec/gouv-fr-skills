@@ -10,6 +10,7 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 - **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills` + `docs/okf`
 - **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills gouv-fr-code
 - **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
+- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE (DSFR React, RGAA, ANSSI, data.gouv.fr, LaSuite, usage IA). **Non synchronisé** : cité comme source de référence et de filiation (`author: etalab-ia` sur 3 skills). Voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
 - **Skills locaux gouv-fr** — migrés et renommés, sauvegarde dans `backup-local-skills/`
 
 ## Skills
