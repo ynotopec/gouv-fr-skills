@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [data, open-data, sig, json, communication, ref, schema]
-    related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa]
+    related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-datagouv-apis]
 ---
 
 # Gouv-fr — Données ouvertes du SIG

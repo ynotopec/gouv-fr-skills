@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
-    related_skills: [gouv-fr-pictogrammes-DSFR, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa]
+    related_skills: [gouv-fr-pictogrammes-DSFR, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa, gouv-fr-react-dsfr]
 ---
 
 # Gouv-fr — Design System de l'État (DSFR)
