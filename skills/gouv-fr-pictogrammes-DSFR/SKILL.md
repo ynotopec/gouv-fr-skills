@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-design-system, gouv-fr-compliance-rgaa]
 ---
 
-# DSFR Artwork
+# Gouv-fr — Pictogrammes et icônes DSFR
 
 Les assets visuels du DSFR (pictogrammes SVG, icônes, motifs décoratifs) sont inclus dans le paquet `@gouvfr/dsfr` — pas
 de dépôt séparé à installer.

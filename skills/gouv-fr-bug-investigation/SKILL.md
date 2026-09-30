@@ -2,15 +2,18 @@
 name: gouv-fr-bug-investigation
 description: Force 2-3 hypothèses de cause + plan B avant tout fix de bug. Utiliser sur tout bug signalé, régression, comportement inattendu, ou avant de toucher au code "pour corriger". Inspiré du guide Karpathy §1.
 category: workflow
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, bug, debug, investigation, hypotheses]
+    related_skills: [gouv-fr-workflow-dev, gouv-fr-code-quality]
 ---
 
 
-# Bug investigate — hypothèses avant fix
+# Gouv-fr — Investigation de bug
 
 Avant d'écrire **une seule ligne de code**, produire :
 

@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-design-system, gouv-fr-compliance-rgaa]
 ---
 
-# DSFR Chart — Visualisation de données
+# Gouv-fr — Graphiques DSFR
 
 DSFR Chart (`@gouvfr/dsfr-chart`) : web-components Vue.js de visualisation conformes au DSFR (thème clair/sombre
 automatique).

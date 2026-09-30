@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-workflow-dev, gouv-fr-repo-init]
 ---
 
-# Gouv-fr — Structure du Projet
+# Gouv-fr — Structure de projet
 
 Architecture du projet gouv-fr-code-index : layout, intégration OpenCode, CLI, variables d'environnement.
 

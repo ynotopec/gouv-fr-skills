@@ -2,15 +2,18 @@
 name: gouv-fr-audit-openwebui
 description: "Audite et conçoit les outils per-user derrière OpenWebUI (ou autre passerelle LLM/MCP) — continuité d'identité SSO (le sub Keycloak de bout en bout), coffre-fort de credentials (MyVault), contrôle d'accès et hygiène de session. Vérifie que l'identité de l'utilisateur arrive de façon FIABLE jusqu'au tool et au coffre-fort, sans mélange de sessions. Lecture seule par défaut : produit un verdict + un plan de remédiation exécutable en mode plan."
 category: security
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, audit, openwebui, sso, keycloak, mcp, llm]
+    related_skills: [gouv-fr-audit-safety, gouv-fr-audit-redteam, gouv-fr-securite]
 ---
 
 
-# Gouv-fr Audit OpenWebUI — identité SSO & credentials pour les tools derrière OpenWebUI
+# Gouv-fr — Audit OpenWebUI (identité SSO des tools)
 
 Tu es **ingénieur plateforme & sécurité**. On exploite (ou on s'apprête à créer) un **outil per-user**
 branché derrière une passerelle LLM — typiquement **OpenWebUI** via **MCP** ou un tool server OpenAPI,

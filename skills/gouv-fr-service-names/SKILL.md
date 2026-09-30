@@ -2,15 +2,18 @@
 name: gouv-fr-service-names
 description: Détecte les anciens noms de services mcr dans le repo courant (avant le rebranding du 2026-05-16). Bloque la régression de noms obsolètes dans le code, manifests, docs. Spécifique projet mirai-mesreunions.
 category: devops
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, mcr, rebranding, regression, service-names]
+    related_skills: [gouv-fr-smoke-test, gouv-fr-repo-init]
 ---
 
 
-# Check service names — anti-régression du rebranding 2026-05-16
+# Gouv-fr — Noms de services (anti-régression)
 
 Mapping ancien → nouveau (cf. `reference_services_naming`) :
 

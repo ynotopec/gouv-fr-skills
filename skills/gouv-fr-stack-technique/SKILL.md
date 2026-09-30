@@ -4,6 +4,7 @@ description: "Stack technique recommandée : Front (Vue 3, DSFR), Back (Fastify,
 category: architecture
 version: 0.2.0
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
 metadata:
   hermes:
@@ -11,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-projet-structure, gouv-fr-monorepo-pnpm, gouv-fr-deployment-docker-k8s]
 ---
 
-# Gouv-fr — Stack Technique
+# Gouv-fr — Stack technique
 
 La Fabrique Numérique (Mission Interministérielle) recommande une stack technique unifiée pour l'ensemble de ses
 applications d'État. Cette stack garantit interopérabilité, maintenance à long terme et conformité aux standards du

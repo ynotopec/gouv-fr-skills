@@ -2,15 +2,18 @@
 name: gouv-fr-dat-word
 description: Rend un document d'homologation MirAI (DAT, et à terme AIPD/dossier d'homologation) au format Word (.docx) ministériel, en appliquant le modèle officiel avec typographie française, diagrammes mermaid et mise en page professionnelle.
 category: security
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, homologation, dat, docx, mirai, rendu]
+    related_skills: [gouv-fr-dat-homologation, gouv-fr-templates-email]
 ---
 
 
-# Gen-doc-homologation-doc — rendu .docx ministériel
+# Gouv-fr — Homologation MirAI (rendu .docx)
 
 Cette skill **transforme un contenu d'homologation (Markdown) en `.docx` ministériel**, en s'appuyant
 sur le **modèle officiel** `MODELE_DAT_MirAI.docx` (maintenu dans la skill sœur `gouv-fr-dat-homologation`).

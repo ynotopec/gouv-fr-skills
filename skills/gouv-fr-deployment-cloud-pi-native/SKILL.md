@@ -1,13 +1,17 @@
 ---
 name: gouv-fr-deployment-cloud-pi-native
-description: Use when onboarding or deploying an application on Cloud Pi Native — DSO console (project, repositories, environments, quotas), mirror sync, .gitlab-ci-dso pipeline to Harbor, ArgoCD GitOps deployment, Vault secrets, Kyverno rejections, and diagnosing a deployment that does not roll out
+description: Onboarde et déploie une application sur Cloud Pi Native — console DSO (projet, dépôts, environnements, quotas), sync du mirror, pipeline .gitlab-ci-dso vers Harbor, déploiement GitOps ArgoCD, secrets Vault, rejets Kyverno et diagnostic d'un déploiement bloqué.
 category: devops
-tags: []
-allowed-tools: Bash Read Write
----
+version: 0.2.0
+license: MIT
 author: Hermes Agent
-
-# Déployer sur Cloud Pi Native
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, deployment, cloud-pi-native, argocd, gitops, harbor, vault, kyverno, dso]
+    related_skills: [gouv-fr-helm-chart, gouv-fr-deployment-docker-k8s, gouv-fr-repo-cicd]
+---
+# Gouv-fr — Déploiement Cloud Pi Native
 
 Faire passer une application de son dépôt GitHub à un namespace CPiN, et diagnostiquer quand ça ne bouge pas.
 

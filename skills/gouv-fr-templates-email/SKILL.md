@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-design-system, gouv-fr-cookies-rgpd, gouv-fr-compliance-rgaa]
 ---
 
-# Template Mail DSFR
+# Gouv-fr — Templates email DSFR
 
 Template d'email officiel conforme au DSFR pour les communications des services gouvernementaux.
 

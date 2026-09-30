@@ -2,15 +2,18 @@
 name: gouv-fr-dat-homologation
 description: Pré-remplit un document d'homologation MirAI (DAT, et à terme AIPD/dossier d'homologation) à partir du code et des manifestes du repo courant. Le modèle et le prompt de référence versionnés sont embarqués dans cette skill. Lecture seule sur le service, ne jamais inventer ni recopier de valeur réelle.
 category: security
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, homologation, dat, aipd, mirai, conformite]
+    related_skills: [gouv-fr-dat-word, gouv-fr-securite]
 ---
 
 
-# Gen-doc homologation MirAI
+# Gouv-fr — Homologation MirAI (DAT)
 
 Cette skill **embarque** le modèle et le prompt de référence (anciennement le dépôt
 `IA-Generative/gen-document-homologation`, fusionné ici en 2026-06 pour n'avoir qu'un seul dépôt à

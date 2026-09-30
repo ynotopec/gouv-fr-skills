@@ -2,15 +2,18 @@
 name: gouv-fr-smoke-test
 description: Smoke-test rapide du pipeline mirai-mesreunions (gateway + auth + ingester). Vérifie GET /api/meetings, GET /audio, POST /transcription avec un device_token synthétique. Spécifique projet mirai-mesreunions. À lancer uniquement sur demande explicite de l’utilisateur (appels réseau vers un environnement réel).
 category: devops
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, smoke-test, mirai, pipeline, gateway, ingester]
+    related_skills: [gouv-fr-service-names, gouv-fr-repo-cicd]
 ---
 
 
-# Smoke MCR — santé du pipeline en 30s
+# Gouv-fr — Smoke-test du pipeline mirai-mesreunions
 
 Cible : l'environnement passé en argument (défaut `integration` si vide).
 

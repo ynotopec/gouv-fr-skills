@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-projet-structure, gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-workflow-dev, gouv-fr-repo-init]
 ---
 
-# gouv-fr — Index Skills
+# Gouv-fr — Index des skills
 
 Package complet de skills gouv-fr pour construire, auditer et déployer des applications de l'administration française.
 

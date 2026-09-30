@@ -1,13 +1,17 @@
 ---
 name: gouv-fr-frontend-vue3
-description: Use when building Vue 3 or Nuxt 3 frontend projects for Fabrique Numérique — DSFR compliance, VueDsfr scaffolding, composable patterns like toaster, and testing setup
+description: Construit un frontend Vue 3 / Nuxt 3 pour la Fabrique Numérique — conformité DSFR, échafaudage VueDsfr, composables (toaster) et mise en place des tests.
 category: frontend
-tags: []
-allowed-tools: Read Write Bash
----
+version: 0.2.0
+license: MIT
 author: Hermes Agent
-
-# CoFabNum Client Recipes
+platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, frontend, vue3, nuxt, dsfr, vuedsfr, composables, tests]
+    related_skills: [gouv-fr-design-system, gouv-fr-composants-vue, gouv-fr-stack-technique]
+---
+# Gouv-fr — Frontend Vue 3 / Nuxt 3
 
 Vue 3 with **VueDsfr** (DSFR port) and **Nuxt 3**. Ministry of Interior requires DSFR.
 

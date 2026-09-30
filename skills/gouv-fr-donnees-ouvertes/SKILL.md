@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-securite, gouv-fr-compliance-rgaa]
 ---
 
-# Référentiel de données de communication publique
+# Gouv-fr — Données ouvertes du SIG
 
 Dépôt de référence des schémas et jeux de données ouverts publiés par le Service d'Information du Gouvernement (SIG) sur
 data.gouv.fr et schema.data.gouv.fr.

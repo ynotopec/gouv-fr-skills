@@ -2,15 +2,18 @@
 name: gouv-fr-adr
 description: Rédige une nouvelle ADR (Architecture Decision Record) au format IA-Generative. Utiliser quand une décision d'archi a été prise et doit être tracée (choix de backend, refonte, breaking change, trade-off entre options).
 category: workflow
-tags: []
 version: 1.0.0
-author: Hermes Agent (Nous Research)
 license: MIT
+author: Hermes Agent
 platforms: [linux, macos]
+metadata:
+  hermes:
+    tags: [gouv-fr, adr, architecture, decision, documentation]
+    related_skills: [gouv-fr-projet-structure, gouv-fr-workflow-dev]
 ---
 
 
-# ADR drafter — format IA-Generative
+# Gouv-fr — ADR (Architecture Decision Record)
 
 ## 1. Localisation
 Trouve le dossier ADR du repo :

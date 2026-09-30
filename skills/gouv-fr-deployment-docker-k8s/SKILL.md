@@ -12,7 +12,7 @@ metadata:
     related_skills: [gouv-fr-deployment-docker-k8s, gouv-fr-helm-chart, gouv-fr-outils-developpement, gouv-fr-stack-technique]
 ---
 
-# Gouv-fr — Déploiement
+# Gouv-fr — Déploiement Docker & Kubernetes
 
 Règles pour construire des images prêtes pour Cloud Pi Native (K8s/OpenShift) et développer en local.
 
