@@ -19,9 +19,9 @@
 | Frontend / DSFR | [`gouv-fr-composants-vue`](skills/gouv-fr-composants-vue/SKILL.md) | Installer et utiliser VueDsfr (composants Vue 3 DSFR). |
 | Frontend / DSFR | [`gouv-fr-design-system`](skills/gouv-fr-design-system/SKILL.md) | Installer et vérifier le design system de l'État (DSFR). |
 | Frontend / DSFR | [`gouv-fr-frontend-vue3`](skills/gouv-fr-frontend-vue3/SKILL.md) | Construit un frontend Vue 3 / Nuxt 3 pour la Fabrique Numérique — conformité DSFR, échafaudage VueDsfr, composables (toa |
-| Frontend / DSFR | [`gouv-fr-graphiques-DSFR`](skills/gouv-fr-graphiques-DSFR/SKILL.md) | Graphiques DSFR en web-components Vue.js (line, bar, pie…). |
+| Frontend / DSFR | [`gouv-fr-graphiques-dsfr`](skills/gouv-fr-graphiques-dsfr/SKILL.md) | Graphiques DSFR en web-components Vue.js (line, bar, pie…). |
 | Frontend / DSFR | [`gouv-fr-lasuite-ui-kit`](skills/gouv-fr-lasuite-ui-kit/SKILL.md) | Créer des interfaces React pour les applications LaSuite (Docs, Drive, People, Webinaire, Messagerie) avec @gouvfr-lasui |
-| Frontend / DSFR | [`gouv-fr-pictogrammes-DSFR`](skills/gouv-fr-pictogrammes-DSFR/SKILL.md) | Intègre pictogrammes, icônes et visuels officiels du DSFR. |
+| Frontend / DSFR | [`gouv-fr-pictogrammes-dsfr`](skills/gouv-fr-pictogrammes-dsfr/SKILL.md) | Intègre pictogrammes, icônes et visuels officiels du DSFR. |
 | Frontend / DSFR | [`gouv-fr-react-dsfr`](skills/gouv-fr-react-dsfr/SKILL.md) | Créer des interfaces React conformes au Design System de l'État avec @codegouvfr/react-dsfr. Setup Next.js App Router (a |
 | Qualité & conformité | [`gouv-fr-audit-conformite`](skills/gouv-fr-audit-conformite/SKILL.md) | Audit de conformité d'une app gouv-fr-code-index. |
 | Qualité & conformité | [`gouv-fr-code-quality`](skills/gouv-fr-code-quality/SKILL.md) | Qualité de code : standards au quotidien (fonctions, erreurs, imports, tests) et grille de revue en trois niveaux pour d |

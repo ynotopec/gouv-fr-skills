@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]
-    related_skills: [gouv-fr-design-system, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa, gouv-fr-react-dsfr, gouv-fr-lasuite-ui-kit]
+    related_skills: [gouv-fr-design-system, gouv-fr-graphiques-dsfr, gouv-fr-templates-email, gouv-fr-compliance-rgaa, gouv-fr-react-dsfr, gouv-fr-lasuite-ui-kit]
 ---
 
 # Gouv-fr — Composants Vue (VueDsfr)
@@ -23,7 +23,7 @@ plugin ou en imports nommés.
 - Intégrer des composants DSFR dans un projet Vue 3 / Vue CLI / Nuxt 3.
 - Générer du code Vue SFC conforme DSFR.
 
-Don't use for: visualisation de données (→ `gouv-fr-graphiques-DSFR`), emails (→ `gouv-fr-templates-email`), ou projets hors
+Don't use for: visualisation de données (→ `gouv-fr-graphiques-dsfr`), emails (→ `gouv-fr-templates-email`), ou projets hors
 administration publique.
 
 ## Prérequis

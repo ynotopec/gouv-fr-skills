@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-pictogrammes-DSFR
+name: gouv-fr-pictogrammes-dsfr
 description: "Intègre pictogrammes, icônes et visuels officiels du DSFR."
 category: frontend
 version: 0.2.0

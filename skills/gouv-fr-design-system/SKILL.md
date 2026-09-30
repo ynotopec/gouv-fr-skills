@@ -9,14 +9,14 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
-    related_skills: [gouv-fr-pictogrammes-DSFR, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa, gouv-fr-react-dsfr]
+    related_skills: [gouv-fr-pictogrammes-dsfr, gouv-fr-graphiques-dsfr, gouv-fr-templates-email, gouv-fr-compliance-rgaa, gouv-fr-react-dsfr]
 ---
 
 # Gouv-fr — Design System de l'État (DSFR)
 
 Le DSFR est le design system officiel de l'administration française. Ce skill couvre installation (NPM/CDN/clone) et
-vérification de conformité. Hors périmètre : emails (→ `gouv-fr-templates-email`), graphiques (→ `gouv-fr-graphiques-DSFR`),
-pictogrammes en détail (→ `gouv-fr-pictogrammes-DSFR`).
+vérification de conformité. Hors périmètre : emails (→ `gouv-fr-templates-email`), graphiques (→ `gouv-fr-graphiques-dsfr`),
+pictogrammes en détail (→ `gouv-fr-pictogrammes-dsfr`).
 
 ## Quand utiliser
 
