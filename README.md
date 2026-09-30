@@ -2,7 +2,7 @@
 
 Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission Interministérielle).
 
-**39 skills**, tous préfixés `gouv-fr-`. Index complet : [`SKILLS.md`](SKILLS.md).
+**43 skills**, tous préfixés `gouv-fr-`. Index complet : [`SKILLS.md`](SKILLS.md).
 
 ## Origines
 
@@ -10,7 +10,7 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 - **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills` + `docs/okf`
 - **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills gouv-fr-code
 - **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
-- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE (DSFR React, RGAA, ANSSI, data.gouv.fr, LaSuite, usage IA). **Non synchronisé** : cité comme source de référence et de filiation (`author: etalab-ia` sur 3 skills). Voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
+- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** (préfixe `gouv-fr-`) : `react-dsfr`, `lasuite-ui-kit`, `anssi-guides`, `datagouv-apis`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
 - **Skills locaux gouv-fr** — migrés et renommés, sauvegarde dans `backup-local-skills/`
 
 ## Skills
@@ -48,6 +48,8 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 |-------|-------------|
 | [`gouv-fr-composants-vue`](skills/gouv-fr-composants-vue/SKILL.md) | VueDsfr — composants Vue 3 |
 | [`gouv-fr-design-system`](skills/gouv-fr-design-system/SKILL.md) | DSFR — Système de Design de l'État |
+| [`gouv-fr-lasuite-ui-kit`](skills/gouv-fr-lasuite-ui-kit/SKILL.md) | LaSuite UI Kit (React, Cunningham) |
+| [`gouv-fr-react-dsfr`](skills/gouv-fr-react-dsfr/SKILL.md) | React DSFR (`@codegouvfr/react-dsfr`) |
 | [`gouv-fr-frontend-vue3`](skills/gouv-fr-frontend-vue3/SKILL.md) | Vue 3, Nuxt 3 |
 | [`gouv-fr-graphiques-DSFR`](skills/gouv-fr-graphiques-DSFR/SKILL.md) | Graphiques DSFR en web-components |
 | [`gouv-fr-pictogrammes-DSFR`](skills/gouv-fr-pictogrammes-DSFR/SKILL.md) | Pictogrammes, icônes, visuels officiels |
@@ -67,6 +69,7 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 
 | Skill | Description |
 |-------|-------------|
+| [`gouv-fr-anssi-guides`](skills/gouv-fr-anssi-guides/SKILL.md) | Catalogue et consultation des guides ANSSI |
 | [`gouv-fr-audit-openwebui`](skills/gouv-fr-audit-openwebui/SKILL.md) | Identité SSO des tools derrière OpenWebUI |
 | [`gouv-fr-audit-pentest`](skills/gouv-fr-audit-pentest/SKILL.md) | Préparation pen-test & durcissement |
 | [`gouv-fr-audit-redteam`](skills/gouv-fr-audit-redteam/SKILL.md) | Red-team / prompt-injection LLM |
@@ -92,6 +95,7 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 
 | Skill | Description |
 |-------|-------------|
+| [`gouv-fr-datagouv-apis`](skills/gouv-fr-datagouv-apis/SKILL.md) | APIs data.gouv.fr (Main, Metrics, Tabular) |
 | [`gouv-fr-donnees-ouvertes`](skills/gouv-fr-donnees-ouvertes/SKILL.md) | Données ouvertes publiques du SIG |
 
 ## Installation

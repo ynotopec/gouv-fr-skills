@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]
-    related_skills: [gouv-fr-design-system, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa]
+    related_skills: [gouv-fr-design-system, gouv-fr-graphiques-DSFR, gouv-fr-templates-email, gouv-fr-compliance-rgaa, gouv-fr-react-dsfr, gouv-fr-lasuite-ui-kit]
 ---
 
 # Gouv-fr — Composants Vue (VueDsfr)

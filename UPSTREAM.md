@@ -84,27 +84,32 @@ cd /tmp/sk && git log -1 --format='%H %ci %s'
 
 **Vérifié** : commit `c791677` (2026-09-29) — 7 skills officielles + `.experimental/`.
 
-Ce dépôt n'est **pas** une source d'import : c'est un référentiel externe de référence,
-cité dans nos skills (`gouv-fr-code-index`, `gouv-fr-projet-structure`) et à l'origine de
-la filiation `author: etalab-ia` de 3 skills.
+**4 skills adaptées** (préfixe `gouv-fr-`, frontmatter canonique du dépôt, `references/` et
+`scripts/` repris tels quels, `README.md` source retiré pour rester homogène) :
 
-| Leur skill | Notre équivalent | Recouvrement |
-|------------|------------------|--------------|
-| `rgaa` | `gouv-fr-compliance-rgaa` | partiel — eux : outil d'audit 106 critères (5 fichiers de référence) ; nous : checklist de conventions |
-| `react-dsfr` | `gouv-fr-design-system`, `gouv-fr-composants-vue` | partiel — **React vs Vue** : nos skills couvrent DSFR CSS + VueDsfr, pas `@codegouvfr/react-dsfr` |
-| `securite-developpement` | `gouv-fr-securite`, `gouv-fr-audit-pentest` | partiel — eux : 14 domaines DINUM/ANSSI détaillés |
-| `datagouv-apis` | `gouv-fr-donnees-ouvertes`, `gouv-fr-api-rest` | faible — eux : API data.gouv.fr ; nous : données SIG |
-| `usage-ia-agents-etat` | `gouv-fr-audit-redteam` | faible — eux : cadre d'usage IA agents publics |
-| `anssi-guides` | — | **aucun** |
-| `lasuite-ui-kit` | — | **aucun** |
+| Leur skill | Notre skill | Adaptation |
+|------------|-------------|------------|
+| `react-dsfr` | `gouv-fr-react-dsfr` | intégrale — `references/components.md`, `references/setup.md` |
+| `lasuite-ui-kit` | `gouv-fr-lasuite-ui-kit` | intégrale — `references/{components,cunningham,setup}.md` |
+| `anssi-guides` | `gouv-fr-anssi-guides` | intégrale — `references/catalogue.md`, `scripts/` (3 fichiers) |
+| `datagouv-apis` | `gouv-fr-datagouv-apis` | intégrale |
+
+**3 skills non reprises** :
+
+| Leur skill | Équivalent chez nous | Raison |
+|------------|----------------------|--------|
+| `rgaa` | `gouv-fr-compliance-rgaa` | doublon partiel : notre skill couvre déjà RGAA/DSFR/RGPD en checklist ; leur outil d'audit 106 critères (5 fichiers de référence) n'a pas été repris |
+| `securite-developpement` | `gouv-fr-securite` | doublon partiel : 14 domaines DINUM/ANSSI détaillés, non repris — `gouv-fr-anssi-guides` y renvoie par URL |
+| `usage-ia-agents-etat` | `gouv-fr-audit-redteam` | périmètre différent (cadre d'usage vs test d'attaque) |
 
 Compatibilité de nommage : leurs skills n'ont pas de préfixe (`rgaa`, `react-dsfr`…),
 les nôtres sont préfixées `gouv-fr-` — **aucune collision**, les deux jeux coexistent
 dans Hermes. Formats de frontmatter différents (eux : `name` + `description` seuls ;
 nous : `category`, `version`, `author`, `license`, `platforms`, `metadata.hermes`).
 
-Lacunes connues côté `gouv-fr-skills` (non couvertes volontairement à ce stade) :
-React DSFR, LaSuite UI Kit, catalogue ANSSI, API data.gouv.fr, cadre d'usage IA.
+Renvois croisés : les liens de `gouv-fr-anssi-guides` vers la skill upstream
+`securite-developpement` pointent vers les URLs GitHub d'`etalab-ia/skills` (les chemins
+relatifs `../../securite-developpement/` seraient cassés ici).
 
 ```bash
 git clone https://github.com/etalab-ia/skills.git /tmp/etalab-skills

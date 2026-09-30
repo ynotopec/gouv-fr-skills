@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, frontend, vue3, nuxt, dsfr, vuedsfr, composables, tests]
-    related_skills: [gouv-fr-design-system, gouv-fr-composants-vue, gouv-fr-stack-technique]
+    related_skills: [gouv-fr-design-system, gouv-fr-composants-vue, gouv-fr-stack-technique, gouv-fr-react-dsfr, gouv-fr-lasuite-ui-kit]
 ---
 # Gouv-fr — Frontend Vue 3 / Nuxt 3
 

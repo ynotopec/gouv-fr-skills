@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, api, rest, openapi, swagger, http, routes, logging]
-    related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-stack-technique]
+    related_skills: [gouv-fr-code-index, gouv-fr-projet-structure, gouv-fr-stack-technique, gouv-fr-datagouv-apis]
 ---
 
 # Gouv-fr — API RESTful
