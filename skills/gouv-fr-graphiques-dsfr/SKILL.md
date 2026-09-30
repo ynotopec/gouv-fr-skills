@@ -1,5 +1,5 @@
 ---
-name: gouv-fr-graphiques-DSFR
+name: gouv-fr-graphiques-dsfr
 description: "Graphiques DSFR en web-components Vue.js (line, bar, pie…)."
 category: frontend
 version: 0.2.0

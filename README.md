@@ -51,8 +51,8 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 | [`gouv-fr-lasuite-ui-kit`](skills/gouv-fr-lasuite-ui-kit/SKILL.md) | LaSuite UI Kit (React, Cunningham) |
 | [`gouv-fr-react-dsfr`](skills/gouv-fr-react-dsfr/SKILL.md) | React DSFR (`@codegouvfr/react-dsfr`) |
 | [`gouv-fr-frontend-vue3`](skills/gouv-fr-frontend-vue3/SKILL.md) | Vue 3, Nuxt 3 |
-| [`gouv-fr-graphiques-DSFR`](skills/gouv-fr-graphiques-DSFR/SKILL.md) | Graphiques DSFR en web-components |
-| [`gouv-fr-pictogrammes-DSFR`](skills/gouv-fr-pictogrammes-DSFR/SKILL.md) | Pictogrammes, icônes, visuels officiels |
+| [`gouv-fr-graphiques-dsfr`](skills/gouv-fr-graphiques-dsfr/SKILL.md) | Graphiques DSFR en web-components |
+| [`gouv-fr-pictogrammes-dsfr`](skills/gouv-fr-pictogrammes-dsfr/SKILL.md) | Pictogrammes, icônes, visuels officiels |
 | [`gouv-fr-templates-email`](skills/gouv-fr-templates-email/SKILL.md) | Templates email DSFR |
 
 ### Qualité & conformité
@@ -108,8 +108,19 @@ cp -r skills/gouv-fr-*/ ~/.hermes/skills/gouv-fr/
 
 - Chaque skill dans `skills/gouv-fr-*/` contient un `SKILL.md` avec frontmatter YAML valide
 - Tous les noms commencent par `gouv-fr-` et correspondent au champ `name:`
+- **Le nom du répertoire et le champ `name:` doivent être en kebab-case minuscule**,
+  conformément au motif `^[a-z0-9]+(-[a-z0-9]+)*$` exigé par les validateurs de skills
+  (opencode, albert-code, Claude Code). Aucune majuscule : `gouv-fr-graphiques-dsfr`,
+  pas `gouv-fr-graphiques-DSFR`. Les acronymes restent en majuscules **dans le titre H1
+  et le texte**, jamais dans le nom.
 - Les références croisées (`related_skills`, mentions dans le corps) pointent vers des skills existants
 - Exemple d'application conforme : `examples/test-app-verification/`
+
+Contrôle rapide de conformité des noms :
+
+```bash
+ls skills/ | grep -vE '^[a-z0-9]+(-[a-z0-9]+)*$'   # ne doit rien afficher
+```
 
 Voir [`REVIEW.md`](REVIEW.md) pour le rapport de revue complet.
 
