@@ -1,0 +1,14 @@
+title = "gouv-fr-skills secret scanning"
+
+[extend]
+useDefault = true
+
+# The repository contains security documentation with deliberately incomplete
+# token prefixes. Keep exceptions narrow and path-independent so real examples
+# with a value after the prefix are still reported.
+[[allowlists]]
+description = "Documented token prefixes without credential material"
+regexTarget = "match"
+regexes = [
+  '''(?:ghp_|glpat-|xoxb-|sk-)$''',
+]

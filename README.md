@@ -107,6 +107,7 @@ cp -r skills/gouv-fr-*/ ~/.hermes/skills/gouv-fr/
 ## Vérification
 
 - Chaque skill dans `skills/gouv-fr-*/` contient un `SKILL.md` avec frontmatter YAML valide
+- Le workflow `Security` analyse l'historique complet avec Gitleaks ; les fichiers de secrets et le répertoire local `private/` sont ignorés par Git
 - Tous les noms commencent par `gouv-fr-` et correspondent au champ `name:`
 - **Le nom du répertoire et le champ `name:` doivent être en kebab-case minuscule**,
   conformément au motif `^[a-z0-9]+(-[a-z0-9]+)*$` exigé par les validateurs de skills
