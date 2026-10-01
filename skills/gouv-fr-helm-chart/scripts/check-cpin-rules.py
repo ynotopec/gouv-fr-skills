@@ -4,13 +4,14 @@
 Usage : helm template <release> <chart> -f values-cpin.yaml | uv run --with pyyaml scripts/check-cpin-rules.py
 Code de sortie 1 s'il reste des ERREURS (bloquantes en prod) ; les AVERTISSEMENTS n'échouent pas.
 """
+import os
 import sys
 
 import yaml
 
 REQUIRED_LABELS = ("app", "env", "tier")
 RECOMMENDED_LABELS = ("criticality", "component")
-ALLOWED_REGISTRIES = ("docker.io/", "harbor", "registry.redhat.io/", "quay.io/", "bitnami/", "ghcr.io/")
+PUBLIC_REGISTRIES = ("docker.io", "registry.redhat.io", "quay.io", "ghcr.io")
 FORBIDDEN_CM_KEYS = ("password", "passwd", "secret_key")
 WORKLOADS = {"Deployment", "StatefulSet", "DaemonSet", "Job", "CronJob"}
 LONG_LIVED = {"Deployment", "StatefulSet", "DaemonSet"}
@@ -34,7 +35,20 @@ def check_image(name, image):
     errors = []
     if tag == "latest" or (not tag and "@sha256:" not in image):
         errors.append(f"{name}: image '{image}' sans tag versionné (latest interdit)")
-    if not any(image.startswith(registry) or registry in image.split("/")[0] for registry in ALLOWED_REGISTRIES):
+    first_component = image.split("/", 1)[0].lower()
+    # An explicit registry has a dot/port (or is localhost). Unqualified images
+    # use Docker Hub. Do not use substring checks: ``evil-harbor.example`` must
+    # never pass merely because its hostname contains an approved word.
+    explicit_registry = "/" in image and (
+        "." in first_component or ":" in first_component or first_component == "localhost"
+    )
+    registry = first_component if explicit_registry else "docker.io"
+    project_registries = tuple(
+        host.strip().lower()
+        for host in os.environ.get("CPIN_ALLOWED_REGISTRIES", "").split(",")
+        if host.strip()
+    )
+    if registry not in PUBLIC_REGISTRIES + project_registries:
         errors.append(f"{name}: registre non autorisé pour '{image}'")
     return errors
 

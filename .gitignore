@@ -4,5 +4,23 @@
 *.swp
 *~
 
+# Secrets and local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*.kubeconfig
+kubeconfig*
+*.tfstate
+*.tfstate.*
+*.sql
+credentials.json
+private/
+.vscode/*.local.*
+
 # Node
 node_modules/
