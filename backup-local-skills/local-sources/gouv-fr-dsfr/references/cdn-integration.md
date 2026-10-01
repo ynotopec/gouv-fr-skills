@@ -11,7 +11,7 @@ Version vérifiée : 1.15.3. Dernière version : `https://data.jsdelivr.com/v1/p
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/utility/utility.min.css">
 <!-- avant </body> -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.module.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.nomodule.min.js"></script>
 ```
 
@@ -30,4 +30,4 @@ Inutile d'ajouter Google Fonts : le CSS référence ses polices (`IBM Plex Sans`
 - Ne pas mélanger les versions : tous les fichiers CDN doivent épingler la MÊME version.
 - Le CDN ne fonctionne pas hors ligne sans cache.
 - Les pictogrammes/icônes dépendent de `utility.min.css` EN PLUS de `dsfr.min.css` — lier les deux.
-- Charger le JS avec `type="module"` + un fallback `nomodule` ; sans lui, les composants interactifs (accordion, header, tabs) ne s'initialisent pas.
+- Charger `dsfr.module.min.js` avec `type="module"` + `dsfr.nomodule.min.js` comme fallback `nomodule` ; `dsfr.min.js` n'existe pas et renvoie 404.
