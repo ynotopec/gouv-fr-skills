@@ -2,7 +2,7 @@
 name: gouv-fr-design-system
 description: "Installer et vérifier le design system de l'État (DSFR)."
 category: frontend
-version: 0.3.0
+version: 0.3.1
 author: Hermes Agent (Nous Research)
 license: MIT
 platforms: [linux, macos]
@@ -44,7 +44,7 @@ npm install @gouvfr/dsfr
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/utility/utility.min.css">
 # avant </body> :
-<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.module.min.js"></script>
 <script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.nomodule.min.js"></script>
 ```
 
@@ -54,7 +54,7 @@ npm install @gouvfr/dsfr
 
 1. `npm install @gouvfr/dsfr`.
 2. Lier `dist/dsfr.min.css` + `dist/utility/utility.min.css` dans `<head>`.
-3. Charger `dsfr.min.js` (`type="module"`) et `dsfr.nomodule.min.js` (`nomodule`) avant `</body>`.
+3. Charger `dist/dsfr.module.min.js` (`type="module"`) et `dist/dsfr.nomodule.min.js` (`nomodule`) avant `</body>`.
 4. Critère de fin : `python3 scripts/verify_dsfr.py page.html` retourne zéro classe inconnue.
 
 ### Via CDN (sans npm)
@@ -85,8 +85,9 @@ un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 - **Callout = `fr-callout`** (pas `fr-call`) : `fr-callout__title`, `fr-callout__text`, modificateurs de couleur `fr-callout--<couleur>`. `fr-call` existe comme sélecteur nu mais n'est pas le composant.
 - **Liste des liens utiles du footer** : `<ul class="fr-footer__content-list">` avec `<li>` sans classe (`fr-footer__content-item` N'EXISTE PAS) et `<a class="fr-footer__content-link">`.
 - Intégration locale du paquet dsfr-clone/dist : `icons-system.min.css` est sous `utility/icons/icons-system/` et référence `../../../icons/` ; `dsfr.min.css` référence `fonts/` → copier `fonts/` ET `icons/` complets à côté, sinon 404 des icônes/polices.
+- **Nom du bundle JavaScript** : `dist/dsfr.min.js` n'existe pas et renvoie 404. Utiliser `dist/dsfr.module.min.js` avec `type="module"`, complété par `dist/dsfr.nomodule.min.js` avec `nomodule`.
 - **Le CSS officiel est la seule source de vérité** : `scripts/verify_dsfr.py` compare chaque classe `fr-*` du HTML aux sélecteurs réels de `dsfr.min.css` + `utility.min.css`. Se fier à cette comparaison, jamais à des listes de classes mémorisées.
-- **Paquet réel plutôt que CSS recodé à la main** : `npm pack @gouvfr/dsfr` puis servir `dist/` localement est plus fidèle qu'imiter les classes. Les polices sont référencées en `url(fonts/…)` relatif au CSS → servir `dist/fonts/` à côté (sur jsDelivr, la résolution est automatique).
+- **Paquet réel plutôt que CSS recodé à la main** : installer le paquet officiel `@gouvfr/dsfr` puis servir son répertoire `dist/` complet localement est plus fidèle qu'imiter les classes. Conserver notamment `dist/fonts/` et `dist/icons/` : les feuilles de style les référencent par des URLs relatives (sur jsDelivr, la résolution est automatique).
 - **Navigateur indisponible** : Chromium peut manquer (ou `libglib-2.0` système, sans sudo) → vérifier sans navigateur via `references/verify-no-browser.md`.
 - **Préférence** : `npm install` et servir le paquet réel plutôt que recoder le CSS DSFR à la main.
 
