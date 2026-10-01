@@ -21,7 +21,7 @@ uv init "$NAME"
 cd "$NAME"
 
 # Add core dependencies
-uv add "fastapi[standard]"
+uv add "fastapi[standard]" pydantic-settings
 
 # Add dev dependencies
 uv add --dev ruff pytest httpx
@@ -64,20 +64,33 @@ EOF
 
 # Config
 cat > app/config.py << 'EOF'
-from pydantic import BaseModel
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    database_url: str = "postgresql://user:pass@localhost:5432/mydb"
-    secret_key: str = "change-me-in-production"
+    database_url: str
+    secret_key: SecretStr = Field(min_length=32)
     debug: bool = False
 
-    class Config:
-        env_file = ".env"
+    model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
 
 settings = Settings()
+EOF
+
+cat > .env.example << 'EOF'
+DATABASE_URL=postgresql://localhost:5432/app
+# Generate locally, for example: openssl rand -hex 32
+SECRET_KEY=
+DEBUG=false
+EOF
+
+cat > .gitignore << 'EOF'
+.env
+.venv/
+__pycache__/
+*.py[cod]
 EOF
 
 # Example Pydantic schemas
