@@ -1,6 +1,7 @@
 # gouv-fr-skills
 
-Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission Interministérielle).
+Répertoire de skills compatibles **Hermes**, **OpenCode**, **Kilo Code** et
+**Claude Code** pour les projets de la Fabrique Numérique (Mission Interministérielle).
 
 **43 skills**, tous préfixés `gouv-fr-`. Index complet : [`SKILLS.md`](SKILLS.md).
 
@@ -100,9 +101,40 @@ Répertoire de skills Hermes pour les projets de la Fabrique Numérique (Mission
 
 ## Installation
 
+Le script installe chaque dossier de skill sans en modifier le format :
+
 ```bash
-cp -r skills/gouv-fr-*/ ~/.hermes/skills/gouv-fr/
+# Installer les 43 skills pour les quatre agents, dans le profil utilisateur
+./scripts/install-skills.sh
+
+# Installer pour un seul agent
+./scripts/install-skills.sh --agent hermes
+./scripts/install-skills.sh --agent opencode
+./scripts/install-skills.sh --agent kilo
+./scripts/install-skills.sh --agent claude
 ```
+
+Les destinations utilisateur sont :
+
+| Agent | Destination |
+|-------|-------------|
+| Hermes | `${HERMES_HOME:-~/.hermes}/skills/` |
+| OpenCode | `${XDG_CONFIG_HOME:-~/.config}/opencode/skills/` |
+| Kilo Code | `${KILO_HOME:-~/.kilocode}/skills/` |
+| Claude Code | `${CLAUDE_HOME:-~/.claude}/skills/` |
+
+Pour une installation limitée à un dépôt, utiliser `--scope project`. Le script
+écrit alors respectivement dans `.hermes/skills/`, `.opencode/skills/`,
+`.kilocode/skills/` ou `.claude/skills/` :
+
+```bash
+./scripts/install-skills.sh --agent claude --scope project
+./scripts/install-skills.sh --agent all --scope project --project /chemin/du/projet
+```
+
+Par sécurité, une installation existante n'est pas écrasée. Ajouter `--force`
+pour mettre à jour les copies déjà présentes. `./scripts/install-skills.sh --help`
+affiche toutes les options.
 
 ## Vérification
 
@@ -121,6 +153,7 @@ Contrôle rapide de conformité des noms :
 
 ```bash
 ls skills/ | grep -vE '^[a-z0-9]+(-[a-z0-9]+)*$'   # ne doit rien afficher
+./scripts/test-install-skills.sh
 ```
 
 Voir [`REVIEW.md`](REVIEW.md) pour le rapport de revue complet.
