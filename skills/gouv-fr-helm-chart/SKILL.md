@@ -80,7 +80,7 @@ Sortie 1 s'il reste des erreurs. Ce n'est pas Kyverno : les règles sont en **au
 - `version` (chart) ≠ `appVersion` (application). Dans le dépôt applicatif, ne pas les bumper à la main : `update-helm-chart` (`RUN_MODE: local`) le fait au release (skill `gouv-fr-github-actions-ci`).
 - Régénérer le README (helm-docs) : `lint-helm` échoue si le README diffère du rendu.
 - Publication OCI : `release-helm-local` (ghcr.io) ; le pipeline DSO refait `helm dependency update`, `helm package` puis `helm push` vers Harbor.
-- Dépendances (postgres, redis, CNPG) : `alias` + `condition: <alias>.enabled`, et `HELM_REPOS`/`chart-repos` pour celles en HTTP. Registres autorisés côté cluster : docker.io, harbor, registry.redhat.io, quay.io, bitnami, ghcr.io.
+- Dépendances (postgres, redis, CNPG) : `alias` + `condition: <alias>.enabled`, et `HELM_REPOS`/`chart-repos` pour celles en HTTP. Registres publics autorisés côté cluster : docker.io, registry.redhat.io, quay.io et ghcr.io. Déclarer le hostname exact du Harbor projet dans `CPIN_ALLOWED_REGISTRIES` lors de l'appel au validateur (liste séparée par des virgules), sans accepter un hostname sur la seule présence du mot `harbor`.
 
 ## Pièges
 

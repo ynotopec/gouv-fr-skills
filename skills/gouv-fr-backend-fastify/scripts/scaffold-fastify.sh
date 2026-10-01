@@ -18,7 +18,7 @@ echo "Creating Fastify project: $NAME"
 
 # Initialize project
 pnpm init
-pnpm add fastify
+pnpm add fastify @fastify/cors
 
 # Dev dependencies
 pnpm add -D typescript @types/node tsx @sinclair/typebox
@@ -73,6 +73,13 @@ import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
 import cors from '@fastify/cors'
 
+function allowedOrigins(): string[] {
+  return (process.env.CORS_ORIGINS ?? '')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+}
+
 export async function buildApp(): Promise<FastifyInstance> {
   const fastify = Fastify({
     logger: {
@@ -84,7 +91,10 @@ export async function buildApp(): Promise<FastifyInstance> {
   })
 
   // Plugins
-  await fastify.register(cors, { origin: true })
+  const origins = allowedOrigins()
+  await fastify.register(cors, {
+    origin: origins.length === 0 ? false : origins,
+  })
   await fastify.register(fastifySwagger, {
     openapi: {
       info: { title: 'My API', version: '1.0.0' },
@@ -101,8 +111,8 @@ export async function buildApp(): Promise<FastifyInstance> {
     const statusCode = error.statusCode ?? 500
     reply.status(statusCode).send({
       statusCode,
-      error: error.name,
-      message: error.message,
+      error: statusCode >= 500 ? 'Internal Server Error' : error.name,
+      message: statusCode >= 500 ? 'An unexpected error occurred' : error.message,
       timestamp: new Date().toISOString(),
     })
   })
@@ -111,14 +121,18 @@ export async function buildApp(): Promise<FastifyInstance> {
 }
 EOF
 
-# CORS plugin
-cat > src/plugins/cors.ts << 'EOF'
-import fp from 'fastify-plugin'
-import cors from '@fastify/cors'
 
-export default fp(async (fastify) => {
-  await fastify.register(cors, { origin: true })
-})
+cat > .env.example << 'EOF'
+# Comma-separated exact origins. An empty value disables browser CORS access.
+CORS_ORIGINS=http://localhost:5173
+LOG_LEVEL=info
+EOF
+
+cat > .gitignore << 'EOF'
+.env
+node_modules/
+dist/
+*.log
 EOF
 
 # Routes index
