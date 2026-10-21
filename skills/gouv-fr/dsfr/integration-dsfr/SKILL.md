@@ -1,7 +1,7 @@
 ---
 
 name: integration-dsfr
-description: "Installer et vérifier le design system de l'État (DSFR)."
+description: Installe et vérifie le DSFR d'un projet.
 version: 0.3.2
 license: MIT
 platforms: [linux, macos]

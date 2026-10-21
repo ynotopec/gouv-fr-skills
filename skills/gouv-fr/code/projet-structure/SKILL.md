@@ -1,7 +1,7 @@
 ---
 
 name: projet-structure
-description: "Structure de projet, intégration agent et variables d'env."
+description: Layout de dépôt, agent de code et variables d'env.
 version: 0.3.0
 license: MIT
 platforms: [linux, macos]
@@ -16,6 +16,13 @@ metadata:
 Layout de dépôt, intégration d'un agent de code (OpenCode ou équivalent) et
 variables d'environnement. Ce skill est **autonome** : il ne dépend d'aucun
 CLI interne ni d'une plateforme d'exécution particulière.
+
+## Quand utiliser
+
+- Poser le layout d'un dépôt et son intégration à un agent de code.
+- Documenter les variables d'environnement attendues par le projet.
+
+Ne pas utiliser pour initialiser le dépôt lui-même : voir `repo-init`.
 
 ## Project Layout
 

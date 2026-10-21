@@ -1,7 +1,7 @@
 ---
 
 name: adr
-description: Rédige une nouvelle ADR (Architecture Decision Record) au format IA-Generative. Utiliser quand une décision d'archi a été prise et doit être tracée (choix de backend, refonte, breaking change, trade-off entre options).
+description: Trace une décision d'architecture en ADR.
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]
@@ -13,6 +13,15 @@ metadata:
 
 
 # Gouv-fr — ADR (Architecture Decision Record)
+
+## Quand utiliser
+
+- Une décision d'architecture est prise et doit être tracée : choix de backend,
+  de base de données, refonte, breaking change, arbitrage entre options.
+- Un successeur doit comprendre *pourquoi* le code est ainsi, pas seulement comment.
+
+Ne pas utiliser pour un changelog ni une note de version : ici on consigne une
+décision et ses alternatives écartées.
 
 ## 1. Localisation
 Trouve le dossier ADR du repo :

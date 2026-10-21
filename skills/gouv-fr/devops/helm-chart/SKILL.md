@@ -1,7 +1,7 @@
 ---
 
 name: helm-chart
-description: Crée ou adapte un chart Helm pour déployer sur Cloud Pi Native (OpenShift + Kyverno) — gabarit this-is-tobi, values par environnement, securityContext et UID, labels MIOM, secrets Vault via extraObjects, tags d'image, versionnage du chart et publication OCI.
+description: Crée un chart Helm pour Cloud Pi Native.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -16,6 +16,15 @@ Créer ou adapter un chart qui passe les contraintes OpenShift et les politiques
 3 temps :
 **squelette** (template tobi) → **surcharge CPiN** (`values-cpin.yaml`) → **vérification** (`helm lint` +
 `check-cpin-rules.py`).
+
+## Quand utiliser
+
+- Créer ou adapter un chart Helm destiné à Cloud Pi Native.
+- Passer les contraintes OpenShift et les politiques Kyverno (securityContext,
+  UID, labels MIOM, secrets Vault).
+
+Ne pas utiliser pour le déploiement GitOps lui-même : voir
+`deployment-cloud-pi-native`.
 
 ## Ce qu'il faut savoir d'abord
 

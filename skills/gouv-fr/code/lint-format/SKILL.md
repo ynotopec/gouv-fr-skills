@@ -1,7 +1,7 @@
 ---
 
 name: lint-format
-description: Lint et formattage ESLint, Ruff et EditorConfig pour projets Fabrique Numérique.
+description: Configure ESLint, Ruff et EditorConfig.
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]

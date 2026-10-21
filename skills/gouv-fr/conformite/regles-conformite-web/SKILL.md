@@ -1,7 +1,7 @@
 ---
 
 name: regles-conformite-web
-description: "Appliquer les règles de base RGAA, DSFR et RGPD à une application web de l’État ; utiliser pour une checklist de livraison. Pour un audit avec preuves et limites, voir audit-conformite."
+description: Checklist RGAA, DSFR et RGPD avant livraison.
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]
@@ -15,6 +15,13 @@ metadata:
 # Gouv-fr — Règles de conformité web (RGAA, DSFR, RGPD)
 
 Règles d'accessibilité et conformité réglementaire pour les applications de l'État.
+
+## Quand utiliser
+
+- Passer une checklist RGAA, DSFR et RGPD avant livraison.
+- Cadrer les règles de base d'une application web de l'État.
+
+Pour un audit avec preuves et limites, voir `audit-conformite`.
 
 ## RGAA (Accessibilité)
 

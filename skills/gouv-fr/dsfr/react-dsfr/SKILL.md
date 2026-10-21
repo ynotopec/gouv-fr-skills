@@ -1,7 +1,7 @@
 ---
 
 name: react-dsfr
-description: "Créer des interfaces React conformes au Design System de l'État avec @codegouvfr/react-dsfr. Setup Next.js App Router (anti-flash thème), routing, icônes, couleurs, composants natifs (pas MUI), patterns de mise en page et de formulaire."
+description: Interfaces React avec @codegouvfr/react-dsfr.
 version: 0.1.0
 license: MIT
 platforms: [linux, macos]
@@ -17,6 +17,14 @@ metadata:
 > Source : [`etalab-ia/skills`](https://github.com/etalab-ia/skills) (`react-dsfr`), adapté au préfixe `gouv-fr-`. Couvre la voie **React** ; le DSFR CSS générique est dans `integration-dsfr`, la voie Vue dans `vue-dsfr`.
 
 Bibliothèque React pour le Design System de l'État français. Package : `@codegouvfr/react-dsfr`.
+
+## Quand utiliser
+
+- Construire une interface React conforme au DSFR avec `@codegouvfr/react-dsfr`.
+- Poser le setup Next.js App Router, le routing, les icônes et les formulaires.
+
+Ne pas utiliser pour Vue : voir `vue-dsfr`. Pour installer le DSFR seul, voir
+`integration-dsfr`.
 
 ## Import pattern
 

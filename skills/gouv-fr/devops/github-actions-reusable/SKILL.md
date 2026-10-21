@@ -1,7 +1,7 @@
 ---
 
 name: github-actions-reusable
-description: Écrit ou révise des workflows GitHub Actions ci.yml/cd.yml s'appuyant sur les workflows réutilisables dnum-mi/fabnum-cicd — lint, scans Trivy/Gitleaks, build Docker, release-please, bump et publication du chart Helm, credentials GitHub App et déclencheur sync-cpin vers Cloud Pi Native.
+description: Écrit ci.yml et cd.yml sur fabnum-cicd.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -15,6 +15,15 @@ metadata:
 Assembler les workflows réutilisables de [`dnum-mi/fabnum-cicd`](https://github.com/dnum-mi/fabnum-cicd) en un `ci.yml`
 (pull request) et un `cd.yml` (release + livraison vers Cloud Pi Native).
 Les gabarits de `references/` sont validés contre les entrées et secrets réels des workflows (`@v0`).
+
+## Quand utiliser
+
+- Écrire ou réviser un `ci.yml` / `cd.yml` adossé aux workflows de
+  `dnum-mi/fabnum-cicd`.
+- Ajouter scans Trivy/Gitleaks, release-please, bump de chart ou synchro CPiN.
+
+Pour une CI minimale sans fabnum-cicd, voir `github-actions-ci`. Pour brancher
+l'ensemble sur CPiN, voir `cicd-cloud-pi-native`.
 
 ## Avant d'écrire : 5 questions
 

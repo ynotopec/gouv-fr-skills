@@ -1,7 +1,7 @@
 ---
 
 name: pictogrammes-dsfr
-description: "Intègre pictogrammes, icônes et visuels officiels du DSFR."
+description: Intègre pictogrammes et icônes officiels du DSFR.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
