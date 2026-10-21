@@ -1,14 +1,14 @@
 ---
 
 name: audit-llm-tool-identity
-description: Vérifie l'identité SSO des outils LLM per-user.
+description: SSO subject propagation, per-user vault, session isolation
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, audit, openwebui, sso, keycloak, mcp, llm]
-    related_skills: [audit-repo-safety, redteam-llm-prompt-injection, secure-coding-rules]
+    related_skills: [audit-repo-safety, redteam-llm-prompt-injection, fr-gov-secure-coding-rules]
 ---
 
 

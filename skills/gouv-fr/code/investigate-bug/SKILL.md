@@ -1,7 +1,7 @@
 ---
 
 name: investigate-bug
-description: Éprouve 2-3 hypothèses de cause avant de corriger.
+description: Root cause hypotheses, reproduction, fallback plan
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]

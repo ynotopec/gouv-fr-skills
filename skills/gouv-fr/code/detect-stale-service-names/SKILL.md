@@ -1,14 +1,14 @@
 ---
 
 name: detect-stale-service-names
-description: Détecte le retour d'anciens noms de services.
+description: Rename regressions, manifests, old-to-new mapping
 version: 1.1.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, rebranding, regression, detect-stale-service-names, nomenclature]
-    related_skills: [init-repo, set-up-cloud-pi-native-cicd]
+    related_skills: [init-repo, fr-gov-set-up-cloud-pi-native-cicd]
 ---
 
 # Gouv-fr — Noms de services (anti-régression)

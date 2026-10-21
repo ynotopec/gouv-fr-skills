@@ -1,14 +1,14 @@
 ---
 
 name: smoke-test-api
-description: Smoke-teste une API sans exposer de secret.
+description: Resource listing, media download, async job, credentials
 version: 1.2.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, smoke-test, api, credentials, pipeline]
-    related_skills: [set-up-cloud-pi-native-cicd, secure-coding-rules]
+    related_skills: [fr-gov-set-up-cloud-pi-native-cicd, fr-gov-secure-coding-rules]
 ---
 
 # Gouv-fr — Smoke-test d'une API

@@ -1,14 +1,14 @@
 ---
 
 name: redteam-llm-prompt-injection
-description: Mène un red-team prompt-injection contre un LLM.
+description: LLM01, jailbreaks, canary exfiltration, guard evaluation
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, audit, redteam, prompt-injection, owasp-llm, llm]
-    related_skills: [harden-repo-before-pentest, audit-llm-tool-identity, secure-coding-rules]
+    related_skills: [harden-repo-before-pentest, audit-llm-tool-identity, fr-gov-secure-coding-rules]
 ---
 
 

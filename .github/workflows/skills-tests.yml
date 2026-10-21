@@ -20,11 +20,11 @@ jobs:
       - name: Installer les dépendances de test
         run: python -m pip install --upgrade pip && python -m pip install pyyaml python-docx
       - name: Tests du rendu DAT (typographie, modèle par défaut)
-        run: python -m unittest discover -s skills/gouv-fr/conformite/render-dat-docx/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/conformite/fr-gov-render-technical-architecture-docx/tests -v
       - name: Tests du vérificateur DSFR
-        run: python -m unittest discover -s skills/gouv-fr/dsfr/set-up-french-state-design-system/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/dsfr/fr-gov-set-up-design-system/tests -v
       - name: Tests de vérification des appels de workflows
-        run: python -m unittest discover -s skills/gouv-fr/devops/set-up-cloud-pi-native-cicd/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/devops/fr-gov-set-up-cloud-pi-native-cicd/tests -v
       - name: Tests du smoke-test-api (credentials synthétiques, sans réseau)
         run: python -m unittest discover -s skills/gouv-fr/devops/smoke-test-api/tests -v
 
@@ -37,3 +37,5 @@ jobs:
         run: python3 scripts/check-skill-catalog.py
       - name: Tester le script d'installation
         run: bash scripts/test-install-skills.sh
+      - name: Migrer les catalogues réellement distribués
+        run: python3 -m unittest discover -s scripts/tests -v

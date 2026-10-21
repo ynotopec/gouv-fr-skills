@@ -1,14 +1,14 @@
 ---
 
 name: write-adr
-description: Trace une décision d'architecture en ADR.
+description: Architecture decisions, alternatives, trade-offs
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, write-adr, architecture, decision, documentation]
-    related_skills: [set-up-project-layout, ship-a-dev-task]
+    related_skills: [fr-gov-set-up-project-layout, ship-a-dev-task]
 ---
 
 
