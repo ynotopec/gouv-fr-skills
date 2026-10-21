@@ -119,7 +119,7 @@ la qualité du traitement et ne valide pas un déploiement à lui seul.
 ## Vérifier une modification du skill
 
 ```
-python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test-api/tests -v
+python3 -m unittest discover -s skills/fr-gov/devops/smoke-test-api/tests -v
 ```
 
 Les tests utilisent des credentials synthétiques et un transport simulé ;

@@ -4,11 +4,11 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Installe les skills gouv-fr pour un assistant de code.
+Installe les skills fr-gov pour un assistant de code.
 
 Usage: scripts/install-skills.sh [options]
 
-Les skills sont organizees par groupe dans skills/gouv-fr/<groupe>/<skill>/.
+Les skills sont organisées par groupe dans skills/fr-gov/<groupe>/<skill>/.
 Par defaut, ils sont installes a plat dans <destination>/<groupe>/<skill>/ :
 le dossier de groupe est conserve, ce qui evite toute collision de nom entre
 groupes.
@@ -18,7 +18,7 @@ Options:
   --scope <portee> user ou project (defaut: user)
   --project <dir>  racine du projet pour --scope project (defaut: repertoire courant)
   --flat            installe a plat dans <destination>/<skill>/ (sans le groupe)
-  --force           remplace les skills gouv-fr deja installes
+  --force           remplace les skills fr-gov déjà installés
   --migrate         archive les anciens noms/groupes hors du dossier actif
   -h, --help        affiche cette aide
 EOF
@@ -84,7 +84,7 @@ esac
 
 script_dir="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(dirname "$script_dir")"
-skills_root="$repo_root/skills/gouv-fr"
+skills_root="$repo_root/skills/fr-gov"
 renames_file="$script_dir/skill-renames.tsv"
 retirements_file="$script_dir/skill-retirements.tsv"
 [[ -f "$renames_file" ]] || { echo "Erreur: table locale des renommages absente" >&2; exit 1; }

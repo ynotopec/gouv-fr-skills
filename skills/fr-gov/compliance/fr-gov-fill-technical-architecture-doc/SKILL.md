@@ -19,7 +19,7 @@ Cette skill **embarque** le modèle et le prompt de référence (anciennement le
 maintenir). Les artefacts vivent à côté de ce fichier :
 
 ```
-skills/gouv-fr/conformite/fr-gov-fill-technical-architecture-doc/
+skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/
 ├── SKILL.md          # ce fichier (loader)
 ├── CHANGELOG.md      # versions des modèles/prompts (tags vX.Y du contenu)
 └── dat/

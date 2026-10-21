@@ -3,17 +3,17 @@
 Répertoire de skills compatibles **Hermes**, **OpenCode**, **Kilo Code** et
 **Claude Code** pour les projets de la Fabrique Numérique (Mission Interministérielle).
 
-**42 skills** répartis en **7 groupes**, sous `skills/gouv-fr/<groupe>/<skill>/`.
+**42 skills** répartis en **7 groupes**, sous `skills/fr-gov/<groupe>/<skill>/`.
 Index complet : [`SKILLS.md`](SKILLS.md).
 
 ## Origines
 
 - **Cloud Pi Native** — https://cloud-pi-native.fr (déploiement, Helm, ArgoCD)
 - **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills` + `docs/okf`
-- **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills gouv-fr-code
+- **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills fr-gov-code
 - **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
 - **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** : `fr-gov-build-react-design-system`, `fr-gov-build-collab-suite-ui`, `fr-gov-find-cybersecurity-guide`, `fr-gov-query-open-data-api`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
-- **Skills locaux gouv-fr** — migrés et renommés, sauvegarde dans `backup-local-skills/`
+- **Skills locaux fr-gov** — migrés et renommés, sauvegarde dans `backup-local-skills/`
 
 ## Organisation
 
@@ -21,13 +21,13 @@ Les skills sont regroupés par usage, sous un unique arbre `gouv-fr/` :
 
 | Groupe | Contenu |
 |---------|---------|
-| [`securite`](skills/gouv-fr/securite/) | Guides ANSSI, audits de sécurité, durcissement |
-| [`code`](skills/gouv-fr/code/) | Architecture, conventions, backend, frontend, outillage, workflow |
-| [`conformite`](skills/gouv-fr/conformite/) | RGAA, RGPD, cookies, documents d'homologation |
-| [`data`](skills/gouv-fr/data/) | APIs data.gouv.fr, données ouvertes du SIG |
-| [`dsfr`](skills/gouv-fr/dsfr/) | Design system de l'État, composants, pictogrammes, templates |
-| [`devops`](skills/gouv-fr/devops/) | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
-| [`lasuite`](skills/gouv-fr/lasuite/) | Interfaces React LaSuite |
+| [`security`](skills/fr-gov/security/) | Guides ANSSI, audits de sécurité, durcissement |
+| [`code`](skills/fr-gov/code/) | Architecture, conventions, backend, frontend, outillage, workflow |
+| [`compliance`](skills/fr-gov/compliance/) | RGAA, RGPD, cookies, documents d'homologation |
+| [`data`](skills/fr-gov/data/) | APIs data.gouv.fr, données ouvertes du SIG |
+| [`design-system`](skills/fr-gov/design-system/) | Design system de l'État, composants, pictogrammes, templates |
+| [`devops`](skills/fr-gov/devops/) | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
+| [`lasuite`](skills/fr-gov/lasuite/) | Interfaces React LaSuite |
 
 Les skills propres aux pratiques, plateformes ou référentiels publics français
 portent le préfixe **`fr-gov-`**, y compris en installation à plat. Les procédures
@@ -55,7 +55,7 @@ CSS) restent inchangés dans les procédures.
 | `dat-homologation` | `fr-gov-fill-technical-architecture-doc` |
 | `dat-word` | `fr-gov-render-technical-architecture-docx` |
 | `service-names` | `detect-stale-service-names` |
-| `securite` | `fr-gov-secure-coding-rules` |
+| `security` | `fr-gov-secure-coding-rules` |
 | `conventions-nommage` | `fr-gov-project-conventions` |
 | `compliance-rgaa` | `fr-gov-check-web-compliance` |
 | `donnees-ouvertes` | `fr-gov-query-public-communication-data` |
@@ -65,7 +65,7 @@ CSS) restent inchangés dans les procédures.
 | `design-system` | `fr-gov-set-up-design-system` |
 | `templates-email` | `fr-gov-build-design-system-emails` |
 
-Les groupes `anssi` et `dso` deviennent `securite` et `devops`. `fr-gov-containerize-app-for-k8s` et `fr-gov-set-up-github-actions-ci` passent de `code` à `devops` ;
+Les groupes `anssi` et `dso` deviennent `security` et `devops`. `fr-gov-containerize-app-for-k8s` et `fr-gov-set-up-github-actions-ci` passent de `code` à `devops` ;
 `detect-stale-service-names` passe de `devops` à `code`.
 La [table de migration](scripts/skill-renames.tsv) conserve les correspondances
 des générations historiques vers les 42 skills actifs. Les routeurs retirés
@@ -137,7 +137,7 @@ n'est jamais supprimée par l'installateur. `--migrate` fonctionne aussi avec
 
 ## Vérification
 
-- Chaque skill dans `skills/gouv-fr/<groupe>/<skill>/` contient un `SKILL.md` avec frontmatter YAML valide
+- Chaque skill dans `skills/fr-gov/<groupe>/<skill>/` contient un `SKILL.md` avec frontmatter YAML valide
 - La `description` tient en **60 caractères au plus**, selon la convention Hermes.
   Elle contient quelques termes discriminants en anglais, comme une requête de
   recherche précise : pas de phrase imposée, de point final obligatoire ni
@@ -159,7 +159,7 @@ Contrôle rapide de conformité :
 
 ```bash
 # Aucun nom de skill ne doit reprendre le nom de son groupe
-find skills/gouv-fr -mindepth 2 -maxdepth 2 -type d \
+find skills/fr-gov -mindepth 2 -maxdepth 2 -type d \
   -exec sh -c '[ "$(basename "$1")" = "$(basename "$(dirname "$1")")" ] && echo "$1"' _ {} \;
 
 ./scripts/test-install-skills.sh
@@ -182,10 +182,10 @@ conformité globale ni le RGAA. **Sans classe `fr-*`, il indique « non évalué
 et retourne 1**, au lieu d'un succès à 100 %. Ses tests s'exécutent hors réseau :
 
 ```bash
-python3 -m unittest discover -s skills/gouv-fr/dsfr/fr-gov-set-up-design-system/tests -v
+python3 -m unittest discover -s skills/fr-gov/design-system/fr-gov-set-up-design-system/tests -v
 ```
 
-Le [protocole d'évaluation](skills/gouv-fr/conformite/fr-gov-audit-app-compliance/references/evaluation-efficiency.md)
+Le [protocole d'évaluation](skills/fr-gov/compliance/fr-gov-audit-app-compliance/references/evaluation-efficiency.md)
 permet de comparer qualité, faux positifs, durée, tokens et interventions
 humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
 
@@ -198,16 +198,16 @@ CI (`Skills tests`) :
 python -m pip install pyyaml python-docx
 
 # Rendu DAT : typographie française et modèle Word par défaut
-python3 -m unittest discover -s skills/gouv-fr/conformite/fr-gov-render-technical-architecture-docx/tests -v
+python3 -m unittest discover -s skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/tests -v
 
 # Vérificateur DSFR : classes CSS et assets locaux
-python3 -m unittest discover -s skills/gouv-fr/dsfr/fr-gov-set-up-design-system/tests -v
+python3 -m unittest discover -s skills/fr-gov/design-system/fr-gov-set-up-design-system/tests -v
 
 # Permissions des appels de workflows réutilisables
-python3 -m unittest discover -s skills/gouv-fr/devops/fr-gov-set-up-cloud-pi-native-cicd/tests -v
+python3 -m unittest discover -s skills/fr-gov/devops/fr-gov-set-up-cloud-pi-native-cicd/tests -v
 
 # Smoke-test : credentials synthétiques et transport simulé
-python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test-api/tests -v
+python3 -m unittest discover -s skills/fr-gov/devops/smoke-test-api/tests -v
 
 # Script d'installation (Hermes, OpenCode, Kilo Code, Claude Code)
 python3 scripts/check-skill-catalog.py
@@ -226,7 +226,7 @@ obligatoire. Les références internes sont embarquées avec chaque skill.
 
 `review-code` charge uniquement la revue, le rituel ou les standards
 nécessaires à la tâche. Son historique et ses adaptations sont décrits dans
-son [`UPSTREAM.md`](skills/gouv-fr/code/review-code/UPSTREAM.md).
+son [`UPSTREAM.md`](skills/fr-gov/code/review-code/UPSTREAM.md).
 
 L'installation des skills copie les fichiers locaux sans récupérer d'autres
 skills. Les outils et services propres aux tâches (Helm, API data.gouv.fr,
