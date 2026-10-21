@@ -5,7 +5,103 @@
 
 ---
 
-## Résumé exécutif
+## Passe de correction du 2026-10-21
+
+Une seconde passe, issue de la revue du catalogue consolidé
+(`dnum-mi/starter-kit-opencode`#42), a corrigé **4 défauts de fond** et
+**2 manques d'infrastructure**. Les régressions ciblées sont couvertes par des tests ; les cas positifs
+vérifient aussi les comportements qui fonctionnaient déjà. Les corrections
+documentaires sont vérifiées séparément, sans prétendre à une preuve rouge→vert
+pour chaque nouveau test.
+
+### 🔴 Bloquants
+
+#### 1. `gouv-fr-dat-word` : le modèle Word par défaut n'existait pas
+`render_docx.py` visait `../dat-generation/dat/MODELE_DAT_MirAI.docx` — un
+dossier **inexistant** dans ce dépôt. Tout appel sans `--model` échouait sur
+`Modèle introuvable`, alors que le modèle est présent dans la skill sœur
+`gouv-fr-dat-homologation`.
+
+**Correction** : le chemin par défaut pointe vers `gouv-fr-dat-homologation`.
+Couvert par `skills/gouv-fr-dat-word/tests/test_default_model.py`.
+
+#### 2. `gouv-fr-repo-cicd` : les niveaux de permission n'étaient pas comparés
+`verif-appels.py` ne comparait que la *présence* d'une permission et le cas
+particulier `write`. Un job appelant accordant `contents: none` à un job
+appelé exigeant `contents: read` **passait sans remarque**.
+
+**Correction** : comparaison par rang `none < read < write`. Couvert par
+`skills/gouv-fr-repo-cicd/tests/test_verif_appels.py` (5 cas).
+
+### 🟠 Majeurs
+
+#### 3. `gouv-fr-design-system` : `tel:` et `//` signalés comme assets manquants
+`verify_dsfr.py` ignorait `http:`, `https:`, `data:`, `#` et `mailto:` — mais
+pas `tel:` ni les URL protocol-relative (`//cdn…`). Un simple lien
+« Appeler » suffisait à faire échouer la vérification avec un faux positif
+`ASSET MANQUANT`.
+
+**Correction** : les deux schémas sont ignorés. Couvert par
+`test_non_http_schemes_are_not_missing_assets`.
+
+#### 4. `gouv-fr-lint-eslint` : configuration Ruff refusée par Ruff
+La section « Configuration (`ruff.toml`) » contenait en réalité la syntaxe
+`pyproject.toml` (`[tool.ruff]`). Copié tel quel dans un `ruff.toml`, Ruff
+échoue : `unknown field 'tool'`. Le bloc `[project.scripts]` était présenté
+comme un `package.toml`, qui n'est pas un format de configuration reconnu.
+
+**Correction** : la section est étiquetée `pyproject.toml`, la variante
+`ruff.toml` est explicitée (retirer le préfixe `tool.ruff`), et les scripts
+sont remplacés par les commandes réelles (`uv run ruff check .`).
+
+#### 5. `gouv-fr-smoke-test` : le jeton était affiché
+La recette imprimait le jeton produit par HMAC, l'exposant à la sortie de l'outil
+et à la conversation. Lire le secret dans un processus autorisé n'implique
+pas d'en exposer la valeur au modèle.
+
+**Correction** : un script Python local utilise les credentials injectés
+(`SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`) et n'affiche que les statuts. Il forge
+et réutilise le jeton en mémoire, sans étape humaine systématique, argument de
+processus secret, fichier de credential ni redirection HTTP. Il exige des
+données de test explicites et documente les effets du POST de transcription.
+Neuf tests à transport simulé couvrent ce comportement, sans appeler de service réel.
+
+#### 6. `scripts/test-install-skills.sh` : écriture hors du bac à sable
+Le test isolait `HOME` et `XDG_CONFIG_HOME`, mais pas `HERMES_HOME`,
+`KILO_HOME` ni `CLAUDE_HOME`. Sur une machine où ces variables sont
+définies, le test **installait les 43 skills dans le répertoire de skills réel
+de l'utilisateur**, en plus d'échouer.
+
+**Correction** : les trois variables sont isolées vers le répertoire
+temporaire. Le test n'écrit plus rien hors de `$TMPDIR`.
+
+### 🟡 Infrastructure
+
+#### 7. Deux suites de tests n'étaient jamais exécutées
+Seul `skills/gouv-fr-design-system/tests` était branché sur la CI. Les tests
+de `gouv-fr-dat-word` (typographie) et ceux de `gouv-fr-repo-cicd` (absents)
+ne tournaient nulle part. `test_render_docx.py` appelait `sys.exit()` à
+l'import, ce qui rendait son dossier **indécouvrable** par
+`unittest discover`.
+
+**Correction** : les vérifications de `test_render_docx.py` sont encapsulées
+dans `run_checks()` et ne s'exécutent qu'en script ; `test_typography.py`
+les branche sur unittest. Nouvelle CI `Skills tests` qui lance les trois
+suites plus le test d'installation.
+
+### Vérifications passées après correction
+
+```
+✅ 4 suites unittest : 26 tests au vert
+✅ Test d'installation : 43 skills × 4 agents
+✅ Cas de régression et cas positifs distingués ; aucune affirmation rouge→vert universelle
+✅ Ruff 0.17 : la configuration documentée est acceptée dans les deux formes
+✅ 0 écriture hors du répertoire temporaire lors du test d'installation
+```
+
+---
+
+## Résumé exécutif (passe du 2026-09-29)
 
 | Sévérité | Avant | Après |
 |----------|-------|-------|

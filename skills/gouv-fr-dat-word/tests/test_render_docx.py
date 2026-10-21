@@ -4,6 +4,10 @@
 Usage : `python tests/test_render_docx.py` (depuis le dossier du skill) ou
 `python test_render_docx.py`. N'exige que `render_docx` importable (python-docx).
 Sortie : liste OK/FAIL + code de retour non nul si un test échoue.
+
+Les vérifications ne s'exécutent qu'en script (`__main__`) : le module reste
+importable, donc découvrable par `unittest discover` sans quitter le
+processus au moment de l'import.
 """
 from __future__ import annotations
 
@@ -42,39 +46,49 @@ def unchanged(label, src):
     check(f"{label}: {src!r} -> {r!r}", r == src)
 
 
-# ── Ponctuation haute ─────────────────────────────────────────────────────────
-contains("NBSP avant ':'", "Objet : test", NBSP + ":")
-contains("fine avant ';'", "Note ; suite", NNBSP + ";")
-contains("fine avant '!'", "Stop ! la", NNBSP + "!")
-contains("fine avant '?'", "Vraiment ? oui", NNBSP + "?")
-contains("NBSP avant '%'", "CPU 55 % charge", NBSP + "%")
-check("pas d'espace normale avant ':'", " " + ":" not in f("Objet : test"))
+def run_checks():
+    """Execute toutes les verifications typographiques."""
+    global _passed, _failed
 
-# ── Apostrophe & guillemets ───────────────────────────────────────────────────
-contains("apostrophe courbe", "d'architecture", "’")
-contains("guillemets FR + fines", 'Il a dit "oui" hier', "«" + NNBSP + "oui" + NNBSP + "»")
-check("guillemet orphelin laissé tel quel", '"' == f('"'))
+    # ── Ponctuation haute ─────────────────────────────────────────────────────
+    contains("NBSP avant ':'", "Objet : test", NBSP + ":")
+    contains("fine avant ';'", "Note ; suite", NNBSP + ";")
+    contains("fine avant '!'", "Stop ! la", NNBSP + "!")
+    contains("fine avant '?'", "Vraiment ? oui", NNBSP + "?")
+    contains("NBSP avant '%'", "CPU 55 % charge", NBSP + "%")
+    check("pas d'espace normale avant ':'", " " + ":" not in f("Objet : test"))
 
-# ── Nombres & unités ──────────────────────────────────────────────────────────
-contains("milliers en fine", "30 000 agents", "30" + NNBSP + "000")
-contains("nombre+unité insécable", "police 11 pt ici", "11" + NBSP + "pt")
+    # ── Apostrophe & guillemets ───────────────────────────────────────────────
+    contains("apostrophe courbe", "d'architecture", "’")
+    contains("guillemets FR + fines", 'Il a dit "oui" hier', "«" + NNBSP + "oui" + NNBSP + "»")
+    check("guillemet orphelin laissé tel quel", '"' == f('"'))
 
-# ── Règle d'or : ne jamais inventer d'espace ──────────────────────────────────
-unchanged("horaire", "12:30")
-unchanged("clé:valeur collée", "clé:valeur")
-unchanged("URL avec ':'", "https://ex.fr/a:b")
-unchanged("e-mail", "prenom.nom@interieur.gouv.fr")
+    # ── Nombres & unités ──────────────────────────────────────────────────────
+    contains("milliers en fine", "30 000 agents", "30" + NNBSP + "000")
+    contains("nombre+unité insécable", "police 11 pt ici", "11" + NBSP + "pt")
 
-# ── Code inline protégé ───────────────────────────────────────────────────────
-unchanged("code inline non typographié", "`code:test`")
-check("code inline au milieu protégé",
-      "`a:b`" in f("voir `a:b` ici") and "ici" in f("voir `a:b` ici"))
+    # ── Règle d'or : ne jamais inventer d'espace ──────────────────────────────
+    unchanged("horaire", "12:30")
+    unchanged("clé:valeur collée", "clé:valeur")
+    unchanged("URL avec ':'", "https://ex.fr/a:b")
+    unchanged("e-mail", "prenom.nom@interieur.gouv.fr")
 
-# ── Idempotence ───────────────────────────────────────────────────────────────
-sample = ('Objet : test ; "oui" d\'accord ; 30 000 agents à 55 % '
-          'via https://x.fr/a:b et `k:v` — fin !')
-once = f(sample)
-check("idempotence", once == f(once))
+    # ── Code inline protégé ───────────────────────────────────────────────────
+    unchanged("code inline non typographié", "`code:test`")
+    check("code inline au milieu protégé",
+          "`a:b`" in f("voir `a:b` ici") and "ici" in f("voir `a:b` ici"))
 
-print(f"\n{_passed} passés, {_failed} échoués")
-sys.exit(1 if _failed else 0)
+    # ── Idempotence ───────────────────────────────────────────────────────────
+    sample = ('Objet : test ; "oui" d\'accord ; 30 000 agents à 55 % '
+              'via https://x.fr/a:b et `k:v` — fin !')
+    once = f(sample)
+    check("idempotence", once == f(once))
+
+    return _failed
+
+
+if __name__ == "__main__":
+    failed = run_checks()
+    print(f"\n{_passed} passés, {failed} échoués")
+    sys.exit(1 if failed else 0)
+

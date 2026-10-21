@@ -8,7 +8,11 @@ expected_count="$(find "$script_dir/../skills" -mindepth 1 -maxdepth 1 -type d -
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-HOME="$tmp/home" XDG_CONFIG_HOME="$tmp/config" "$installer" --agent all
+HOME="$tmp/home" XDG_CONFIG_HOME="$tmp/config" \
+  HERMES_HOME="$tmp/home/.hermes" \
+  KILO_HOME="$tmp/home/.kilocode" \
+  CLAUDE_HOME="$tmp/home/.claude" \
+  "$installer" --agent all
 
 for destination in \
   "$tmp/home/.hermes/skills" \
