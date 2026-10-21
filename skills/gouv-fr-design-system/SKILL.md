@@ -2,7 +2,7 @@
 name: gouv-fr-design-system
 description: "Installer et vérifier le design system de l'État (DSFR)."
 category: frontend
-version: 0.3.1
+version: 0.3.2
 author: Hermes Agent (Nous Research)
 license: MIT
 platforms: [linux, macos]
@@ -55,7 +55,7 @@ npm install @gouvfr/dsfr
 1. `npm install @gouvfr/dsfr`.
 2. Lier `dist/dsfr.min.css` + `dist/utility/utility.min.css` dans `<head>`.
 3. Charger `dist/dsfr.module.min.js` (`type="module"`) et `dist/dsfr.nomodule.min.js` (`nomodule`) avant `</body>`.
-4. Critère de fin : `python3 scripts/verify_dsfr.py page.html` retourne zéro classe inconnue.
+4. Contrôle technique : `python3 scripts/verify_dsfr.py page.html` retourne zéro classe inconnue, avec au moins une classe DSFR détectée.
 
 ### Via CDN (sans npm)
 
@@ -92,6 +92,12 @@ un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 - **Préférence** : `npm install` et servir le paquet réel plutôt que recoder le CSS DSFR à la main.
 
 ## Vérification
+
+Le script ne vérifie que les classes CSS et assets locaux. Il ne certifie ni
+la conformité DSFR globale, ni le RGAA, ni les URLs distantes. Sans classe
+`fr-*`, le contrôle est non évalué et retourne 1 ; pour une page sans DSFR
+attendu, marquer ce contrôle sans objet dans le rapport.
+
 - `python3 scripts/verify_dsfr.py index.html` → zéro classe `fr-*` inconnue, zéro asset manquant (code de retour 0).
 - `npm run build` (depuis le clone) termine sans erreur.
 - Quand un navigateur est dispo : comparer visuellement avec systeme-de-design.gouv.fr.

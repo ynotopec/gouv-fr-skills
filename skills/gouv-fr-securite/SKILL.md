@@ -2,7 +2,7 @@
 name: gouv-fr-securite
 description: "Sécurité : secrets, gitleaks, SQL, TLS, isolation VM."
 category: security
-version: 0.1.1
+version: 0.1.2
 author: etalab-ia, Hermes Agent
 license: MIT
 platforms: [linux, macos]
@@ -24,13 +24,13 @@ Règles de sécurité non négociables pour les applications gouv-fr-code-index.
 - **SQL injection** — utiliser des requêtes paramétrées, jamais de concaténation
 - **Dépendances** — pas d'ajout non justifié, préférer la lib standard
 - **TLS** — HTTPS par défaut, pas de désactivation vérification certificat
-- **Doute = pause** — en cas de doute : s'arrêter et demander
+- **Incertitude** — poursuivre les contrôles indépendants ; demander seulement si une information indispensable manque ou si une action dépasse le périmètre autorisé.
 
 ## Isolation VM
 
-- L'agent tourne dans une VM Lima — aucun accès aux fichiers personnels (clés SSH, cookies)
-- Aucun accès aux credentials hôte
-- Push/PR GitHub uniquement si PAT configuré
+- Vérifier l’isolation réellement fournie (VM, conteneur ou sandbox) et ses permissions ; ne pas supposer une VM Lima.
+- Réduire l’accès aux fichiers personnels et credentials hôte par des permissions effectives.
+- Utiliser la connexion GitHub autorisée (application, connecteur ou jeton dédié).
 - Pas de sudo sans explication ; pas de chemins en dur
 
 ## Prompt Injection
