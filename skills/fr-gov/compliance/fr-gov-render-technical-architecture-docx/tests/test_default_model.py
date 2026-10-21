@@ -5,7 +5,7 @@ Le modèle `MODELE_DAT_MirAI.docx` est maintenu dans la skill sœur
 être un fichier réellement présent, sans quoi `render_docx.py` échoue sur
 tout appel sans `--model`.
 
-Usage : `python -m unittest discover -s skills/gouv-fr/conformite/fr-gov-render-technical-architecture-docx/tests -v`
+Usage : `python -m unittest discover -s skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/tests -v`
 Dépend de python-docx.
 """
 

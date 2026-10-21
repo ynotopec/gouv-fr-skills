@@ -14,15 +14,15 @@ porte les **remarques structurelles** de la même revue.
 ### Regroupement en 7 groupes
 
 Les 43 skills passent d'un catalogue plat (`skills/gouv-fr-<nom>/`) à un arbre
-unique `skills/gouv-fr/<groupe>/<nom>/` :
+unique `skills/fr-gov/<groupe>/<nom>/` :
 
 | Groupe | Skills | Contenu |
 |---------|--------|---------|
 | `anssi` | 6 | Guides ANSSI, audits de sécurité, durcissement |
 | `code` | 17 | Architecture, conventions, backend, frontend, outillage, workflow |
-| `conformite` | 5 | RGAA, RGPD, cookies, documents d'homologation |
+| `compliance` | 5 | RGAA, RGPD, cookies, documents d'homologation |
 | `data` | 2 | APIs data.gouv.fr, données ouvertes du SIG |
-| `dsfr` | 6 | Design system de l'État, composants, pictogrammes, templates |
+| `design-system` | 6 | Design system de l'État, composants, pictogrammes, templates |
 | `dso` | 6 | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
 | `lasuite` | 1 | Interfaces React LaSuite |
 
@@ -32,8 +32,8 @@ nom de l'ancien groupe plat du kit cible, `code` est le nom retenu.
 ### Noms sans préfixe parent
 
 Un skill ne porte plus le préfixe `gouv-fr-` : il ne doit pas répéter le nom
-de son dossier parent. `skills/gouv-fr/code/code-index/` est conforme ;
-`skills/gouv-fr/code/gouv-fr-code-index/` ne l'est pas. Le champ `name:` de
+de son dossier parent. `skills/fr-gov/code/code-index/` est conforme ;
+`skills/fr-gov/code/gouv-fr-code-index/` ne l'est pas. Le champ `name:` de
 chaque skill a été aligné sur son dossier, et les 43 `related_skills` ont été
 réécrits — toutes les cibles pointent vers un skill existant.
 
@@ -65,7 +65,7 @@ La règle de fond de la revue sur le smoke-test-api est conservée : l'agent ne 
 pas la valeur d'un secret. Le script lit `SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`
 **dans le processus**, sans jamais l'afficher, et n'affiche ni corps de
 réponse ni en-têtes d'erreur. Couvert par
-`skills/gouv-fr/dso/smoke-test-api/tests/test_run_smoke.py` (17 cas), dont un cas
+`skills/fr-gov/dso/smoke-test-api/tests/test_run_smoke.py` (17 cas), dont un cas
 dédié au contrat d'API paramétrable.
 
 Le profil « MirAI next » de `dso/repo-cicd/references/composition.md` devient
@@ -125,7 +125,7 @@ dossier **inexistant** dans ce dépôt. Tout appel sans `--model` échouait sur
 `gouv-fr-dat-homologation`.
 
 **Correction** : le chemin par défaut pointe vers `gouv-fr-dat-homologation`.
-Couvert par `skills/gouv-fr/conformite/dat-word/tests/test_default_model.py`.
+Couvert par `skills/fr-gov/compliance/dat-word/tests/test_default_model.py`.
 
 #### 2. `gouv-fr-repo-cicd` : les niveaux de permission n'étaient pas comparés
 `verif-appels.py` ne comparait que la *présence* d'une permission et le cas
@@ -133,7 +133,7 @@ particulier `write`. Un job appelant accordant `contents: none` à un job
 appelé exigeant `contents: read` **passait sans remarque**.
 
 **Correction** : comparaison par rang `none < read < write`. Couvert par
-`skills/gouv-fr/dso/repo-cicd/tests/test_verif_appels.py` (5 cas).
+`skills/fr-gov/dso/repo-cicd/tests/test_verif_appels.py` (5 cas).
 
 ### 🟠 Majeurs
 
@@ -180,7 +180,7 @@ temporaire. Le test n'écrit plus rien hors de `$TMPDIR`.
 ### 🟡 Infrastructure
 
 #### 7. Deux suites de tests n'étaient jamais exécutées
-Seul `skills/gouv-fr/dsfr/fr-gov-set-up-design-system/tests` était branché sur la CI. Les tests
+Seul `skills/fr-gov/design-system/fr-gov-set-up-design-system/tests` était branché sur la CI. Les tests
 de `gouv-fr-dat-word` (typographie) et ceux de `gouv-fr-repo-cicd` (absents)
 ne tournaient nulle part. `test_render_docx.py` appelait `sys.exit()` à
 l'import, ce qui rendait son dossier **indécouvrable** par

@@ -15,11 +15,11 @@ trap 'rm -f "$json_file"; [ -z "$catalogue_tmp" ] || rm -f "$catalogue_tmp"' EXI
 curl -fsSL "$API_URL" >"$json_file"
 
 jq -e --slurpfile included_english_ids "$included_english_ids_file" '
+  [.[] | . as $guide
+    | select($guide.langue == "FR" or ($included_english_ids[0] | index($guide.id)))]
+  as $guides |
   type == "array" and
   ($included_english_ids[0] | type == "array" and length == (unique | length)) and
-  ([.[] | . as $guide
-    | select($guide.langue == "FR" or ($included_english_ids[0] | index($guide.id)))]
-  ) as $guides |
   ($guides | map(select(.langue == "FR")) | length > 0) and
   ([$guides[].id] | length == (unique | length)) and
   ([$guides[] | select(.langue == "EN") | .id] | sort
@@ -101,16 +101,16 @@ render_catalogue() {
       "Le catalogue est généré depuis l\u2019API JSON, sans analyser la page HTML :",
       "",
       "```bash",
-      "skills/fr-gov-find-cybersecurity-guide/scripts/generate-catalogue.sh skills/fr-gov-find-cybersecurity-guide/references/catalogue.md",
+      "skills/fr-gov/security/fr-gov-find-cybersecurity-guide/scripts/generate-catalogue.sh skills/fr-gov/security/fr-gov-find-cybersecurity-guide/references/catalogue.md",
       "```",
       "",
       "Le générateur vérifie que les identifiants français sont uniques, que les champs structurés nécessaires sont présents et que les 13 fiches suivies par `securite-developpement` existent toujours. Il conserve leur marqueur ★.",
-      "Le test hors ligne `skills/fr-gov-find-cybersecurity-guide/scripts/test-generate-catalogue.sh` couvre aussi le filtrage de langue, l\u2019exception anglaise déclarée, le rejet des doublons, la disparition d\u2019une fiche suivie et la préservation du catalogue en cas d\u2019échec.",
+      "Le test hors ligne `skills/fr-gov/security/fr-gov-find-cybersecurity-guide/scripts/test-generate-catalogue.sh` couvre aussi le filtrage de langue, l\u2019exception anglaise déclarée, le rejet des doublons, la disparition d\u2019une fiche suivie et la préservation du catalogue en cas d\u2019échec.",
       "",
       "Pour rechercher sans régénérer le fichier :",
       "",
       "```bash",
-      "curl -fsSL https://messervices.cyber.gouv.fr/api/guides | jq --arg q \"tls\" --slurpfile included_english skills/fr-gov-find-cybersecurity-guide/scripts/included-english-guide-ids.json '\''",
+      "curl -fsSL https://messervices.cyber.gouv.fr/api/guides | jq --arg q \"tls\" --slurpfile included_english skills/fr-gov/security/fr-gov-find-cybersecurity-guide/scripts/included-english-guide-ids.json '\''",
       "  .[] | . as $guide",
       "  | select($guide.langue == \"FR\" or ($included_english[0] | index($guide.id)))",
       "  | select(([.nom, .description, .thematique] + .collections + .besoins)",

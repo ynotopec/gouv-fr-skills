@@ -149,16 +149,16 @@ Trié du plus récent au plus ancien.
 Le catalogue est généré depuis l’API JSON, sans analyser la page HTML :
 
 ```bash
-skills/fr-gov-find-cybersecurity-guide/scripts/generate-catalogue.sh skills/fr-gov-find-cybersecurity-guide/references/catalogue.md
+skills/fr-gov/security/fr-gov-find-cybersecurity-guide/scripts/generate-catalogue.sh skills/fr-gov/security/fr-gov-find-cybersecurity-guide/references/catalogue.md
 ```
 
 Le générateur vérifie que les identifiants français sont uniques, que les champs structurés nécessaires sont présents et que les 13 fiches suivies par `securite-developpement` existent toujours. Il conserve leur marqueur ★.
-Le test hors ligne `skills/fr-gov-find-cybersecurity-guide/scripts/test-generate-catalogue.sh` couvre aussi le filtrage de langue, l’exception anglaise déclarée, le rejet des doublons, la disparition d’une fiche suivie et la préservation du catalogue en cas d’échec.
+Le test hors ligne `skills/fr-gov/security/fr-gov-find-cybersecurity-guide/scripts/test-generate-catalogue.sh` couvre aussi le filtrage de langue, l’exception anglaise déclarée, le rejet des doublons, la disparition d’une fiche suivie et la préservation du catalogue en cas d’échec.
 
 Pour rechercher sans régénérer le fichier :
 
 ```bash
-curl -fsSL https://messervices.cyber.gouv.fr/api/guides | jq --arg q "tls" --slurpfile included_english skills/fr-gov-find-cybersecurity-guide/scripts/included-english-guide-ids.json '
+curl -fsSL https://messervices.cyber.gouv.fr/api/guides | jq --arg q "tls" --slurpfile included_english skills/fr-gov/security/fr-gov-find-cybersecurity-guide/scripts/included-english-guide-ids.json '
   .[] | . as $guide
   | select($guide.langue == "FR" or ($included_english[0] | index($guide.id)))
   | select(([.nom, .description, .thematique] + .collections + .besoins)

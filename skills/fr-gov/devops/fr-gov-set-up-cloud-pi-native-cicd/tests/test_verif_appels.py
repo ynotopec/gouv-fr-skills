@@ -4,7 +4,7 @@ Couvre la comparaison des niveaux de permission GitHub Actions
 (`none` < `read` < `write`) : un job appelant qui accorde moins que le job
 appelé exige doit être signalé.
 
-Usage : `python -m unittest discover -s skills/gouv-fr/devops/fr-gov-set-up-cloud-pi-native-cicd/tests -v`
+Usage : `python -m unittest discover -s skills/fr-gov/devops/fr-gov-set-up-cloud-pi-native-cicd/tests -v`
 Dépend de PyYAML.
 """
 

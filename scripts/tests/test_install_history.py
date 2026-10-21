@@ -15,7 +15,7 @@ class HistoricalMigrationTests(unittest.TestCase):
     def test_distributed_catalogs(self):
         rows = [row for row in csv.reader(FIXTURE.read_text().splitlines(), delimiter='\t')
                 if row and not row[0].startswith('#')]
-        for generation in ('french', 'english'):
+        for generation in ('french', 'english', 'namespaced'):
             snapshot = [row for row in rows if row[0] == generation]
             self.assertEqual(len(snapshot), 43 if generation == 'french' else 42)
             for layout in ('grouped', 'flat', 'prefixed'):
@@ -46,19 +46,22 @@ class HistoricalMigrationTests(unittest.TestCase):
                        '--scope', 'project', '--project', str(project), '--force']
             if flat_target:
                 command.append('--flat')
-            denied = subprocess.run(command, text=True, capture_output=True)
-            self.assertNotEqual(denied.returncode, 0, denied.stdout + denied.stderr)
-            for relative, content in originals.items():
-                self.assertEqual((destination / relative / 'SKILL.md').read_text(), content)
+            needs_migration = set(originals) != expected
+            if needs_migration:
+                denied = subprocess.run(command, text=True, capture_output=True)
+                self.assertNotEqual(denied.returncode, 0, denied.stdout + denied.stderr)
+                for relative, content in originals.items():
+                    self.assertEqual((destination / relative / 'SKILL.md').read_text(), content)
             migrated = subprocess.run(command + ['--migrate'], text=True, capture_output=True)
             self.assertEqual(migrated.returncode, 0, migrated.stdout + migrated.stderr)
             active = {str(p.parent.relative_to(destination)) for p in destination.rglob('SKILL.md')}
             self.assertEqual(active, expected | {'personal-skill'})
             self.assertEqual(len(expected), 42)
             backups = list(destination.parent.glob('skills.backup-*'))
-            self.assertEqual(len(backups), 1)
-            for relative, content in originals.items():
-                self.assertEqual((backups[0] / relative / 'SKILL.md').read_text(), content)
+            self.assertEqual(len(backups), 1 if needs_migration else 0)
+            if needs_migration:
+                for relative, content in originals.items():
+                    self.assertEqual((backups[0] / relative / 'SKILL.md').read_text(), content)
             self.assertEqual(personal.read_text(), 'personal data')
             repeated = subprocess.run(command + ['--migrate'], text=True, capture_output=True)
             self.assertEqual(repeated.returncode, 0, repeated.stdout + repeated.stderr)

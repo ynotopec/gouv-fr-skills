@@ -8,9 +8,9 @@ from pathlib import Path
 
 def check(root):
     errors = []
-    skills = sorted((root / 'skills/gouv-fr').glob('*/*/SKILL.md'))
+    skills = sorted((root / 'skills/fr-gov').glob('*/*/SKILL.md'))
     names = {path.parent.name for path in skills}
-    canonical = {str(path.parent.relative_to(root / 'skills/gouv-fr')) for path in skills}
+    canonical = {str(path.parent.relative_to(root / 'skills/fr-gov')) for path in skills}
     if len(names) != len(skills):
         errors.append('Duplicate skill names: flat installation would collide')
     for path in skills:
@@ -54,7 +54,7 @@ def check(root):
         heading = re.match(r'^## .*\(`([^`]+)`\)', line)
         if heading:
             group = heading[1]
-        entry = re.match(r'^\| \[`[^`]+`\]\(skills/gouv-fr/([^/]+)/', line)
+        entry = re.match(r'^\| \[`[^`]+`\]\(skills/fr-gov/([^/]+)/', line)
         if entry and entry[1] != group:
             errors.append(f'SKILLS.md: entry in wrong section: {line}')
 

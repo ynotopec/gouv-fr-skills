@@ -4,7 +4,7 @@ Le script `test_render_docx.py` reste utilisable en ligne de commande ; ce
 module le branche sur unittest afin que la suite soit reellement executee par
 la CI (`unittest discover`), et non seulement disponible a la main.
 
-Usage : `python -m unittest discover -s skills/gouv-fr/conformite/fr-gov-render-technical-architecture-docx/tests -v`
+Usage : `python -m unittest discover -s skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/tests -v`
 """
 
 import pathlib
