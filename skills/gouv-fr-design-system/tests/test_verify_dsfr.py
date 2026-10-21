@@ -59,6 +59,18 @@ class VerifyDsfrTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertIn('ni verification des URLs distantes', result.stdout)
 
+    def test_non_http_schemes_are_not_missing_assets(self):
+        # tel:, mailto: et les URL protocol-relative ne sont pas des assets locaux :
+        # les traiter comme manquants produit un faux positif.
+        result = self.check_page(
+            '<a class="fr-btn" href="tel:+33123456789">Appeler</a>'
+            '<a class="fr-btn" href="mailto:contact@example.invalid">Ecrire</a>'
+            '<a class="fr-btn" href="//cdn.example.invalid/x.css">CDN</a>'
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertNotIn('ASSET MANQUANT', result.stdout)
+        self.assertIn('Classes reconnues : 100.0%', result.stdout)
+
     def test_missing_input_returns_usage_error(self):
         with tempfile.TemporaryDirectory() as directory:
             result = subprocess.run(
