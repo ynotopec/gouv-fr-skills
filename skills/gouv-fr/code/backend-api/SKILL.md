@@ -1,7 +1,7 @@
 ---
 
 name: backend-api
-description: Construit un serveur pour la Fabrique Numérique (Fastify, NestJS, FastAPI) — échafaudage, structure, journalisation, gestion d'erreurs, doc OpenAPI et tests.
+description: Échafaude une API Fastify, NestJS ou FastAPI.
 version: 0.2.1
 license: MIT
 platforms: [linux, macos]
@@ -14,6 +14,14 @@ metadata:
 # Gouv-fr — Backend (Fastify, NestJS, FastAPI)
 
 Node.js/TypeScript: **Fastify** or **NestJS**. Python: **FastAPI**.
+
+## Quand utiliser
+
+- Créer une API ou un service backend : échafaudage, structure, journalisation,
+  gestion d'erreurs, documentation OpenAPI, tests.
+- Reprendre un backend existant pour l'aligner sur les conventions Fabrique Numérique.
+
+Ne pas utiliser pour l'interface : voir `frontend-vue3` ou `react-dsfr`.
 
 ## Scripts disponibles
 

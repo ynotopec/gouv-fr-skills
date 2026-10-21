@@ -131,6 +131,13 @@ n'est jamais supprimée par l'installateur. `--migrate` fonctionne aussi avec
 ## Vérification
 
 - Chaque skill dans `skills/gouv-fr/<groupe>/<skill>/` contient un `SKILL.md` avec frontmatter YAML valide
+- La `description` tient en **60 caractères au plus**, une phrase, terminée par un
+  point : les index de skills tronquent à 57 caractères, donc au-delà le
+  déclencheur devient illisible au moment où l'agent choisit son skill. La
+  désambiguïsation entre skills voisins se met dans la section `## Quand utiliser`,
+  pas dans la description.
+- Chaque skill porte une section `## Quand utiliser` (déclencheurs, et
+  « Ne pas utiliser pour » quand un skill voisin traite le sujet)
 - Le workflow `Security` analyse l'historique complet avec Gitleaks ; les fichiers de secrets et le répertoire local `private/` sont ignorés par Git
 - Le champ `name:` de chaque skill correspond à son dossier, en kebab-case minuscule
   conforme au motif `^[a-z0-9]+(-[a-z0-9]+)*$` exigé par les validateurs de skills

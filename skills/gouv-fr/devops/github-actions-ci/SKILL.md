@@ -1,7 +1,7 @@
 ---
 
 name: github-actions-ci
-description: Met en place une CI GitHub Actions de base (lint, tests, build) pour un projet Fabrique Numérique, ou aide à choisir entre pipeline maison et workflows réutilisables fabnum-cicd. Pour les workflows réutilisables, releases et synchro Cloud Pi Native, voir github-actions-reusable.
+description: Pose une CI GitHub Actions de base.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -14,6 +14,14 @@ metadata:
 
 Principes et gabarit de base. Pour assembler les workflows réutilisables de fabnum-cicd (build, scans, release-please,
 chart Helm, synchro Cloud Pi Native), utiliser le skill **`github-actions-reusable`** (groupe `devops`).
+
+## Quand utiliser
+
+- Poser une CI GitHub Actions de base : lint, tests, build.
+- Choisir entre pipeline maison et workflows réutilisables fabnum-cicd.
+
+Pour fabnum-cicd (scans, release, chart, synchro CPiN), voir
+`github-actions-reusable`.
 
 ## Principes
 

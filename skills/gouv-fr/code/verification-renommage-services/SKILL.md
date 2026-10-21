@@ -1,7 +1,7 @@
 ---
 
 name: verification-renommage-services
-description: "Contrôle anti-régression des noms de services renommés."
+description: Détecte le retour d'anciens noms de services.
 version: 1.1.1
 license: MIT
 platforms: [linux, macos]
@@ -16,6 +16,14 @@ metadata:
 Après un renommage de services, les anciens noms peuvent réapparaître dans le
 code, les manifests ou la documentation. Ce skill détecte cette régression à
 partir d'une **table de correspondance** fournie par le projet.
+
+## Quand utiliser
+
+- Après un renommage de services, vérifier que les anciens noms ne réapparaissent
+  pas dans le code, les manifestes ou la documentation.
+- En anti-régression dans une CI, à partir d'une table de correspondance fournie.
+
+Ne pas utiliser comme audit général : voir `code-quality`.
 
 ## Préparer la table de correspondance
 

@@ -1,7 +1,7 @@
 ---
 
 name: audit-securite-depot
-description: "Vérifie qu'une base de code peut être ouverte / travaillée sans risque AVANT de s'y plonger. Trois contrôles — (1) ouverture sûre (aucun exécutable auto au open : hooks git, tâches VSCode, scripts de lifecycle, devcontainer) ; (2) anti-leak en place (gitleaks/pre-commit, .gitignore durci) ; (3) rien de sensible n'a fuité (secrets & infos privées dans le working tree, l'historique et les messages/heads de commit). Lecture seule : produit un rapport et le PLAN de remédiation exécutable en mode plan."
+description: Vérifie qu'un dépôt peut être ouvert sans risque.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
@@ -25,6 +25,15 @@ en mode plan** :
 2. **Anti-leak en place** — les garde-fous qui empêchent un futur leak existent (et sinon, plan pour les poser).
 3. **Aucune fuite déjà présente** — pas de secret ni d'info sensible dans le code, l'historique, ou les
    **messages/heads de commit**, et rien de tel n'a été **poussé**.
+
+## Quand utiliser
+
+- Avant de cloner, ouvrir ou travailler dans une base de code inconnue.
+- Vérifier l'ouverture sûre, l'anti-leak en place et l'absence de fuite déjà
+  présente (working tree, historique, messages de commit).
+
+Lecture seule : rapport et plan de remédiation. Pour durcir avant un pen-test,
+voir `audit-durcissement`.
 
 ## Mode d'exécution (lire les arguments AVANT toute action)
 

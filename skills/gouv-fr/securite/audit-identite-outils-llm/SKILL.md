@@ -1,7 +1,7 @@
 ---
 
 name: audit-identite-outils-llm
-description: "Audite et conçoit les outils per-user derrière OpenWebUI (ou autre passerelle LLM/MCP) — continuité d'identité SSO (le sub Keycloak de bout en bout), coffre-fort de credentials (MyVault), contrôle d'accès et hygiène de session. Vérifie que l'identité de l'utilisateur arrive de façon FIABLE jusqu'au tool et au coffre-fort, sans mélange de sessions. Lecture seule par défaut : produit un verdict + un plan de remédiation exécutable en mode plan."
+description: Vérifie l'identité SSO des outils LLM per-user.
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]
@@ -27,6 +27,15 @@ Tout outil qui agit **au nom d'un utilisateur** (lire ses documents, utiliser se
 propager une identité **prouvée** de bout en bout. Si l'identité est devinée, auto-déclarée, ou perdue
 en route, tu obtiens : tool « invisible » / « pas connecté », mauvaise personne, ou pire — la session
 d'un utilisateur servie à un autre.
+
+## Quand utiliser
+
+- Auditer ou concevoir des outils per-user derrière OpenWebUI ou une autre
+  passerelle LLM/MCP.
+- Vérifier que l'identité SSO (sub Keycloak) arrive de façon fiable jusqu'au tool
+  et au coffre-fort, sans mélange de sessions.
+
+Lecture seule par défaut : verdict et plan de remédiation.
 
 ## Mode d'exécution (lire les arguments AVANT toute action)
 

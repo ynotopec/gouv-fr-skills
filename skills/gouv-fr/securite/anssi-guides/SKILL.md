@@ -1,7 +1,7 @@
 ---
 
 name: anssi-guides
-description: "Trouver et consulter le bon guide ANSSI via l'API MesServicesCyber : catalogue des guides français et des publications anglaises sans équivalent, aiguillage et citation de la source. Sécurité hors développement (réseau, pare-feu, Active Directory, Wi-Fi, virtualisation, gestion de crise, EBIOS, cryptographie post-quantique)."
+description: Trouve et cite le bon guide ANSSI.
 version: 0.1.0
 license: MIT
 platforms: [linux, macos]
@@ -17,6 +17,14 @@ metadata:
 > Source : [`etalab-ia/skills`](https://github.com/etalab-ia/skills) (`anssi-guides`), adapté au préfixe `gouv-fr-`. Ce skill **localise et cite** les guides ; le référentiel de règles de développement est `developpement-securise` (périmètre plus restreint que la skill upstream `securite-developpement`, non reprise ici).
 
 Cette skill aiguille vers les guides publiés par l'ANSSI et les consulte à la demande. Elle **localise et cite, elle ne pré-digère pas** : le référentiel de règles applicables au développement, lui, est la skill upstream `securite-developpement` ([`etalab-ia/skills`](https://github.com/etalab-ia/skills), non reprise ici — notre équivalent partiel est `developpement-securise`).
+
+## Quand utiliser
+
+- Trouver le guide ANSSI qui couvre un sujet, puis le citer comme source.
+- Sujets hors développement : réseau, pare-feu, Active Directory, Wi-Fi,
+  virtualisation, gestion de crise, EBIOS, cryptographie post-quantique.
+
+Le skill localise et cite ; il ne pré-digère pas le guide.
 
 ## Workflow
 

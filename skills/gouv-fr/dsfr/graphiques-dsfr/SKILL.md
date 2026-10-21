@@ -1,7 +1,7 @@
 ---
 
 name: graphiques-dsfr
-description: "Graphiques DSFR en web-components Vue.js (line, bar, pie…)."
+description: Graphiques DSFR en web-components Vue.js.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]

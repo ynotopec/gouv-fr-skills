@@ -1,7 +1,7 @@
 ---
 
 name: cicd-cloud-pi-native
-description: Pose une CI/CD « Cloud Pi Native » sur un projet GitHub existant en APPELANT les workflows réutilisables du dépôt public dnum-mi/fabnum-cicd — pipeline de pull request (lint, scans, build), pipeline de release (release-please, image, synchronisation du miroir GitLab CPiN), épinglage par tag exact et règle Renovate. Ne recopie rien de fabnum-cicd et ne connaît aucun input par cœur — il lit le dépôt au tag résolu à chaque lancement. Lecture seule par défaut — rapport + plan ; n'écrit qu'avec --setup. Ne crée aucun secret, ne pousse rien, n'ouvre aucune PR.
+description: Pose la CI/CD CPiN via les workflows fabnum-cicd.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
@@ -19,6 +19,14 @@ référence** ceux de `dnum-mi/fabnum-cicd`. Le côté Cloud Pi Native (pipeline
 registre, déploiement) n'est pas généré : il est listé comme prérequis.
 
 > Pendant de `/repo-init` (qui pose les fondations d'un repo) : ici on pose sa chaîne de livraison.
+
+## Quand utiliser
+
+- Brancher un projet GitHub existant sur la CI/CD Cloud Pi Native.
+- Poser le pipeline de PR et le pipeline de release en *appelant* fabnum-cicd.
+
+Lecture seule par défaut : rapport et plan ; n'écrit qu'avec `--setup`.
+Ne crée aucun secret, ne pousse rien, n'ouvre aucune PR.
 
 ## Mode d'exécution (lire les arguments AVANT toute action)
 

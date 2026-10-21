@@ -1,7 +1,7 @@
 ---
 
 name: code-quality
-description: "Revoir une PR ou du code, mesurer la dette ou guider une correction avec preuves, verdict et contrôles adaptés au projet."
+description: Revue de code et dette, avec preuves et verdict.
 version: 1.2.0
 license: MIT
 platforms: [linux, macos]
@@ -12,6 +12,14 @@ metadata:
 ---
 
 # Gouv-fr — Qualité de code et revue
+
+## Quand utiliser
+
+- Revoir une PR ou du code existant, mesurer la dette, guider une correction.
+- Produire un verdict argumenté plutôt qu'une liste d'impressions.
+
+Ne pas utiliser pour corriger un bug dont la cause est inconnue : commencer par
+`bug-investigation`.
 
 ## Choisir le mode
 

@@ -1,7 +1,7 @@
 ---
 
 name: frontend-vue3
-description: Construit un frontend Vue 3 / Nuxt 3 pour la Fabrique Numérique — conformité DSFR, échafaudage VueDsfr, composables (toaster) et mise en place des tests.
+description: Frontend Vue 3 ou Nuxt 3 conforme au DSFR.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -13,6 +13,13 @@ metadata:
 # Gouv-fr — Frontend Vue 3 / Nuxt 3
 
 Vue 3 with **VueDsfr** (DSFR port) and **Nuxt 3**. Ministry of Interior requires DSFR.
+
+## Quand utiliser
+
+- Construire une interface Vue 3 ou Nuxt 3 conforme au DSFR.
+- Échafauder VueDsfr, poser les composables (toaster) et les tests front.
+
+Ne pas utiliser pour React : voir `react-dsfr`.
 
 ## Vue 3
 

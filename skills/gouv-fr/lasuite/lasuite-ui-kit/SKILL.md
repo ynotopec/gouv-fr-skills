@@ -1,7 +1,7 @@
 ---
 
 name: lasuite-ui-kit
-description: "Créer des interfaces React pour les applications LaSuite (Docs, Drive, People, Webinaire, Messagerie) avec @gouvfr-lasuite/ui-kit et @gouvfr-lasuite/cunningham-react. Layout applicatif, navigation, recherche rapide, badges, icônes Material, menus contextuels, partage et invitations."
+description: Interfaces React LaSuite avec @gouvfr-lasuite/ui-kit.
 version: 0.1.0
 license: MIT
 platforms: [linux, macos]
@@ -19,6 +19,15 @@ metadata:
 Bibliothèque React de composants partagés entre les applications LaSuite. Deux packages principaux :
 - `@gouvfr-lasuite/ui-kit` — composants applicatifs LaSuite (layout, recherche, menus, partage)
 - `@gouvfr-lasuite/cunningham-react` — composants de base (Button, Input, Select, Modal, DataGrid)
+
+## Quand utiliser
+
+- Construire une interface React pour une application LaSuite (Docs, Drive,
+  People, Webinaire, Messagerie).
+- Utiliser `@gouvfr-lasuite/ui-kit` et `cunningham-react` : layout, navigation,
+  recherche, partage, invitations.
+
+Ne pas utiliser pour le DSFR seul : voir `react-dsfr`.
 
 ## Import pattern
 

@@ -1,7 +1,7 @@
 ---
 
 name: audit-durcissement
-description: Audit & durcissement sécurité avant pen-test. Identifie et corrige les failles évidentes/classiques (OWASP Top 10 + OWASP LLM Top 10, dont prompt injection) du repo courant, sans casser le fonctionnement. À lancer avant tout test d'intrusion ou exposition publique.
+description: Durcit un dépôt avant pen-test (OWASP Top 10).
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
@@ -17,6 +17,15 @@ metadata:
 Tu es un ingénieur sécurité applicative. Un pen-test (ou une exposition publique) approche.
 Objectif : **identifier** (et, sur demande, **corriger**) les failles évidentes et classiques du repo
 courant — OWASP Top 10 + OWASP LLM Top 10 (dont **prompt injection**) — **sans casser le fonctionnement**.
+
+## Quand utiliser
+
+- Avant un pen-test ou une exposition publique du dépôt.
+- Chercher les failles évidentes OWASP Top 10 et OWASP LLM Top 10, et les corriger
+  sans casser le fonctionnement.
+
+Pour la seule question « peut-on ouvrir ce dépôt sans risque », voir
+`audit-securite-depot`.
 
 ## Mode d'exécution (lire les arguments AVANT toute action)
 - **`--audit-only` — DÉFAUT** (si rien n'est précisé) : **lecture seule**. Tu n'écris **que** le rapport

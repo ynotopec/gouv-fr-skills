@@ -1,7 +1,7 @@
 ---
 
 name: redteam-llm
-description: Mène une campagne red-team / prompt-injection (OWASP LLM01) contre un service adossé à un LLM — wizard, route /api, agent, connecteur MCP. Mesure si la garde bloque les attaques (entrée ET sortie), avec un modèle-juge, et écrit TOUS les rapports dans private/redteam-reports/ (jamais committés). Lecture seule sur le code ; n'exécute que des requêtes de test contre une cible autorisée.
+description: Mène un red-team prompt-injection contre un LLM.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
@@ -22,6 +22,15 @@ synthèses) atterrissent dans **`private/redteam-reports/` (gitignoré)**.
 
 > Complète `audit-durcissement` (durcissement OWASP large) et `audit-identite-outils-llm`
 > (identité des tools) : ici on se concentre sur **LLM01 — injection de prompt**.
+
+## Quand utiliser
+
+- Mener une campagne prompt-injection / red-team contre un service adossé à un LLM
+  (wizard, route API, agent, connecteur MCP).
+- Mesurer si la garde bloque les attaques en entrée **et** en sortie.
+
+N'exécute des requêtes que contre une cible explicitement autorisée, et écrit les
+rapports dans `private/redteam-reports/`.
 
 ## Garde-fous
 
