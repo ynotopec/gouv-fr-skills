@@ -50,6 +50,11 @@ conformite	dat-homologation	compliance	fr-gov-fill-technical-architecture-doc
 conformite	dat-word	compliance	fr-gov-render-technical-architecture-docx
 conformite	document-homologation	compliance	fr-gov-fill-technical-architecture-doc
 conformite	fill-dat-form	compliance	fr-gov-fill-technical-architecture-doc
+conformite	fr-gov-audit-app-compliance	compliance	fr-gov-audit-app-compliance
+conformite	fr-gov-check-web-compliance	compliance	fr-gov-check-web-compliance
+conformite	fr-gov-configure-cookie-consent	compliance	fr-gov-configure-cookie-consent
+conformite	fr-gov-fill-technical-architecture-doc	compliance	fr-gov-fill-technical-architecture-doc
+conformite	fr-gov-render-technical-architecture-docx	compliance	fr-gov-render-technical-architecture-docx
 conformite	homologation-word	compliance	fr-gov-render-technical-architecture-docx
 conformite	regles-conformite-web	compliance	fr-gov-check-web-compliance
 conformite	render-dat-docx	compliance	fr-gov-render-technical-architecture-docx
@@ -80,6 +85,12 @@ dsfr	build-react-french-state-design-system	design-system	fr-gov-build-react-des
 dsfr	build-vue-french-state-design-system	design-system	fr-gov-build-vue-design-system
 dsfr	composants-vue	design-system	fr-gov-build-vue-design-system
 dsfr	design-system	design-system	fr-gov-set-up-design-system
+dsfr	fr-gov-add-design-system-icons	design-system	fr-gov-add-design-system-icons
+dsfr	fr-gov-build-design-system-charts	design-system	fr-gov-build-design-system-charts
+dsfr	fr-gov-build-design-system-emails	design-system	fr-gov-build-design-system-emails
+dsfr	fr-gov-build-react-design-system	design-system	fr-gov-build-react-design-system
+dsfr	fr-gov-build-vue-design-system	design-system	fr-gov-build-vue-design-system
+dsfr	fr-gov-set-up-design-system	design-system	fr-gov-set-up-design-system
 dsfr	graphiques-dsfr	design-system	fr-gov-build-design-system-charts
 dsfr	integration-dsfr	design-system	fr-gov-set-up-design-system
 dsfr	pictogrammes-dsfr	design-system	fr-gov-add-design-system-icons
@@ -105,6 +116,8 @@ securite	audit-repo-safety	security	audit-repo-safety
 securite	audit-securite-depot	security	audit-repo-safety
 securite	developpement-securise	security	fr-gov-secure-coding-rules
 securite	find-anssi-guide	security	fr-gov-find-cybersecurity-guide
+securite	fr-gov-find-cybersecurity-guide	security	fr-gov-find-cybersecurity-guide
+securite	fr-gov-secure-coding-rules	security	fr-gov-secure-coding-rules
 securite	harden-repo-before-pentest	security	harden-repo-before-pentest
 securite	redteam-llm	security	redteam-llm-prompt-injection
 securite	redteam-llm-prompt-injection	security	redteam-llm-prompt-injection

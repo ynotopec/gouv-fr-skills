@@ -49,6 +49,14 @@ grep -q '^# Catalogue des guides ANSSI — 14 publications$' "$output"
 [ "$(grep -c '^| ★' "$output")" -eq 13 ]
 grep -q '| Sécuriser |' "$output"
 grep -q 'ANSSI views on crypto agility.*en anglais, sans équivalent français' "$output"
+
+# Every published re-scan command must reference an existing repository file.
+skill_rel=skills/fr-gov/security/fr-gov-find-cybersecurity-guide
+for relative in scripts/generate-catalogue.sh scripts/test-generate-catalogue.sh \
+  scripts/included-english-guide-ids.json references/catalogue.md; do
+  grep -Fq "$skill_rel/$relative" "$output"
+  test -f "$script_dir/../$relative"
+done
 if grep -q 'guides/english-guide)' "$output"; then
   echo "Une fiche non française a été incluse" >&2
   exit 1
