@@ -154,5 +154,5 @@ en environnement sandboxé, mais le PNG est écrit avant ; ou via `rsvg-convert`
 Le **modèle** et les **garde-fous de contenu** vivent dans `fr-gov-fill-technical-architecture-doc`. Cette skill ne porte
 que la **logique de rendu** (`render_docx.py`). Versionner les évolutions dans `CHANGELOG.md` (format
 `vMAJEUR.MINEUR`). Maintenir et versionner ces changements ici, dans
-`skills/gouv-fr/conformite/fr-gov-render-technical-architecture-docx/`. Le modèle local reste dans
+`skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/`. Le modèle local reste dans
 `../fr-gov-fill-technical-architecture-doc/dat/` ; aucune synchronisation avec un dépôt amont.

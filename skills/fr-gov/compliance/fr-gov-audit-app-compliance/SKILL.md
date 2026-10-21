@@ -15,7 +15,7 @@ metadata:
 
 ## Quand utiliser
 
-- Auditer la conformité d'une application ou d'une PR aux skills gouv-fr.
+- Auditer la conformité d'une application ou d'une PR aux skills fr-gov.
 - Vérifier qu'un livrable respecte les règles avant mise en production.
 
 Audit en lecture seule par défaut : ne corrige que si la correction est demandée.

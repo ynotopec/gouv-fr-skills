@@ -6,7 +6,7 @@
 ## Source de référence locale
 
 Le modèle DAT, ce prompt et leur historique sont versionnés ensemble dans ce
-catalogue, sous `skills/gouv-fr/conformite/fr-gov-fill-technical-architecture-doc/` :
+catalogue, sous `skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/` :
 
 - Modèle DAT : `dat/MODELE_DAT.docx`
 - Ce prompt : `dat/PROMPT_coding_assistant_DAT.md`

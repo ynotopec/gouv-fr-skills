@@ -1,6 +1,6 @@
 # Application de Test Gouv Fr — Vérification
 
-Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre les 40 skills gouv-fr.
+Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre les 40 skills fr-gov.
 
 ## Résultats
 
@@ -26,7 +26,7 @@ Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre 
 
 ```bash
 # DSFR
-python3 ~/hermes/skills/gouv-fr/dsfr/fr-gov-set-up-design-system/scripts/verify_dsfr.py index.html
+python3 ~/hermes/skills/fr-gov/design-system/fr-gov-set-up-design-system/scripts/verify_dsfr.py index.html
 
 # RGAA (manuel)
 grep -c '<h1' index.html  # doit être 1
