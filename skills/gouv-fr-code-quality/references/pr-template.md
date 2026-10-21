@@ -7,7 +7,7 @@ objet. Le trailer `Assisted-by` figure aussi dans chaque commit de la branche.
 
 ---
 
-Assisted-by: `<nom de l'agent> (<identifiant exact du modèle>)`
+Assisted-by: `<nom de l'agent> (<identifiant du modèle si exposé ; sinon « non exposé »>)`
 
 ## Intention
 

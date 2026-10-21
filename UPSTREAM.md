@@ -1,6 +1,11 @@
-# Alignement upstream — `dnum-mi/starter-kit-opencode`
+# Provenance historique des skills
 
-Suivi de la correspondance entre nos skills (`gouv-fr-*`) et les skills upstream
+Les skills sont maintenus directement dans `gouv-fr-skills`. Ces sources
+documentent l’origine des contenus, sans imposer de validation ou de
+synchronisation externe. Toute reprise future est facultative et passe par
+une revue locale ; préserver les adaptations et les attributions de licence.
+
+Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skills upstream
 (`.agents/skills/<groupe>/`), dont les **noms diffèrent**.
 
 **Dernier upstream vérifié** : commit `9d9cfbf` (2026-09-24)
@@ -40,7 +45,7 @@ Suivi de la correspondance entre nos skills (`gouv-fr-*`) et les skills upstream
 - **`dso/index.json`** non repris : c'est un index de groupe propre au dépôt
   upstream, redondant avec notre `SKILLS.md`.
 
-## Fichiers annexes — vérifiés byte-identiques à l'upstream
+## Fichiers annexes — état historique lors de l’import
 
 | Upstream | Notre emplacement | SHA-256 (12) |
 |----------|-------------------|--------------|
@@ -69,14 +74,6 @@ Suivi de la correspondance entre nos skills (`gouv-fr-*`) et les skills upstream
   DSFR, rappel `getRandomId`
 - **#4** `5715782` — `recettes-client` : checklist avant implémentation,
   référence `DsfrInput`, piège Playwright `--no-sandbox` (Onyxia)
-
-## Contrôle de fraîcheur
-
-```bash
-git clone https://github.com/dnum-mi/starter-kit-opencode.git /tmp/sk
-cd /tmp/sk && git log -1 --format='%H %ci %s'
-# comparer les fichiers de .agents/skills/ avec skills/gouv-fr-*/ (voir tableau ci-dessus)
-```
 
 ## Référentiels externes — non synchronisés
 
@@ -110,8 +107,3 @@ nous : `category`, `version`, `author`, `license`, `platforms`, `metadata.hermes
 Renvois croisés : les liens de `gouv-fr-anssi-guides` vers la skill upstream
 `securite-developpement` pointent vers les URLs GitHub d'`etalab-ia/skills` (les chemins
 relatifs `../../securite-developpement/` seraient cassés ici).
-
-```bash
-git clone https://github.com/etalab-ia/skills.git /tmp/etalab-skills
-cd /tmp/etalab-skills && git log -1 --format='%H %ci %s'
-```

@@ -178,8 +178,21 @@ python3 -m unittest discover -s skills/gouv-fr-design-system/tests -v
 Le [protocole d'évaluation](skills/gouv-fr-audit-conformite/references/evaluation-efficiency.md)
 permet de comparer qualité, faux positifs, durée, tokens et interventions
 humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
-`gouv-fr-code-quality` conserve sa copie vendorée ; ses évolutions suivent
-la procédure décrite dans son [`UPSTREAM.md`](skills/gouv-fr-code-quality/UPSTREAM.md).
+
+## Maintenance autonome
+
+Les skills sont maintenus et validés directement dans ce dépôt. Aucune PR ni
+validation dans un dépôt d’origine n’est requise. Les fichiers `UPSTREAM.md`
+documentent la provenance ; ils ne constituent pas une procédure de synchronisation
+obligatoire. Les références internes sont embarquées avec chaque skill.
+
+`gouv-fr-code-quality` charge uniquement la revue, le rituel ou les standards
+nécessaires à la tâche. Son historique et ses adaptations sont décrits dans
+son [`UPSTREAM.md`](skills/gouv-fr-code-quality/UPSTREAM.md).
+
+L’installation des skills copie les fichiers locaux sans récupérer d’autres
+skills. Les outils et services propres aux tâches (Helm, API data.gouv.fr,
+workflows CI, etc.) restent des prérequis à vérifier selon le besoin.
 
 ## Workflow
 
