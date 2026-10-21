@@ -1,7 +1,7 @@
 ---
 
 name: deployment-cloud-pi-native
-description: Onboarde et déploie une application sur Cloud Pi Native — console DSO (projet, dépôts, environnements, quotas), sync du mirror, pipeline .gitlab-ci-dso vers Harbor, déploiement GitOps ArgoCD, secrets Vault, rejets Kyverno et diagnostic d'un déploiement bloqué.
+description: Déploie une app sur Cloud Pi Native (DSO, ArgoCD).
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -13,6 +13,13 @@ metadata:
 # Gouv-fr — Déploiement Cloud Pi Native
 
 Faire passer une application de son dépôt GitHub à un namespace CPiN, et diagnostiquer quand ça ne bouge pas.
+
+## Quand utiliser
+
+- Onboarder une application sur Cloud Pi Native : projet, dépôts, environnements.
+- Diagnostiquer un déploiement bloqué (miroir, ArgoCD, Vault, Kyverno).
+
+Pour la CI seule, voir `cicd-cloud-pi-native` ; pour le chart, `helm-chart`.
 
 ## Modèle mental
 

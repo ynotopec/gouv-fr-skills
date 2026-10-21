@@ -1,7 +1,7 @@
 ---
 
 name: conventions-developpement
-description: "Appliquer les conventions de développement Fabrique Numérique : nommage, architecture, TypeScript, API REST, lint, qualité, déploiement et documentation."
+description: Nommage et architecture d'un projet Fabrique Numérique.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -13,6 +13,14 @@ metadata:
 # Gouv-fr — Conventions de développement
 
 Best practices for all Fabrique Numérique projects. Language-agnostic unless noted.
+
+## Quand utiliser
+
+- Démarrer un projet et fixer nommage, architecture des dossiers, TypeScript.
+- Trancher une question de convention transversale en revue.
+
+Ne pas utiliser pour l'outillage (`outils-developpement`), le lint seul
+(`lint-format`), l'API seule (`api-rest`) ni la revue (`code-quality`).
 
 ## Référence rapide
 | Topic | Key Rule |

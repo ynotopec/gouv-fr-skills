@@ -1,7 +1,7 @@
 ---
 
 name: skills-router
-description: "Choisir les skills gouv-fr pertinents pour une tâche de construction, audit ou déploiement ; utiliser pour une demande générale ou couvrant plusieurs domaines."
+description: Choisit les skills gouv-fr adaptés à la demande.
 version: 0.2.2
 license: MIT
 platforms: [linux, macos]
@@ -16,6 +16,14 @@ metadata:
 Choisir le skill le plus précis pour la demande. Ne pas charger tout le
 catalogue ni tous les `related_skills` : ces liens indiquent des ressources,
 pas une chaîne d'exécution obligatoire.
+
+## Quand utiliser
+
+- La demande est générale (« construis-moi cette app ») ou couvre plusieurs domaines.
+- Il faut choisir le skill le plus précis avant de charger quoi que ce soit.
+
+Ne charger qu'un skill à la fois : les liens `related_skills` indiquent des
+ressources, pas une chaîne d'exécution.
 
 | Demande | Skill à charger en premier |
 |---|---|

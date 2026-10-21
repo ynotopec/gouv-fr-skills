@@ -1,7 +1,7 @@
 ---
 
 name: deployment-docker-k8s
-description: "Docker rootless, K8s securityContext, multi-stage, tags, local K8s dev. Pour Helm : helm-chart. Pour CPiN console/ArgoCD : deployment-cloud-pi-native."
+description: Docker rootless et K8s pour Cloud Pi Native.
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]

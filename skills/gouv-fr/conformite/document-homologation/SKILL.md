@@ -1,7 +1,7 @@
 ---
 
 name: document-homologation
-description: Pré-remplit un document d'homologation DAT (DAT uniquement ; AIPD et dossier complet non pris en charge) à partir du code et des manifestes du repo courant. Le modèle et le prompt de référence versionnés sont embarqués dans cette skill. Lecture seule sur le service, ne jamais inventer ni recopier de valeur réelle.
+description: Remplit un DAT depuis le code et les manifestes.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
@@ -29,6 +29,14 @@ skills/gouv-fr/conformite/document-homologation/
 
 D'autres types de documents s'ajouteront sous leurs propres répertoires (`aipd/`, `homologation/`…),
 même convention.
+
+## Quand utiliser
+
+- Préparer un DAT à partir du code et des manifestes du dépôt courant.
+- Rassembler les éléments d'homologation avant le rendu du livrable.
+
+Ne couvre que le DAT : AIPD et dossier complet ne sont pas pris en charge.
+Pour le rendu Word, enchaîner sur `homologation-word`.
 
 ## Étapes
 

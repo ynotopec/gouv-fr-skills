@@ -1,7 +1,7 @@
 ---
 
 name: vue-dsfr
-description: "Installer et utiliser VueDsfr (composants Vue 3 DSFR)."
+description: Composants Vue 3 DSFR avec VueDsfr.
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]

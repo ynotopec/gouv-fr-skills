@@ -1,7 +1,7 @@
 ---
 
 name: audit-conformite
-description: "Auditer la conformité d'une application ou d'une PR aux skills gouv-fr : contrôles adaptés à la stack, preuves et limites, lecture seule sauf correction demandée."
+description: Audite la conformité d'une app aux skills gouv-fr.
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]
@@ -12,6 +12,13 @@ metadata:
 ---
 
 # Gouv-fr — Audit de conformité d'une application
+
+## Quand utiliser
+
+- Auditer la conformité d'une application ou d'une PR aux skills gouv-fr.
+- Vérifier qu'un livrable respecte les règles avant mise en production.
+
+Audit en lecture seule par défaut : ne corrige que si la correction est demandée.
 
 ## Périmètre et mode
 

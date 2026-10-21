@@ -1,7 +1,7 @@
 ---
 
 name: donnees-communication-publique
-description: "Consommer ou structurer les données ouvertes de communication publique du Service d’information du Gouvernement (SIG) : communiqués, personnalités, gouvernements et thématiques, schémas JSON et fichiers JSONL. Pour rechercher des données publiques généralistes, voir datagouv-apis."
+description: Données ouvertes du SIG en JSONL et schémas.
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]

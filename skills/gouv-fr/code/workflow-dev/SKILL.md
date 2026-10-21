@@ -1,7 +1,7 @@
 ---
 
 name: workflow-dev
-description: "Organiser une tâche de développement, correction ou PR : processus proportionné, validation adaptée et suivi durable seulement si utile."
+description: Organise une tâche de dev, un correctif ou une PR.
 version: 0.1.2
 license: MIT
 platforms: [linux, macos]
@@ -13,6 +13,13 @@ metadata:
 ---
 
 # Gouv-fr — Workflow de développement
+
+## Quand utiliser
+
+- Organiser une tâche de développement, une correction ou une PR.
+- Choisir un processus proportionné à l'enjeu plutôt que le rituel complet.
+
+Ne pas utiliser pour la revue elle-même : voir `code-quality`.
 
 ## Choisir un processus proportionné
 

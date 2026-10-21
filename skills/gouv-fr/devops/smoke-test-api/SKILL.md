@@ -1,7 +1,7 @@
 ---
 
 name: smoke-test-api
-description: "Smoke-test d'une API en lecture et job asynchrone, sans exposer de secret. Vérifie liste, média et job avec un credential injecté dans l'environnement. Le contrat d'API est paramétrable ; à lancer uniquement sur demande explicite (appels réseau vers un environnement réel)."
+description: Smoke-teste une API sans exposer de secret.
 version: 1.2.1
 license: MIT
 platforms: [linux, macos]
@@ -21,6 +21,14 @@ ne dépend d'aucun projet particulier.
 Exécuter uniquement sur demande explicite, sur l'environnement autorisé.
 Le test inclut la création d'un job ; ne pas le traiter comme une
 inspection en lecture seule.
+
+## Quand utiliser
+
+- Vérifier une API déployée en lecture et sur un job asynchrone.
+- Contrôler liste, média et job avec un credential injecté dans l'environnement.
+
+À lancer uniquement sur demande explicite : le skill émet des appels réseau vers
+un environnement réel.
 
 ## Préparer les entrées
 

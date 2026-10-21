@@ -1,7 +1,7 @@
 ---
 
 name: api-rest
-description: Conventions API RESTful, OpenAPI, Swagger et tests d'API pour Fabrique Numérique.
+description: Conventions REST, OpenAPI et tests d'API.
 version: 0.1.0
 license: MIT
 platforms: [linux, macos]

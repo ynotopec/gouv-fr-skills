@@ -28,6 +28,17 @@ def check(root):
             for target in related[1].split(','):
                 if target.strip() not in names:
                     errors.append(f'{path}: unknown related skill {target.strip()}')
+        description = re.search(r'^description: (.+)$', frontmatter, re.M)
+        if not description:
+            errors.append(f'{path}: missing description')
+        else:
+            text = description[1].strip().strip('"')
+            if len(text) > 60:
+                errors.append(f'{path}: description is {len(text)} chars (max 60)')
+            if not text.endswith('.'):
+                errors.append(f'{path}: description must end with a period')
+        if not re.search(r'^## Quand utiliser\s*$', source, re.M):
+            errors.append(f'{path}: missing "## Quand utiliser" section')
 
     catalog = (root / 'SKILLS.md').read_text()
     entries = re.findall(r'^\| \[`([^`]+)`\]\(([^)]+)\)', catalog, re.M)
@@ -76,4 +87,4 @@ if __name__ == '__main__':
     skills, errors = check(Path(__file__).resolve().parent.parent)
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'OK: {len(skills)} skills; names, groups, routing, links and migrations')
+    print(f'OK: {len(skills)} skills; names, groups, descriptions, routing, links and migrations')
