@@ -32,6 +32,8 @@ Règles de fond, pas d'audit : pour un audit, voir `harden-repo-before-pentest`,
 - **SQL injection** — utiliser des requêtes paramétrées, jamais de concaténation
 - **Dépendances** — pas d'ajout non justifié, préférer la lib standard
 - **TLS** — HTTPS par défaut, pas de désactivation vérification certificat
+- **Secrets avec caractères spéciaux** (`$`) — utiliser `kubectl --from-literal='KEY=val'` avec guillemets simples (pas de substitution shell). Vérifier après injection (`base64 -d`, jamais afficher en clair dans chat/repo). Ne jamais écrire la clé dans des fixtures/datasets (utiliser un placeholder `[CLÉ PROTÉGÉE]` et référencer le secret K8S par nom).
+- **Dataset de test synthétique** — pour vérifier conformité (DSFR/RGAA/RGPD) : générer des PDF image sans couche texte, sans données réelles, sans clé. Vérifier `grep -rni` sur le jeu de test avant livraison.
 - **Incertitude** — poursuivre les contrôles indépendants ; demander seulement si une information indispensable manque ou si une action dépasse le périmètre autorisé.
 
 ## Isolation VM
