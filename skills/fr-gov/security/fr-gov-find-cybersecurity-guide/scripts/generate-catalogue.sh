@@ -15,11 +15,11 @@ trap 'rm -f "$json_file"; [ -z "$catalogue_tmp" ] || rm -f "$catalogue_tmp"' EXI
 curl -fsSL "$API_URL" >"$json_file"
 
 jq -e --slurpfile included_english_ids "$included_english_ids_file" '
+  [.[] | . as $guide
+    | select($guide.langue == "FR" or ($included_english_ids[0] | index($guide.id)))]
+  as $guides |
   type == "array" and
   ($included_english_ids[0] | type == "array" and length == (unique | length)) and
-  ([.[] | . as $guide
-    | select($guide.langue == "FR" or ($included_english_ids[0] | index($guide.id)))]
-  ) as $guides |
   ($guides | map(select(.langue == "FR")) | length > 0) and
   ([$guides[].id] | length == (unique | length)) and
   ([$guides[] | select(.langue == "EN") | .id] | sort
