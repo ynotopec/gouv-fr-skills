@@ -1,6 +1,6 @@
 ---
 
-name: smoke-test
+name: smoke-test-api
 description: "Smoke-test d'une API en lecture et job asynchrone, sans exposer de secret. Vérifie liste, média et job avec un credential injecté dans l'environnement. Le contrat d'API est paramétrable ; à lancer uniquement sur demande explicite (appels réseau vers un environnement réel)."
 version: 1.2.1
 license: MIT
@@ -111,7 +111,7 @@ la qualité du traitement et ne valide pas un déploiement à lui seul.
 ## Vérifier une modification du skill
 
 ```
-python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test/tests -v
+python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test-api/tests -v
 ```
 
 Les tests utilisent des credentials synthétiques et un transport simulé ;

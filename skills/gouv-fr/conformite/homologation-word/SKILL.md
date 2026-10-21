@@ -1,14 +1,14 @@
 ---
 
 name: homologation-word
-description: Rend un document d'homologation DAT (DAT, et à terme AIPD/dossier d'homologation) au format Word (.docx) ministériel, en appliquant le modèle officiel avec typographie française, diagrammes mermaid et mise en page professionnelle.
+description: Rend un document d'homologation DAT (DAT uniquement ; AIPD et dossier complet non pris en charge) au format Word (.docx) ministériel, en appliquant le modèle officiel avec typographie française, diagrammes mermaid et mise en page professionnelle.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, homologation, dat, docx, DAT, rendu]
-    related_skills: [document-homologation, templates-email]
+    related_skills: [document-homologation, templates-email-dsfr]
 ---
 
 
@@ -154,5 +154,6 @@ en environnement sandboxé, mais le PNG est écrit avant ; ou via `rsvg-convert`
 
 Le **modèle** et les **garde-fous de contenu** vivent dans `document-homologation`. Cette skill ne porte
 que la **logique de rendu** (`render_docx.py`). Versionner les évolutions dans `CHANGELOG.md` (format
-`vMAJEUR.MINEUR`). À pousser dans le dépôt de skills partagé `organisation-archive/agent-skills`
-(`skills/homologation-word/`) pour être disponible à toute l’équipe.
+`vMAJEUR.MINEUR`). Maintenir et versionner ces changements ici, dans
+`skills/gouv-fr/conformite/homologation-word/`. Le modèle local reste dans
+`../document-homologation/dat/` ; aucune synchronisation avec un dépôt amont.

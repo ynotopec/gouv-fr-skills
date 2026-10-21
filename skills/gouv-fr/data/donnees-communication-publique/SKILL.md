@@ -1,17 +1,17 @@
 ---
 
-name: donnees-ouvertes
-description: "Données ouvertes publiques du SIG (schémas, JSONL)."
+name: donnees-communication-publique
+description: "Consommer ou structurer les données ouvertes de communication publique du Service d’information du Gouvernement (SIG) : communiqués, personnalités, gouvernements et thématiques, schémas JSON et fichiers JSONL. Pour rechercher des données publiques généralistes, voir datagouv-apis."
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [data, open-data, sig, json, communication, ref, schema]
-    related_skills: [developpement-securise, compliance-rgaa, datagouv-apis]
+    related_skills: [developpement-securise, regles-conformite-web, datagouv-apis]
 ---
 
-# Gouv-fr — Données ouvertes du SIG
+# Gouv-fr — Données de communication publique (SIG)
 
 Dépôt de référence des schémas et jeux de données ouverts publiés par le Service d'Information du Gouvernement (SIG) sur
 data.gouv.fr et schema.data.gouv.fr.

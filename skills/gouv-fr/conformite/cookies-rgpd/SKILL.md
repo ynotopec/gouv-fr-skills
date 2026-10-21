@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]
-    related_skills: [design-system, compliance-rgaa, developpement-securise]
+    related_skills: [integration-dsfr, regles-conformite-web, developpement-securise]
 ---
 
 # Gouv-fr — Cookies et RGPD (Tarte au Citron)

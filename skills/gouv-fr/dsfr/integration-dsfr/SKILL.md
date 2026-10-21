@@ -1,6 +1,6 @@
 ---
 
-name: design-system
+name: integration-dsfr
 description: "Installer et vérifier le design system de l'État (DSFR)."
 version: 0.3.2
 license: MIT
@@ -8,13 +8,13 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, design-system, etat, gouv-fr, ui, acces]
-    related_skills: [pictogrammes-dsfr, graphiques-dsfr, templates-email, compliance-rgaa, react-dsfr]
+    related_skills: [pictogrammes-dsfr, graphiques-dsfr, templates-email-dsfr, regles-conformite-web, react-dsfr]
 ---
 
-# Gouv-fr — Design System de l'État (DSFR)
+# Gouv-fr — Intégration du DSFR
 
 Le DSFR est le design system officiel de l'administration française. Ce skill couvre installation (NPM/CDN/clone) et
-vérification de conformité. Hors périmètre : emails (→ `templates-email`), graphiques (→ `graphiques-dsfr`),
+vérification de conformité. Hors périmètre : emails (→ `templates-email-dsfr`), graphiques (→ `graphiques-dsfr`),
 pictogrammes en détail (→ `pictogrammes-dsfr`).
 
 ## Quand utiliser

@@ -51,11 +51,20 @@ courants restent inchangés (`api-rest`, `helm-chart`, `react-dsfr`, etc.).
 | `dat-word` | `homologation-word` |
 | `service-names` | `verification-renommage-services` |
 | `securite` | `developpement-securise` |
+| `conventions-nommage` | `conventions-developpement` |
+| `compliance-rgaa` | `regles-conformite-web` |
+| `donnees-ouvertes` | `donnees-communication-publique` |
+| `audit-openwebui` | `audit-identite-outils-llm` |
+| `smoke-test` | `smoke-test-api` |
+| `composants-vue` | `vue-dsfr` |
+| `design-system` | `integration-dsfr` |
+| `templates-email` | `templates-email-dsfr` |
 
-Les groupes `anssi` et `dso` deviennent `securite` et `devops`. Le skill
+Les groupes `anssi` et `dso` deviennent `securite` et `devops`. `deployment-docker-k8s` et `github-actions-ci` passent de `code` à `devops` ;
+`verification-renommage-services` passe de `devops` à `code`. Le skill
 `anssi-guides` conserve son nom : sa source et son périmètre sont précis.
 La [table de migration](scripts/skill-renames.tsv) conserve les correspondances
-pour les 43 skills ; les identifiants utilisés par les consommateurs doivent
+pour les 43 skills, y compris les noms intermédiaires ; les identifiants utilisés par les consommateurs doivent
 être mis à jour d'après cette table.
 
 ## Installation
@@ -158,7 +167,7 @@ conformité globale ni le RGAA. **Sans classe `fr-*`, il indique « non évalué
 et retourne 1**, au lieu d'un succès à 100 %. Ses tests s'exécutent hors réseau :
 
 ```bash
-python3 -m unittest discover -s skills/gouv-fr/dsfr/design-system/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dsfr/integration-dsfr/tests -v
 ```
 
 Le [protocole d'évaluation](skills/gouv-fr/conformite/audit-conformite/references/evaluation-efficiency.md)
@@ -177,15 +186,16 @@ python -m pip install pyyaml python-docx
 python3 -m unittest discover -s skills/gouv-fr/conformite/homologation-word/tests -v
 
 # Vérificateur DSFR : classes CSS et assets locaux
-python3 -m unittest discover -s skills/gouv-fr/dsfr/design-system/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dsfr/integration-dsfr/tests -v
 
 # Permissions des appels de workflows réutilisables
 python3 -m unittest discover -s skills/gouv-fr/devops/cicd-cloud-pi-native/tests -v
 
 # Smoke-test : credentials synthétiques et transport simulé
-python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test/tests -v
+python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test-api/tests -v
 
 # Script d'installation (Hermes, OpenCode, Kilo Code, Claude Code)
+python3 scripts/check-skill-catalog.py
 ./scripts/test-install-skills.sh
 ```
 

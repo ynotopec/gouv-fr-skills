@@ -1,6 +1,6 @@
 ---
 
-name: composants-vue
+name: vue-dsfr
 description: "Installer et utiliser VueDsfr (composants Vue 3 DSFR)."
 version: 1.0.0
 license: MIT
@@ -8,10 +8,10 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]
-    related_skills: [design-system, graphiques-dsfr, templates-email, compliance-rgaa, react-dsfr, lasuite-ui-kit]
+    related_skills: [integration-dsfr, graphiques-dsfr, templates-email-dsfr, regles-conformite-web, react-dsfr, lasuite-ui-kit]
 ---
 
-# Gouv-fr — Composants Vue (VueDsfr)
+# Gouv-fr — VueDsfr — composants Vue 3 DSFR
 
 VueDsfr (`@gouvminint/vue-dsfr`) : portage en **Vue 3** du Système de Design de l'État français (DSFR). Utilisable comme
 plugin ou en imports nommés.
@@ -22,7 +22,7 @@ plugin ou en imports nommés.
 - Intégrer des composants DSFR dans un projet Vue 3 / Vue CLI / Nuxt 3.
 - Générer du code Vue SFC conforme DSFR.
 
-Don't use for: visualisation de données (→ `graphiques-dsfr`), emails (→ `templates-email`), ou projets hors
+Don't use for: visualisation de données (→ `graphiques-dsfr`), emails (→ `templates-email-dsfr`), ou projets hors
 administration publique.
 
 ## Prérequis

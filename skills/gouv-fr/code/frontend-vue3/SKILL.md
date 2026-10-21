@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, frontend, vue3, nuxt, dsfr, vuedsfr, composables, tests]
-    related_skills: [design-system, composants-vue, stack-technique, react-dsfr, lasuite-ui-kit]
+    related_skills: [integration-dsfr, vue-dsfr, stack-technique, react-dsfr, lasuite-ui-kit]
 ---
 # Gouv-fr — Frontend Vue 3 / Nuxt 3
 
@@ -75,7 +75,7 @@ createApp(App).use(VueDsfr).mount('#app')
 
 ### Folder architecture
 
-See [conventions-nommage] for the full Vue.js structure. Key: views in folders with co-located tests and
+See [conventions-developpement] for the full Vue.js structure. Key: views in folders with co-located tests and
 sub-components.
 
 ## Nuxt 3

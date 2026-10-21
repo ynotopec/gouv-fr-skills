@@ -337,7 +337,7 @@ def test_get_cats():
 
 ### Dockerfile template
 
-See [conventions-nommage] for the optimized multi-stage Dockerfile template with `uv`.
+See `deployment-docker-k8s` for the optimized multi-stage Dockerfile template with `uv`.
 
 ## Pièges
 

@@ -1,6 +1,6 @@
 ---
 
-name: audit-openwebui
+name: audit-identite-outils-llm
 description: "Audite et conçoit les outils per-user derrière OpenWebUI (ou autre passerelle LLM/MCP) — continuité d'identité SSO (le sub Keycloak de bout en bout), coffre-fort de credentials (MyVault), contrôle d'accès et hygiène de session. Vérifie que l'identité de l'utilisateur arrive de façon FIABLE jusqu'au tool et au coffre-fort, sans mélange de sessions. Lecture seule par défaut : produit un verdict + un plan de remédiation exécutable en mode plan."
 version: 1.0.0
 license: MIT
@@ -12,7 +12,7 @@ metadata:
 ---
 
 
-# Gouv-fr — Audit OpenWebUI (identité SSO des tools)
+# Gouv-fr — Audit d’identité des outils LLM (SSO et sessions)
 
 Tu es **ingénieur plateforme & sécurité**. On exploite (ou on s'apprête à créer) un **outil per-user**
 branché derrière une passerelle LLM — typiquement **OpenWebUI** via **MCP** ou un tool server OpenAPI,

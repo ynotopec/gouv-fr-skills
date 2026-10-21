@@ -1,7 +1,7 @@
 ---
 
-name: compliance-rgaa
-description: "Conformité État : RGAA, DSFR, RGPD."
+name: regles-conformite-web
+description: "Appliquer les règles de base RGAA, DSFR et RGPD à une application web de l’État ; utiliser pour une checklist de livraison. Pour un audit avec preuves et limites, voir audit-conformite."
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]
@@ -9,10 +9,10 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [gouv-fr, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
-    related_skills: [design-system, projet-structure, developpement-securise]
+    related_skills: [integration-dsfr, projet-structure, developpement-securise]
 ---
 
-# Gouv-fr — Conformité (RGAA, DSFR, RGPD)
+# Gouv-fr — Règles de conformité web (RGAA, DSFR, RGPD)
 
 Règles d'accessibilité et conformité réglementaire pour les applications de l'État.
 
@@ -28,7 +28,7 @@ Règles d'accessibilité et conformité réglementaire pour les applications de 
 ## DSFR (Design System de l'État)
 
 - Utiliser les composants officiels DSFR et leurs tokens — ne pas customiser sans validation.
-- Installation, composants, vérification des classes : voir le skill `design-system` (le CSS officiel fait foi, ne jamais inventer de classes).
+- Installation, composants, vérification des classes : voir le skill `integration-dsfr` (le CSS officiel fait foi, ne jamais inventer de classes).
 
 ## RGPD (Protection des données)
 
