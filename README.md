@@ -181,7 +181,7 @@ humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
 
 ## Tests
 
-Trois suites de non-régression s'exécutent hors réseau et sont lancées par la
+Quatre suites de non-régression s'exécutent hors réseau et sont lancées par la
 CI (`Skills tests`) :
 
 ```bash
@@ -195,6 +195,9 @@ python3 -m unittest discover -s skills/gouv-fr-design-system/tests -v
 
 # Permissions des appels de workflows réutilisables
 python3 -m unittest discover -s skills/gouv-fr-repo-cicd/tests -v
+
+# Smoke-test : credentials synthétiques et transport simulé
+python3 -m unittest discover -s skills/gouv-fr-smoke-test/tests -v
 
 # Script d'installation (Hermes, OpenCode, Kilo Code, Claude Code)
 ./scripts/test-install-skills.sh
