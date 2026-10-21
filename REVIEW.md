@@ -1,7 +1,94 @@
 # Revue complète du dépôt gouv-fr-skills
 
-**Date** : 2026-09-29 · **Périmètre** : 39 skills (40 avant consolidation), index, documentation, infrastructure Git
+**Date** : 2026-10-21 · **Périmètre** : 43 skills en 7 groupes, index, documentation, infrastructure Git
 **Verdict global** : le dépôt était **cassé sur 12 points bloquants** ; tous corrigés dans ce commit.
+
+---
+
+## Passe de regroupement du 2026-10-21 (remarques de la revue #42)
+
+Les 9 remarques de code de la revue `dnum-mi/starter-kit-opencode`#42 étaient
+déjà corrigées dans ce dépôt par la passe précédente (PR #9). Cette passe
+porte les **remarques structurelles** de la même revue.
+
+### Regroupement en 7 groupes
+
+Les 43 skills passent d'un catalogue plat (`skills/gouv-fr-<nom>/`) à un arbre
+unique `skills/gouv-fr/<groupe>/<nom>/` :
+
+| Groupe | Skills | Contenu |
+|---------|--------|---------|
+| `anssi` | 6 | Guides ANSSI, audits de sécurité, durcissement |
+| `code` | 17 | Architecture, conventions, backend, frontend, outillage, workflow |
+| `conformite` | 5 | RGAA, RGPD, cookies, documents d'homologation |
+| `data` | 2 | APIs data.gouv.fr, données ouvertes du SIG |
+| `dsfr` | 6 | Design system de l'État, composants, pictogrammes, templates |
+| `dso` | 6 | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
+| `lasuite` | 1 | Interfaces React LaSuite |
+
+Le groupe de développement est nommé **`code`**, pas `dev` : `dev` était le
+nom de l'ancien groupe plat du kit cible, `code` est le nom retenu.
+
+### Noms sans préfixe parent
+
+Un skill ne porte plus le préfixe `gouv-fr-` : il ne doit pas répéter le nom
+de son dossier parent. `skills/gouv-fr/code/code-index/` est conforme ;
+`skills/gouv-fr/code/gouv-fr-code-index/` ne l'est pas. Le champ `name:` de
+chaque skill a été aligné sur son dossier, et les 43 `related_skills` ont été
+réécrits — toutes les cibles pointent vers un skill existant.
+
+### Frontmatter
+
+- `author: Hermes Agent` (28 skills) et `author: Hermes Agent (Nous Research)`
+  (8 skills) purgés : auto-attribution d'un agent, sans information. Le
+  linter de Hermes (`tools/skill_linter.py`) signale `author` manquant, mais
+  cette remarque porte sur l'*auto*-attribution, pas sur une attribution
+  humaine.
+- `author: etalab-ia` conservé sur les 7 skills issus du référentiel
+  `etalab-ia/skills` (attribution réelle).
+- `metadata.hermes.{tags, related_skills}` **conservé** : il porte le graphe
+  de liens entre skills, lu par `agent/learning_graph.py` et
+  `tools/skills_tool.py`, et exigé par le linter Hermes.
+- `category` supprimé : le groupe de dossier le remplace.
+
+### Généricité
+
+Trois skills dépendaient d'un projet interne et ont été rendus génériques :
+
+| Skill | Avant | Après |
+|-------|-------|-------|
+| `code/projet-structure` | bâti sur un CLI interne et des variables de VM | structure de dépôt, intégration agent et variables d'env. lisibles par tous |
+| `dso/smoke-test` | contrat d'API figé sur un pipeline de transcription | contrat paramétrable (`--list-path`, `--item-path`, `--job-path`, `--id-param`, `--media-type`, `--job-field`) |
+| `dso/service-names` | table de correspondance figée sur un rebranding | table de correspondance **fournie par le projet** (fichier de référence) |
+
+La règle de fond de la revue sur le smoke-test est conservée : l'agent ne lit
+pas la valeur d'un secret. Le script lit `SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`
+**dans le processus**, sans jamais l'afficher, et n'affiche ni corps de
+réponse ni en-têtes d'erreur. Couvert par
+`skills/gouv-fr/dso/smoke-test/tests/test_run_smoke.py` (11 cas), dont un cas
+dédié au contrat d'API paramétrable.
+
+Le profil « DAT next » de `dso/repo-cicd/references/composition.md` devient
+« registre interne » : les règles restent, le registre et l'organisation
+interne ne sont plus nommés.
+
+### Outillage
+
+- `scripts/install-skills.sh` installe désormais les skills en conservant le
+  dossier de groupe (`<destination>/<groupe>/<skill>/`), avec une option
+  `--flat` pour une installation à plat.
+- `scripts/test-install-skills.sh` vérifie le compte de skills **et** de
+  groupes, et échoue si un skill porte le nom de son groupe parent.
+- La CI pointe sur les nouveaux chemins de tests.
+
+### Vérifications
+
+| Contrôle | Résultat |
+|----------|----------|
+| Tests unitaires | 28/28 (dat-word 4, design-system 8, repo-cicd 5, smoke-test 11) |
+| Installation | 43 skills × 7 groupes × 4 agents |
+| Cohérence (noms, `name:`, `related_skills`) | 43/43 |
+| Linter Hermes (avant → après) | 80 → 115 remarques ; seul delta : `missing-metadata` × 36, dû à la purge d'`author` |
 
 ---
 
@@ -23,7 +110,7 @@ dossier **inexistant** dans ce dépôt. Tout appel sans `--model` échouait sur
 `gouv-fr-dat-homologation`.
 
 **Correction** : le chemin par défaut pointe vers `gouv-fr-dat-homologation`.
-Couvert par `skills/gouv-fr-dat-word/tests/test_default_model.py`.
+Couvert par `skills/gouv-fr/conformite/dat-word/tests/test_default_model.py`.
 
 #### 2. `gouv-fr-repo-cicd` : les niveaux de permission n'étaient pas comparés
 `verif-appels.py` ne comparait que la *présence* d'une permission et le cas
@@ -31,7 +118,7 @@ particulier `write`. Un job appelant accordant `contents: none` à un job
 appelé exigeant `contents: read` **passait sans remarque**.
 
 **Correction** : comparaison par rang `none < read < write`. Couvert par
-`skills/gouv-fr-repo-cicd/tests/test_verif_appels.py` (5 cas).
+`skills/gouv-fr/dso/repo-cicd/tests/test_verif_appels.py` (5 cas).
 
 ### 🟠 Majeurs
 
@@ -78,7 +165,7 @@ temporaire. Le test n'écrit plus rien hors de `$TMPDIR`.
 ### 🟡 Infrastructure
 
 #### 7. Deux suites de tests n'étaient jamais exécutées
-Seul `skills/gouv-fr-design-system/tests` était branché sur la CI. Les tests
+Seul `skills/gouv-fr/dsfr/design-system/tests` était branché sur la CI. Les tests
 de `gouv-fr-dat-word` (typographie) et ceux de `gouv-fr-repo-cicd` (absents)
 ne tournaient nulle part. `test_render_docx.py` appelait `sys.exit()` à
 l'import, ce qui rendait son dossier **indécouvrable** par
