@@ -1,14 +1,14 @@
 ---
 
 name: audit-repo-safety
-description: Vérifie qu'un dépôt peut être ouvert sans risque.
+description: Unknown repository, auto-execution, secret leak history
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr, audit, secure-coding-rules, secrets, gitleaks, ouverture-repo]
-    related_skills: [init-repo, secure-coding-rules, harden-repo-before-pentest]
+    tags: [gouv-fr, audit, fr-gov-secure-coding-rules, secrets, gitleaks, ouverture-repo]
+    related_skills: [init-repo, fr-gov-secure-coding-rules, harden-repo-before-pentest]
 ---
 
 

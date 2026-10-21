@@ -1,14 +1,14 @@
 ---
 
 name: review-code
-description: Revue de code et dette, avec preuves et verdict.
+description: PR review, technical debt, evidence, verdict
 version: 1.2.0
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, quality, code-review, ia, dette-technique, lint, tests, standards]
-    related_skills: [configure-linting, project-conventions, set-up-project-layout]
+    related_skills: [fr-gov-configure-linting, fr-gov-project-conventions, fr-gov-set-up-project-layout]
 ---
 
 # Gouv-fr — Qualité de code et revue

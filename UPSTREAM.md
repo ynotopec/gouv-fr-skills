@@ -22,14 +22,14 @@ Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skil
 | Upstream | Notre skill |
 |----------|-------------|
 | `dev/ci-cd` | `code/github-actions-ci` |
-| `dev/conventions-cofabnum` | `code/project-conventions` |
+| `dev/conventions-cofabnum` | `code/fr-gov-project-conventions` |
 | `dev/deploiement` | `code/deployment-docker-k8s` |
-| `dev/environnement-installation` | `code/install-dev-tools` *(fusionné)* |
-| `dev/outils-dev` | `code/install-dev-tools` *(fusionné)* |
-| `dev/monorepo` | `code/set-up-pnpm-monorepo` |
-| `dev/recettes-client` | `code/build-vue-frontend` |
+| `dev/environnement-installation` | `code/fr-gov-install-dev-tools` *(fusionné)* |
+| `dev/outils-dev` | `code/fr-gov-install-dev-tools` *(fusionné)* |
+| `dev/monorepo` | `code/fr-gov-set-up-pnpm-monorepo` |
+| `dev/recettes-client` | `code/fr-gov-build-vue-frontend` |
 | `dev/recettes-serveur` | `code/backend-fastify` |
-| `dev/stack-technique` | `code/choose-tech-stack` |
+| `dev/stack-technique` | `code/fr-gov-choose-tech-stack` |
 
 ### Groupe `dso`
 
@@ -42,7 +42,7 @@ Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skil
 ## Écarts assumés
 
 - **`dev/outils-dev` + `dev/environnement-installation` fusionnés** en un seul
-  skill `code/install-dev-tools`. Les deux contenus upstream sont couverts
+  skill `code/fr-gov-install-dev-tools`. Les deux contenus upstream sont couverts
   (installation machine, proto, WSL/Homebrew, Git, Docker, pnpm, uv, VS Code).
 - **Noms francophones explicites** au lieu des noms courts upstream, pour rester
   lisibles par une personne externe.
@@ -90,20 +90,20 @@ Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skil
 
 | Leur skill | Notre skill | Adaptation |
 |------------|-------------|------------|
-| `build-react-french-state-design-system` | `dsfr/build-react-french-state-design-system` | intégrale — `references/components.md`, `references/setup.md` |
-| `build-french-collab-suite-ui` | `lasuite/build-french-collab-suite-ui` | intégrale — `references/{components,cunningham,setup}.md` |
-| `find-anssi-guide` | `anssi/anssi-guides` | intégrale — `references/catalogue.md`, `scripts/` (3 fichiers) |
-| `query-french-open-data-api` | `data/query-french-open-data-api` | intégrale |
+| `fr-gov-build-react-design-system` | `dsfr/fr-gov-build-react-design-system` | intégrale — `references/components.md`, `references/setup.md` |
+| `fr-gov-build-collab-suite-ui` | `lasuite/fr-gov-build-collab-suite-ui` | intégrale — `references/{components,cunningham,setup}.md` |
+| `fr-gov-find-cybersecurity-guide` | `anssi/anssi-guides` | intégrale — `references/catalogue.md`, `scripts/` (3 fichiers) |
+| `fr-gov-query-open-data-api` | `data/fr-gov-query-open-data-api` | intégrale |
 
 **3 skills non reprises** :
 
 | Leur skill | Équivalent chez nous | Raison |
 |------------|----------------------|--------|
-| `rgaa` | `check-web-compliance` | doublon partiel : notre skill couvre déjà RGAA/DSFR/RGPD en checklist ; leur outil d'audit 106 critères (5 fichiers de référence) n'a pas été repris |
-| `securite-developpement` | `securite` | doublon partiel : 14 domaines DINUM/ANSSI détaillés, non repris — `find-anssi-guide` y renvoie par URL |
+| `rgaa` | `fr-gov-check-web-compliance` | doublon partiel : notre skill couvre déjà RGAA/DSFR/RGPD en checklist ; leur outil d'audit 106 critères (5 fichiers de référence) n'a pas été repris |
+| `securite-developpement` | `securite` | doublon partiel : 14 domaines DINUM/ANSSI détaillés, non repris — `fr-gov-find-cybersecurity-guide` y renvoie par URL |
 | `usage-ia-agents-etat` | `audit-redteam` | périmètre différent (cadre d'usage vs test d'attaque) |
 
-Compatibilité de nommage : leurs skills n'ont pas de préfixe (`rgaa`, `build-react-french-state-design-system`…),
+Compatibilité de nommage : leurs skills n'ont pas de préfixe (`rgaa`, `fr-gov-build-react-design-system`…),
 les nôtres aussi — le préfixe `gouv-fr-` a été retiré lors du regroupement en
 groupes, pour qu'aucun skill ne porte le nom de son dossier parent. Les deux
 jeux coexistent dans Hermes, dans des groupes distincts. Formats de
@@ -111,6 +111,6 @@ frontmatter différents (eux : `name` + `description` seuls ; nous : `version`,
 `license`, `platforms`, `metadata.hermes`, et `author` pour les skills dont
 l'attribution humaine est connue).
 
-Renvois croisés : les liens de `find-anssi-guide` vers la skill upstream
+Renvois croisés : les liens de `fr-gov-find-cybersecurity-guide` vers la skill upstream
 `securite-developpement` pointent vers les URLs GitHub d'`etalab-ia/skills` (les chemins
 relatifs `../../securite-developpement/` seraient cassés ici).

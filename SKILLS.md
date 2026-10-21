@@ -1,6 +1,6 @@
 # Index des skills gouv-fr
 
-**43 skills** répartis en **7 groupes**, sous `skills/gouv-fr/<groupe>/<skill>/`.
+**42 skills** répartis en **7 groupes**, sous `skills/gouv-fr/<groupe>/<skill>/`.
 
 Le nom d'un skill ne porte pas le préfixe `gouv-fr-` : il ne doit pas répéter
 le nom de son dossier parent. Le groupe suffit à le qualifier.
@@ -11,12 +11,12 @@ Guides de référence, audits de sécurité et durcissement applicatif.
 
 | Skill | Description |
 |-----------|-------------|
-| [`find-anssi-guide`](skills/gouv-fr/securite/find-anssi-guide/SKILL.md) | Trouve et cite le bon guide ANSSI. |
-| [`harden-repo-before-pentest`](skills/gouv-fr/securite/harden-repo-before-pentest/SKILL.md) | Durcit un dépôt avant pen-test (OWASP Top 10). |
-| [`audit-llm-tool-identity`](skills/gouv-fr/securite/audit-llm-tool-identity/SKILL.md) | Vérifie l'identité SSO des outils LLM per-user. |
-| [`audit-repo-safety`](skills/gouv-fr/securite/audit-repo-safety/SKILL.md) | Vérifie qu'un dépôt peut être ouvert sans risque. |
-| [`secure-coding-rules`](skills/gouv-fr/securite/secure-coding-rules/SKILL.md) | Règles de sécurité à appliquer en écrivant du code. |
-| [`redteam-llm-prompt-injection`](skills/gouv-fr/securite/redteam-llm-prompt-injection/SKILL.md) | Mène un red-team prompt-injection contre un LLM. |
+| [`fr-gov-find-cybersecurity-guide`](skills/gouv-fr/securite/fr-gov-find-cybersecurity-guide/SKILL.md) | ANSSI publications, topic search, source citations |
+| [`harden-repo-before-pentest`](skills/gouv-fr/securite/harden-repo-before-pentest/SKILL.md) | OWASP Top 10, pre-exposure audit, security remediation |
+| [`audit-llm-tool-identity`](skills/gouv-fr/securite/audit-llm-tool-identity/SKILL.md) | SSO subject propagation, per-user vault, session isolation |
+| [`audit-repo-safety`](skills/gouv-fr/securite/audit-repo-safety/SKILL.md) | Unknown repository, auto-execution, secret leak history |
+| [`fr-gov-secure-coding-rules`](skills/gouv-fr/securite/fr-gov-secure-coding-rules/SKILL.md) | Mandatory Gitleaks, synthetic fixtures, TLS, SQL safety |
+| [`redteam-llm-prompt-injection`](skills/gouv-fr/securite/redteam-llm-prompt-injection/SKILL.md) | LLM01, jailbreaks, canary exfiltration, guard evaluation |
 
 ## Développement & code (`code`)
 
@@ -24,21 +24,21 @@ Conventions, architecture, backend, frontend, outillage et workflow de développ
 
 | Skill | Description |
 |-----------|-------------|
-| [`write-adr`](skills/gouv-fr/code/write-adr/SKILL.md) | Trace une décision d'architecture en ADR. |
-| [`rest-api-conventions`](skills/gouv-fr/code/rest-api-conventions/SKILL.md) | Conventions REST, OpenAPI et tests d'API. |
-| [`scaffold-backend-api`](skills/gouv-fr/code/scaffold-backend-api/SKILL.md) | Échafaude une API Fastify, NestJS ou FastAPI. |
-| [`investigate-bug`](skills/gouv-fr/code/investigate-bug/SKILL.md) | Éprouve 2-3 hypothèses de cause avant de corriger. |
-| [`review-code`](skills/gouv-fr/code/review-code/SKILL.md) | Revue de code et dette, avec preuves et verdict. |
-| [`project-conventions`](skills/gouv-fr/code/project-conventions/SKILL.md) | Nommage et architecture d'un projet Fabrique Numérique. |
-| [`build-vue-frontend`](skills/gouv-fr/code/build-vue-frontend/SKILL.md) | Frontend Vue 3 ou Nuxt 3 conforme au DSFR. |
-| [`configure-linting`](skills/gouv-fr/code/configure-linting/SKILL.md) | Configure ESLint, Ruff et EditorConfig. |
-| [`set-up-pnpm-monorepo`](skills/gouv-fr/code/set-up-pnpm-monorepo/SKILL.md) | Monorepo pnpm workspaces et Turborepo. |
-| [`install-dev-tools`](skills/gouv-fr/code/install-dev-tools/SKILL.md) | Installe Git, Docker, pnpm, uv, VS Code et gh. |
-| [`set-up-project-layout`](skills/gouv-fr/code/set-up-project-layout/SKILL.md) | Layout de dépôt, agent de code et variables d'env. |
-| [`init-repo`](skills/gouv-fr/code/init-repo/SKILL.md) | Initialise un dépôt avec anti-fuite git et private/. |
-| [`choose-tech-stack`](skills/gouv-fr/code/choose-tech-stack/SKILL.md) | Stack recommandée pour une application de l'État. |
-| [`detect-stale-service-names`](skills/gouv-fr/code/detect-stale-service-names/SKILL.md) | Détecte le retour d'anciens noms de services. |
-| [`ship-a-dev-task`](skills/gouv-fr/code/ship-a-dev-task/SKILL.md) | Organise une tâche de dev, un correctif ou une PR. |
+| [`write-adr`](skills/gouv-fr/code/write-adr/SKILL.md) | Architecture decisions, alternatives, trade-offs |
+| [`fr-gov-rest-api-conventions`](skills/gouv-fr/code/fr-gov-rest-api-conventions/SKILL.md) | OpenAPI, HTTP status codes, pagination, error responses |
+| [`fr-gov-scaffold-backend-api`](skills/gouv-fr/code/fr-gov-scaffold-backend-api/SKILL.md) | Fastify, NestJS, FastAPI, logging, error handling |
+| [`investigate-bug`](skills/gouv-fr/code/investigate-bug/SKILL.md) | Root cause hypotheses, reproduction, fallback plan |
+| [`review-code`](skills/gouv-fr/code/review-code/SKILL.md) | PR review, technical debt, evidence, verdict |
+| [`fr-gov-project-conventions`](skills/gouv-fr/code/fr-gov-project-conventions/SKILL.md) | Naming, TypeScript strict, branches, commit conventions |
+| [`fr-gov-build-vue-frontend`](skills/gouv-fr/code/fr-gov-build-vue-frontend/SKILL.md) | Nuxt scaffolding, composables, frontend tests |
+| [`fr-gov-configure-linting`](skills/gouv-fr/code/fr-gov-configure-linting/SKILL.md) | ESLint flat config, Ruff, EditorConfig, typography |
+| [`fr-gov-set-up-pnpm-monorepo`](skills/gouv-fr/code/fr-gov-set-up-pnpm-monorepo/SKILL.md) | Workspaces, Turborepo, shared packages, build cache |
+| [`fr-gov-install-dev-tools`](skills/gouv-fr/code/fr-gov-install-dev-tools/SKILL.md) | Git, Docker, pnpm, proto, uv, environment diagnostics |
+| [`fr-gov-set-up-project-layout`](skills/gouv-fr/code/fr-gov-set-up-project-layout/SKILL.md) | OpenCode integration, project files, environment variables |
+| [`init-repo`](skills/gouv-fr/code/init-repo/SKILL.md) | New repository, gitignore, local secret blocking |
+| [`fr-gov-choose-tech-stack`](skills/gouv-fr/code/fr-gov-choose-tech-stack/SKILL.md) | Approved frameworks, Prisma, toolchain versions |
+| [`detect-stale-service-names`](skills/gouv-fr/code/detect-stale-service-names/SKILL.md) | Rename regressions, manifests, old-to-new mapping |
+| [`ship-a-dev-task`](skills/gouv-fr/code/ship-a-dev-task/SKILL.md) | Proportional workflow, implementation, checks, delivery |
 
 ## Conformité & documentation (`conformite`)
 
@@ -46,11 +46,11 @@ Conformité réglementaire, protection des données et production des documents 
 
 | Skill | Description |
 |-----------|-------------|
-| [`audit-skill-compliance`](skills/gouv-fr/conformite/audit-skill-compliance/SKILL.md) | Audite la conformité d'une app aux skills gouv-fr. |
-| [`configure-cookie-consent`](skills/gouv-fr/conformite/configure-cookie-consent/SKILL.md) | Gère les cookies d'un site DSFR avec Tarte au Citron. |
-| [`fill-dat-form`](skills/gouv-fr/conformite/fill-dat-form/SKILL.md) | Remplit un DAT MirAI depuis le code et les manifestes. |
-| [`render-dat-docx`](skills/gouv-fr/conformite/render-dat-docx/SKILL.md) | Rend un DAT MirAI en Word au modèle ministériel. |
-| [`check-web-compliance`](skills/gouv-fr/conformite/check-web-compliance/SKILL.md) | Checklist RGAA, DSFR et RGPD avant livraison. |
+| [`fr-gov-audit-app-compliance`](skills/gouv-fr/conformite/fr-gov-audit-app-compliance/SKILL.md) | Application audit, applicable rules, evidence, gaps |
+| [`fr-gov-configure-cookie-consent`](skills/gouv-fr/conformite/fr-gov-configure-cookie-consent/SKILL.md) | Tarte au Citron, third-party cookies, consent theme |
+| [`fr-gov-fill-technical-architecture-doc`](skills/gouv-fr/conformite/fr-gov-fill-technical-architecture-doc/SKILL.md) | MirAI DAT, repository evidence, Markdown template |
+| [`fr-gov-render-technical-architecture-docx`](skills/gouv-fr/conformite/fr-gov-render-technical-architecture-docx/SKILL.md) | MirAI DAT, ministerial Word template, typography |
+| [`fr-gov-check-web-compliance`](skills/gouv-fr/conformite/fr-gov-check-web-compliance/SKILL.md) | RGAA accessibility, DSFR interface, GDPR checklist |
 
 ## Données (`data`)
 
@@ -58,8 +58,8 @@ Consommation des APIs de données ouvertes et schémas du SIG.
 
 | Skill | Description |
 |-----------|-------------|
-| [`query-french-open-data-api`](skills/gouv-fr/data/query-french-open-data-api/SKILL.md) | Interroge les APIs de data.gouv.fr et la Tabular. |
-| [`fetch-open-geodata`](skills/gouv-fr/data/fetch-open-geodata/SKILL.md) | Données ouvertes du SIG en JSONL et schémas. |
+| [`fr-gov-query-open-data-api`](skills/gouv-fr/data/fr-gov-query-open-data-api/SKILL.md) | data.gouv.fr, Tabular CSV, datasets, usage metrics |
+| [`fr-gov-query-public-communication-data`](skills/gouv-fr/data/fr-gov-query-public-communication-data/SKILL.md) | Press releases, ministers, public figures, JSONL schemas |
 
 ## DSFR & design system (`dsfr`)
 
@@ -67,12 +67,12 @@ Design system de l'État : composants, web-components, pictogrammes et templates
 
 | Skill | Description |
 |-----------|-------------|
-| [`build-french-state-design-system-charts`](skills/gouv-fr/dsfr/build-french-state-design-system-charts/SKILL.md) | Graphiques DSFR en web-components Vue.js. |
-| [`set-up-french-state-design-system`](skills/gouv-fr/dsfr/set-up-french-state-design-system/SKILL.md) | Installe et vérifie le DSFR d'un projet. |
-| [`add-french-state-design-system-icons`](skills/gouv-fr/dsfr/add-french-state-design-system-icons/SKILL.md) | Intègre pictogrammes et icônes officiels du DSFR. |
-| [`build-react-french-state-design-system`](skills/gouv-fr/dsfr/build-react-french-state-design-system/SKILL.md) | Interfaces React avec @codegouvfr/react-dsfr. |
-| [`build-french-state-design-system-emails`](skills/gouv-fr/dsfr/build-french-state-design-system-emails/SKILL.md) | Génère des templates email DSFR pour l'État. |
-| [`build-vue-french-state-design-system`](skills/gouv-fr/dsfr/build-vue-french-state-design-system/SKILL.md) | Composants Vue 3 DSFR avec VueDsfr. |
+| [`fr-gov-build-design-system-charts`](skills/gouv-fr/dsfr/fr-gov-build-design-system-charts/SKILL.md) | DSFR Chart, statistical web components, accessible data |
+| [`fr-gov-set-up-design-system`](skills/gouv-fr/dsfr/fr-gov-set-up-design-system/SKILL.md) | DSFR install, CSS assets, HTML checks, NPM or CDN |
+| [`fr-gov-add-design-system-icons`](skills/gouv-fr/dsfr/fr-gov-add-design-system-icons/SKILL.md) | DSFR pictograms, SVG artwork, official icon classes |
+| [`fr-gov-build-react-design-system`](skills/gouv-fr/dsfr/fr-gov-build-react-design-system/SKILL.md) | react-dsfr, Next.js App Router, theme flash prevention |
+| [`fr-gov-build-design-system-emails`](skills/gouv-fr/dsfr/fr-gov-build-design-system-emails/SKILL.md) | DSFR Mail, HTML templates, Outlook, responsive layout |
+| [`fr-gov-build-vue-design-system`](skills/gouv-fr/dsfr/fr-gov-build-vue-design-system/SKILL.md) | VueDsfr components, SFC imports, Nuxt integration |
 
 ## DevOps & déploiement (`devops`)
 
@@ -80,13 +80,13 @@ Intégration continue, conteneurs, Kubernetes, déploiement Cloud Pi Native et t
 
 | Skill | Description |
 |-----------|-------------|
-| [`set-up-cloud-pi-native-cicd`](skills/gouv-fr/devops/set-up-cloud-pi-native-cicd/SKILL.md) | Pose la CI/CD CPiN via les workflows fabnum-cicd. |
-| [`deploy-to-cloud-pi-native`](skills/gouv-fr/devops/deploy-to-cloud-pi-native/SKILL.md) | Déploie une app sur Cloud Pi Native (DSO, ArgoCD). |
-| [`containerize-app-for-k8s`](skills/gouv-fr/devops/containerize-app-for-k8s/SKILL.md) | Docker rootless et K8s pour Cloud Pi Native. |
-| [`set-up-github-actions-ci`](skills/gouv-fr/devops/set-up-github-actions-ci/SKILL.md) | Pose une CI GitHub Actions de base. |
-| [`write-digital-factory-cicd-workflows`](skills/gouv-fr/devops/write-digital-factory-cicd-workflows/SKILL.md) | Écrit ci.yml et cd.yml sur fabnum-cicd. |
-| [`create-helm-chart`](skills/gouv-fr/devops/create-helm-chart/SKILL.md) | Crée un chart Helm pour Cloud Pi Native. |
-| [`smoke-test-api`](skills/gouv-fr/devops/smoke-test-api/SKILL.md) | Smoke-teste une API sans exposer de secret. |
+| [`fr-gov-set-up-cloud-pi-native-cicd`](skills/gouv-fr/devops/fr-gov-set-up-cloud-pi-native-cicd/SKILL.md) | fabnum-cicd setup, workflow pinning, mirror prerequisites |
+| [`fr-gov-deploy-to-cloud-pi-native`](skills/gouv-fr/devops/fr-gov-deploy-to-cloud-pi-native/SKILL.md) | DSO console, GitLab mirror, ArgoCD, Vault, Kyverno |
+| [`fr-gov-containerize-app-for-k8s`](skills/gouv-fr/devops/fr-gov-containerize-app-for-k8s/SKILL.md) | Rootless Docker, multi-stage builds, OpenShift UID |
+| [`fr-gov-set-up-github-actions-ci`](skills/gouv-fr/devops/fr-gov-set-up-github-actions-ci/SKILL.md) | Basic lint-test-build pipeline, CI strategy |
+| [`fr-gov-write-digital-factory-workflows`](skills/gouv-fr/devops/fr-gov-write-digital-factory-workflows/SKILL.md) | fabnum-cicd YAML, scans, release-please, Helm publishing |
+| [`fr-gov-create-helm-chart`](skills/gouv-fr/devops/fr-gov-create-helm-chart/SKILL.md) | CPiN values, Kyverno rules, MIOM labels, Vault secrets |
+| [`smoke-test-api`](skills/gouv-fr/devops/smoke-test-api/SKILL.md) | Resource listing, media download, async job, credentials |
 
 ## LaSuite (`lasuite`)
 
@@ -94,7 +94,7 @@ Interfaces React pour les applications LaSuite.
 
 | Skill | Description |
 |-----------|-------------|
-| [`build-french-collab-suite-ui`](skills/gouv-fr/lasuite/build-french-collab-suite-ui/SKILL.md) | Interfaces React LaSuite avec @gouvfr-lasuite/ui-kit. |
+| [`fr-gov-build-collab-suite-ui`](skills/gouv-fr/lasuite/fr-gov-build-collab-suite-ui/SKILL.md) | LaSuite, Cunningham, React sharing and navigation |
 
 ---
 
@@ -104,7 +104,7 @@ Interfaces React pour les applications LaSuite.
 - **starter-kit-opencode** — `dnum-mi/starter-kit-opencode` (`.agents/skills` + `docs/okf`)
 - **gouv-fr-code-package-mi** — https://github.com/ynotopec/gouv-fr-code-package-mi
 - **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
-- **etalab-ia/skills** — https://github.com/etalab-ia/skills (4 skills adaptées : build-react-french-state-design-system, build-french-collab-suite-ui, find-anssi-guide, query-french-open-data-api)
+- **etalab-ia/skills** — https://github.com/etalab-ia/skills (4 skills adaptées : fr-gov-build-react-design-system, fr-gov-build-collab-suite-ui, fr-gov-find-cybersecurity-guide, fr-gov-query-open-data-api)
 - **Skills locaux gouv-fr** — migrés et renommés (voir `backup-local-skills/`)
 
 Voir [`UPSTREAM.md`](UPSTREAM.md) pour la correspondance avec l'upstream.

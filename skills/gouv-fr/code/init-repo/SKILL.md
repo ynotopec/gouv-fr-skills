@@ -1,14 +1,14 @@
 ---
 
 name: init-repo
-description: Initialise un dépôt avec anti-fuite git et private/.
+description: New repository, gitignore, local secret blocking
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, git, repo, gitignore, gitleaks, initialisation]
-    related_skills: [audit-repo-safety, secure-coding-rules, ship-a-dev-task]
+    related_skills: [audit-repo-safety, fr-gov-secure-coding-rules, ship-a-dev-task]
 ---
 
 

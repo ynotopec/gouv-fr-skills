@@ -1,7 +1,7 @@
 ---
 
 name: ship-a-dev-task
-description: Organise une tâche de dev, un correctif ou une PR.
+description: Proportional workflow, implementation, checks, delivery
 version: 0.1.2
 license: MIT
 platforms: [linux, macos]
@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [gouv-fr, workflow, plan-mode, task-management, self-improvement, bug-fixing, review-code]
-    related_skills: [set-up-project-layout, secure-coding-rules, ship-a-dev-task]
+    related_skills: [fr-gov-set-up-project-layout, fr-gov-secure-coding-rules, ship-a-dev-task]
 ---
 
 # Gouv-fr — Workflow de développement
