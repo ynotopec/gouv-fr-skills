@@ -100,7 +100,7 @@ Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skil
 | Leur skill | Équivalent chez nous | Raison |
 |------------|----------------------|--------|
 | `rgaa` | `fr-gov-check-web-compliance` | doublon partiel : notre skill couvre déjà RGAA/DSFR/RGPD en checklist ; leur outil d'audit 106 critères (5 fichiers de référence) n'a pas été repris |
-| `securite-developpement` | `securite` | doublon partiel : 14 domaines DINUM/ANSSI détaillés, non repris — `fr-gov-find-cybersecurity-guide` y renvoie par URL |
+| `securite-developpement` | `security` | doublon partiel : 14 domaines DINUM/ANSSI détaillés, non repris — `fr-gov-find-cybersecurity-guide` y renvoie par URL |
 | `usage-ia-agents-etat` | `audit-redteam` | périmètre différent (cadre d'usage vs test d'attaque) |
 
 Compatibilité de nommage : leurs skills n'ont pas de préfixe (`rgaa`, `fr-gov-build-react-design-system`…),
