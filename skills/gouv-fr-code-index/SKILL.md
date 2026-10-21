@@ -1,8 +1,8 @@
 ---
 name: gouv-fr-code-index
-description: "Index des skills gouv-fr pour construire, auditer et déployer une application de l'État."
+description: "Choisir les skills gouv-fr pertinents pour une tâche de construction, audit ou déploiement ; utiliser pour une demande générale ou couvrant plusieurs domaines."
 category: architecture
-version: 0.2.0
+version: 0.2.1
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
@@ -12,33 +12,28 @@ metadata:
     related_skills: [gouv-fr-projet-structure, gouv-fr-securite, gouv-fr-compliance-rgaa, gouv-fr-workflow-dev, gouv-fr-repo-init]
 ---
 
-# Gouv-fr — Index des skills
+# Gouv-fr — Routage des skills
 
-Package complet de skills gouv-fr pour construire, auditer et déployer des applications de l'administration française.
+Choisir le skill le plus précis pour la demande. Ne pas charger tout le
+catalogue ni tous les `related_skills` : ces liens indiquent des ressources,
+pas une chaîne d'exécution obligatoire.
 
-## Sources
+| Demande | Skill à charger en premier |
+|---|---|
+| Vérifier la sûreté d'un dépôt inconnu | `gouv-fr-audit-safety` |
+| Auditer la conformité d'une application | `gouv-fr-audit-conformite` |
+| Revoir une PR ou mesurer la dette | `gouv-fr-code-quality` |
+| Diagnostiquer un bug | `gouv-fr-bug-investigation` |
+| Organiser un changement transversal | `gouv-fr-workflow-dev` |
+| Créer un dépôt ou choisir une stack | `gouv-fr-repo-init`, puis `gouv-fr-stack-technique` si nécessaire |
+| Intégrer le DSFR | `gouv-fr-design-system` ; choisir `gouv-fr-react-dsfr` ou `gouv-fr-composants-vue` selon la stack |
+| Préparer un chart CPiN | `gouv-fr-helm-chart` |
+| Configurer la CI/CD CPiN | `gouv-fr-repo-cicd` |
+| Examiner un tool derrière OpenWebUI | `gouv-fr-audit-openwebui` |
+| Préparer un DAT | `gouv-fr-dat-homologation`, puis `gouv-fr-dat-word` pour le rendu |
+| Consulter des guides ANSSI | `gouv-fr-anssi-guides` |
+| Interroger data.gouv.fr | `gouv-fr-datagouv-apis` |
 
-- **starter-kit-opencode** (`.agents/skills/dev/*` + `dso/*`) — CoFabNum conventions, stack, CI/CD, CPiN
-- **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — Core skills
-- **Local skills** (migrés) — DSFR, audit, référentiel données
-
-## Installation
-
-```bash
-# Copier les skills dans le répertoire Hermes skills
-cp -r gouv-fr-*/ ~/.hermes/skills/
-```
-
-## Vérification
-- Chaque répertoire contient un `SKILL.md` avec frontmatter YAML
-- Tous les noms commencent par `gouv-fr-`
-- Les skills ont des tags hermes metadata
-
-## Ressources
-
-- **Source** : `github.com/etalab-ia/albert-code`
-- **OpenCode** : `https://opencode.ai/docs/fr`
-- **Albert API** : `https://albert.api.etalab.gouv.fr`
-- **agent-vm** : `https://github.com/sylvinus/agent-vm`
-- **DSFR** : `https://www.systeme-de-design.gouv.fr/`
-- **Skills of the State** : `https://github.com/etalab-ia/skills`
+Pour un autre besoin, consulter les descriptions du catalogue `SKILLS.md`
+à la racine du dépôt source. Charger les références longues uniquement
+pour l'étape concernée. Appliquer les contrôles pertinents à la stack observée.

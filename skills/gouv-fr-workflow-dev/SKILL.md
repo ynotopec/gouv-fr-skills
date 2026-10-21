@@ -1,8 +1,8 @@
 ---
 name: gouv-fr-workflow-dev
-description: "Workflow : plan mode, tâches, leçons, bug fixing."
+description: "Organiser une tâche de développement, correction ou PR : processus proportionné, validation adaptée et suivi durable seulement si utile."
 category: workflow
-version: 0.1.1
+version: 0.1.2
 author: etalab-ia, Hermes Agent
 license: MIT
 platforms: [linux, macos]
@@ -14,44 +14,32 @@ metadata:
 
 # Gouv-fr — Workflow de développement
 
-Processus de travail et bonnes pratiques pour le développement d'applications gouv-fr-code-index.
+## Choisir un processus proportionné
 
-## Plan Mode (3+ étapes ou décision architecture)
+Lire les consignes du dépôt et la demande avant de choisir les étapes.
+Pour une correction locale et réversible : inspecter, corriger, vérifier et
+livrer directement. Respecter le style et les outils existants.
 
-1. Planifier dans `tasks/todo.md` (items cochables)
-2. Valider avant d'implémenter
-3. Cocher les items au fur et à mesure
-4. Section « résultat » à la fin
+Pour un changement transversal ou une décision d'architecture : formuler un
+plan court et le suivre. Utiliser le suivi de tâches déjà présent ; créer
+`tasks/todo.md` seulement si demandé ou utile à une reprise durable.
+Ne pas demander une nouvelle validation pour une action déjà autorisée.
+Demander une précision uniquement si une information indispensable manque.
 
-## Task Management (`tasks/`)
+## Auditer et corriger
 
-```
-tasks/
-├── todo.md      # Plan courant (items cochables)
-└── lessons.md   # Patterns d'erreur (cumulatif)
-```
+- Une demande d'audit seule reste en lecture seule : constats, preuves, limites.
+- Une demande de correction ou de PR autorise les changements correspondants.
+- Reproduire un bug lorsque possible, corriger sa cause et vérifier le comportement.
+- Choisir les tests selon le risque ; éviter de créer des tests qui recopient
+  l'implémentation ou d'imposer une suite étrangère à la stack.
+- Conserver une leçon seulement si elle est réutilisable et si un journal est
+  demandé ou prévu par le dépôt ; éviter un fichier après chaque petite correction.
 
-## Self-Improvement Loop
+## Livrer
 
-Après toute correction : mettre à jour `tasks/lessons.md`, le relire au début de chaque session.
-
-## Bug Fixing
-
-1. Reproduire le bug (tests automatisés)
-2. Corriger la cause racine
-3. Ne jamais masquer un symptôme
-
-## Code Quality
-
-- « Existe-t-il une solution plus élégante ? » pour tout changement non trivial
-- Respecter le style existant
-- Petites unités testables. Tests avec le changement
-
-## How to Contribute
-
-1. Lire `AGENTS.md` (architecture + règles)
-2. Choisir le ticket suivant dans `BACKLOG.md`
-3. Lire les fichiers concernés, implémenter selon le DoD
-4. Valider avec les scénarios de `TESTS.md`
-5. Mettre à jour `README.md` si le comportement change
-6. Commit en Conventional Commits
+1. Préserver les modifications préexistantes et travailler sur une branche dédiée.
+2. Vérifier le changement avec les outils du projet.
+3. Mettre à jour la documentation si le comportement change.
+4. Respecter les conventions de commit et de PR du dépôt.
+5. Résumer le résultat, les vérifications et les limites ; ne pas auto-fusionner.
