@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [dsfr, chart, data, visualization, vue, graph, graphique]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]
+    tags: [dsfr, chart, data, visualization, vue, graph, graphique]]
+    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]]
 ---
 
 # DSFR Chart — Visualisation de données

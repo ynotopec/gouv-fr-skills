@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, git, commits, conventional-commits, pull-request, gitignore, code-review]
-    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-workflow]
+    tags: [gouv-fr-code, git, commits, conventional-commits, pull-request, gitignore, code-review]]
+    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-workflow]]
 ---
 
 # Gouv-fr — Git & Commits

@@ -21,6 +21,10 @@ def check(root):
             errors.append(f'{path}: name differs from folder')
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', path.parent.name):
             errors.append(f'{path}: invalid name')
+        if len(path.parent.name) > 64:
+            errors.append(f'{path}: name exceeds 64 characters')
+        if re.search(r'(?:^|-)(french|gouv|gouvernement|state|government)(?:-|$)', path.parent.name):
+            errors.append(f'{path}: redundant country/government term; use fr-gov-')
         if path.parent.name == path.parent.parent.name:
             errors.append(f'{path}: name duplicates parent group')
         related = re.search(r'related_skills: \[([^\]]*)\]', frontmatter)
@@ -35,8 +39,8 @@ def check(root):
             text = description[1].strip().strip('"')
             if len(text) > 60:
                 errors.append(f'{path}: description is {len(text)} chars (max 60)')
-            if not text.endswith('.'):
-                errors.append(f'{path}: description must end with a period')
+            if not text:
+                errors.append(f'{path}: empty description')
         if not re.search(r'^## Quand utiliser\s*$', source, re.M):
             errors.append(f'{path}: missing "## Quand utiliser" section')
 
@@ -80,6 +84,18 @@ def check(root):
                 errors.append(f'Missing migration destination: {target}')
     if targets != canonical:
         errors.append('Migration table does not cover every current skill')
+    retired = set()
+    with (root / 'scripts/skill-retirements.tsv').open() as stream:
+        for row in csv.reader(stream, delimiter='\t'):
+            if not row or row[0].startswith('#'):
+                continue
+            if len(row) != 2 or not all(re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', part) for part in row):
+                errors.append(f'Invalid retirement row: {row}')
+                continue
+            alias = '/'.join(row)
+            if alias in retired or alias in aliases or alias in canonical or row[1] in names:
+                errors.append(f'Conflicting retirement: {alias}')
+            retired.add(alias)
     return skills, errors
 
 

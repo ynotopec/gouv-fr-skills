@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [dsfr, email, template, gouv-fr, mail, accessible]
-    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-theme-tarteaucitron, gouv-fr-code-compliance]
+    tags: [dsfr, email, template, gouv-fr, mail, accessible]]
+    related_skills: [gouv-fr-dsfr, gouv-fr-dsfr-theme-tarteaucitron, gouv-fr-code-compliance]]
 ---
 
 # Template Mail DSFR

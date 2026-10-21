@@ -180,7 +180,7 @@ temporaire. Le test n'écrit plus rien hors de `$TMPDIR`.
 ### 🟡 Infrastructure
 
 #### 7. Deux suites de tests n'étaient jamais exécutées
-Seul `skills/gouv-fr/dsfr/integration-dsfr/tests` était branché sur la CI. Les tests
+Seul `skills/gouv-fr/dsfr/fr-gov-set-up-design-system/tests` était branché sur la CI. Les tests
 de `gouv-fr-dat-word` (typographie) et ceux de `gouv-fr-repo-cicd` (absents)
 ne tournaient nulle part. `test_render_docx.py` appelait `sys.exit()` à
 l'import, ce qui rendait son dossier **indécouvrable** par
