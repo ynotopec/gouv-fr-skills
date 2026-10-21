@@ -158,6 +158,29 @@ ls skills/ | grep -vE '^[a-z0-9]+(-[a-z0-9]+)*$'   # ne doit rien afficher
 
 Voir [`REVIEW.md`](REVIEW.md) pour le rapport de revue complet.
 
+### Audits adaptés au projet
+
+`gouv-fr-code-index` oriente vers le skill pertinent sans charger tout le
+catalogue. L'audit de conformité commence par identifier la stack et le
+déploiement réels ; une vérification seule reste en lecture seule. Une
+demande de correction ou de PR autorise les modifications correspondantes.
+Les preuves manquantes sont « non évaluées », les contrôles hors périmètre
+sont « sans objet » : ni l'un ni l'autre ne vaut conformité démontrée.
+
+Le vérificateur DSFR contrôle les classes CSS et les assets locaux, pas la
+conformité globale ni le RGAA. **Sans classe `fr-*`, il indique « non évalué »
+et retourne 1**, au lieu d'un succès à 100 %. Ses tests s'exécutent hors réseau :
+
+```bash
+python3 -m unittest discover -s skills/gouv-fr-design-system/tests -v
+```
+
+Le [protocole d'évaluation](skills/gouv-fr-audit-conformite/references/evaluation-efficiency.md)
+permet de comparer qualité, faux positifs, durée, tokens et interventions
+humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
+`gouv-fr-code-quality` conserve sa copie vendorée ; ses évolutions suivent
+la procédure décrite dans son [`UPSTREAM.md`](skills/gouv-fr-code-quality/UPSTREAM.md).
+
 ## Workflow
 
 Voir [`WORKFLOW.md`](WORKFLOW.md) — règle d'or : `bash .github/workflows/save-workflow.sh "<motif>"` avant tout gros changement.

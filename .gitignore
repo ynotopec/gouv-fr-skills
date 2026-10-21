@@ -24,3 +24,7 @@ private/
 
 # Node
 node_modules/
+
+# Python test caches
+__pycache__/
+*.py[cod]
