@@ -3,7 +3,8 @@
 Répertoire de skills compatibles **Hermes**, **OpenCode**, **Kilo Code** et
 **Claude Code** pour les projets de la Fabrique Numérique (Mission Interministérielle).
 
-**43 skills**, tous préfixés `gouv-fr-`. Index complet : [`SKILLS.md`](SKILLS.md).
+**43 skills** répartis en **7 groupes**, sous `skills/gouv-fr/<groupe>/<skill>/`.
+Index complet : [`SKILLS.md`](SKILLS.md).
 
 ## Origines
 
@@ -11,97 +12,31 @@ Répertoire de skills compatibles **Hermes**, **OpenCode**, **Kilo Code** et
 - **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills` + `docs/okf`
 - **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills gouv-fr-code
 - **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
-- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** (préfixe `gouv-fr-`) : `react-dsfr`, `lasuite-ui-kit`, `anssi-guides`, `datagouv-apis`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
+- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** : `react-dsfr`, `lasuite-ui-kit`, `anssi-guides`, `datagouv-apis`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
 - **Skills locaux gouv-fr** — migrés et renommés, sauvegarde dans `backup-local-skills/`
 
-## Skills
+## Organisation
 
-### Architecture
+Les skills sont regroupés par usage, sous un unique arbre `gouv-fr/` :
 
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-code-index`](skills/gouv-fr-code-index/SKILL.md) | Index de l'ensemble des skills |
-| [`gouv-fr-monorepo-pnpm`](skills/gouv-fr-monorepo-pnpm/SKILL.md) | pnpm workspaces + Turborepo |
-| [`gouv-fr-projet-structure`](skills/gouv-fr-projet-structure/SKILL.md) | Structure projet, CLI, OpenCode |
-| [`gouv-fr-stack-technique`](skills/gouv-fr-stack-technique/SKILL.md) | Stack technique recommandée (Front/Back/Outils) |
+| Groupe | Contenu |
+|---------|---------|
+| [`anssi`](skills/gouv-fr/anssi/) | Guides ANSSI, audits de sécurité, durcissement |
+| [`code`](skills/gouv-fr/code/) | Architecture, conventions, backend, frontend, outillage, workflow |
+| [`conformite`](skills/gouv-fr/conformite/) | RGAA, RGPD, cookies, documents d'homologation |
+| [`data`](skills/gouv-fr/data/) | APIs data.gouv.fr, données ouvertes du SIG |
+| [`dsfr`](skills/gouv-fr/dsfr/) | Design system de l'État, composants, pictogrammes, templates |
+| [`dso`](skills/gouv-fr/dso/) | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
+| [`lasuite`](skills/gouv-fr/lasuite/) | Interfaces React LaSuite |
 
-### Workflow & conventions
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-adr`](skills/gouv-fr-adr/SKILL.md) | Rédaction d'ADR (Architecture Decision Record) |
-| [`gouv-fr-bug-investigation`](skills/gouv-fr-bug-investigation/SKILL.md) | Hypothèses de cause avant tout fix |
-| [`gouv-fr-conventions-nommage`](skills/gouv-fr-conventions-nommage/SKILL.md) | Conventions de nommage Fabrique Numérique |
-| [`gouv-fr-outils-developpement`](skills/gouv-fr-outils-developpement/SKILL.md) | Git, Docker, pnpm, proto, VS Code, uv |
-| [`gouv-fr-repo-init`](skills/gouv-fr-repo-init/SKILL.md) | Démarrer un repo proprement et sans fuite |
-| [`gouv-fr-workflow-dev`](skills/gouv-fr-workflow-dev/SKILL.md) | Plan mode, task management |
-
-### Backend
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-api-rest`](skills/gouv-fr-api-rest/SKILL.md) | API REST, OpenAPI, Swagger |
-| [`gouv-fr-backend-fastify`](skills/gouv-fr-backend-fastify/SKILL.md) | Fastify, NestJS, FastAPI server |
-
-### Frontend / DSFR
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-composants-vue`](skills/gouv-fr-composants-vue/SKILL.md) | VueDsfr — composants Vue 3 |
-| [`gouv-fr-design-system`](skills/gouv-fr-design-system/SKILL.md) | DSFR — Système de Design de l'État |
-| [`gouv-fr-lasuite-ui-kit`](skills/gouv-fr-lasuite-ui-kit/SKILL.md) | LaSuite UI Kit (React, Cunningham) |
-| [`gouv-fr-react-dsfr`](skills/gouv-fr-react-dsfr/SKILL.md) | React DSFR (`@codegouvfr/react-dsfr`) |
-| [`gouv-fr-frontend-vue3`](skills/gouv-fr-frontend-vue3/SKILL.md) | Vue 3, Nuxt 3 |
-| [`gouv-fr-graphiques-dsfr`](skills/gouv-fr-graphiques-dsfr/SKILL.md) | Graphiques DSFR en web-components |
-| [`gouv-fr-pictogrammes-dsfr`](skills/gouv-fr-pictogrammes-dsfr/SKILL.md) | Pictogrammes, icônes, visuels officiels |
-| [`gouv-fr-templates-email`](skills/gouv-fr-templates-email/SKILL.md) | Templates email DSFR |
-
-### Qualité & conformité
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-audit-conformite`](skills/gouv-fr-audit-conformite/SKILL.md) | Audit de conformité d'une application |
-| [`gouv-fr-code-quality`](skills/gouv-fr-code-quality/SKILL.md) | Grille de contrôle qualité (code généré IA) |
-| [`gouv-fr-compliance-rgaa`](skills/gouv-fr-compliance-rgaa/SKILL.md) | RGAA, DSFR, RGPD |
-| [`gouv-fr-cookies-rgpd`](skills/gouv-fr-cookies-rgpd/SKILL.md) | Cookies Tarte au Citron (RGPD) |
-| [`gouv-fr-lint-eslint`](skills/gouv-fr-lint-eslint/SKILL.md) | ESLint, Ruff, EditorConfig |
-
-### Sécurité & audit
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-anssi-guides`](skills/gouv-fr-anssi-guides/SKILL.md) | Catalogue et consultation des guides ANSSI |
-| [`gouv-fr-audit-openwebui`](skills/gouv-fr-audit-openwebui/SKILL.md) | Identité SSO des tools derrière OpenWebUI |
-| [`gouv-fr-audit-pentest`](skills/gouv-fr-audit-pentest/SKILL.md) | Préparation pen-test & durcissement |
-| [`gouv-fr-audit-redteam`](skills/gouv-fr-audit-redteam/SKILL.md) | Red-team / prompt-injection LLM |
-| [`gouv-fr-audit-safety`](skills/gouv-fr-audit-safety/SKILL.md) | Ouvrir une base de code sans risque |
-| [`gouv-fr-dat-homologation`](skills/gouv-fr-dat-homologation/SKILL.md) | Pré-remplissage DAT (homologation MirAI) |
-| [`gouv-fr-dat-word`](skills/gouv-fr-dat-word/SKILL.md) | Rendu .docx ministériel (DAT) |
-| [`gouv-fr-securite`](skills/gouv-fr-securite/SKILL.md) | Secrets, gitleaks, SQL, TLS, isolation VM |
-
-### DevOps & déploiement
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-deployment-cloud-pi-native`](skills/gouv-fr-deployment-cloud-pi-native/SKILL.md) | Déploiement Cloud Pi Native (console, pipeline, ArgoCD) |
-| [`gouv-fr-deployment-docker-k8s`](skills/gouv-fr-deployment-docker-k8s/SKILL.md) | Docker rootless, K8s securityContext |
-| [`gouv-fr-github-actions-ci`](skills/gouv-fr-github-actions-ci/SKILL.md) | CI GitHub Actions minimale |
-| [`gouv-fr-github-actions-reusable`](skills/gouv-fr-github-actions-reusable/SKILL.md) | Workflows fabnum-cicd réutilisables |
-| [`gouv-fr-helm-chart`](skills/gouv-fr-helm-chart/SKILL.md) | Helm chart CPiN (OpenShift, Kyverno) |
-| [`gouv-fr-repo-cicd`](skills/gouv-fr-repo-cicd/SKILL.md) | Brancher un projet sur la CI/CD CPiN |
-| [`gouv-fr-service-names`](skills/gouv-fr-service-names/SKILL.md) | Anti-régression des noms de services mcr |
-| [`gouv-fr-smoke-test`](skills/gouv-fr-smoke-test/SKILL.md) | Smoke-test pipeline mirai-mesreunions |
-
-### Données
-
-| Skill | Description |
-|-------|-------------|
-| [`gouv-fr-datagouv-apis`](skills/gouv-fr-datagouv-apis/SKILL.md) | APIs data.gouv.fr (Main, Metrics, Tabular) |
-| [`gouv-fr-donnees-ouvertes`](skills/gouv-fr-donnees-ouvertes/SKILL.md) | Données ouvertes publiques du SIG |
+Le nom d'un skill ne porte pas le préfixe `gouv-fr-` : il ne doit pas répéter le
+nom de son dossier parent. `skills/gouv-fr/code/code-index/` est conforme ;
+`skills/gouv-fr/code/gouv-fr-code-index/` ne l'est pas.
 
 ## Installation
 
-Le script installe chaque dossier de skill sans en modifier le format :
+Le script installe chaque dossier de skill sans en modifier le format, en
+conservant le dossier de groupe :
 
 ```bash
 # Installer les 43 skills pour les quatre agents, dans le profil utilisateur
@@ -123,6 +58,9 @@ Les destinations utilisateur sont :
 | Kilo Code | `${KILO_HOME:-~/.kilocode}/skills/` |
 | Claude Code | `${CLAUDE_HOME:-~/.claude}/skills/` |
 
+Les skills sont posés dans `<destination>/<groupe>/<skill>/`. Pour une
+installation à plat (sans dossier de groupe), ajouter `--flat`.
+
 Pour une installation limitée à un dépôt, utiliser `--scope project`. Le script
 écrit alors respectivement dans `.hermes/skills/`, `.opencode/skills/`,
 `.kilocode/skills/` ou `.claude/skills/` :
@@ -136,23 +74,45 @@ Par sécurité, une installation existante n'est pas écrasée. Ajouter `--force
 pour mettre à jour les copies déjà présentes. `./scripts/install-skills.sh --help`
 affiche toutes les options.
 
+### Migrer une installation existante
+
+Les anciennes copies `gouv-fr-<nom>` sont détectées avant installation.
+`--force` seul ne permet pas de les laisser cohabiter avec les nouveaux noms.
+Utiliser `--migrate` pour installer le nouveau catalogue puis déplacer les
+anciennes copies dans un dossier frère `skills.backup-XXXXXX`, hors du
+répertoire actif. Le chemin de sauvegarde est affiché ; les modifications
+locales et les skills tiers sont conservés.
+
+```bash
+./scripts/install-skills.sh --agent all --migrate
+# Si les nouvelles destinations existent déjà :
+./scripts/install-skills.sh --agent all --migrate --force
+```
+
+La sauvegarde reste disponible pour récupérer les anciennes copies ; elle
+n'est jamais supprimée par l'installateur. `--migrate` fonctionne aussi avec
+`--scope project` et `--flat`.
+
 ## Vérification
 
-- Chaque skill dans `skills/gouv-fr-*/` contient un `SKILL.md` avec frontmatter YAML valide
+- Chaque skill dans `skills/gouv-fr/<groupe>/<skill>/` contient un `SKILL.md` avec frontmatter YAML valide
 - Le workflow `Security` analyse l'historique complet avec Gitleaks ; les fichiers de secrets et le répertoire local `private/` sont ignorés par Git
-- Tous les noms commencent par `gouv-fr-` et correspondent au champ `name:`
-- **Le nom du répertoire et le champ `name:` doivent être en kebab-case minuscule**,
-  conformément au motif `^[a-z0-9]+(-[a-z0-9]+)*$` exigé par les validateurs de skills
-  (opencode, albert-code, Claude Code). Aucune majuscule : `gouv-fr-graphiques-dsfr`,
-  pas `gouv-fr-graphiques-DSFR`. Les acronymes restent en majuscules **dans le titre H1
+- Le champ `name:` de chaque skill correspond à son dossier, en kebab-case minuscule
+  conforme au motif `^[a-z0-9]+(-[a-z0-9]+)*$` exigé par les validateurs de skills
+  (opencode, albert-code, Claude Code). Aucune majuscule : `graphiques-dsfr`,
+  pas `graphiques-DSFR`. Les acronymes restent en majuscules **dans le titre H1
   et le texte**, jamais dans le nom.
+- Aucun skill ne porte le nom de son groupe parent
 - Les références croisées (`related_skills`, mentions dans le corps) pointent vers des skills existants
 - Exemple d'application conforme : `examples/test-app-verification/`
 
-Contrôle rapide de conformité des noms :
+Contrôle rapide de conformité :
 
 ```bash
-ls skills/ | grep -vE '^[a-z0-9]+(-[a-z0-9]+)*$'   # ne doit rien afficher
+# Aucun nom de skill ne doit reprendre le nom de son groupe
+find skills/gouv-fr -mindepth 2 -maxdepth 2 -type d \
+  -exec sh -c '[ "$(basename "$1")" = "$(basename "$(dirname "$1")")" ] && echo "$1"' _ {} \;
+
 ./scripts/test-install-skills.sh
 ```
 
@@ -160,22 +120,22 @@ Voir [`REVIEW.md`](REVIEW.md) pour le rapport de revue complet.
 
 ### Audits adaptés au projet
 
-`gouv-fr-code-index` oriente vers le skill pertinent sans charger tout le
-catalogue. L'audit de conformité commence par identifier la stack et le
-déploiement réels ; une vérification seule reste en lecture seule. Une
-demande de correction ou de PR autorise les modifications correspondantes.
-Les preuves manquantes sont « non évaluées », les contrôles hors périmètre
-sont « sans objet » : ni l'un ni l'autre ne vaut conformité démontrée.
+`code-index` oriente vers le skill pertinent sans charger tout le catalogue.
+L'audit de conformité commence par identifier la stack et le déploiement réels ;
+une vérification seule reste en lecture seule. Une demande de correction ou de
+PR autorise les modifications correspondantes. Les preuves manquantes sont
+« non évaluées », les contrôles hors périmètre sont « sans objet » : ni l'un ni
+l'autre ne vaut conformité démontrée.
 
 Le vérificateur DSFR contrôle les classes CSS et les assets locaux, pas la
 conformité globale ni le RGAA. **Sans classe `fr-*`, il indique « non évalué »
 et retourne 1**, au lieu d'un succès à 100 %. Ses tests s'exécutent hors réseau :
 
 ```bash
-python3 -m unittest discover -s skills/gouv-fr-design-system/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dsfr/design-system/tests -v
 ```
 
-Le [protocole d'évaluation](skills/gouv-fr-audit-conformite/references/evaluation-efficiency.md)
+Le [protocole d'évaluation](skills/gouv-fr/conformite/audit-conformite/references/evaluation-efficiency.md)
 permet de comparer qualité, faux positifs, durée, tokens et interventions
 humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
 
@@ -188,16 +148,16 @@ CI (`Skills tests`) :
 python -m pip install pyyaml python-docx
 
 # Rendu DAT : typographie française et modèle Word par défaut
-python3 -m unittest discover -s skills/gouv-fr-dat-word/tests -v
+python3 -m unittest discover -s skills/gouv-fr/conformite/dat-word/tests -v
 
 # Vérificateur DSFR : classes CSS et assets locaux
-python3 -m unittest discover -s skills/gouv-fr-design-system/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dsfr/design-system/tests -v
 
 # Permissions des appels de workflows réutilisables
-python3 -m unittest discover -s skills/gouv-fr-repo-cicd/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dso/repo-cicd/tests -v
 
 # Smoke-test : credentials synthétiques et transport simulé
-python3 -m unittest discover -s skills/gouv-fr-smoke-test/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dso/smoke-test/tests -v
 
 # Script d'installation (Hermes, OpenCode, Kilo Code, Claude Code)
 ./scripts/test-install-skills.sh
@@ -209,15 +169,15 @@ rien dans le répertoire de skills réel de l'utilisateur.
 ## Maintenance autonome
 
 Les skills sont maintenus et validés directement dans ce dépôt. Aucune PR ni
-validation dans un dépôt d’origine n’est requise. Les fichiers `UPSTREAM.md`
+validation dans un dépôt d'origine n'est requise. Les fichiers `UPSTREAM.md`
 documentent la provenance ; ils ne constituent pas une procédure de synchronisation
 obligatoire. Les références internes sont embarquées avec chaque skill.
 
-`gouv-fr-code-quality` charge uniquement la revue, le rituel ou les standards
+`code-quality` charge uniquement la revue, le rituel ou les standards
 nécessaires à la tâche. Son historique et ses adaptations sont décrits dans
-son [`UPSTREAM.md`](skills/gouv-fr-code-quality/UPSTREAM.md).
+son [`UPSTREAM.md`](skills/gouv-fr/code/code-quality/UPSTREAM.md).
 
-L’installation des skills copie les fichiers locaux sans récupérer d’autres
+L'installation des skills copie les fichiers locaux sans récupérer d'autres
 skills. Les outils et services propres aux tâches (Helm, API data.gouv.fr,
 workflows CI, etc.) restent des prérequis à vérifier selon le besoin.
 

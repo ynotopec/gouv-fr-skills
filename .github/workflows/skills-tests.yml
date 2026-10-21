@@ -20,13 +20,13 @@ jobs:
       - name: Installer les dépendances de test
         run: python -m pip install --upgrade pip && python -m pip install pyyaml python-docx
       - name: Tests du rendu DAT (typographie, modèle par défaut)
-        run: python -m unittest discover -s skills/gouv-fr-dat-word/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/conformite/dat-word/tests -v
       - name: Tests du vérificateur DSFR
-        run: python -m unittest discover -s skills/gouv-fr-design-system/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/dsfr/design-system/tests -v
       - name: Tests de vérification des appels de workflows
-        run: python -m unittest discover -s skills/gouv-fr-repo-cicd/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/dso/repo-cicd/tests -v
       - name: Tests du smoke-test (credentials synthétiques, sans réseau)
-        run: python -m unittest discover -s skills/gouv-fr-smoke-test/tests -v
+        run: python -m unittest discover -s skills/gouv-fr/dso/smoke-test/tests -v
 
   install:
     name: Installation des skills
