@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [data, open-data, sig, json, communication, ref, schema]
-    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance]
+    tags: [data, open-data, sig, json, communication, ref, schema]]
+    related_skills: [gouv-fr-code-security, gouv-fr-code-compliance]]
 ---
 
 # Référentiel de données de communication publique

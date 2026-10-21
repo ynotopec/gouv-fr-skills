@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [dsfr, artwork, pictogram, icon, svg, illustration]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]
+    tags: [dsfr, artwork, pictogram, icon, svg, illustration]]
+    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance]]
 ---
 
 # DSFR Artwork

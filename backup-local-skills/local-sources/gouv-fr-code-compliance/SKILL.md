@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-project, gouv-fr-code-security]
+    tags: [gouv-fr-code, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]]
+    related_skills: [gouv-fr-dsfr, gouv-fr-code-project, gouv-fr-code-security]]
 ---
 
 # Gouv-fr — Conformité

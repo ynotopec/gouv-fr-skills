@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]
-    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance, gouv-fr-code-security]
+    tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]]
+    related_skills: [gouv-fr-dsfr, gouv-fr-code-compliance, gouv-fr-code-security]]
 ---
 
 # DSFR Theme Tarte au Citron
