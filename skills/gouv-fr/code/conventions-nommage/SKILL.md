@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, conventions, nommage, architecture, typescript, api-rest]
-    related_skills: [projet-structure, lint-eslint, stack-technique]
+    related_skills: [projet-structure, lint-format, stack-technique]
 ---
 # Gouv-fr — Conventions de nommage et d'architecture
 

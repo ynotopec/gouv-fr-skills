@@ -8,12 +8,12 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, ci, github-actions, pnpm, workflow]
-    related_skills: [github-actions-reusable, repo-cicd, lint-eslint]
+    related_skills: [github-actions-reusable, cicd-cloud-pi-native, lint-format]
 ---
 # Gouv-fr — CI GitHub Actions (base)
 
 Principes et gabarit de base. Pour assembler les workflows réutilisables de fabnum-cicd (build, scans, release-please,
-chart Helm, synchro Cloud Pi Native), utiliser le skill **`cicd-fabnum`** (groupe `dso`).
+chart Helm, synchro Cloud Pi Native), utiliser le skill **`cicd-fabnum`** (groupe `devops`).
 
 ## Principes
 

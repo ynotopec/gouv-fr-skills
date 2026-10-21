@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, git, repo, gitignore, gitleaks, initialisation]
-    related_skills: [audit-safety, securite, workflow-dev]
+    related_skills: [audit-securite-depot, developpement-securise, workflow-dev]
 ---
 
 

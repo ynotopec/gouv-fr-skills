@@ -19,7 +19,7 @@ Options:
   --project <dir>  racine du projet pour --scope project (defaut: repertoire courant)
   --flat            installe a plat dans <destination>/<skill>/ (sans le groupe)
   --force           remplace les skills gouv-fr deja installes
-  --migrate         archive les anciennes copies gouv-fr-* hors du dossier actif
+  --migrate         archive les anciens noms/groupes hors du dossier actif
   -h, --help        affiche cette aide
 EOF
 }
@@ -85,6 +85,23 @@ esac
 script_dir="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(dirname "$script_dir")"
 skills_root="$repo_root/skills/gouv-fr"
+renames_file="$script_dir/skill-renames.tsv"
+[[ -f "$renames_file" ]] || { echo "Erreur: table locale des renommages absente" >&2; exit 1; }
+
+legacy_candidates_for() {
+  local destination="$1" current_group="$2" current_name="$3"
+  local old_group old_name new_group new_name
+  printf '%s\n' "$destination/gouv-fr-$current_name"
+  # Détecter aussi le passage entre les installations groupée et à plat.
+  printf '%s\n' "$destination/$current_group/$current_name" "$destination/$current_name"
+  while IFS=$'\t' read -r old_group old_name new_group new_name; do
+    [[ "$old_group" == \#* || -z "$old_group" ]] && continue
+    if [[ "$new_group" == "$current_group" && "$new_name" == "$current_name" ]]; then
+      printf '%s\n' "$destination/$old_group/$old_name" \
+        "$destination/$old_name" "$destination/gouv-fr-$old_name"
+    fi
+  done < "$renames_file"
+}
 
 destination_for() {
   local current_agent="$1"
@@ -114,7 +131,8 @@ install_for() {
   local group
   local legacy
   local backup
-  local -a sources=() targets=() legacy_paths=()
+  local known relative duplicate
+  local -a sources=() targets=() legacy_paths=() distinct_legacy=()
   destination="$(destination_for "$current_agent")"
 
   # Préparer et vérifier tout le plan avant de remplacer ou déplacer un fichier.
@@ -130,10 +148,15 @@ install_for() {
       fi
       sources+=("$source")
       targets+=("$target")
-      legacy="$destination/gouv-fr-$(basename "$source")"
-      if [[ -e "$legacy" || -L "$legacy" ]]; then
-        legacy_paths+=("$legacy")
-      fi
+      while IFS= read -r legacy; do
+        [[ "$legacy" == "$target" ]] && continue
+        [[ -f "$legacy/SKILL.md" ]] || continue
+        duplicate=false
+        for known in "${legacy_paths[@]}"; do
+          [[ "$known" == "$legacy" ]] && duplicate=true
+        done
+        [[ "$duplicate" == true ]] || legacy_paths+=("$legacy")
+      done < <(legacy_candidates_for "$destination" "$group" "$(basename "$source")")
       if [[ -e "$target" || -L "$target" ]]; then
         if [[ "$force" != true ]]; then
           echo "Erreur: $target existe déjà (utilisez --force pour le remplacer)" >&2
@@ -143,12 +166,42 @@ install_for() {
     done
   done
 
+  # Une ancienne copie à plat peut contenir un chemin qui devient un groupe.
+  # Archiver son dossier complet une seule fois, sans déplacer ensuite ses enfants.
+  for legacy in "${legacy_paths[@]}"; do
+    duplicate=false
+    for known in "${legacy_paths[@]}"; do
+      [[ "$legacy" == "$known/"* ]] && duplicate=true
+    done
+    [[ "$duplicate" == true ]] || distinct_legacy+=("$legacy")
+  done
+  legacy_paths=("${distinct_legacy[@]}")
+
   if (( ${#legacy_paths[@]} )) && [[ "$migrate" != true ]]; then
     echo "Erreur: anciennes copies détectées dans $destination ; relancez avec --migrate (sauvegarde conservée)." >&2
     return 1
   fi
 
   mkdir -p "$destination"
+  if (( ${#legacy_paths[@]} )); then
+    backup="$(mktemp -d "${destination}.backup-XXXXXX")"
+    printf '%s: sauvegarde de migration dans %s\n' "$current_agent" "$backup"
+    # Archiver avant la copie : un ancien skill à plat peut devenir un groupe.
+    for legacy in "${legacy_paths[@]}"; do
+      relative="${legacy#"$destination/"}"
+      mkdir -p "$backup/$(dirname "$relative")"
+      mv "$legacy" "$backup/$relative"
+      rmdir "$(dirname "$legacy")" 2>/dev/null || true
+    done
+    # Préserver aussi les destinations déjà présentes qui seront mises à jour.
+    for target in "${targets[@]}"; do
+      if [[ -e "$target" || -L "$target" ]]; then
+        relative="${target#"$destination/"}"
+        mkdir -p "$backup/$(dirname "$relative")"
+        cp -RP "$target" "$backup/$relative"
+      fi
+    done
+  fi
   local index
   for index in "${!sources[@]}"; do
     target="${targets[$index]}"
@@ -158,15 +211,6 @@ install_for() {
     fi
     cp -R "${sources[$index]}" "$target"
   done
-
-  # Les nouvelles copies sont posées avant l'archivage. Ne jamais supprimer les anciennes.
-  if (( ${#legacy_paths[@]} )); then
-    backup="$(mktemp -d "${destination}.backup-XXXXXX")"
-    for legacy in "${legacy_paths[@]}"; do
-      mv "$legacy" "$backup/"
-    done
-    printf '%s: anciennes copies conservées dans %s\n' "$current_agent" "$backup"
-  fi
 
   printf '%s: skills installés dans %s\n' "$current_agent" "$destination"
 }

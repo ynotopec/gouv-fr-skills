@@ -9,7 +9,7 @@ Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre 
 | **DSFR** (verify_dsfr.py) | 43 classes | 100% (0 inconnu) |
 | **RGAA** (accessibilité) | 12 critères | 12/12 ✅ |
 | **RGPD** (cookies) | 6 critères | 6/6 ✅ |
-| **Sécurité** (audit-safety) | 7 critères | 7/7 ✅ |
+| **Sécurité** (audit-securite-depot) | 7 critères | 7/7 ✅ |
 | **Qualité de code** | 6 critères | 6/6 ✅ |
 | **Git conventions** | 4 critères | 4/4 ✅ |
 
@@ -18,7 +18,7 @@ Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre 
 - **design-system** : 43 classes fr-* validées contre DSFR 1.15.3 (score 100%)
 - **compliance-rgaa** : lang=fr, skiplinks, h1 unique, labels, boutons fr-btn, footer, viewport
 - **cookies-rgpd** : banner localStorage, accept/reject, pas de traceurs tiers
-- **audit-safety** : .gitignore, private/ ignoré, pas de secrets en dur, pas de clés API
+- **audit-securite-depot** : .gitignore, private/ ignoré, pas de secrets en dur, pas de clés API
 - **code-quality** : package.json valide, HTML valide, fermeture balises, pas de duplication
 - **repo-init** : git initialisé, commit présent, nom descriptif
 
