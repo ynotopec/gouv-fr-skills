@@ -1,7 +1,7 @@
 ---
 
 name: homologation-word
-description: Rend un document d'homologation DAT (DAT uniquement ; AIPD et dossier complet non pris en charge) au format Word (.docx) ministériel, en appliquant le modèle officiel avec typographie française, diagrammes mermaid et mise en page professionnelle.
+description: Rend un DAT en Word au modèle ministériel.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
@@ -23,8 +23,7 @@ document-homologation         →   contenu Markdown fidèle au modèle (DAT_«s
 /homologation-word     →   rendu .docx ministériel sur le modèle (DAT_«service»_v0.1.docx)
 ```
 
-## Quand l'utiliser
-
+## Quand utiliser
 - Après `document-homologation` (ou tout contenu Markdown respectant la structure du modèle), pour
   produire le livrable Word attendu au dossier d'homologation.
 - Pour n'importe quel service : la skill est **générique** et réutilisable par tous les agents.

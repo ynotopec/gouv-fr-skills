@@ -1,7 +1,7 @@
 ---
 
 name: repo-init
-description: Initialise un répertoire vide (ou un projet qui démarre) avec les précautions d'usage — git, .gitignore durci anti-fuite, un dossier private/ gitignoré pour les sorties sensibles, une structure logique lisible par un humain, et un anti-leak LOCAL bloquant (pre-commit gitleaks, binaire, sans licence). À lancer au tout début d'un nouveau repo, avant d'écrire du code ou de committer quoi que ce soit.
+description: Initialise un dépôt avec anti-fuite git et private/.
 version: 1.0.0
 license: MIT
 platforms: [linux, macos]
@@ -21,6 +21,13 @@ regrette toujours de ne pas avoir posées avant le premier commit : git, un
 
 > Pendant de la skill `/audit-securite-depot` (qui *vérifie* un repo existant) :
 > ici on *crée* les bonnes conditions dès le départ.
+
+## Quand utiliser
+
+- Au tout début d'un nouveau dépôt, avant d'écrire du code ou de committer.
+- Reprendre un répertoire vide qui doit devenir un projet propre.
+
+Pose le `.gitignore` durci, le dossier `private/` gitignoré et l'anti-leak local.
 
 ## Garde-fous
 

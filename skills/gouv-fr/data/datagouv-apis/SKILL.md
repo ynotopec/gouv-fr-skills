@@ -1,7 +1,7 @@
 ---
 
 name: datagouv-apis
-description: "Consommer les APIs de la plateforme data.gouv.fr : catalogue, métadonnées de datasets, organisations, téléchargement de fichiers, requêtes de lignes CSV (Tabular API), métriques d'usage (Metrics API) et dataservices (APIs externes). Exploration via MCP ou HTTP."
+description: Interroge les APIs de data.gouv.fr et la Tabular.
 version: 0.1.0
 license: MIT
 platforms: [linux, macos]
@@ -19,6 +19,14 @@ metadata:
 Three HTTP APIs (**Main**, **Metrics**, **Tabular**) plus **dataservices** (external HTTP APIs described on the platform; they used to be referenced on **api.gouv.fr** and are now **dataservices** on data.gouv.fr). This file is consumption-first: read paths and discovery; writes only when the user explicitly wants them and an API key is available.
 
 ---
+
+## Quand utiliser
+
+- Interroger le catalogue, les datasets, les organisations de data.gouv.fr.
+- Télécharger un fichier, requêter des lignes CSV (Tabular), lire les métriques
+  d'usage ou décrire un dataservice.
+
+Pour les données du SIG spécifiquement, voir `donnees-communication-publique`.
 
 ## How to use this skill
 

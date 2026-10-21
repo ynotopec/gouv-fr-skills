@@ -1,7 +1,7 @@
 ---
 
 name: cookies-rgpd
-description: "Gère les cookies d'un site DSFR avec Tarte au Citron."
+description: Gère les cookies d'un site DSFR avec Tarte au Citron.
 version: 0.1.1
 license: MIT
 platforms: [linux, macos]

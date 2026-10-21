@@ -1,7 +1,7 @@
 ---
 
 name: developpement-securise
-description: "Sécurité : secrets, gitleaks, SQL, TLS, isolation VM."
+description: Règles de sécurité à appliquer en écrivant du code.
 version: 0.1.3
 license: MIT
 platforms: [linux, macos]
@@ -15,6 +15,14 @@ metadata:
 # Gouv-fr — Règles de sécurité
 
 Règles de sécurité non négociables pour les applications de l'État.
+
+## Quand utiliser
+
+- Écrire du code pour l'État et appliquer les règles de sécurité non négociables.
+- Trancher une question de secrets, de requêtes SQL, de TLS ou d'isolation.
+
+Règles de fond, pas d'audit : pour un audit, voir `audit-durcissement`,
+`audit-securite-depot` ou `redteam-llm`.
 
 ## Principes
 
