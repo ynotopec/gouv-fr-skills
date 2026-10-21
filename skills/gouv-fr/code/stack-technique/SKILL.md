@@ -258,7 +258,7 @@ Pour les projets manipulants des dates :
 
 Extension VS Code : [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
 
-Créer des fichiers `.rest` pour le test d'API. Voir [conventions-nommage] pour le format.
+Créer des fichiers `.rest` pour le test d'API. Voir `api-rest` pour le format.
 
 ## Pièges
 - Ne pas utiliser `enum` TypeScript — il génère du JavaScript inutile. Privilégier les unions de littéraux.

@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [lasuite, react, ui-kit, cunningham, frontend, etat, gouv-fr, design-system]
-    related_skills: [react-dsfr, design-system, frontend-vue3, compliance-rgaa]
+    related_skills: [react-dsfr, integration-dsfr, frontend-vue3, regles-conformite-web]
 ---
 
 # Gouv-fr — LaSuite UI Kit (@gouvfr-lasuite)

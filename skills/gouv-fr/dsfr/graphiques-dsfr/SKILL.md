@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, chart, data, visualization, vue, graph, graphique]
-    related_skills: [design-system, compliance-rgaa]
+    related_skills: [integration-dsfr, regles-conformite-web]
 ---
 
 # Gouv-fr — Graphiques DSFR

@@ -9,12 +9,12 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [dsfr, react, design-system, frontend, nextjs, etat, gouv-fr, ui]
-    related_skills: [design-system, frontend-vue3, compliance-rgaa, composants-vue]
+    related_skills: [integration-dsfr, frontend-vue3, regles-conformite-web, vue-dsfr]
 ---
 
 # Gouv-fr — React DSFR (@codegouvfr/react-dsfr)
 
-> Source : [`etalab-ia/skills`](https://github.com/etalab-ia/skills) (`react-dsfr`), adapté au préfixe `gouv-fr-`. Couvre la voie **React** ; le DSFR CSS générique est dans `design-system`, la voie Vue dans `composants-vue`.
+> Source : [`etalab-ia/skills`](https://github.com/etalab-ia/skills) (`react-dsfr`), adapté au préfixe `gouv-fr-`. Couvre la voie **React** ; le DSFR CSS générique est dans `integration-dsfr`, la voie Vue dans `vue-dsfr`.
 
 Bibliothèque React pour le Design System de l'État français. Package : `@codegouvfr/react-dsfr`.
 

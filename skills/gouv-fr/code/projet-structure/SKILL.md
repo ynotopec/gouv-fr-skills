@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, project, structure, layout, open-code, opencode, mcp, environment]
-    related_skills: [securite, compliance-rgaa, workflow-dev, repo-init]
+    related_skills: [developpement-securise, regles-conformite-web, workflow-dev, repo-init]
 ---
 
 # Gouv-fr — Structure de projet
@@ -58,10 +58,10 @@ my-app/
 | `AGENT_CONFIG` | `opencode.jsonc` | Fichier de configuration de l'agent |
 
 Ne jamais inscrire de valeur de secret dans ces variables : utiliser le
-mécanisme de secrets de l'environnement (voir la skill `securite`).
+mécanisme de secrets de l'environnement (voir la skill `developpement-securise`).
 
 ## Ressources
 
 - **OpenCode** : `https://opencode.ai/docs/fr`
-- **DSFR** : `https://www.systeme-de-design.gouv.fr/` → skill `design-system`
+- **DSFR** : `https://www.systeme-de-design.gouv.fr/` → skill `integration-dsfr`
 - **Skills of the State** : `https://github.com/etalab-ia/skills`
