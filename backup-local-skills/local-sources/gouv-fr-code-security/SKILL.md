@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, security, secrets, gitleaks, sql-injection, tls, dependencies, vm-isolation, cryptography, auth]
-    related_skills: [gouv-fr-code-project, gouv-fr-code-git, gouv-fr-code-workflow]
+    tags: [gouv-fr-code, security, secrets, gitleaks, sql-injection, tls, dependencies, vm-isolation, cryptography, auth]]
+    related_skills: [gouv-fr-code-project, gouv-fr-code-git, gouv-fr-code-workflow]]
 ---
 
 # Gouv-fr — Règles de Sécurité

@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, smoke-test, api, credentials, pipeline]
-    related_skills: [cicd-cloud-pi-native, developpement-securise]
+    related_skills: [set-up-cloud-pi-native-cicd, secure-coding-rules]
 ---
 
 # Gouv-fr — Smoke-test d'une API

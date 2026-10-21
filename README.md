@@ -12,7 +12,7 @@ Index complet : [`SKILLS.md`](SKILLS.md).
 - **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills` + `docs/okf`
 - **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills gouv-fr-code
 - **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
-- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** : `react-dsfr`, `lasuite-ui-kit`, `anssi-guides`, `datagouv-apis`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
+- **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** : `build-react-french-state-design-system`, `build-french-collab-suite-ui`, `find-anssi-guide`, `query-french-open-data-api`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
 - **Skills locaux gouv-fr** — migrés et renommés, sauvegarde dans `backup-local-skills/`
 
 ## Organisation
@@ -30,39 +30,39 @@ Les skills sont regroupés par usage, sous un unique arbre `gouv-fr/` :
 | [`lasuite`](skills/gouv-fr/lasuite/) | Interfaces React LaSuite |
 
 Le nom d'un skill ne porte pas le préfixe `gouv-fr-` : il ne doit pas répéter le
-nom de son dossier parent. `skills/gouv-fr/code/skills-router/` est conforme ;
-`skills/gouv-fr/code/gouv-fr-skills-router/` ne l'est pas.
+nom de son dossier parent. `skills/gouv-fr/code/review-code/` est conforme ;
+`skills/gouv-fr/code/gouv-fr-review-code/` ne l'est pas.
 
 ### Noms explicites
 
 Un nom décrit l'usage ou le périmètre réel du skill. Les noms techniques
-courants restent inchangés (`api-rest`, `helm-chart`, `react-dsfr`, etc.).
+courants restent inchangés (`rest-api-conventions`, `create-helm-chart`, `build-react-french-state-design-system`, etc.).
 
 | Ancien nom | Nom actuel |
 |---|---|
-| `backend-fastify` | `backend-api` |
-| `lint-eslint` | `lint-format` |
-| `code-index` | `skills-router` |
-| `audit-safety` | `audit-securite-depot` |
-| `audit-redteam` | `redteam-llm` |
-| `audit-pentest` | `audit-durcissement` |
-| `repo-cicd` | `cicd-cloud-pi-native` |
-| `dat-homologation` | `document-homologation` |
-| `dat-word` | `homologation-word` |
-| `service-names` | `verification-renommage-services` |
-| `securite` | `developpement-securise` |
-| `conventions-nommage` | `conventions-developpement` |
-| `compliance-rgaa` | `regles-conformite-web` |
-| `donnees-ouvertes` | `donnees-communication-publique` |
-| `audit-openwebui` | `audit-identite-outils-llm` |
+| `backend-fastify` | `scaffold-backend-api` |
+| `lint-eslint` | `configure-linting` |
+| `code-index` | *(supprimé — skill routeur, non conforme)* |
+| `audit-safety` | `audit-repo-safety` |
+| `audit-redteam` | `redteam-llm-prompt-injection` |
+| `audit-pentest` | `harden-repo-before-pentest` |
+| `repo-cicd` | `set-up-cloud-pi-native-cicd` |
+| `dat-homologation` | `fill-dat-form` |
+| `dat-word` | `render-dat-docx` |
+| `service-names` | `detect-stale-service-names` |
+| `securite` | `secure-coding-rules` |
+| `conventions-nommage` | `project-conventions` |
+| `compliance-rgaa` | `check-web-compliance` |
+| `donnees-ouvertes` | `fetch-open-geodata` |
+| `audit-openwebui` | `audit-llm-tool-identity` |
 | `smoke-test` | `smoke-test-api` |
-| `composants-vue` | `vue-dsfr` |
-| `design-system` | `integration-dsfr` |
-| `templates-email` | `templates-email-dsfr` |
+| `composants-vue` | `build-vue-french-state-design-system` |
+| `design-system` | `set-up-french-state-design-system` |
+| `templates-email` | `build-french-state-design-system-emails` |
 
-Les groupes `anssi` et `dso` deviennent `securite` et `devops`. `deployment-docker-k8s` et `github-actions-ci` passent de `code` à `devops` ;
-`verification-renommage-services` passe de `devops` à `code`. Le skill
-`anssi-guides` conserve son nom : sa source et son périmètre sont précis.
+Les groupes `anssi` et `dso` deviennent `securite` et `devops`. `containerize-app-for-k8s` et `set-up-github-actions-ci` passent de `code` à `devops` ;
+`detect-stale-service-names` passe de `devops` à `code`. Le skill
+`find-anssi-guide` conserve son nom : sa source et son périmètre sont précis.
 La [table de migration](scripts/skill-renames.tsv) conserve les correspondances
 pour les 43 skills, y compris les noms intermédiaires ; les identifiants utilisés par les consommateurs doivent
 être mis à jour d'après cette table.
@@ -141,7 +141,7 @@ n'est jamais supprimée par l'installateur. `--migrate` fonctionne aussi avec
 - Le workflow `Security` analyse l'historique complet avec Gitleaks ; les fichiers de secrets et le répertoire local `private/` sont ignorés par Git
 - Le champ `name:` de chaque skill correspond à son dossier, en kebab-case minuscule
   conforme au motif `^[a-z0-9]+(-[a-z0-9]+)*$` exigé par les validateurs de skills
-  (opencode, albert-code, Claude Code). Aucune majuscule : `graphiques-dsfr`,
+  (opencode, albert-code, Claude Code). Aucune majuscule : `build-french-state-design-system-charts`,
   pas `graphiques-DSFR`. Les acronymes restent en majuscules **dans le titre H1
   et le texte**, jamais dans le nom.
 - Aucun skill ne porte le nom de son groupe parent
@@ -162,7 +162,8 @@ Voir [`REVIEW.md`](REVIEW.md) pour le rapport de revue complet.
 
 ### Audits adaptés au projet
 
-`skills-router` oriente vers le skill pertinent sans charger tout le catalogue.
+Le catalogue et les `## Quand utiliser` de chaque skill orientent vers la fiche
+pertinente sans charger tout le catalogue.
 L'audit de conformité commence par identifier la stack et le déploiement réels ;
 une vérification seule reste en lecture seule. Une demande de correction ou de
 PR autorise les modifications correspondantes. Les preuves manquantes sont
@@ -174,10 +175,10 @@ conformité globale ni le RGAA. **Sans classe `fr-*`, il indique « non évalué
 et retourne 1**, au lieu d'un succès à 100 %. Ses tests s'exécutent hors réseau :
 
 ```bash
-python3 -m unittest discover -s skills/gouv-fr/dsfr/integration-dsfr/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dsfr/set-up-french-state-design-system/tests -v
 ```
 
-Le [protocole d'évaluation](skills/gouv-fr/conformite/audit-conformite/references/evaluation-efficiency.md)
+Le [protocole d'évaluation](skills/gouv-fr/conformite/audit-skill-compliance/references/evaluation-efficiency.md)
 permet de comparer qualité, faux positifs, durée, tokens et interventions
 humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
 
@@ -190,13 +191,13 @@ CI (`Skills tests`) :
 python -m pip install pyyaml python-docx
 
 # Rendu DAT : typographie française et modèle Word par défaut
-python3 -m unittest discover -s skills/gouv-fr/conformite/homologation-word/tests -v
+python3 -m unittest discover -s skills/gouv-fr/conformite/render-dat-docx/tests -v
 
 # Vérificateur DSFR : classes CSS et assets locaux
-python3 -m unittest discover -s skills/gouv-fr/dsfr/integration-dsfr/tests -v
+python3 -m unittest discover -s skills/gouv-fr/dsfr/set-up-french-state-design-system/tests -v
 
 # Permissions des appels de workflows réutilisables
-python3 -m unittest discover -s skills/gouv-fr/devops/cicd-cloud-pi-native/tests -v
+python3 -m unittest discover -s skills/gouv-fr/devops/set-up-cloud-pi-native-cicd/tests -v
 
 # Smoke-test : credentials synthétiques et transport simulé
 python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test-api/tests -v
@@ -216,9 +217,9 @@ validation dans un dépôt d'origine n'est requise. Les fichiers `UPSTREAM.md`
 documentent la provenance ; ils ne constituent pas une procédure de synchronisation
 obligatoire. Les références internes sont embarquées avec chaque skill.
 
-`code-quality` charge uniquement la revue, le rituel ou les standards
+`review-code` charge uniquement la revue, le rituel ou les standards
 nécessaires à la tâche. Son historique et ses adaptations sont décrits dans
-son [`UPSTREAM.md`](skills/gouv-fr/code/code-quality/UPSTREAM.md).
+son [`UPSTREAM.md`](skills/gouv-fr/code/review-code/UPSTREAM.md).
 
 L'installation des skills copie les fichiers locaux sans récupérer d'autres
 skills. Les outils et services propres aux tâches (Helm, API data.gouv.fr,

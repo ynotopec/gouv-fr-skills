@@ -7,8 +7,8 @@ license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr-code, workflow, plan-mode, task-management, self-improvement, bug-fixing, code-quality]
-    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-git]
+    tags: [gouv-fr-code, workflow, plan-mode, task-management, self-improvement, bug-fixing, review-code]]
+    related_skills: [gouv-fr-code-project, gouv-fr-code-security, gouv-fr-code-git]]
 ---
 
 # Gouv-fr — Workflow
