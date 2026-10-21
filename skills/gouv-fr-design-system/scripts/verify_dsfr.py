@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verification de conformite DSFR d'un fichier HTML, sans navigateur.
+"""Verification technique de classes et assets DSFR d'un fichier HTML, sans navigateur.
 
 Methode (source de verite = le CSS officiel, jamais une liste apprise) :
   1. Parse le HTML et extrait tous les tokens de classe commencant par `fr-`
@@ -12,8 +12,9 @@ Methode (source de verite = le CSS officiel, jamais une liste apprise) :
 Usage :
   python3 verify_dsfr.py INDEX.html [--css FICHIER.css ...] [--version 1.15.3]
 
-Sortie : rapport texte ; retour 0 si aucune classe inconnue ni asset manquant,
-1 sinon, 2 en cas d'erreur d'usage.
+Sortie : rapport texte ; retour 0 si au moins une classe DSFR est presente,
+sans classe inconnue ni asset local manquant ; retour 1 sinon (y compris
+controle non evalue sans classe DSFR), 2 en cas d'erreur d'usage.
 """
 
 import argparse
@@ -105,8 +106,13 @@ def main():
         print("  INCONNU  {}".format(t))
     for a in sorted(set(missing_assets)):
         print("  ASSET MANQUANT  {}".format(a))
-    score = 100.0 if total == 0 else 100.0 * (total - len(unknown)) / total
-    print("Score : {:.1f}%".format(score))
+    print("Portee : classes CSS et assets locaux uniquement ; "
+          "ni audit RGAA, ni validation visuelle, ni verification des URLs distantes.")
+    if total == 0:
+        print("Classes DSFR : non evalue (aucune classe fr-* dans le HTML).")
+        return 1
+    score = 100.0 * (total - len(unknown)) / total
+    print("Classes reconnues : {:.1f}%".format(score))
     return 0 if not unknown and not missing_assets else 1
 
 

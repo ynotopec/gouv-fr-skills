@@ -1,8 +1,8 @@
 ---
 name: gouv-fr-audit-conformite
-description: "Audit de conformité d'une app gouv-fr-code-index."
+description: "Auditer la conformité d'une application ou d'une PR aux skills gouv-fr : contrôles adaptés à la stack, preuves et limites, lecture seule sauf correction demandée."
 category: qualite
-version: 0.1.0
+version: 0.1.1
 author: Hermes Agent
 license: MIT
 platforms: [linux, macos]
@@ -14,103 +14,51 @@ metadata:
 
 # Gouv-fr — Audit de conformité d'une application
 
-## Quand utiliser
+## Périmètre et mode
 
-Quand un utilisateur demande « vérifier conformité avec gouv fr skills » sur une application. C'est une tâche récurrente
-dans les échanges. Les règles documentaires vivent dans les skills user-owned suivants : `gouv-fr-securite`,
-`gouv-fr-compliance-rgaa`, `gouv-fr-repo-init`, `gouv-fr-projet-structure`, `gouv-fr-workflow-dev`. Ce skill porte la
-procédure de vérification et les pièges concrets. Ne pas éditer ces skills user-owned; les consulter seulement.
+Auditer en **lecture seule par défaut** : ne pas installer d'outil, corriger,
+créer de journal, committer ou réécrire l'historique sur une simple demande
+de vérification. Une demande explicite de correction ou de PR autorise les
+changements nécessaires dans ce périmètre ; ne pas redemander cet accord.
+Inspecter les déclencheurs d'exécution avant de lancer les outils du projet
+(voir `gouv-fr-audit-safety`). Ne jamais exécuter un script inconnu pour le découvrir.
 
-## Ordre de l'audit
+1. Lire les consignes du dépôt et relever la stack, les points d'entrée, le
+   déploiement réel et les commandes de validation déclarées.
+2. Définir le périmètre : diff/PR, état courant ou historique demandé.
+3. Appliquer uniquement les contrôles pertinents du tableau ci-dessous.
+4. Rendre les constats avant toute remédiation ; poursuivre les contrôles
+   indépendants même si l'un échoue. Arrêter seulement une exécution dangereuse.
 
-Pour chaque check, si échec, corriger avant de passer au suivant.
+## Contrôles adaptatifs
 
-1. **gitleaks** — scan de fuite obligatoire, en premier.
-2. **Secrets en dur** — scan des motifs sensibles.
-3. **SQL** — 100 % paramétré.
-4. **TLS** — https, ssl-redirect, runAsNonRoot.
-5. **RGAA / DSFR** — structure sémantique, classes vérifiées contre le CSS officiel.
-6. **RGPD** — minimisation plus droit à l'oubli.
-7. **Git** — commits Conventional, trailer porté par chaque commit, arbre de travail propre, `.gitignore` complet.
-8. **Tests** — suite pytest verte.
+| Contrôle | Preuves à rechercher |
+|---|---|
+| Secrets | Scanner disponible/configuré, fichiers suivis et configuration. Distinguer références de secrets, fixtures synthétiques et valeurs réelles ; ne pas exclure une ligne sur la seule présence de `os.environ` ou `secretKeyRef`. Ne jamais reproduire la valeur d'un secret. |
+| Historique | Scanner l'historique lorsque demandé ou nécessaire pour rechercher une fuite passée. Signaler toute limite d'accès ; ne pas imposer de nouveaux trailers aux anciens commits. |
+| SQL | Si SQL existe : suivre les entrées jusqu'aux requêtes et vérifier la paramétrisation. Une recherche textuelle est un indice, pas une preuve d'injection ni d'absence de faille. |
+| TLS et isolation | Suivre la terminaison TLS et le runtime réellement utilisés : proxy, ingress, chart, manifests, Compose ou service hôte. Ne pas exiger `k8s/app.yaml`, une annotation ingress précise ou un UID fixé. |
+| RGAA / DSFR | Si interface concernée : consulter `gouv-fr-compliance-rgaa` et `gouv-fr-design-system`. Vérifier classes, structure, clavier et rendu selon les moyens disponibles ; un contrôle CSS ne prouve pas la conformité globale. |
+| Données personnelles | Si présentes : examiner justification, minimisation, conservation, accès et mécanismes de suppression applicables. Ne pas interdire un champ à cause de son seul nom, ni conclure sur la seule présence d'une route `DELETE`. |
+| Git | Appliquer les conventions du dépôt aux commits de la contribution. Relever l'état initial ; préserver les modifications préexistantes. Ne pas réécrire l'historique pour rendre un audit vert. |
+| Tests | Utiliser les commandes déclarées par le projet et adaptées au changement : pytest, Vitest, Go, etc. Ne pas imposer pytest à une autre stack. Outil absent ou exécution bloquée : non évalué. |
 
-## Commandes par check
+## Résultats et remédiation
 
-### 1. gitleaks
+Pour chaque contrôle : **conforme**, **écart confirmé**, **non évalué**
+(preuve ou accès manquant), ou **sans objet** (raison explicite).
+Citer fichier/ligne ou commande, résultat, impact et correction proposée.
+Ne jamais transformer une absence d'accès en défaut confirmé ou en conformité.
+Prioriser les risques concrets ; distinguer les préférences de style.
 
-Si le binaire est absent sur un nouvel environnement (à arch arm64, vérifier avec `uname -m`), l'installer depuis le
-tarball de release :
+Si la correction est demandée : travailler sur une branche dédiée, préserver
+l'existant, corriger les causes et lancer les tests ciblés, puis les contrôles
+transversaux concernés. Rejouer la suite complète si le changement ou les
+consignes du dépôt le justifient. Livrer la PR et les limites de vérification.
+Ne pas modifier d'autres skills ou systèmes sans lien avec la demande.
 
-```bash
-curl -sL -o /tmp/gitleaks.tgz \
-  https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_arm64.tar.gz
-(cd /tmp && tar xzf gitleaks.tgz gitleaks)
-cd <repo> && /tmp/gitleaks detect --no-banner --redact
-```
+## Évaluer une évolution du skill
 
-Attendu : `no leaks found`. Une fuite est un échec, pas une remarque.
-
-### 2. Secrets en dur
-
-Motifs forts ( `AKIA…`, `ghp_…`, `sk-…`, clé privée PEM) ignorés quand la ligne réfère à `secretName`, `secretKeyRef` ou
-`os.environ` (références K8s et variable d'environnement = légitimes)..
-
-Exclure `.venv/`, `node_modules/`, `data/` du parcours des fichiers. Le skill sécurité autorise les données synthétiques
-en fixtures de test. Les seuls « hits » légitimes sont les références K8s et les valeurs fixture.
-
-### 3. SQL
-
-Pas d'instruction SQL dans une f-string. Chercher les lignes qui combinent `f"`, `.format(` ou `%` avec SELECT, INSERT,
-UPDATE, DELETE. Attendu : zéro.
-
-### 4. TLS
-
-Dans `k8s/app.yaml` : `tls:`, `secretName:`, annotation `ssl-redirect` ou `force-ssl-redirect`, et `runAsNonRoot` ou
-`runAsUser`. Tous requis.
-
-### . RGAA / DSFR — classes contre CSS officiel
-
-Le CSS est minifié. Utiliser **match par substring**, pas une regex qui suppose des espaces. Une regex sur `.fr-x` donne
-des faux négatifs sur le CSS compacté. Vérifier `f'.{cls}' notin css` sur le CSS officiel
-(`https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@<version>/dist/dsfr.min.css`). Attendu : zéro classe `fr-*` manquante.
-
-Structure sémantique attendue : `lang="fr"`, `<header>`, `<main>`, `<footer>`, `fr-skiplinks`, `aria-live`,
-`name="viewport"`. Pas de couleur hex inline (seulement des tokens `var(--…)` DSFR).
-
-### 6. RGPD
-
-Pas de champ personnel (exemple `author`) dans la persistance. Une route de suppression ou `cleanup` doit exister
-(`DELETE` ou `cleanup` requis). Le skill RGPD exige la minimisation des données.
-
-### 7. Git — trailer sur chaque commit
-
-Piège le plus courant : un commit de correction rapide fait en cours de session est délivré sans trailer, et un auditqui
-vérifie seulement le dernier commit ne le voit pas. Vérifier commit par commit, ne pas s'arrêter au HEAD :
-
-```bash
-cd <repo> && for h in $(git rev-list --reverse HEAD); do
-  git show -s --format='%B' "$h" | grep -q 'Co-Authored-By: gouv-fr-code' || echo "MISSING TRAILER: $h"
-done
-```
-
-Auditer aussi : `git status --porcelain` vide (arbre propre), `.gitignore` avec `.venv/`, `.env`, `node_modules/`,
-`vendor/`, `__pycache__/`, `*.pyc`, et des commits Conventional (`feat|fix|docs|style|refactor|test|chore(scope)?:`).
-
-Correction d'un commit sans trailer sur une branche non partagée : `git commit --amend` (reprendre le message, ajouter
-le trailer, conserver le récapitulatif). `--force` est interdit sur les branches partagées ; localement, réécrire est
-sûr.
-
-Piège de propreté : le script d'audit lui-même ( un `.py` écrit dans le dépôt puis lancé) **salit l'arbre git** et fait
-échouer le check « arbre propre ». L'écrire dans `/tmp/`, ou le gitignore, ou le supprimer après la passation. L'arbre
-doit être propre à la fin de l'audit.
-
-### 8. Tests
-
-`. .venv/bin/activate && python -m pytest -q` : vert. Le décompte doit être cohérent avec celui documenté dans
-`AGENTS.md``. Signaler toute dérive de documentation.
-
-## À la fin
-
-Quand un écart est corrigé, re-exécuter **toute** la suite : la vérification est de bout en bout. Puis committer la
-correction en Conventional plus trailer. Les skills `gouv-fr-*` sont user-owned : ne pas les patcher, recommander
-`hermes curator adopt` si la curation est souhaitée.
+Utiliser `references/evaluation-efficiency.md` pour comparer les résultats
+sans skill, avec la version précédente et avec la version proposée.
+Ne pas revendiquer un gain de temps ou de tokens sans mesures comparables.
