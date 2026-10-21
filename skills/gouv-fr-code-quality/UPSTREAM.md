@@ -1,46 +1,26 @@
-# Copie vendorée — ne pas éditer ici
+# Origine et maintenance autonome
 
-**Amont / source de vérité :** https://github.com/etiquet/controle-qualite-code (public)
+Origine historique : <https://github.com/etiquet/controle-qualite-code>.
+La version antérieure de ce dossier est conservée dans l’historique Git local
+au dépôt (commit gouv-fr-skills `b9d4d73646d90dee4392c1c7f96a26d974335822`).
 
-`SKILL.md` et `references/` de ce dossier sont une **copie à l'octet près** de l'amont.
-Une modification faite ici serait écrasée à la prochaine synchronisation, et ferait
-diverger deux copies qui doivent rester identiques.
+## Source de vérité
 
-Seul `UPSTREAM.md` (ce fichier) est propre au dépôt aval.
+`gouv-fr-skills` maintient désormais sa propre adaptation de `SKILL.md` et de
+`references/`. Modifier, tester et proposer les changements directement ici.
+Aucune validation externe, copie identique, installation de skill tiers ni
+synchronisation avec le dépôt d’origine n’est requise.
 
-## Faire évoluer le skill
+## Évolutions
 
-1. Ouvrir une PR **sur l'amont** — c'est aussi là que les contributions externes
-   arrivent, ce dépôt-ci étant interne à l'organisation ;
-2. une fois la PR amont fusionnée, resynchroniser ici (ci-dessous) et ouvrir une PR
-   sur ce dépôt.
+Valider les modifications avec les scénarios locaux. Toute reprise future
+d’une source externe est facultative, examinée et intégrée par une PR locale ;
+ne jamais écraser automatiquement les adaptations par `rsync --delete`.
+Conserver l’attribution et les obligations des licences des contenus repris.
 
-## Resynchroniser depuis l'amont
+## Adaptations locales
 
-Depuis la racine de `agent-skills`, avec `UPSTREAM` pointant sur un clone à jour
-de l'amont :
-
-```bash
-UPSTREAM=~/Documents/GitHub/controle-qualite-code
-
-git -C "$UPSTREAM" switch main && git -C "$UPSTREAM" pull --ff-only
-rsync -a --delete "$UPSTREAM"/SKILL.md "$UPSTREAM"/references skills/controle-qualite-code/
-```
-
-## Vérifier qu'il n'y a pas de divergence
-
-Sortie vide attendue. Toute sortie signale une édition faite du mauvais côté —
-la reporter en amont, puis resynchroniser.
-
-```bash
-diff -r "$UPSTREAM"/SKILL.md    skills/controle-qualite-code/SKILL.md
-diff -r "$UPSTREAM"/references  skills/controle-qualite-code/references
-```
-
-## Pourquoi une copie plutôt qu'un sous-module
-
-`install.sh` pose un symlink par dossier de `skills/`. Un sous-module git
-obligerait chaque personne de l'équipe à un `git submodule update` après chaque
-`git pull`, sous peine d'une skill silencieusement vide. Le coût de la copie est
-une commande de synchro assumée ; le coût du sous-module serait supporté par tout
-le monde, à chaque mise à jour.
+- Charger séparément revue, rituel et standards selon la tâche.
+- Respecter les conventions du projet plutôt que des seuils de style universels.
+- Unifier la lecture seule : aucune installation implicite ou création de journal.
+- Préserver les règles de preuve, le balayage critique et les verdicts de revue.
