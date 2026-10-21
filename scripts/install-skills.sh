@@ -86,7 +86,9 @@ script_dir="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(dirname "$script_dir")"
 skills_root="$repo_root/skills/gouv-fr"
 renames_file="$script_dir/skill-renames.tsv"
+retirements_file="$script_dir/skill-retirements.tsv"
 [[ -f "$renames_file" ]] || { echo "Erreur: table locale des renommages absente" >&2; exit 1; }
+[[ -f "$retirements_file" ]] || { echo "Erreur: table locale des retraits absente" >&2; exit 1; }
 
 legacy_candidates_for() {
   local destination="$1" current_group="$2" current_name="$3"
@@ -165,6 +167,22 @@ install_for() {
       fi
     done
   done
+
+  # Les skills retirés n'ont pas de cible, mais ne doivent pas rester actifs.
+  # Archiver leurs copies connues comme les renommages, sans toucher aux autres.
+  local retired_group retired_name
+  while IFS=$'\t' read -r retired_group retired_name; do
+    [[ "$retired_group" == \#* || -z "$retired_group" ]] && continue
+    for legacy in "$destination/$retired_group/$retired_name" \
+      "$destination/$retired_name" "$destination/gouv-fr-$retired_name"; do
+      [[ -f "$legacy/SKILL.md" ]] || continue
+      duplicate=false
+      for known in "${legacy_paths[@]}"; do
+        [[ "$known" == "$legacy" ]] && duplicate=true
+      done
+      [[ "$duplicate" == true ]] || legacy_paths+=("$legacy")
+    done
+  done < "$retirements_file"
 
   # Une ancienne copie à plat peut contenir un chemin qui devient un groupe.
   # Archiver son dossier complet une seule fois, sans déplacer ensuite ses enfants.

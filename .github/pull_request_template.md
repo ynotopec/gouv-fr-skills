@@ -2,4 +2,4 @@
 
 # gouv-fr-skills
 
-Répertoire de 43 skills Hermes consolidés depuis les sources de la Fabrique Numérique.
+Répertoire de 42 skills Hermes consolidés depuis les sources de la Fabrique Numérique.
