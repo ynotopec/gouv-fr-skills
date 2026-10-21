@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, artwork, pictogram, icon, svg, illustration]
-    related_skills: [design-system, compliance-rgaa]
+    related_skills: [integration-dsfr, regles-conformite-web]
 ---
 
 # Gouv-fr — Pictogrammes et icônes DSFR
@@ -56,7 +56,7 @@ Classes utilitaires `fr-fi-*` / `fr-icon-*` en préfixe ou suffixe de composant 
 `fr-btn--github`). Vérifier le nom exact dans `utility.min.css` avant usage.
 
 ## Pièges
-- **Classes inventées** : `fr-artwork-ministery`, `fr-artwork-brand`, `fr-artwork-theme-*` n'existent PAS dans le CSS officiel. Toujours contrôler le nom dans le CSS (cf. `design-system/scripts/verify_dsfr.py`).
+- **Classes inventées** : `fr-artwork-ministery`, `fr-artwork-brand`, `fr-artwork-theme-*` n'existent PAS dans le CSS officiel. Toujours contrôler le nom dans le CSS (cf. `integration-dsfr/scripts/verify_dsfr.py`).
 - Logo Marianne = classe `fr-logo` (SVG inline via le CSS), pas un fichier `marianne.svg` dans artwork.
 - `alt` descriptif obligatoire sur les images signifiantes ; `alt=""` + `aria-hidden="true"` pour le purement décoratif.
 - Les icônes sociales (Bluesky, etc.) sont ajoutées au fil des versions : vérifier la classe dans le CSS de la version épinglée.

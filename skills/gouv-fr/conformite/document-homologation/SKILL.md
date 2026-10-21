@@ -1,7 +1,7 @@
 ---
 
 name: document-homologation
-description: Pré-remplit un document d'homologation MirAI (DAT, et à terme AIPD/dossier d'homologation) à partir du code et des manifestes du repo courant. Le modèle et le prompt de référence versionnés sont embarqués dans cette skill. Lecture seule sur le service, ne jamais inventer ni recopier de valeur réelle.
+description: Pré-remplit un document d'homologation MirAI (DAT uniquement ; AIPD et dossier complet non pris en charge) à partir du code et des manifestes du repo courant. Le modèle et le prompt de référence versionnés sont embarqués dans cette skill. Lecture seule sur le service, ne jamais inventer ni recopier de valeur réelle.
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]

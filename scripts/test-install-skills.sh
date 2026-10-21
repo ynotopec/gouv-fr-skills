@@ -136,9 +136,12 @@ for layout in grouped flat prefixed; do
       prefixed) legacy="$destination/gouv-fr-$old_name" ;;
     esac
     mkdir -p "$(dirname "$legacy")"
-    cp -R "$source" "$legacy"
+    mkdir -p "$legacy"
+    cp -R "$source/." "$legacy/"
   done < "$script_dir/skill-renames.tsv"
-  test "$rows" -eq "$expected_count"
+  test "$rows" -ge "$expected_count"
+  mapped_count="$(awk -F '\t' '!/^#/ && NF == 4 {print $3 "/" $4}' "$script_dir/skill-renames.tsv" | sort -u | wc -l)"
+  test "$mapped_count" -eq "$expected_count"
   case "$layout" in
     grouped) quality_path=code/code-quality ;;
     flat) quality_path=code-quality ;;
@@ -154,6 +157,15 @@ for layout in grouped flat prefixed; do
   test -f "$destination/code/backend-api/SKILL.md"
   test -f "$destination/securite/developpement-securise/SKILL.md"
   test -f "$destination/devops/cicd-cloud-pi-native/SKILL.md"
+  test -f "$destination/devops/github-actions-ci/SKILL.md"
+  test -f "$destination/devops/deployment-docker-k8s/SKILL.md"
+  test -f "$destination/code/verification-renommage-services/SKILL.md"
+  test -f "$destination/securite/audit-identite-outils-llm/SKILL.md"
+  test -f "$destination/devops/smoke-test-api/SKILL.md"
+  test -f "$destination/dsfr/integration-dsfr/SKILL.md"
+  test ! -e "$destination/securite/audit-openwebui"
+  test ! -e "$destination/devops/smoke-test"
+  test ! -e "$destination/devops/verification-renommage-services"
   test -f "$destination/personal-skill/SKILL.md"
   test ! -f "$destination/securite/SKILL.md"
   test ! -d "$destination/anssi"

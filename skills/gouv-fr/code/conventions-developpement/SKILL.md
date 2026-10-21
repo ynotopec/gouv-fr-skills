@@ -1,7 +1,7 @@
 ---
 
-name: conventions-nommage
-description: Applique les conventions de nommage et d'architecture d'un projet Fabrique Numérique — dossiers, fichiers, TypeScript, API RESTful, lint, qualité, déploiement et documentation.
+name: conventions-developpement
+description: "Appliquer les conventions de développement Fabrique Numérique : nommage, architecture, TypeScript, API REST, lint, qualité, déploiement et documentation."
 version: 0.2.0
 license: MIT
 platforms: [linux, macos]
@@ -10,7 +10,7 @@ metadata:
     tags: [gouv-fr, conventions, nommage, architecture, typescript, api-rest]
     related_skills: [projet-structure, lint-format, stack-technique]
 ---
-# Gouv-fr — Conventions de nommage et d'architecture
+# Gouv-fr — Conventions de développement
 
 Best practices for all Fabrique Numérique projects. Language-agnostic unless noted.
 

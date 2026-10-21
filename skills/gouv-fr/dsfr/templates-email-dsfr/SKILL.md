@@ -1,6 +1,6 @@
 ---
 
-name: templates-email
+name: templates-email-dsfr
 description: Génère des templates email DSFR pour l'État.
 version: 0.1.0
 license: MIT
@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [dsfr, email, template, gouv-fr, mail, accessible]
-    related_skills: [design-system, cookies-rgpd, compliance-rgaa]
+    related_skills: [integration-dsfr, cookies-rgpd, regles-conformite-web]
 ---
 
 # Gouv-fr — Templates email DSFR

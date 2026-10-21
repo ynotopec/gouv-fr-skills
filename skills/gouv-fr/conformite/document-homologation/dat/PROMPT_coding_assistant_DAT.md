@@ -3,21 +3,19 @@
 > À copier dans un agent de code disposant d'un accès au dépôt du projet (Claude Code, Codex, OpenCode, Gemini CLI, Cursor, etc.).
 > Remplacer les valeurs entre `«…»` avant exécution.
 
-## Source de référence (toujours la dernière version)
+## Source de référence locale
 
-Le modèle de DAT **et** la dernière version de ce prompt sont maintenus dans le dépôt de skills partagé :
-
-**https://github.com/IA-Generative/agent-skills** — dossier `skills/dat-generation/`
-
-Les artefacts vivent à côté de ce prompt (mêmes chemins relatifs) :
+Le modèle DAT, ce prompt et leur historique sont versionnés ensemble dans ce
+catalogue, sous `skills/gouv-fr/conformite/document-homologation/` :
 
 - Modèle DAT : `dat/MODELE_DAT_MirAI.docx`
 - Ce prompt : `dat/PROMPT_coding_assistant_DAT.md`
-- Historique des versions : `CHANGELOG.md` (à la racine de la skill)
+- Historique : `CHANGELOG.md` (à la racine de la skill)
 
-Lis d'abord le `CHANGELOG.md` pour identifier la version courante, puis utilise le modèle correspondant.
-Si tu travailles depuis une copie potentiellement ancienne, récupère la version à jour depuis la branche
-par défaut du dépôt de skills (`git pull`).
+Lire le `CHANGELOG.md`, puis utiliser le modèle embarqué correspondant. Résoudre
+ces chemins depuis le dossier de la skill, pas depuis le projet à documenter.
+Ne pas récupérer de modèle, de prompt ou de skill dans un dépôt amont. Si une
+ressource locale manque, le signaler ; ne pas la remplacer par une copie distante.
 
 ---
 
@@ -30,7 +28,7 @@ Tu es architecte technique au sein de la DTNUM (programme MirAI, ministère de l
 Pré-remplir le modèle de DAT pour le service suivant, en t'appuyant **uniquement sur des faits vérifiables dans le dépôt**.
 
 - **Service / projet :** «NOM DU SERVICE»
-- **Modèle DAT :** `dat/MODELE_DAT_MirAI.docx` (depuis `IA-Generative/agent-skills`, `skills/dat-generation/`, dernière version)
+- **Modèle DAT :** `dat/MODELE_DAT_MirAI.docx` (modèle local embarqué dans cette skill)
 - **Dépôt(s) source du service :** `«chemin ou URL du dépôt»` (ex. `IA-Generative/«repo»`)
 - **Sortie attendue :** `«chemin/vers/DAT_«service»_v0.1.docx»` (sinon, du Markdown fidèle à la structure du modèle)
 

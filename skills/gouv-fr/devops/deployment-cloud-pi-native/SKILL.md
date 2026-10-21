@@ -18,7 +18,7 @@ Faire passer une application de son dépôt GitHub à un namespace CPiN, et diag
 
 Deux chaînes : la **primaire** (vos outils : GitHub, CI, releases) contrôle et publie ; la **secondaire** (GitLab DSO)
 reconstruit, analyse, signe et pousse dans Harbor ; **ArgoCD** déploie le dépôt d'infra.
-Le pont est la **synchronisation** : un déclencheur (`sync-cpin`, skill `github-actions-ci`) lance le pipeline `mirror` du
+Le pont est la **synchronisation** : un déclencheur (`sync-cpin`, skill `github-actions-reusable`) lance le pipeline `mirror` du
 GitLab interne, qui tire votre dépôt. Le flux part toujours du GitLab interne.
 La **console** est la source de vérité (projets, dépôts, environnements, ArgoCD) : ce qui est modifié ailleurs est
 ignoré ou écrasé.
@@ -90,4 +90,4 @@ Voir [`references/depannage.md`](references/depannage.md) (symptôme → cause �
 
 - Doc interne : `docs/okf/cloud-pi-native/` (plateforme, dépôts et mirror, GitOps, environnements, secrets, contraintes et Kyverno), `docs/okf/cycle-de-vie/de-commit-a-environnement.md`.
 - Source : [documentation officielle](https://cloud-pi-native.fr) ; exemple `IA-Generative/ocr-api`.
-- Skills liés (groupe `devops`) : `github-actions-ci` (CI/CD GitHub, `sync-cpin`), `helm-chart` (chart et vérification Kyverno).
+- Skills liés (groupe `devops`) : `github-actions-reusable` (CI/CD GitHub, `sync-cpin`), `helm-chart` (chart et vérification Kyverno).

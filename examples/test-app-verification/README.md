@@ -15,8 +15,8 @@ Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre 
 
 ## Résumé des compétences vérifiées
 
-- **design-system** : 43 classes fr-* validées contre DSFR 1.15.3 (score 100%)
-- **compliance-rgaa** : lang=fr, skiplinks, h1 unique, labels, boutons fr-btn, footer, viewport
+- **integration-dsfr** : 43 classes fr-* validées contre DSFR 1.15.3 (score 100%)
+- **regles-conformite-web** : lang=fr, skiplinks, h1 unique, labels, boutons fr-btn, footer, viewport
 - **cookies-rgpd** : banner localStorage, accept/reject, pas de traceurs tiers
 - **audit-securite-depot** : .gitignore, private/ ignoré, pas de secrets en dur, pas de clés API
 - **code-quality** : package.json valide, HTML valide, fermeture balises, pas de duplication
@@ -26,7 +26,7 @@ Application de test située à `/workspace/test-gouv-fr-app/` vérifiée contre 
 
 ```bash
 # DSFR
-python3 ~/hermes/skills/gouv-fr/dsfr/design-system/scripts/verify_dsfr.py index.html
+python3 ~/hermes/skills/gouv-fr/dsfr/integration-dsfr/scripts/verify_dsfr.py index.html
 
 # RGAA (manuel)
 grep -c '<h1' index.html  # doit être 1

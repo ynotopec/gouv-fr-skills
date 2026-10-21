@@ -13,7 +13,7 @@ metadata:
 # Gouv-fr — CI GitHub Actions (base)
 
 Principes et gabarit de base. Pour assembler les workflows réutilisables de fabnum-cicd (build, scans, release-please,
-chart Helm, synchro Cloud Pi Native), utiliser le skill **`cicd-fabnum`** (groupe `devops`).
+chart Helm, synchro Cloud Pi Native), utiliser le skill **`github-actions-reusable`** (groupe `devops`).
 
 ## Principes
 
@@ -83,7 +83,7 @@ La Fabrique Numérique maintient [`dnum-mi/fabnum-cicd`](https://github.com/dnum
 workflows plutôt qu'un pipeline sur mesure (cohérence, scans de sécurité).
 Référence : `uses: dnum-mi/fabnum-cicd/.github/workflows/<nom>.yml@v0` — **jamais `@main`** (règle du repo) ; `@v0` est
 flottant et le dépôt est en `0.x`, figer sur `@v0.20` ou un SHA si besoin de stabilité.
-Le détail (catalogue, permissions, gabarits `ci.yml`/`cd.yml`, secrets, pièges) est dans `cicd-fabnum`.
+Le détail (catalogue, permissions, gabarits `ci.yml`/`cd.yml`, secrets, pièges) est dans `github-actions-reusable`.
 
 ## Pièges
 

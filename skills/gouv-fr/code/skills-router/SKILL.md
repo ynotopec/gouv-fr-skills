@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, sovereign, france, etat, government, app, build, dsfr, rgaa, index]
-    related_skills: [projet-structure, developpement-securise, compliance-rgaa, workflow-dev, repo-init]
+    related_skills: [projet-structure, developpement-securise, regles-conformite-web, workflow-dev, repo-init]
 ---
 
 # Gouv-fr — Routage des skills
@@ -25,10 +25,10 @@ pas une chaîne d'exécution obligatoire.
 | Diagnostiquer un bug | `bug-investigation` |
 | Organiser un changement transversal | `workflow-dev` |
 | Créer un dépôt ou choisir une stack | `repo-init`, puis `stack-technique` si nécessaire |
-| Intégrer le DSFR | `design-system` ; choisir `react-dsfr` ou `composants-vue` selon la stack |
+| Intégrer le DSFR | `integration-dsfr` ; choisir `react-dsfr` ou `vue-dsfr` selon la stack |
 | Préparer un chart CPiN | `helm-chart` |
 | Configurer la CI/CD CPiN | `cicd-cloud-pi-native` |
-| Examiner un tool derrière OpenWebUI | `audit-openwebui` |
+| Examiner un tool derrière OpenWebUI | `audit-identite-outils-llm` |
 | Préparer un DAT | `document-homologation`, puis `homologation-word` pour le rendu |
 | Consulter des guides ANSSI | `anssi-guides` |
 | Interroger data.gouv.fr | `datagouv-apis` |

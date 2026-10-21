@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, audit, redteam, prompt-injection, owasp-llm, llm]
-    related_skills: [audit-durcissement, audit-openwebui, developpement-securise]
+    related_skills: [audit-durcissement, audit-identite-outils-llm, developpement-securise]
 ---
 
 
@@ -20,7 +20,7 @@ hostile) **et** en sortie (canary / exfiltration). Un **modèle-juge** tranche l
 cas ambigus. **Tous les artefacts sensibles** (payloads, réponses brutes du modèle,
 synthèses) atterrissent dans **`private/redteam-reports/` (gitignoré)**.
 
-> Complète `audit-durcissement` (durcissement OWASP large) et `audit-openwebui`
+> Complète `audit-durcissement` (durcissement OWASP large) et `audit-identite-outils-llm`
 > (identité des tools) : ici on se concentre sur **LLM01 — injection de prompt**.
 
 ## Garde-fous

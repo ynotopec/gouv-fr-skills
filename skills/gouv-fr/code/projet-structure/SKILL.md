@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, project, structure, layout, open-code, opencode, mcp, environment]
-    related_skills: [developpement-securise, compliance-rgaa, workflow-dev, repo-init]
+    related_skills: [developpement-securise, regles-conformite-web, workflow-dev, repo-init]
 ---
 
 # Gouv-fr — Structure de projet
@@ -63,5 +63,5 @@ mécanisme de secrets de l'environnement (voir la skill `developpement-securise`
 ## Ressources
 
 - **OpenCode** : `https://opencode.ai/docs/fr`
-- **DSFR** : `https://www.systeme-de-design.gouv.fr/` → skill `design-system`
+- **DSFR** : `https://www.systeme-de-design.gouv.fr/` → skill `integration-dsfr`
 - **Skills of the State** : `https://github.com/etalab-ia/skills`

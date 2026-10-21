@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [data-gouv, open-data, api, dataservices, tabular, metrics, etat, gouv-fr]
-    related_skills: [donnees-ouvertes, api-rest, projet-structure]
+    related_skills: [donnees-communication-publique, api-rest, projet-structure]
 ---
 
 # Gouv-fr — API data.gouv.fr (Main, Metrics, Tabular)
