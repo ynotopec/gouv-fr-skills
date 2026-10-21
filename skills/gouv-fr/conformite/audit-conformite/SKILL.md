@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, audit, conformance]
-    related_skills: [securite, compliance-rgaa, repo-init]
+    related_skills: [developpement-securise, regles-conformite-web, repo-init]
 ---
 
 # Gouv-fr — Audit de conformité d'une application
@@ -20,7 +20,7 @@ créer de journal, committer ou réécrire l'historique sur une simple demande
 de vérification. Une demande explicite de correction ou de PR autorise les
 changements nécessaires dans ce périmètre ; ne pas redemander cet accord.
 Inspecter les déclencheurs d'exécution avant de lancer les outils du projet
-(voir `audit-safety`). Ne jamais exécuter un script inconnu pour le découvrir.
+(voir `audit-securite-depot`). Ne jamais exécuter un script inconnu pour le découvrir.
 
 1. Lire les consignes du dépôt et relever la stack, les points d'entrée, le
    déploiement réel et les commandes de validation déclarées.
@@ -37,7 +37,7 @@ Inspecter les déclencheurs d'exécution avant de lancer les outils du projet
 | Historique | Scanner l'historique lorsque demandé ou nécessaire pour rechercher une fuite passée. Signaler toute limite d'accès ; ne pas imposer de nouveaux trailers aux anciens commits. |
 | SQL | Si SQL existe : suivre les entrées jusqu'aux requêtes et vérifier la paramétrisation. Une recherche textuelle est un indice, pas une preuve d'injection ni d'absence de faille. |
 | TLS et isolation | Suivre la terminaison TLS et le runtime réellement utilisés : proxy, ingress, chart, manifests, Compose ou service hôte. Ne pas exiger `k8s/app.yaml`, une annotation ingress précise ou un UID fixé. |
-| RGAA / DSFR | Si interface concernée : consulter `compliance-rgaa` et `design-system`. Vérifier classes, structure, clavier et rendu selon les moyens disponibles ; un contrôle CSS ne prouve pas la conformité globale. |
+| RGAA / DSFR | Si interface concernée : consulter `regles-conformite-web` et `integration-dsfr`. Vérifier classes, structure, clavier et rendu selon les moyens disponibles ; un contrôle CSS ne prouve pas la conformité globale. |
 | Données personnelles | Si présentes : examiner justification, minimisation, conservation, accès et mécanismes de suppression applicables. Ne pas interdire un champ à cause de son seul nom, ni conclure sur la seule présence d'une route `DELETE`. |
 | Git | Appliquer les conventions du dépôt aux commits de la contribution. Relever l'état initial ; préserver les modifications préexistantes. Ne pas réécrire l'historique pour rendre un audit vert. |
 | Tests | Utiliser les commandes déclarées par le projet et adaptées au changement : pytest, Vitest, Go, etc. Ne pas imposer pytest à une autre stack. Outil absent ou exécution bloquée : non évalué. |

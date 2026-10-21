@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [gouv-fr, workflow, plan-mode, task-management, self-improvement, bug-fixing, code-quality]
-    related_skills: [projet-structure, securite, workflow-dev]
+    related_skills: [projet-structure, developpement-securise, workflow-dev]
 ---
 
 # Gouv-fr — Workflow de développement

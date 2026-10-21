@@ -58,14 +58,14 @@ Trois skills dépendaient d'un projet interne et ont été rendus génériques :
 | Skill | Avant | Après |
 |-------|-------|-------|
 | `code/projet-structure` | bâti sur un CLI interne et des variables de VM | structure de dépôt, intégration agent et variables d'env. lisibles par tous |
-| `dso/smoke-test` | contrat d'API figé sur un pipeline de transcription | contrat paramétrable (`--list-path`, `--item-path`, `--job-path`, `--id-param`, `--media-type`, `--job-field`) |
+| `dso/smoke-test-api` | contrat d'API figé sur un pipeline de transcription | contrat paramétrable (`--list-path`, `--item-path`, `--job-path`, `--id-param`, `--media-type`, `--job-field`) |
 | `dso/service-names` | table de correspondance figée sur un rebranding | table de correspondance **fournie par le projet** (fichier de référence) |
 
-La règle de fond de la revue sur le smoke-test est conservée : l'agent ne lit
+La règle de fond de la revue sur le smoke-test-api est conservée : l'agent ne lit
 pas la valeur d'un secret. Le script lit `SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`
 **dans le processus**, sans jamais l'afficher, et n'affiche ni corps de
 réponse ni en-têtes d'erreur. Couvert par
-`skills/gouv-fr/dso/smoke-test/tests/test_run_smoke.py` (17 cas), dont un cas
+`skills/gouv-fr/dso/smoke-test-api/tests/test_run_smoke.py` (17 cas), dont un cas
 dédié au contrat d'API paramétrable.
 
 Le profil « MirAI next » de `dso/repo-cicd/references/composition.md` devient
@@ -83,7 +83,7 @@ interne ne sont plus nommés.
 
 ### Ajustements après revue de la PR #10
 
-- Les trois chemins du smoke-test sont validés avant tout credential ou appel
+- Les trois chemins du smoke-test-api sont validés avant tout credential ou appel
   réseau. Une option comme `.attacker.invalid/list` ne peut plus modifier l'hôte
   destinataire du bearer. La primitive d'appel vérifie aussi l'origine.
 - Le champ multipart `operation` est configurable avec `--operation` et conserve
@@ -100,7 +100,7 @@ interne ne sont plus nommés.
 
 | Contrôle | Résultat |
 |----------|----------|
-| Tests unitaires | 34/34 (dat-word 4, design-system 8, repo-cicd 5, smoke-test 17) |
+| Tests unitaires | 34/34 (dat-word 4, integration-dsfr 8, repo-cicd 5, smoke-test-api 17) |
 | Installation | 43 skills × 7 groupes × 4 agents |
 | Cohérence (noms, `name:`, `related_skills`) | 43/43 |
 | Linter Hermes (avant → après) | 80 → 115 remarques ; seul delta : `missing-metadata` × 36, dû à la purge d'`author` |
@@ -180,7 +180,7 @@ temporaire. Le test n'écrit plus rien hors de `$TMPDIR`.
 ### 🟡 Infrastructure
 
 #### 7. Deux suites de tests n'étaient jamais exécutées
-Seul `skills/gouv-fr/dsfr/design-system/tests` était branché sur la CI. Les tests
+Seul `skills/gouv-fr/dsfr/integration-dsfr/tests` était branché sur la CI. Les tests
 de `gouv-fr-dat-word` (typographie) et ceux de `gouv-fr-repo-cicd` (absents)
 ne tournaient nulle part. `test_render_docx.py` appelait `sys.exit()` à
 l'import, ce qui rendait son dossier **indécouvrable** par

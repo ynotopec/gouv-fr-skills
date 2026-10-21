@@ -1,5 +1,9 @@
 # Provenance historique des skills
 
+Les noms historiques ci-dessous sont conservés pour attribution. Les identifiants
+actuels et la correspondance de migration figurent dans
+[`scripts/skill-renames.tsv`](scripts/skill-renames.tsv).
+
 Les skills sont maintenus directement dans `gouv-fr-skills`. Ces sources
 documentent l’origine des contenus, sans imposer de validation ou de
 synchronisation externe. Toute reprise future est facultative et passe par
@@ -18,7 +22,7 @@ Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skil
 | Upstream | Notre skill |
 |----------|-------------|
 | `dev/ci-cd` | `code/github-actions-ci` |
-| `dev/conventions-cofabnum` | `code/conventions-nommage` |
+| `dev/conventions-cofabnum` | `code/conventions-developpement` |
 | `dev/deploiement` | `code/deployment-docker-k8s` |
 | `dev/environnement-installation` | `code/outils-developpement` *(fusionné)* |
 | `dev/outils-dev` | `code/outils-developpement` *(fusionné)* |
@@ -95,7 +99,7 @@ Suivi historique de la correspondance entre nos skills (`gouv-fr-*`) et les skil
 
 | Leur skill | Équivalent chez nous | Raison |
 |------------|----------------------|--------|
-| `rgaa` | `compliance-rgaa` | doublon partiel : notre skill couvre déjà RGAA/DSFR/RGPD en checklist ; leur outil d'audit 106 critères (5 fichiers de référence) n'a pas été repris |
+| `rgaa` | `regles-conformite-web` | doublon partiel : notre skill couvre déjà RGAA/DSFR/RGPD en checklist ; leur outil d'audit 106 critères (5 fichiers de référence) n'a pas été repris |
 | `securite-developpement` | `securite` | doublon partiel : 14 domaines DINUM/ANSSI détaillés, non repris — `anssi-guides` y renvoie par URL |
 | `usage-ia-agents-etat` | `audit-redteam` | périmètre différent (cadre d'usage vs test d'attaque) |
 

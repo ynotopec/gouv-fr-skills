@@ -99,7 +99,7 @@ Avant d'ajouter une dépendance, évaluer :
 
 ### Configuration du lint
 
-Voir `lint-eslint` (ESLint flat config, Ruff, EditorConfig) — ne pas
+Voir `lint-format` (ESLint flat config, Ruff, EditorConfig) — ne pas
 dupliquer la configuration ici.
 
 ### Vérification des standards
