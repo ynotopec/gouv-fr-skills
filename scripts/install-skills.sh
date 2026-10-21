@@ -19,6 +19,7 @@ Options:
   --project <dir>  racine du projet pour --scope project (defaut: repertoire courant)
   --flat            installe a plat dans <destination>/<skill>/ (sans le groupe)
   --force           remplace les skills gouv-fr deja installes
+  --migrate         archive les anciennes copies gouv-fr-* hors du dossier actif
   -h, --help        affiche cette aide
 EOF
 }
@@ -28,6 +29,7 @@ scope="user"
 project_root="$PWD"
 force=false
 flat=false
+migrate=false
 
 while (($#)); do
   case "$1" in
@@ -52,6 +54,10 @@ while (($#)); do
       ;;
     --force)
       force=true
+      shift
+      ;;
+    --migrate)
+      migrate=true
       shift
       ;;
     -h|--help)
@@ -106,9 +112,12 @@ install_for() {
   local source
   local target
   local group
+  local legacy
+  local backup
+  local -a sources=() targets=() legacy_paths=()
   destination="$(destination_for "$current_agent")"
-  mkdir -p "$destination"
 
+  # Préparer et vérifier tout le plan avant de remplacer ou déplacer un fichier.
   for group in "$skills_root"/*/; do
     [[ -d "$group" ]] || continue
     group="$(basename "$group")"
@@ -119,17 +128,45 @@ install_for() {
       else
         target="$destination/$group/$(basename "$source")"
       fi
-      mkdir -p "$(dirname "$target")"
+      sources+=("$source")
+      targets+=("$target")
+      legacy="$destination/gouv-fr-$(basename "$source")"
+      if [[ -e "$legacy" || -L "$legacy" ]]; then
+        legacy_paths+=("$legacy")
+      fi
       if [[ -e "$target" || -L "$target" ]]; then
         if [[ "$force" != true ]]; then
           echo "Erreur: $target existe déjà (utilisez --force pour le remplacer)" >&2
           return 1
         fi
-        rm -rf "$target"
       fi
-      cp -R "$source" "$target"
     done
   done
+
+  if (( ${#legacy_paths[@]} )) && [[ "$migrate" != true ]]; then
+    echo "Erreur: anciennes copies détectées dans $destination ; relancez avec --migrate (sauvegarde conservée)." >&2
+    return 1
+  fi
+
+  mkdir -p "$destination"
+  local index
+  for index in "${!sources[@]}"; do
+    target="${targets[$index]}"
+    mkdir -p "$(dirname "$target")"
+    if [[ -e "$target" || -L "$target" ]]; then
+      rm -rf "$target"
+    fi
+    cp -R "${sources[$index]}" "$target"
+  done
+
+  # Les nouvelles copies sont posées avant l'archivage. Ne jamais supprimer les anciennes.
+  if (( ${#legacy_paths[@]} )); then
+    backup="$(mktemp -d "${destination}.backup-XXXXXX")"
+    for legacy in "${legacy_paths[@]}"; do
+      mv "$legacy" "$backup/"
+    done
+    printf '%s: anciennes copies conservées dans %s\n' "$current_agent" "$backup"
+  fi
 
   printf '%s: skills installés dans %s\n' "$current_agent" "$destination"
 }

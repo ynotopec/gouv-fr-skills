@@ -65,7 +65,7 @@ La règle de fond de la revue sur le smoke-test est conservée : l'agent ne lit
 pas la valeur d'un secret. Le script lit `SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`
 **dans le processus**, sans jamais l'afficher, et n'affiche ni corps de
 réponse ni en-têtes d'erreur. Couvert par
-`skills/gouv-fr/dso/smoke-test/tests/test_run_smoke.py` (11 cas), dont un cas
+`skills/gouv-fr/dso/smoke-test/tests/test_run_smoke.py` (17 cas), dont un cas
 dédié au contrat d'API paramétrable.
 
 Le profil « DAT next » de `dso/repo-cicd/references/composition.md` devient
@@ -81,11 +81,26 @@ interne ne sont plus nommés.
   groupes, et échoue si un skill porte le nom de son groupe parent.
 - La CI pointe sur les nouveaux chemins de tests.
 
+### Ajustements après revue de la PR #10
+
+- Les trois chemins du smoke-test sont validés avant tout credential ou appel
+  réseau. Une option comme `.attacker.invalid/list` ne peut plus modifier l'hôte
+  destinataire du bearer. La primitive d'appel vérifie aussi l'origine.
+- Le champ multipart `operation` est configurable avec `--operation` et conserve
+  `transcription` par défaut. L'ancien argument `--meeting-id` reste un alias.
+- L'installation détecte les anciennes copies et exige `--migrate`. Après pose
+  des nouveaux skills, les anciennes copies sont déplacées hors du dossier
+  actif avec sauvegarde de leur contenu. Les conflits sont vérifiés avant
+  toute mutation ; les skills tiers ne sont pas déplacés.
+- Les tests couvrent aussi le passage d'une installation existante au nouveau
+  catalogue, les modifications locales sauvegardées, la répétition de migration
+  et le mode à plat. Aucun environnement réel n'a été appelé.
+
 ### Vérifications
 
 | Contrôle | Résultat |
 |----------|----------|
-| Tests unitaires | 28/28 (dat-word 4, design-system 8, repo-cicd 5, smoke-test 11) |
+| Tests unitaires | 34/34 (dat-word 4, design-system 8, repo-cicd 5, smoke-test 17) |
 | Installation | 43 skills × 7 groupes × 4 agents |
 | Cohérence (noms, `name:`, `related_skills`) | 43/43 |
 | Linter Hermes (avant → après) | 80 → 115 remarques ; seul delta : `missing-metadata` × 36, dû à la purge d'`author` |

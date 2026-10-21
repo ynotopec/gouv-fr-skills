@@ -61,6 +61,8 @@ def get_token(environ):
 
 
 def validate_base(base):
+    if any(ord(c) <= 32 or ord(c) == 127 for c in base) or '\\' in base:
+        raise SmokeError('Origine HTTPS invalide.')
     url = parse.urlsplit(base)
     if (url.scheme != 'https' or not url.hostname or url.username or url.password
             or url.query or url.fragment or url.path not in ('', '/')):
@@ -68,12 +70,27 @@ def validate_base(base):
     return base.rstrip('/')
 
 
+def endpoint_url(base, path):
+    """Ne jamais laisser une option de chemin modifier l'origine autorisée."""
+    if (not path.startswith('/') or path.startswith('//') or '\\' in path
+            or any(ord(c) <= 32 or ord(c) == 127 for c in path)):
+        raise SmokeError('Endpoint invalide : chemin absolu local requis.')
+    endpoint = parse.urlsplit(path)
+    if endpoint.scheme or endpoint.netloc or endpoint.fragment:
+        raise SmokeError('Endpoint invalide : origine externe ou fragment interdit.')
+    url = base + path
+    origin, target = parse.urlsplit(base), parse.urlsplit(url)
+    if (origin.scheme, origin.netloc) != (target.scheme, target.netloc):
+        raise SmokeError('Endpoint hors de l’origine autorisée.')
+    return url
+
+
 def call(opener, base, path, token, expected, *, data=None, content_type=None,
          json_body=True, media_type=None):
     headers = {'Authorization': 'Bearer ' + token}
     if content_type:
         headers['Content-Type'] = content_type
-    req = request.Request(base + path, headers=headers, data=data)
+    req = request.Request(endpoint_url(base, path), headers=headers, data=data)
     try:
         with opener.open(req, timeout=30) as response:
             if response.status != expected:
@@ -99,8 +116,12 @@ def call(opener, base, path, token, expected, *, data=None, content_type=None,
 def run(base, item_id, audio_file, environ, *, opener=None, list_path=DEFAULT_LIST_PATH,
         item_path=DEFAULT_ITEM_PATH, job_path=DEFAULT_JOB_PATH, id_param=DEFAULT_ID_PARAM,
         media_type=DEFAULT_MEDIA_TYPE, audio_suffix=DEFAULT_AUDIO_SUFFIX,
-        audio_content_type=DEFAULT_AUDIO_CONTENT_TYPE, job_field='job_id'):
+        audio_content_type=DEFAULT_AUDIO_CONTENT_TYPE, job_field='job_id',
+        operation='transcription'):
     base = validate_base(base)
+    # Vérifier les trois endpoints avant de lire un credential ou d'appeler le service.
+    for path in (list_path, item_path, job_path):
+        endpoint_url(base, path)
     audio = Path(audio_file)
     if audio.suffix.lower() != audio_suffix or not audio.is_file():
         raise SmokeError('Fournir un fichier de test ' + audio_suffix + ' existant.')
@@ -125,7 +146,7 @@ def run(base, item_id, audio_file, environ, *, opener=None, list_path=DEFAULT_LI
     # Utiliser un vrai échantillon du format attendu : ne pas renommer des octets WebM en M4A.
     prefix = (
         '--' + boundary + '\r\nContent-Disposition: form-data; name="operation"\r\n\r\n'
-        'smoke-test\r\n--' + boundary + '\r\n'
+        + operation + '\r\n--' + boundary + '\r\n'
         'Content-Disposition: form-data; name="file"; filename="smoke' + audio_suffix + '"\r\n'
         'Content-Type: ' + audio_content_type + '\r\n\r\n'
     ).encode()
@@ -140,7 +161,8 @@ def run(base, item_id, audio_file, environ, *, opener=None, list_path=DEFAULT_LI
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base', required=True)
-    parser.add_argument('--item-id', required=True, help='Identifiant de la ressource de test autorisée')
+    parser.add_argument('--item-id', '--meeting-id', dest='item_id', required=True,
+                        help='Identifiant de la ressource de test autorisée')
     parser.add_argument('--audio-file', required=True, help='Échantillon synthétique de test')
     parser.add_argument('--list-path', default=DEFAULT_LIST_PATH, help='Chemin de la liste des ressources')
     parser.add_argument('--item-path', default=DEFAULT_ITEM_PATH, help='Chemin de la ressource unitaire')
@@ -151,13 +173,14 @@ def main(argv=None):
     parser.add_argument('--audio-content-type', default=DEFAULT_AUDIO_CONTENT_TYPE,
                         help='Type de contenu du fichier de test')
     parser.add_argument('--job-field', default='job_id', help="Champ contenant l'identifiant du job")
+    parser.add_argument('--operation', default='transcription', help='Valeur du champ multipart operation')
     args = parser.parse_args(argv)
     try:
         run(args.base, args.item_id, args.audio_file, os.environ,
             list_path=args.list_path, item_path=args.item_path, job_path=args.job_path,
             id_param=args.id_param, media_type=args.media_type,
             audio_suffix=args.audio_suffix, audio_content_type=args.audio_content_type,
-            job_field=args.job_field)
+            job_field=args.job_field, operation=args.operation)
     except SmokeError as exc:
         print(str(exc), file=sys.stderr)
         return 1

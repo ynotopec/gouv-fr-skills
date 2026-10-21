@@ -157,6 +157,57 @@ class SmokeTests(unittest.TestCase):
             self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'}, media_type='application/json')
         self.assertEqual(len(opener.requests), 2)
 
+    def test_all_endpoint_options_are_checked_before_credentials_or_network(self):
+        invalid_paths = [
+            '.attacker.invalid/list', '@other.invalid/list', 'relative/path',
+            'https://other.invalid/list', '//other.invalid/list',
+            '/list#fragment', '/\\other.invalid/list', '/list\n',
+        ]
+        for option in ('list_path', 'item_path', 'job_path'):
+            for path in invalid_paths:
+                with self.subTest(option=option, path=path):
+                    opener = Opener(replies())
+                    with patch.object(smoke, 'get_token') as credential, \
+                            self.assertRaises(smoke.SmokeError):
+                        self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'}, **{option: path})
+                    credential.assert_not_called()
+                    self.assertEqual(opener.requests, [])
+
+    def test_call_itself_rejects_origin_changes(self):
+        opener = Opener([Response(200, [])])
+        with self.assertRaises(smoke.SmokeError):
+            smoke.call(opener, 'https://api.example', '.attacker.invalid/list',
+                       'synthetic', 200)
+        self.assertEqual(opener.requests, [])
+
+    def test_local_paths_with_queries_stay_on_the_authorized_origin(self):
+        opener = Opener(replies())
+        self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'}, list_path='/list?limit=1',
+                       item_path='/media?format=webm', job_path='/jobs?mode=test')
+        self.assertEqual(opener.requests[0].full_url, 'https://example.invalid/list?limit=1')
+        self.assertEqual(opener.requests[1].full_url,
+                         'https://example.invalid/media?format=webm&meeting_id=fixture')
+        for req in opener.requests:
+            self.assertEqual(req.host, 'example.invalid')
+
+    def test_default_operation_preserves_transcription_contract(self):
+        opener = Opener(replies())
+        self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'})
+        self.assertIn(b'name="operation"\r\n\r\ntranscription\r\n', opener.requests[2].data)
+
+    def test_operation_can_be_adapted_to_the_api(self):
+        opener = Opener(replies())
+        self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'}, operation='conversion')
+        self.assertIn(b'name="operation"\r\n\r\nconversion\r\n', opener.requests[2].data)
+
+    def test_legacy_meeting_id_argument_remains_usable(self):
+        with patch.dict(smoke.os.environ, {'SMOKE_TOKEN': 'synthetic'}, clear=True), \
+                patch.object(smoke.request, 'build_opener', return_value=Opener(replies())), \
+                contextlib.redirect_stdout(io.StringIO()):
+            result = smoke.main(['--base', 'https://example.invalid', '--meeting-id', 'fixture',
+                                 '--audio-file', str(self.audio)])
+        self.assertEqual(result, 0)
+
 
 if __name__ == '__main__':
     unittest.main()

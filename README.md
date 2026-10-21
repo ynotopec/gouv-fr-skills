@@ -74,6 +74,25 @@ Par sécurité, une installation existante n'est pas écrasée. Ajouter `--force
 pour mettre à jour les copies déjà présentes. `./scripts/install-skills.sh --help`
 affiche toutes les options.
 
+### Migrer une installation existante
+
+Les anciennes copies `gouv-fr-<nom>` sont détectées avant installation.
+`--force` seul ne permet pas de les laisser cohabiter avec les nouveaux noms.
+Utiliser `--migrate` pour installer le nouveau catalogue puis déplacer les
+anciennes copies dans un dossier frère `skills.backup-XXXXXX`, hors du
+répertoire actif. Le chemin de sauvegarde est affiché ; les modifications
+locales et les skills tiers sont conservés.
+
+```bash
+./scripts/install-skills.sh --agent all --migrate
+# Si les nouvelles destinations existent déjà :
+./scripts/install-skills.sh --agent all --migrate --force
+```
+
+La sauvegarde reste disponible pour récupérer les anciennes copies ; elle
+n'est jamais supprimée par l'installateur. `--migrate` fonctionne aussi avec
+`--scope project` et `--flat`.
+
 ## Vérification
 
 - Chaque skill dans `skills/gouv-fr/<groupe>/<skill>/` contient un `SKILL.md` avec frontmatter YAML valide

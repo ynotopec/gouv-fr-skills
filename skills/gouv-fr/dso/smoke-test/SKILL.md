@@ -2,7 +2,7 @@
 
 name: smoke-test
 description: "Smoke-test d'une API en lecture et job asynchrone, sans exposer de secret. Vérifie liste, média et job avec un credential injecté dans l'environnement. Le contrat d'API est paramétrable ; à lancer uniquement sur demande explicite (appels réseau vers un environnement réel)."
-version: 1.2.0
+version: 1.2.1
 license: MIT
 platforms: [linux, macos]
 metadata:
@@ -75,6 +75,16 @@ autorisées ; ne jamais exécuter un exemple tel quel.
 | `--audio-suffix` | `.m4a` | Extension du fichier de test |
 | `--audio-content-type` | `audio/mp4` | Type de contenu du fichier de test |
 | `--job-field` | `job_id` | Champ contenant l'identifiant du job |
+| `--operation` | `transcription` | Valeur du champ multipart `operation` |
+
+Les trois chemins doivent commencer par un unique `/`, sans origine externe,
+fragment, antislash ou caractère de contrôle. Les paramètres de query sont
+autorisés. Tous les endpoints sont validés avant lecture des credentials ou
+appel réseau : ils restent sur l'origine HTTPS fournie par `--base`.
+
+`--meeting-id` reste accepté comme alias de `--item-id`. Le contrat historique
+`operation=transcription` est conservé par défaut ; adapter `--operation` au
+contrat du service si nécessaire.
 
 | Appel | Validation |
 |---|---|
