@@ -1,0 +1,35 @@
+name: Skills tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Tests unitaires des skills
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
+          python-version: '3.12'
+      - name: Installer les dépendances de test
+        run: python -m pip install --upgrade pip && python -m pip install pyyaml python-docx
+      - name: Tests du rendu DAT (typographie, modèle par défaut)
+        run: python -m unittest discover -s skills/gouv-fr-dat-word/tests -v
+      - name: Tests du vérificateur DSFR
+        run: python -m unittest discover -s skills/gouv-fr-design-system/tests -v
+      - name: Tests de vérification des appels de workflows
+        run: python -m unittest discover -s skills/gouv-fr-repo-cicd/tests -v
+
+  install:
+    name: Installation des skills
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Tester le script d'installation
+        run: bash scripts/test-install-skills.sh

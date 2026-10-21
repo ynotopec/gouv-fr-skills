@@ -116,7 +116,7 @@ rules: {
 uv add --dev ruff
 ```
 
-### Configuration (`ruff.toml`)
+### Configuration (`pyproject.toml`)
 ```toml
 [tool.ruff]
 line-length = 88
@@ -131,11 +131,13 @@ quote-style = "double"
 indent-style = "space"
 ```
 
-### Scripts package.toml
-```toml
-[project.scripts]
-lint = "ruff check ."
-format = "ruff format ."
+Dans un `ruff.toml` dédié, retirer le préfixe `tool.ruff` : `line-length` et `target-version` à la
+racine, `[lint]` et `[format]` au lieu de `[tool.ruff.lint]` et `[tool.ruff.format]`.
+
+### Commandes
+```bash
+uv run ruff check .
+uv run ruff format .
 ```
 
 ## Pièges
