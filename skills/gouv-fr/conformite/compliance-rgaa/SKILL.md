@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [gouv-fr, compliance, rgaa, dsfr, rgpd, accessibility, etat, design-system, data-protection]
-    related_skills: [design-system, projet-structure, securite]
+    related_skills: [design-system, projet-structure, developpement-securise]
 ---
 
 # Gouv-fr — Conformité (RGAA, DSFR, RGPD)

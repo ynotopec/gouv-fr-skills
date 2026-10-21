@@ -8,7 +8,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, audit, conformance]
-    related_skills: [securite, compliance-rgaa, repo-init]
+    related_skills: [developpement-securise, compliance-rgaa, repo-init]
 ---
 
 # Gouv-fr — Audit de conformité d'une application
@@ -20,7 +20,7 @@ créer de journal, committer ou réécrire l'historique sur une simple demande
 de vérification. Une demande explicite de correction ou de PR autorise les
 changements nécessaires dans ce périmètre ; ne pas redemander cet accord.
 Inspecter les déclencheurs d'exécution avant de lancer les outils du projet
-(voir `audit-safety`). Ne jamais exécuter un script inconnu pour le découvrir.
+(voir `audit-securite-depot`). Ne jamais exécuter un script inconnu pour le découvrir.
 
 1. Lire les consignes du dépôt et relever la stack, les points d'entrée, le
    déploiement réel et les commandes de validation déclarées.

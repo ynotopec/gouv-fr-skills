@@ -21,17 +21,42 @@ Les skills sont regroupés par usage, sous un unique arbre `gouv-fr/` :
 
 | Groupe | Contenu |
 |---------|---------|
-| [`anssi`](skills/gouv-fr/anssi/) | Guides ANSSI, audits de sécurité, durcissement |
+| [`securite`](skills/gouv-fr/securite/) | Guides ANSSI, audits de sécurité, durcissement |
 | [`code`](skills/gouv-fr/code/) | Architecture, conventions, backend, frontend, outillage, workflow |
 | [`conformite`](skills/gouv-fr/conformite/) | RGAA, RGPD, cookies, documents d'homologation |
 | [`data`](skills/gouv-fr/data/) | APIs data.gouv.fr, données ouvertes du SIG |
 | [`dsfr`](skills/gouv-fr/dsfr/) | Design system de l'État, composants, pictogrammes, templates |
-| [`dso`](skills/gouv-fr/dso/) | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
+| [`devops`](skills/gouv-fr/devops/) | CI/CD, conteneurs, Kubernetes, Cloud Pi Native, tests de fumée |
 | [`lasuite`](skills/gouv-fr/lasuite/) | Interfaces React LaSuite |
 
 Le nom d'un skill ne porte pas le préfixe `gouv-fr-` : il ne doit pas répéter le
-nom de son dossier parent. `skills/gouv-fr/code/code-index/` est conforme ;
-`skills/gouv-fr/code/gouv-fr-code-index/` ne l'est pas.
+nom de son dossier parent. `skills/gouv-fr/code/skills-router/` est conforme ;
+`skills/gouv-fr/code/gouv-fr-skills-router/` ne l'est pas.
+
+### Noms explicites
+
+Un nom décrit l'usage ou le périmètre réel du skill. Les noms techniques
+courants restent inchangés (`api-rest`, `helm-chart`, `react-dsfr`, etc.).
+
+| Ancien nom | Nom actuel |
+|---|---|
+| `backend-fastify` | `backend-api` |
+| `lint-eslint` | `lint-format` |
+| `code-index` | `skills-router` |
+| `audit-safety` | `audit-securite-depot` |
+| `audit-redteam` | `redteam-llm` |
+| `audit-pentest` | `audit-durcissement` |
+| `repo-cicd` | `cicd-cloud-pi-native` |
+| `dat-homologation` | `document-homologation` |
+| `dat-word` | `homologation-word` |
+| `service-names` | `verification-renommage-services` |
+| `securite` | `developpement-securise` |
+
+Les groupes `anssi` et `dso` deviennent `securite` et `devops`. Le skill
+`anssi-guides` conserve son nom : sa source et son périmètre sont précis.
+La [table de migration](scripts/skill-renames.tsv) conserve les correspondances
+pour les 43 skills ; les identifiants utilisés par les consommateurs doivent
+être mis à jour d'après cette table.
 
 ## Installation
 
@@ -76,12 +101,13 @@ affiche toutes les options.
 
 ### Migrer une installation existante
 
-Les anciennes copies `gouv-fr-<nom>` sont détectées avant installation.
+Les anciens noms, groupes et copies `gouv-fr-<nom>` sont détectés avant installation.
 `--force` seul ne permet pas de les laisser cohabiter avec les nouveaux noms.
-Utiliser `--migrate` pour installer le nouveau catalogue puis déplacer les
-anciennes copies dans un dossier frère `skills.backup-XXXXXX`, hors du
-répertoire actif. Le chemin de sauvegarde est affiché ; les modifications
-locales et les skills tiers sont conservés.
+Utiliser `--migrate` pour archiver les anciennes copies dans un dossier frère
+`skills.backup-XXXXXX`, hors du répertoire actif, avant d'installer le nouveau
+catalogue. Le chemin de sauvegarde est affiché ; les modifications locales et
+les skills tiers sont conservés. Les destinations déjà présentes qui seront
+remplacées avec `--force` sont également sauvegardées pendant cette migration.
 
 ```bash
 ./scripts/install-skills.sh --agent all --migrate
@@ -120,7 +146,7 @@ Voir [`REVIEW.md`](REVIEW.md) pour le rapport de revue complet.
 
 ### Audits adaptés au projet
 
-`code-index` oriente vers le skill pertinent sans charger tout le catalogue.
+`skills-router` oriente vers le skill pertinent sans charger tout le catalogue.
 L'audit de conformité commence par identifier la stack et le déploiement réels ;
 une vérification seule reste en lecture seule. Une demande de correction ou de
 PR autorise les modifications correspondantes. Les preuves manquantes sont
@@ -148,16 +174,16 @@ CI (`Skills tests`) :
 python -m pip install pyyaml python-docx
 
 # Rendu DAT : typographie française et modèle Word par défaut
-python3 -m unittest discover -s skills/gouv-fr/conformite/dat-word/tests -v
+python3 -m unittest discover -s skills/gouv-fr/conformite/homologation-word/tests -v
 
 # Vérificateur DSFR : classes CSS et assets locaux
 python3 -m unittest discover -s skills/gouv-fr/dsfr/design-system/tests -v
 
 # Permissions des appels de workflows réutilisables
-python3 -m unittest discover -s skills/gouv-fr/dso/repo-cicd/tests -v
+python3 -m unittest discover -s skills/gouv-fr/devops/cicd-cloud-pi-native/tests -v
 
 # Smoke-test : credentials synthétiques et transport simulé
-python3 -m unittest discover -s skills/gouv-fr/dso/smoke-test/tests -v
+python3 -m unittest discover -s skills/gouv-fr/devops/smoke-test/tests -v
 
 # Script d'installation (Hermes, OpenCode, Kilo Code, Claude Code)
 ./scripts/test-install-skills.sh

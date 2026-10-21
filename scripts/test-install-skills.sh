@@ -45,7 +45,7 @@ done
 project="$tmp/project"
 mkdir -p "$project"
 "$installer" --agent opencode --scope project --project "$project"
-test -f "$project/.opencode/skills/code/code-index/SKILL.md"
+test -f "$project/.opencode/skills/code/skills-router/SKILL.md"
 
 if "$installer" --agent opencode --scope project --project "$project" >/dev/null 2>&1; then
   echo "Échec: une installation existante aurait dû nécessiter --force" >&2
@@ -57,7 +57,7 @@ fi
 flat="$tmp/flat"
 mkdir -p "$flat"
 HOME="$tmp/home" HERMES_HOME="$flat/hermes" "$installer" --agent hermes --flat >/dev/null
-test -f "$flat/hermes/skills/code-index/SKILL.md"
+test -f "$flat/hermes/skills/skills-router/SKILL.md"
 if [[ -d "$flat/hermes/skills/code" ]]; then
   echo "Échec: --flat ne doit pas créer de dossier de groupe" >&2
   exit 1
@@ -99,9 +99,9 @@ test "$(find "$destination" -type f -name SKILL.md | wc -l)" -eq "$((expected_co
 
 # Un conflit de destination est détecté avant tout déplacement d'une ancienne copie.
 conflict="$tmp/conflict"
-mkdir -p "$conflict/.opencode/skills/code/code-index" "$conflict/.opencode/skills/gouv-fr-code-index"
+mkdir -p "$conflict/.opencode/skills/code/skills-router" "$conflict/.opencode/skills/gouv-fr-code-index"
 printf '%s\n' 'ancien' > "$conflict/.opencode/skills/gouv-fr-code-index/SKILL.md"
-printf '%s\n' 'déjà présent' > "$conflict/.opencode/skills/code/code-index/SKILL.md"
+printf '%s\n' 'déjà présent' > "$conflict/.opencode/skills/code/skills-router/SKILL.md"
 if "$installer" --agent opencode --scope project --project "$conflict" --migrate >/dev/null 2>&1; then
   echo "Échec: une destination existante doit rester protégée sans --force" >&2
   exit 1
@@ -113,8 +113,61 @@ flat_migration="$tmp/flat-migration"
 mkdir -p "$flat_migration/.opencode/skills/gouv-fr-code-index"
 printf '%s\n' 'ancien' > "$flat_migration/.opencode/skills/gouv-fr-code-index/SKILL.md"
 "$installer" --agent opencode --scope project --project "$flat_migration" --flat --migrate >/dev/null
-test -f "$flat_migration/.opencode/skills/code-index/SKILL.md"
+test -f "$flat_migration/.opencode/skills/skills-router/SKILL.md"
 test ! -d "$flat_migration/.opencode/skills/code"
 test ! -e "$flat_migration/.opencode/skills/gouv-fr-code-index"
 
-echo "OK: $expected_count skills dans $expected_groups groupes, quatre agents ; migrations et sauvegardes vérifiées"
+# Vérifier les trois générations réellement distribuées : anciens groupes,
+# anciens noms à plat, et noms à plat préfixés gouv-fr-.
+for layout in grouped flat prefixed; do
+  migration="$tmp/catalog-$layout"
+  destination="$migration/.opencode/skills"
+  mkdir -p "$destination/personal-skill"
+  printf '%s\n' 'personnel' > "$destination/personal-skill/SKILL.md"
+  rows=0
+  while IFS=$'\t' read -r old_group old_name new_group new_name; do
+    [[ "$old_group" == \#* || -z "$old_group" ]] && continue
+    rows=$((rows + 1))
+    source="$skills_root/$new_group/$new_name"
+    test -f "$source/SKILL.md"
+    case "$layout" in
+      grouped) legacy="$destination/$old_group/$old_name" ;;
+      flat) legacy="$destination/$old_name" ;;
+      prefixed) legacy="$destination/gouv-fr-$old_name" ;;
+    esac
+    mkdir -p "$(dirname "$legacy")"
+    cp -R "$source" "$legacy"
+  done < "$script_dir/skill-renames.tsv"
+  test "$rows" -eq "$expected_count"
+  case "$layout" in
+    grouped) quality_path=code/code-quality ;;
+    flat) quality_path=code-quality ;;
+    prefixed) quality_path=gouv-fr-code-quality ;;
+  esac
+  printf '%s\n' 'modification utilisateur' >> "$destination/$quality_path/SKILL.md"
+  if "$installer" --agent opencode --scope project --project "$migration" --force >/dev/null 2>&1; then
+    echo "Échec: le catalogue $layout doit exiger --migrate" >&2
+    exit 1
+  fi
+  "$installer" --agent opencode --scope project --project "$migration" --migrate --force >/dev/null
+  test "$(find "$destination" -type f -name SKILL.md | wc -l)" -eq "$((expected_count + 1))"
+  test -f "$destination/code/backend-api/SKILL.md"
+  test -f "$destination/securite/developpement-securise/SKILL.md"
+  test -f "$destination/devops/cicd-cloud-pi-native/SKILL.md"
+  test -f "$destination/personal-skill/SKILL.md"
+  test ! -f "$destination/securite/SKILL.md"
+  test ! -d "$destination/anssi"
+  test ! -d "$destination/dso"
+  backups=("$destination".backup-*)
+  test "${#backups[@]}" -eq 1
+  grep -q 'modification utilisateur' "${backups[0]}/$quality_path/SKILL.md"
+  if grep -q 'modification utilisateur' "$destination/code/code-quality/SKILL.md"; then
+    echo "Échec: la destination doit contenir la version courante, l'ancienne restant sauvegardée" >&2
+    exit 1
+  fi
+  "$installer" --agent opencode --scope project --project "$migration" --migrate --force >/dev/null
+  backups=("$destination".backup-*)
+  test "${#backups[@]}" -eq 1
+done
+
+echo "OK: $expected_count skills dans $expected_groups groupes, quatre agents ; migrations historiques et sauvegardes vérifiées"

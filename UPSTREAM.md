@@ -1,5 +1,9 @@
 # Provenance historique des skills
 
+Les noms historiques ci-dessous sont conservés pour attribution. Les identifiants
+actuels et la correspondance de migration figurent dans
+[`scripts/skill-renames.tsv`](scripts/skill-renames.tsv).
+
 Les skills sont maintenus directement dans `gouv-fr-skills`. Ces sources
 documentent l’origine des contenus, sans imposer de validation ou de
 synchronisation externe. Toute reprise future est facultative et passe par

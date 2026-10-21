@@ -20,7 +20,7 @@ Règles pour construire des images prêtes pour Cloud Pi Native (K8s/OpenShift) 
 - Déployer sur Kubernetes ou OpenShift
 
 Pour le **chart Helm**, utiliser **`helm-chart`** ; pour la **console, le mirror, le pipeline DSO et ArgoCD**,
-utiliser **`deployment-cloud-pi-native`** (groupe `dso`).
+utiliser **`deployment-cloud-pi-native`** (groupe `devops`).
 
 ## Prérequis
 - Docker installé pour le build local
