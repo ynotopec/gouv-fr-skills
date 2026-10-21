@@ -25,6 +25,8 @@ jobs:
         run: python -m unittest discover -s skills/gouv-fr-design-system/tests -v
       - name: Tests de vérification des appels de workflows
         run: python -m unittest discover -s skills/gouv-fr-repo-cicd/tests -v
+      - name: Tests du smoke-test (credentials synthétiques, sans réseau)
+        run: python -m unittest discover -s skills/gouv-fr-smoke-test/tests -v
 
   install:
     name: Installation des skills

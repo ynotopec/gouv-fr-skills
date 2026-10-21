@@ -9,8 +9,10 @@
 
 Une seconde passe, issue de la revue du catalogue consolidé
 (`dnum-mi/starter-kit-opencode`#42), a corrigé **4 défauts de fond** et
-**2 manques d'infrastructure**. Chaque défaut était reproduit avant
-correction, et couvert par un test de non-régression.
+**2 manques d'infrastructure**. Les régressions ciblées sont couvertes par des tests ; les cas positifs
+vérifient aussi les comportements qui fonctionnaient déjà. Les corrections
+documentaires sont vérifiées séparément, sans prétendre à une preuve rouge→vert
+pour chaque nouveau test.
 
 ### 🔴 Bloquants
 
@@ -52,13 +54,17 @@ comme un `package.toml`, qui n'est pas un format de configuration reconnu.
 `ruff.toml` est explicitée (retirer le préfixe `tool.ruff`), et les scripts
 sont remplacés par les commandes réelles (`uv run ruff check .`).
 
-#### 5. `gouv-fr-smoke-test` : l'agent lisait le secret
-La recette de forge demandait à l'agent de lire `INTERNAL_API_TOKEN` depuis
-l'environnement et de produire le jeton — donc de traiter un secret.
+#### 5. `gouv-fr-smoke-test` : le jeton était affiché
+La recette imprimait le jeton produit par HMAC, l'exposant à la sortie de l'outil
+et à la conversation. Lire le secret dans un processus autorisé n'implique
+pas d'en exposer la valeur au modèle.
 
-**Correction** : la forge devient une étape humaine. L'utilisateur exporte
-`SMOKE_TOKEN` dans son shell ; l'agent ne lit, ne génère ni n'affiche aucun
-secret.
+**Correction** : un script Python local utilise les credentials injectés
+(`SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`) et n'affiche que les statuts. Il forge
+et réutilise le jeton en mémoire, sans étape humaine systématique, argument de
+processus secret, fichier de credential ni redirection HTTP. Il exige des
+données de test explicites et documente les effets du POST de transcription.
+Neuf tests à transport simulé couvrent ce comportement, sans appeler de service réel.
 
 #### 6. `scripts/test-install-skills.sh` : écriture hors du bac à sable
 Le test isolait `HOME` et `XDG_CONFIG_HOME`, mais pas `HERMES_HOME`,
@@ -86,9 +92,9 @@ suites plus le test d'installation.
 ### Vérifications passées après correction
 
 ```
-✅ 3 suites unittest : 17 tests au vert
+✅ 4 suites unittest : 26 tests au vert
 ✅ Test d'installation : 43 skills × 4 agents
-✅ Chaque nouveau test échoue bien sur le code d'origine (défaut reproduit)
+✅ Cas de régression et cas positifs distingués ; aucune affirmation rouge→vert universelle
 ✅ Ruff 0.17 : la configuration documentée est acceptée dans les deux formes
 ✅ 0 écriture hors du répertoire temporaire lors du test d'installation
 ```
