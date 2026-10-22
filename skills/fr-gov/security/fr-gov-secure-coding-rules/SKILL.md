@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [gouv-fr, security, secrets, gitleaks, sql-injection, tls, dependencies, vm-isolation, cryptography, auth]
-    related_skills: [fr-gov-set-up-project-layout, ship-a-dev-task, fr-gov-secure-coding-rules, fr-gov-find-cybersecurity-guide]
+    related_skills: [fr-gov-set-up-project-layout, ship-a-dev-task, fr-gov-find-cybersecurity-guide]
 ---
 
 # Gouv-fr — Règles de sécurité

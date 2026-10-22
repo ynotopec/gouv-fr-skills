@@ -6,6 +6,26 @@ import re
 from pathlib import Path
 
 
+def check_related(path, frontmatter, names):
+    """Contrôle la liste related_skills d'un skill : cibles connues, pas de soi-même, pas de doublon."""
+    errors = []
+    related = re.search(r'related_skills: \[([^\]]*)\]', frontmatter)
+    if not related:
+        return errors
+    seen = []
+    for target in (item.strip() for item in related[1].split(',')):
+        if not target:
+            continue
+        if target not in names:
+            errors.append(f'{path}: unknown related skill {target}')
+        if target == path.parent.name:
+            errors.append(f'{path}: related_skills references itself')
+        if target in seen:
+            errors.append(f'{path}: duplicate related skill {target}')
+        seen.append(target)
+    return errors
+
+
 def check(root):
     errors = []
     skills = sorted((root / 'skills/fr-gov').glob('*/*/SKILL.md'))
@@ -27,11 +47,7 @@ def check(root):
             errors.append(f'{path}: redundant country/government term; use fr-gov-')
         if path.parent.name == path.parent.parent.name:
             errors.append(f'{path}: name duplicates parent group')
-        related = re.search(r'related_skills: \[([^\]]*)\]', frontmatter)
-        if related:
-            for target in related[1].split(','):
-                if target.strip() not in names:
-                    errors.append(f'{path}: unknown related skill {target.strip()}')
+        errors.extend(check_related(path, frontmatter, names))
         description = re.search(r'^description: (.+)$', frontmatter, re.M)
         if not description:
             errors.append(f'{path}: missing description')
