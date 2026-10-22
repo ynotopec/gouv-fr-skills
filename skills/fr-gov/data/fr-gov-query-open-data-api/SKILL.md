@@ -107,157 +107,7 @@ flowchart LR
 
 ---
 
-## 1. Main API
-
-**Base URL:** `https://www.data.gouv.fr/api/1/` | Demo: `https://demo.data.gouv.fr/api/1/`
-
-**Auth:** Read public. Write (POST/PUT/PATCH/DELETE): header `X-API-KEY`. Permissions = web (org member to edit org datasets). `private: true` for drafts. **IDs:** technical id or slug; prefer technical id. **Content:** JSON; file uploads: `multipart/form-data`. **Optional:** `X-Fields` to limit returned fields.
-
-**Response:** Paginated lists: `data`, `page`, `page_size`, `total`, `next_page`, `previous_page`. Errors: 400, 401, 403, 404, 410, 423, 500, 502. Body: `{"message":"..."}`. Rate limits: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`.
-
-### Datasets
-| Method | Path |
-|--------|------|
-| GET | `/datasets/` — q, page, page_size, sort, organization, owner, tag, license, format, geozone, granularity, temporal_coverage, schema, topic, archived, deleted, private |
-| POST | `/datasets/` — title, description, frequency, last_update, organization/owner, license, tags, private |
-| GET/PUT/DELETE | `/datasets/{id}/` |
-| GET | `/datasets/{id}/resources/` |
-| POST | `/datasets/{id}/resources/` — create |
-| PUT | `/datasets/{id}/resources/` — reorder (body: array) |
-| GET/PUT/DELETE | `/datasets/{id}/resources/{rid}/` |
-| POST | `/datasets/{id}/resources/{rid}/upload/` or `/datasets/{id}/upload/` |
-| POST/DELETE | `/datasets/{id}/badges/`, `/datasets/{id}/badges/{badge_kind}/` |
-| POST/DELETE | `/datasets/{id}/featured/` |
-| GET/POST/DELETE | `/datasets/{id}/followers/` |
-| GET | `/datasets/{id}/rdf`, `/datasets/{id}/rdf.{_format}` |
-| GET/POST/... | `/datasets/community_resources/`, `.../{community}/`, `.../upload/` |
-| GET | `/datasets/badges/`, `frequencies/`, `licenses/`, `resource_types/`, `extensions/`, `schemas/` |
-| GET | `/datasets/suggest/`, `suggest/formats/`, `suggest/mime/` — q, size |
-| GET | `/datasets/r/{rid}` — download the resource as a file |
-| GET | `/datasets/recent.atom` |
-
-### Organizations
-| Method | Path |
-|--------|------|
-| GET/POST | `/organizations/` |
-| GET/PUT/DELETE | `/organizations/{id}/` |
-| POST/PUT/DELETE | `/organizations/{id}/member/{user}/` — role: admin|editor |
-| GET/POST | `/organizations/{id}/membership/`, `.../accept/{id}/`, `.../refuse/{id}/` |
-| GET | `/organizations/{id}/datasets/`, `reuses/`, `discussions/`, `contacts/`, `contacts/suggest/` |
-| GET | `/organizations/{id}/datasets.csv`, `dataservices.csv`, `datasets-resources.csv`, `discussions.csv` |
-| GET | `/organizations/{id}/catalog`, `catalog.{_format}` |
-| GET/POST/DELETE | `/organizations/badges/`, `{id}/badges/`, `{id}/badges/{badge_kind}/` |
-| POST/PUT | `/organizations/{id}/logo/` |
-| GET | `/organizations/roles/`, `suggest/` |
-| GET/POST/DELETE | `/organizations/{id}/followers/` |
-
-### Users
-| Method | Path |
-|--------|------|
-| GET/POST | `/users/` |
-| GET/PUT/DELETE | `/users/{id}/` |
-| POST | `/users/{id}/avatar/` |
-| GET | `/users/{id}/contacts/` |
-| GET | `/users/roles/`, `suggest/` |
-| GET/POST/DELETE | `/users/{id}/followers/` |
-
-### Me (authenticated)
-| Method | Path |
-|--------|------|
-| GET/PUT/DELETE | `/me/` |
-| DELETE/POST | `/me/apikey/` |
-| POST | `/me/avatar/` |
-| GET | `/me/datasets/`, `reuses/`, `metrics/`, `org_datasets/`, `org_reuses/`, `org_community_resources/`, `org_discussions/` |
-
-### Reuses
-| Method | Path |
-|--------|------|
-| GET/POST | `/reuses/` — q, organization, owner, tag, topic, type, dataset, featured |
-| GET/PUT/DELETE | `/reuses/{id}/` |
-| POST | `/reuses/{id}/datasets/`, `dataservices/` |
-| GET/POST/DELETE | `/reuses/badges/`, `{id}/badges/`, `{id}/featured/` |
-| POST | `/reuses/{id}/image/` |
-| GET | `/reuses/topics/`, `types/`, `suggest/` |
-| GET/POST/DELETE | `/reuses/{id}/followers/` |
-| GET | `/reuses/recent.atom` |
-
-### Dataservices (external APIs)
-
-External administrative or public HTTP APIs were historically listed on **api.gouv.fr**; they are now represented as **dataservices** on data.gouv.fr (`GET /dataservices/`, object fields below).
-
-| Method | Path |
-|--------|------|
-| GET/POST | `/dataservices/` — GET: q, page, page_size, organization, owner, topic, tag, access_type, featured, dataset, sort |
-| GET/PATCH/DELETE | `/dataservices/{id}/` — GET returns `base_api_url`, `machine_documentation_url` (OpenAPI/Swagger spec), title, description, organization, license, etc. |
-| POST | `/dataservices/{id}/datasets/` — body: [{id}] |
-| DELETE | `/dataservices/{id}/datasets/{dataset}/` |
-| POST/DELETE | `/dataservices/{id}/featured/` |
-| GET | `/dataservices/{id}/rdf`, `rdf.{_format}` |
-| GET/POST/DELETE | `/dataservices/{id}/followers/` |
-| GET | `/dataservices/recent.atom` |
-
-**Access and auth:** Each object includes **`access_type`** (and related fields such as `access_type_reason`, `authorization_request_url`). Rules are **per dataservice**, not platform-wide: follow the web page (`self_web_url`), **`business_documentation_url`**, and the upstream OpenAPI for API keys, OAuth, DataPass, or other flows.
-
-**Rate limits:** **`rate_limiting`** and **`rate_limiting_url`** describe **producer** quotas on the external API. The Main API’s **`X-RateLimit-*`** headers apply only to **catalog** requests (`/dataservices/`, etc.), not to calls you make to `base_api_url`.
-
-**Bulk export (metadata):** `GET /site/dataservices.csv` returns a site-wide CSV of dataservice rows for spreadsheets or scripts (same catalog as the JSON list).
-
-**OpenAPI is authoritative:** Always fetch **`machine_documentation_url`** before calling the live API. Paths, parameters, and schemas come from that spec; if human text on the portal or this skill disagrees with the fetched OpenAPI, **trust the OpenAPI** (same principle as Metrics and Tabular Swaggers in [§References and freshness](#references-and-freshness)).
-
-**To use a dataservice:** (1) Find it: MCP **`search_dataservices`** or `GET /dataservices/?q=term` (follow **`next_page`** until done). (2) GET `/dataservices/{id}/` (or the MCP equivalent) for `machine_documentation_url` and `base_api_url`. (3) Fetch `machine_documentation_url` for the OpenAPI spec. (4) Call **`base_api_url`** per that spec.
-
-### Contacts, Harvest, Discussions, Notifications
-| Method | Path |
-|--------|------|
-| POST | `/contacts/` — name, email, role |
-| GET | `/contacts/roles/` |
-| GET/PUT/DELETE | `/contacts/{id}/` |
-| GET/POST | `/harvest/sources/` |
-| GET/PUT/DELETE | `/harvest/source/{id}/` |
-| GET | `/harvest/source/{id}/jobs/`, `/harvest/job/{ident}/` |
-| POST | `/harvest/source/{id}/run/` |
-| POST/DELETE | `/harvest/source/{id}/schedule/` |
-| GET/POST | `/harvest/source/{id}/preview/`, `/harvest/source/preview/` |
-| POST | `/harvest/source/{id}/validate/` |
-| GET | `/harvest/backends/` |
-| GET/POST/PUT/DELETE | `/discussions/`, `discussions/{id}/` |
-| POST | `/discussions/{id}/` — comment, close (body) |
-| PUT/DELETE | `/discussions/{id}/comments/{idx}/` |
-| DELETE | `/discussions/{id}/comments/{idx}/spam/`, `discussions/{id}/spam/` |
-| GET | `/notifications/` |
-| POST | `/notifications/{id}/read/` |
-
-### Posts, Pages, Reports, Transfer, Activity, Site, Spatial, Tags
-| Method | Path |
-|--------|------|
-| GET/POST | `/posts/` — name, content, body_type, kind, datasets, reuses |
-| GET/PUT/DELETE | `/posts/{id}/` |
-| POST/PUT | `/posts/{id}/image/` |
-| POST/DELETE | `/posts/{id}/publish/` |
-| GET | `/posts/recent.atom` |
-| GET/POST | `/pages/` |
-| GET/PUT | `/pages/{id}/` |
-| GET/POST | `/reports/` — reason (explicit_content|illegal_content|others|personal_data|security|spam), subject, message |
-| GET | `/reports/reasons/` |
-| GET/PATCH | `/reports/{id}/` |
-| GET/POST | `/transfer/`, `transfer/{id}/` — subject, recipient, comment; response: accept\|refuse |
-| GET | `/activity/` — user, organization, related_to |
-| GET/PATCH | `/site/` |
-| GET | `/site/catalog`, `catalog.{_format}`, `context.jsonld`, `data.{_format}` |
-| GET | `/site/datasets.csv`, `dataservices.csv`, `reuses.csv`, `organizations.csv`, `resources.csv`, `harvests.csv`, `tags.csv` |
-| GET | `/access_type/reason_categories/` |
-| GET | `/avatars/{identifier}/{size}/` |
-| GET | `/spatial/granularities/`, `levels/`, `coverage/{level}/`, `zone/{id}/`, `zone/{id}/datasets/`, `zones/{ids}/`, `zones/suggest/` |
-| GET | `/tags/suggest/` |
-| GET | `/spam/` |
-| GET | `/proconnect/auth`, `login/`, `logout`, `logout_oauth` |
-| GET/POST | `/workers/jobs/` |
-| GET/PUT/DELETE | `/workers/jobs/{id}/` |
-| GET | `/workers/jobs/schedulables/`, `workers/tasks/{id}/` |
-
----
-
-## 2. Metrics API
+## Metrics API
 
 **Base URL:** `https://metric-api.data.gouv.fr` | Swagger: https://metric-api.data.gouv.fr/api/doc
 
@@ -271,7 +121,7 @@ External administrative or public HTTP APIs were historically listed on **api.go
 
 ---
 
-## 3. Tabular API
+## Tabular API
 
 **Base URL:** `https://tabular-api.data.gouv.fr` | Swagger: https://tabular-api.data.gouv.fr/api/doc | Per-resource: `GET /api/resources/{rid}/swagger/`
 
@@ -299,45 +149,6 @@ External administrative or public HTTP APIs were historically listed on **api.go
 
 ---
 
-## Quick examples
-
-```python
-import requests
-
-BASE = "https://www.data.gouv.fr/api/1"
-
-# 1) Search catalog, then open first hit
-r = requests.get(f"{BASE}/datasets/", params={"q": "transport", "page_size": 5}).json()
-first = r["data"][0]
-ds = requests.get(f"{BASE}/datasets/{first['id']}/").json()
-
-# 2) Pick a CSV resource UUID, then Tabular profile + data (use any resource id exposed by Tabular)
-csvs = [res for res in ds["resources"] if res.get("format", "").lower() == "csv"]
-rid = csvs[0]["id"] if csvs else ds["resources"][0]["id"]
-requests.get(f"https://tabular-api.data.gouv.fr/api/resources/{rid}/profile/").json()
-requests.get(
-    f"https://tabular-api.data.gouv.fr/api/resources/{rid}/data/",
-    params={"page": 1, "page_size": 20},
-).json()
-
-# 3) Direct file download (when you need the raw file, not row filtering)
-url = next(res["url"] for res in ds["resources"] if res["id"] == rid)
-requests.get(url, stream=True)
-```
-
-```python
-# Metrics API — paginated dataset metrics (models/columns in Swagger)
-# ⚠️ modèle au PLURIEL : datasets, organizations, resources (pas dataset/organization/resource)
-requests.get(
-    "https://metric-api.data.gouv.fr/api/datasets/data/",
-    params={"page": 1, "page_size": 20},
-).json()
-```
-
-**Python client:** https://github.com/etalab/datagouv-client-python
-
----
-
 ## References and freshness
 
 - **Main API Swagger (authoritative paths):** https://www.data.gouv.fr/api/1/swagger.json  
@@ -345,3 +156,9 @@ requests.get(
 - **API guide (human, technical):** [Prise en main](https://guides.data.gouv.fr/api-de-data.gouv.fr/prise-en-main.md), [Référence API](https://guides.data.gouv.fr/api-de-data.gouv.fr/reference.md), [Télécharger le catalogue](https://guides.data.gouv.fr/api-de-data.gouv.fr/telecharger-le-catalogue-de-donnees-de-data.gouv.fr.md), [SPARQL](https://guides.data.gouv.fr/api-de-data.gouv.fr/acceder-au-catalogue-via-sparql.md).
 
 For sharing with humans, dataset pages on `www.data.gouv.fr` use slugs from API fields; **metadata and ids** should still come from **GET** responses.
+
+## Renvois
+
+- [Main API](references/main-api.md) — jeux de données, ressources, recherche,
+  filtres, facettes et schémas.
+- [Exemples rapides](references/exemples.md) — requêtes prêtes à copier.

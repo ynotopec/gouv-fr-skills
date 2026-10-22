@@ -116,193 +116,15 @@ Conventional Commits format. French is acceptable.
 Names must be explicit. Avoid single-character names. Prefer English; French allowed when translation is confusing
 (`demarche`, `affaire`).
 
-## Folder Architecture
+## Renvois
 
-### Vue.js (default)
+Les conventions détaillées ne sont plus dupliquées ici :
 
-```
-src/
-├── App.vue
-├── components/          # Reusable across views
-├── stores/              # Pinia stores
-├── views/               # Page components (one folder each)
-│   └── AppHome/
-│       ├── AppHome.vue
-│       ├── AppHome.cy.ts
-│       ├── AppHome.spec.ts
-│       └── components/  # View-specific
-└── utils/
-```
-
-### Fastify
-
-```
-src/
-├── index.ts             # Entry
-├── app.ts               # Config
-├── plugins/             # CORS, Swagger, Auth
-├── routes/
-│   └── cats/
-│       ├── index.ts
-│       ├── cats.schema.ts
-│       └── cats.service.ts
-└── utils/
-test/routes/
-```
-
-### FastAPI
-
-```
-app/
-├── main.py              # Entry
-├── config.py            # Env vars
-├── models/              # SQLAlchemy
-├── schemas/             # Pydantic
-├── routers/             # APIRouter
-├── services/            # Business logic
-└── utils/
-tests/
-```
-
-### NestJS
-
-```
-src/modules/cats/
-├── controllers/
-├── providers/
-├── entity/
-└── cats.module.ts
-```
-
-## TypeScript
-
-Progress:
-- [ ] Enable strict mode
-- [ ] No `enum`, no `namespace`
-- [ ] No `any` (extremely rare)
-- [ ] No `object` type
-- [ ] Runtime validation with Zod
-
-### Use unions instead of enums
-
-```typescript
-// ✅
-type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
-```
-
-### interface vs type
-
-- `interface` — objects, API contracts, component props
-- `type` — unions, intersections, utility types
-
-### as const for literals
-
-```typescript
-const ROLES = ['admin', 'editor'] as const
-type Role = typeof ROLES[number]
-```
-
-### Discriminated unions
-
-```typescript
-type Result<T> =
-  | { ok: true; data: T }
-  | { ok: false; error: string }
-```
-
-### Runtime validation
-
-See [fr-gov-choose-tech-stack] for Zod examples.
-
-## RESTful API
-
-### Route naming
-
-Nouns only, always plural, no verbs. HTTP method is the verb.
-
-```
-POST /cats           → create
-GET /cats            → list
-GET /cats/:id        → get
-PUT /cats/:id        → update all
-PATCH /cats/:id      → update partial
-DELETE /cats/:id     → delete
-```
-
-### HTTP status codes — quick reference
-
-| Code | When |
-|------|------|
-| `200` | Success (GET, PUT, PATCH, DELETE) |
-| `201` | Created (POST only) |
-| `400` | Bad request |
-| `401` | Unauthorized — include `WWW-Authenticate: Bearer` |
-| `403` | Forbidden (known identity, not authorized) |
-| `404` | Not found |
-| `409` | Conflict (resource exists) |
-| `429` | Rate limited |
-| `500` | Internal error |
-
-### Logging
-
-- stdout only (container collection, ELK)
-- Log response time per request
-- Log important actions (login, creation)
-- Handle errors in one place
-- Error messages: French or client-side dictionary keys
-
-Levels: `verbose` (dev only), `debug` (dev only), `log` (always), `warn`, `error`.
-
-### .rest files
-
-Use VS Code REST Client for API testing. See [fr-gov-choose-tech-stack] for format.
-
-## Lint and Formatting
-
-### EditorConfig (all projects)
-
-`.editorconfig` at root:
-
-```ini
-root = true
-[*]
-indent_style = space
-indent_size = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-```
-
-### JS/TS: ESLint with antfu config
-
-```shell
-pnpm add -D eslint @antfu/eslint-config
-```
-
-`eslint.config.js`:
-
-```js
-import antfu from '@antfu/eslint-config'
-export default antfu({
-  rules: {
-    'style/comma-dangle': ['error', 'always-multiline'],
-    'no-irregular-whitespace': 'off',
-  },
-})
-```
-
-NestJS extras: `@typescript-eslint/no-unused-vars: 'warn'`, `@typescript-eslint/no-explicit-any: 'off'`.
-
-Scripts: `"lint": "eslint ."` / `"format": "eslint . --fix"`.
-
-### Python: Ruff
-
-```shell
-uv add --dev ruff
-```
-
-`ruff.toml`: `line-length = 88`, `target-version = "py312"`, select `["E", "W", "F", "I", "N", "UP", "B", "C4", "SIM"]`.
+- Routes, codes HTTP, réponses d'erreur, OpenAPI, fichiers `.rest` : skill
+  `fr-gov-rest-api-conventions` (source unique).
+- ESLint (flat config), Ruff, EditorConfig : skill `fr-gov-configure-linting`.
+- Arborescence du dépôt : [arborescence](references/arborescence.md).
+- TypeScript strict (tsconfig, types) : [typescript](references/typescript.md).
 
 ## Code Quality
 
@@ -346,9 +168,11 @@ Before adding any dependency:
 - [ ] Security.md present
 - [ ] Bundle size acceptable ([bundlephobia.com](https://bundlephobia.com))
 
-**Security rule**: Never pin GitHub Actions to `@master` or `@main`. Always use version tags.
+**Security rule**: épingler chaque GitHub Action par **SHA de commit** (un tag est
+mutable) ; à défaut, un tag majeur explicite (`@v6`). Jamais `@master`, `@main`
+ni `@latest`. Détail et gabarit : `fr-gov-set-up-github-actions-ci`.
 
- ## POC → Production
+## POC → Production
 
 Progress:
 - [ ] Modular architecture, API decoupled from AI logic
