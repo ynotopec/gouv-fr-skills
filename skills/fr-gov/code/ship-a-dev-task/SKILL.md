@@ -9,7 +9,7 @@ author: etalab-ia
 metadata:
   hermes:
     tags: [gouv-fr, workflow, plan-mode, task-management, self-improvement, bug-fixing, review-code]
-    related_skills: [fr-gov-set-up-project-layout, fr-gov-secure-coding-rules, ship-a-dev-task]
+    related_skills: [fr-gov-set-up-project-layout, fr-gov-secure-coding-rules]
 ---
 
 # Gouv-fr — Workflow de développement

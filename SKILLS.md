@@ -51,7 +51,7 @@ Conformité réglementaire, protection des données et production des documents 
 | [`fr-gov-configure-cookie-consent`](skills/fr-gov/compliance/fr-gov-configure-cookie-consent/SKILL.md) | Tarte au Citron, third-party cookies, consent theme |
 | [`fr-gov-fill-technical-architecture-doc`](skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/SKILL.md) | DAT ministériel, repository evidence, Markdown template |
 | [`fr-gov-render-technical-architecture-docx`](skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/SKILL.md) | DAT ministériel, ministerial Word template, typography |
-| [`fr-gov-check-web-compliance`](skills/fr-gov/compliance/fr-gov-check-web-compliance/SKILL.md) | RGAA accessibility, DSFR interface, GDPR checklist |
+| [`fr-gov-check-web-compliance`](skills/fr-gov/compliance/fr-gov-check-web-compliance/SKILL.md) | RGAA criteria, sample, DSFR interface, RGPD checklist |
 
 ## Données (`data`)
 

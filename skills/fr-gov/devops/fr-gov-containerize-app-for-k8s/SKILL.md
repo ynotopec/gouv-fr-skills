@@ -9,7 +9,7 @@ platforms: [linux, macos]
 metadata:
   hermes:
     tags: [gouv-fr, deployment, docker, kubernetes, helm, rootless, securitycontext, cpin, cloud-pi-native]
-    related_skills: [fr-gov-containerize-app-for-k8s, fr-gov-create-helm-chart, fr-gov-install-dev-tools, fr-gov-choose-tech-stack]
+    related_skills: [fr-gov-create-helm-chart, fr-gov-install-dev-tools, fr-gov-choose-tech-stack]
 ---
 
 # Gouv-fr — Déploiement Docker & Kubernetes

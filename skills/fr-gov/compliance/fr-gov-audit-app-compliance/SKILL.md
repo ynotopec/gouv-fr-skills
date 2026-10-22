@@ -2,7 +2,7 @@
 
 name: fr-gov-audit-app-compliance
 description: Application audit, applicable rules, evidence, gaps
-version: 0.1.1
+version: 0.1.2
 license: MIT
 author: ynotopec
 platforms: [linux, macos, windows]
@@ -45,9 +45,10 @@ Inspecter les déclencheurs d'exécution avant de lancer les outils du projet
 | Historique | Scanner l'historique lorsque demandé ou nécessaire pour rechercher une fuite passée. Signaler toute limite d'accès ; ne pas imposer de nouveaux trailers aux anciens commits. |
 | SQL | Si SQL existe : suivre les entrées jusqu'aux requêtes et vérifier la paramétrisation. Une recherche textuelle est un indice, pas une preuve d'injection ni d'absence de faille. |
 | TLS et isolation | Suivre la terminaison TLS et le runtime réellement utilisés : proxy, ingress, chart, manifests, Compose ou service hôte. Ne pas exiger `k8s/app.yaml`, une annotation ingress précise ou un UID fixé. |
-| RGAA / DSFR | Si interface concernée : consulter `fr-gov-check-web-compliance` et `fr-gov-set-up-design-system`. Vérifier classes, structure, clavier et rendu selon les moyens disponibles ; un contrôle CSS ne prouve pas la conformité globale. |
+| RGAA / DSFR | Si interface concernée : `fr-gov-check-web-compliance` (`references/rgaa-checklist.md`, 105 critères) et `fr-gov-set-up-design-system`. Vérifier classes, structure, clavier et rendu selon les moyens disponibles ; un contrôle CSS ne prouve pas la conformité globale. |
 | Données personnelles | Si présentes : examiner justification, minimisation, conservation, accès et mécanismes de suppression applicables. Ne pas interdire un champ à cause de son seul nom, ni conclure sur la seule présence d'une route `DELETE`. |
 | Git | Appliquer les conventions du dépôt aux commits de la contribution. Relever l'état initial ; préserver les modifications préexistantes. Ne pas réécrire l'historique pour rendre un audit vert. |
+| Sécurité OWASP | Grille `harden-repo-before-pentest` → `references/owasp-gates.md` : cocher les portes du périmètre, une preuve par porte. Un scanner muet ne prouve pas l'absence de faille. |
 | Tests | Utiliser les commandes déclarées par le projet et adaptées au changement : pytest, Vitest, Go, etc. Ne pas imposer pytest à une autre stack. Outil absent ou exécution bloquée : non évalué. |
 
 ## Résultats et remédiation
