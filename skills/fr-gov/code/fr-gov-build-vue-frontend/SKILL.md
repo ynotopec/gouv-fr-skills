@@ -40,31 +40,26 @@ pnpm create vue-dsfr
 
 ### Dépendances & setup DSFR (obligatoire)
 
-Le rendu conforme DSFR dépend de la **feuille de style officielle `@gouvfr/dsfr`**, pas du bundle interne de VueDsfr.
-Pincer les deux dépendances et importer le CSS officiel dans le point d'entrée de l'app :
+Le rendu conforme DSFR dépend de la **feuille de style officielle `@gouvfr/dsfr`**, déclarée en dépendance directe de l'application. Les deux dépendances se déclarent ensemble, et la version de `@gouvfr/dsfr` **suit la plage de vue-dsfr**, elle ne la remplace pas :
 
 ```jsonc
-// package.json
+// package.json — aligner sur la plage de la version vue-dsfr installée
 {
   "dependencies": {
-    "@gouvfr/dsfr": "^1.11.0", // feuille de style DSFR officielle
-    "@gouvminint/vue-dsfr": "^8.0.0"
+    "@gouvfr/dsfr": "~1.14.4",      // @gouvminint/vue-dsfr@8.x attend ~1.14.4
+    "@gouvminint/vue-dsfr": "^8.21.0"
   }
 }
 ```
 
-```ts
-// src/main.ts
-import '@gouvfr/dsfr/dist/dsfr.min.css' // CSS DSFR officiel et à jour
-import { createApp } from 'vue'
-import VueDsfr from '@gouvminint/vue-dsfr'
-import App from './App.vue'
+Ordre d'import CSS complet et main.ts : voir
+`fr-gov-build-vue-design-system` § *CSS — Ordre d'import obligatoire* (5 couches,
+`vue-dsfr/styles` en dernier).
 
-createApp(App).use(VueDsfr).mount('#app')
-```
-
-- N'importe **pas** `@gouvminint/vue-dsfr/styles` seul : c'est une copie vieillie du CSS, et sans dépendance directe à `@gouvfr/dsfr` la version DSFR n'est ni verrouillée ni à jour.
-- Vérifie la version installée (`pnpm list @gouvminint/vue-dsfr`) — évite les vieilles versions (ex. 3.x) qui embarquaient un vieux CSS DSFR.
+- Ne pas élargir la plage de `@gouvfr/dsfr` au-delà de celle de VueDsfr : deux résolutions = deux feuilles de style concurrentes.
+- Sans dépendance directe à `@gouvfr/dsfr`, la version du DSFR n'est ni verrouillée ni visible.
+- `@gouvminint/vue-dsfr/styles` est **requis** (CSS scopé de la bibliothèque) ; ce n'est pas une copie du DSFR.
+- Vérifie la version installée (`pnpm list @gouvminint/vue-dsfr`) — évite les versions 3.x, qui embarquaient un vieux CSS DSFR.
 
 ### Recommended additions
 

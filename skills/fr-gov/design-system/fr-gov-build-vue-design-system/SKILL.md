@@ -122,7 +122,32 @@ Les composants VueDsfr nécessitent **toutes** les couches CSS du DSFR :
 2. `@gouvfr/dsfr/dist/component/component.main.min.css` — composants DSFR
 3. `@gouvfr/dsfr/dist/utility/utility.main.min.css` — utilitaires + icônes
 4. `@gouvfr/dsfr/dist/scheme/scheme.min.css` — thèmes clair/sombre
-5. `@gouvminint/vue-dsfr/styles` — styles propres à VueDsfr
+5. `@gouvminint/vue-dsfr/styles` — styles propres à VueDsfr (**requis**, en dernier)
+
+`@gouvminint/vue-dsfr/styles` résout vers `dist/vue-dsfr.css` : ce fichier ne
+contient **pas** le DSFR (aucun `--blue-france`, `.fr-btn` ou `.fr-container`),
+seulement les règles scopées des composants (`[data-v-…]`). Il ne remplace donc
+aucune des quatre couches ci-dessus, et l'omettre casse le rendu des composants.
+
+### Version : aligner, ne pas écraser
+
+`@gouvminint/vue-dsfr@8.x` dépend de `@gouvfr/dsfr` en plage **tilde**
+(`~1.14.4` pour 8.21.0). Déclarer une plage plus large dans l'application
+(`^1.11.0`, `^1.15.0`, `latest`) fait résoudre **deux** versions de `@gouvfr/dsfr`
+dans l'arbre, donc deux feuilles de style concurrentes.
+
+```bash
+# plage attendue par la version de VueDsfr installée (remplacer <version>)
+npm view @gouvminint/vue-dsfr@<version> dependencies.@gouvfr/dsfr
+# dans le projet : quelle version de @gouvfr/dsfr est réellement résolue
+pnpm why @gouvfr/dsfr
+```
+
+Déclarer `@gouvfr/dsfr` dans la plage renvoyée (aujourd'hui `~1.14.4`), pas la
+dernière version publiée du DSFR.
+
+Vérifié le 2026-10-22 : `@gouvminint/vue-dsfr` 8.21.0, `@gouvfr/dsfr` 1.15.4
+publiée, `dist/vue-dsfr.css` = 11,5 Ko de CSS scopé.
 
 ## Pièges
 - **CSS incomplet** : si l'une des 5 couches CSS manque, les composants se rendent mal (couleurs, icônes, espacements cassés). Toujours importer les 5 couches.
