@@ -186,27 +186,19 @@ class SmokeTests(unittest.TestCase):
                        item_path='/media?format=webm', job_path='/jobs?mode=test')
         self.assertEqual(opener.requests[0].full_url, 'https://example.invalid/list?limit=1')
         self.assertEqual(opener.requests[1].full_url,
-                         'https://example.invalid/media?format=webm&meeting_id=fixture')
+                         'https://example.invalid/media?format=webm&item_id=fixture')
         for req in opener.requests:
             self.assertEqual(req.host, 'example.invalid')
 
-    def test_default_operation_preserves_transcription_contract(self):
+    def test_default_operation_is_generic(self):
         opener = Opener(replies())
         self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'})
-        self.assertIn(b'name="operation"\r\n\r\ntranscription\r\n', opener.requests[2].data)
+        self.assertIn(b'name="operation"\r\n\r\nupload\r\n', opener.requests[2].data)
 
     def test_operation_can_be_adapted_to_the_api(self):
         opener = Opener(replies())
         self.run_smoke(opener, {'SMOKE_TOKEN': 'synthetic'}, operation='conversion')
         self.assertIn(b'name="operation"\r\n\r\nconversion\r\n', opener.requests[2].data)
-
-    def test_legacy_meeting_id_argument_remains_usable(self):
-        with patch.dict(smoke.os.environ, {'SMOKE_TOKEN': 'synthetic'}, clear=True), \
-                patch.object(smoke.request, 'build_opener', return_value=Opener(replies())), \
-                contextlib.redirect_stdout(io.StringIO()):
-            result = smoke.main(['--base', 'https://example.invalid', '--meeting-id', 'fixture',
-                                 '--audio-file', str(self.audio)])
-        self.assertEqual(result, 0)
 
 
 if __name__ == '__main__':

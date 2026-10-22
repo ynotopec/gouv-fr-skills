@@ -138,11 +138,11 @@ OpenWebUI ne forwarde **rien** par défaut. Vérifie l'un de ces trois leviers :
 
 ## Exemple de référence (sans secret)
 
-Écosystème **DAT** : connecteur **Resana** (MCP) + **MyVault** derrière **OpenWebUI**, realm Keycloak
-`openwebui`.
+Écosystème rencontré : connecteur métier **MCP** + gestionnaire de secrets derrière
+**OpenWebUI**, realm Keycloak `openwebui`.
 - Symptôme rencontré : OWUI ne transmettait pas l'identité → MCP voyait `email=None` → « pas connecté ».
   **Fix** : header custom par connexion `X-OpenWebUI-User-Email: {{USER_EMAIL}}`.
-- Page `/resana-auth/login` **hors SSO** (identité via `?user=`/header non vérifié) → pas de continuité
+- Page `/connector-auth/login` **hors SSO** (identité via `?user=`/header non vérifié) → pas de continuité
   de `sub`, risque de sessions mixtes. **Cible** : la mettre derrière OIDC **ou** valider un JWT forwardé.
 - Pont **`by-email`** ajouté dans MyVault (rapide) → à terme **remplacer par le lookup natif par `sub`**
   (`/vault/{slug}/user/{sub}`), une fois l'identité prouvée de bout en bout : le pont e-mail devient

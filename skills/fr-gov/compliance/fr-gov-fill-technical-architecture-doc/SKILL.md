@@ -1,22 +1,21 @@
 ---
 
 name: fr-gov-fill-technical-architecture-doc
-description: DAT DAT, repository evidence, Markdown template
+description: DAT ministériel, repository evidence, Markdown template
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr, homologation, dat, aipd, DAT, conformite]
+    tags: [gouv-fr, homologation, dat, aipd, modele, conformite]
     related_skills: [fr-gov-render-technical-architecture-docx, fr-gov-secure-coding-rules]
 ---
 
 
 # Gouv-fr — Homologation (DAT)
 
-Cette skill **embarque** le modèle et le prompt de référence (anciennement le dépôt
-`organisation-archive/gen-document-homologation`, fusionné ici en 2026-06 pour n'avoir qu'un seul dépôt à
-maintenir). Les artefacts vivent à côté de ce fichier :
+Cette skill **embarque** le modèle et le prompt de référence. Les artefacts vivent à côté de ce
+fichier :
 
 ```
 skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/

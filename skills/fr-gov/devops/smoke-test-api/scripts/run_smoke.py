@@ -25,10 +25,11 @@ from urllib import error, parse, request
 MAX_BYTES = 10 * 1024 * 1024
 
 # Contrat par défaut : à adapter au projet via les options --*-path.
-DEFAULT_LIST_PATH = '/api/meetings'
-DEFAULT_ITEM_PATH = '/audio'
-DEFAULT_JOB_PATH = '/api/transcription'
-DEFAULT_ID_PARAM = 'meeting_id'
+DEFAULT_LIST_PATH = '/api/resources'
+DEFAULT_ITEM_PATH = '/media'
+DEFAULT_JOB_PATH = '/api/jobs'
+DEFAULT_ID_PARAM = 'item_id'
+DEFAULT_OPERATION = 'upload'
 DEFAULT_MEDIA_TYPE = 'audio/webm'
 DEFAULT_AUDIO_SUFFIX = '.m4a'
 DEFAULT_AUDIO_CONTENT_TYPE = 'audio/mp4'
@@ -117,7 +118,7 @@ def run(base, item_id, audio_file, environ, *, opener=None, list_path=DEFAULT_LI
         item_path=DEFAULT_ITEM_PATH, job_path=DEFAULT_JOB_PATH, id_param=DEFAULT_ID_PARAM,
         media_type=DEFAULT_MEDIA_TYPE, audio_suffix=DEFAULT_AUDIO_SUFFIX,
         audio_content_type=DEFAULT_AUDIO_CONTENT_TYPE, job_field='job_id',
-        operation='transcription'):
+        operation=DEFAULT_OPERATION):
     base = validate_base(base)
     # Vérifier les trois endpoints avant de lire un credential ou d'appeler le service.
     for path in (list_path, item_path, job_path):
@@ -161,7 +162,7 @@ def run(base, item_id, audio_file, environ, *, opener=None, list_path=DEFAULT_LI
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base', required=True)
-    parser.add_argument('--item-id', '--meeting-id', dest='item_id', required=True,
+    parser.add_argument('--item-id', dest='item_id', required=True,
                         help='Identifiant de la ressource de test autorisée')
     parser.add_argument('--audio-file', required=True, help='Échantillon synthétique de test')
     parser.add_argument('--list-path', default=DEFAULT_LIST_PATH, help='Chemin de la liste des ressources')
@@ -173,7 +174,7 @@ def main(argv=None):
     parser.add_argument('--audio-content-type', default=DEFAULT_AUDIO_CONTENT_TYPE,
                         help='Type de contenu du fichier de test')
     parser.add_argument('--job-field', default='job_id', help="Champ contenant l'identifiant du job")
-    parser.add_argument('--operation', default='transcription', help='Valeur du champ multipart operation')
+    parser.add_argument('--operation', default=DEFAULT_OPERATION, help='Valeur du champ multipart operation')
     args = parser.parse_args(argv)
     try:
         run(args.base, args.item_id, args.audio_file, os.environ,

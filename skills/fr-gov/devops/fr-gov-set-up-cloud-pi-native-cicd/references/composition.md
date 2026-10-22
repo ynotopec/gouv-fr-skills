@@ -187,8 +187,8 @@ rapport tant que ce n'est pas le cas.
 
 ## Profil « registre interne »
 
-Pour les produits publiés sur un registre interne (pl organisationnelle de type
-`organisation-archive/*`), en plus de ce qui précède :
+Pour les produits publiés sur un registre interne d'organisation, en plus de ce qui
+précède :
 
 | Point | Règle |
 |---|---|
