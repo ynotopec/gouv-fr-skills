@@ -85,6 +85,5 @@ par défaut (informatif).
 ## Pour aller plus loin
 
 - Catalogue et permissions par workflow : [`references/workflows.md`](references/workflows.md).
-- Doc interne : `docs/interne/cicd/` (contrat des workflows, release et charts, pièges), `docs/interne/decisions/github-app-vs-pat.md`, `docs/interne/cycle-de-vie/`.
-- Sources : `dnum-mi/fabnum-cicd/docs/workflows/`, exemple complet `organisation-archive/service-reference` (`ci.yml`, `cd.yml`).
+- Sources : `dnum-mi/fabnum-cicd/docs/workflows/`.
 - Déploiement du chart et contraintes CPiN : skills `fr-gov-create-helm-chart` et `fr-gov-deploy-to-cloud-pi-native` (groupe `devops`).

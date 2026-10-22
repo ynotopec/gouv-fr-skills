@@ -1,18 +1,18 @@
 ---
 
 name: fr-gov-render-technical-architecture-docx
-description: DAT DAT, ministerial Word template, typography
+description: DAT ministériel, ministerial Word template, typography
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr, homologation, dat, docx, DAT, rendu]
+    tags: [gouv-fr, homologation, dat, docx, modele, rendu]
     related_skills: [fr-gov-fill-technical-architecture-doc, fr-gov-build-design-system-emails]
 ---
 
 
-# Gouv-fr — Homologation (DAT) - rendu .docx
+# Gouv-fr — Homologation (DAT) — rendu .docx
 
 Cette skill **transforme un contenu d'homologation (Markdown) en `.docx` ministériel**, en s'appuyant
 sur le **modèle officiel** `MODELE_DAT.docx` (maintenu dans la skill sœur `fr-gov-fill-technical-architecture-doc`).

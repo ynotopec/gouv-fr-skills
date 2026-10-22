@@ -49,8 +49,8 @@ Conformité réglementaire, protection des données et production des documents 
 |-----------|-------------|
 | [`fr-gov-audit-app-compliance`](skills/fr-gov/compliance/fr-gov-audit-app-compliance/SKILL.md) | Application audit, applicable rules, evidence, gaps |
 | [`fr-gov-configure-cookie-consent`](skills/fr-gov/compliance/fr-gov-configure-cookie-consent/SKILL.md) | Tarte au Citron, third-party cookies, consent theme |
-| [`fr-gov-fill-technical-architecture-doc`](skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/SKILL.md) | DAT DAT, repository evidence, Markdown template |
-| [`fr-gov-render-technical-architecture-docx`](skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/SKILL.md) | DAT DAT, ministerial Word template, typography |
+| [`fr-gov-fill-technical-architecture-doc`](skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/SKILL.md) | DAT ministériel, repository evidence, Markdown template |
+| [`fr-gov-render-technical-architecture-docx`](skills/fr-gov/compliance/fr-gov-render-technical-architecture-docx/SKILL.md) | DAT ministériel, ministerial Word template, typography |
 | [`fr-gov-check-web-compliance`](skills/fr-gov/compliance/fr-gov-check-web-compliance/SKILL.md) | RGAA accessibility, DSFR interface, GDPR checklist |
 
 ## Données (`data`)
@@ -102,10 +102,8 @@ Interfaces React pour les applications LaSuite.
 ## Sources
 
 - **Cloud Pi Native** — https://cloud-pi-native.fr
-- **starter-kit-opencode** — `dnum-mi/starter-kit-opencode` (`.agents/skills` + `docs/interne`)
+- **starter-kit-opencode** — `dnum-mi/starter-kit-opencode` (`.agents/skills`)
 - **gouv-fr-code-package-mi** — https://github.com/ynotopec/gouv-fr-code-package-mi
-- **organisation-archive/agent-skills** — dépôt privé (non clonable publiquement)
 - **etalab-ia/skills** — https://github.com/etalab-ia/skills (4 skills adaptées : fr-gov-build-react-design-system, fr-gov-build-collab-suite-ui, fr-gov-find-cybersecurity-guide, fr-gov-query-open-data-api)
-- **Skills locaux gouv-fr** — migrés et renommés (voir `backup-local-skills/`)
 
 Voir [`UPSTREAM.md`](UPSTREAM.md) pour la correspondance avec l'upstream.

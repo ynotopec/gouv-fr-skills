@@ -1,6 +1,6 @@
 # Gabarit de CI (pull request) — une image, un chart Helm dans le dépôt.
 # Adapter : <APP>, chemins du Dockerfile, IMAGE_TARGET, CT_CONF_PATH, CHARTS_DIR.
-# Base : organisation-archive/service-reference/.github/workflows/ci.yml (version mono-service).
+# Base : workflow mono-service générique.
 name: CI
 
 on:

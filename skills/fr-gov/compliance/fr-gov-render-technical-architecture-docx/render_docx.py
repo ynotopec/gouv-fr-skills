@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rend un document d'homologation DAT au format ministériel `.docx`.
+"""Rend un document d'homologation au format ministériel `.docx`.
 
 Construit le `.docx` **sur le modèle** `MODELE_DAT.docx` (hérite page de garde,
 styles, sommaire/TOC) à partir d'un contenu **Markdown fidèle à la structure du modèle**
