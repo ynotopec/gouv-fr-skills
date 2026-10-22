@@ -4,7 +4,8 @@ name: investigate-bug
 description: Root cause hypotheses, reproduction, fallback plan
 version: 1.0.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, bug, debug, investigation, hypotheses]

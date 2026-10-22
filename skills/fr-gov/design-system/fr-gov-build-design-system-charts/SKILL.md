@@ -4,7 +4,8 @@ name: fr-gov-build-design-system-charts
 description: DSFR Chart, statistical web components, accessible data
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [dsfr, chart, data, visualization, vue, graph, graphique]

@@ -4,6 +4,7 @@ name: fr-gov-set-up-design-system
 description: DSFR install, CSS assets, HTML checks, NPM or CDN
 version: 0.3.2
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:
@@ -37,14 +38,14 @@ réservé).
 # NPM (recommandé)
 npm install @gouvfr/dsfr
 
-# CDN — version exacte vérifiée 1.15.3 ; dernière version :
+# CDN — version exacte vérifiée 1.15.4 ; dernière version :
 # https://data.jsdelivr.com/v1/packages/npm/@gouvfr/dsfr/resolved
 # <head> :
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/utility/utility.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/dsfr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/utility/utility.min.css">
 # avant </body> :
-<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.module.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.nomodule.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/dsfr.module.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/dsfr.nomodule.min.js"></script>
 ```
 
 ## Procedure
@@ -79,8 +80,8 @@ un nom de classe dans le CSS officiel avant de l'utiliser (voir Pitfalls).
 ## Pièges
 - **Usage réservé** : le DSFR est réservé aux services de l'État (conditions d'utilisation).
 - **CGU ≥ v1.15.0** : `npm install` déclenche un postinstall exigeant l'acceptation des CGU ; le GitHub Releases ne distribue plus de zip compilé — passer par NPM ou jsDelivr.
-- **Ne jamais inventer les classes** (vérifiées contre le CSS 1.15.3) : bouton primaire = `fr-btn` seul — `fr-btn--primary` N'EXISTE PAS (les modificateurs sont `--secondary`, `--tertiary`, `--tertiary-no-outline`, `--sm`, `--lg`) ; skiplinks = `fr-skiplinks` + `fr-skiplinks__list` (pas `fr-skip-links`, pas `fr-nav__list`) ; breadcrumb = `fr-breadcrumb__list` / `__link` (pas `__item`) ; tagline du header = `fr-header__service-tagline` (`fr-header__service-description` N'EXISTE PAS).
-- **Pas de composant « hero » en 1.15.3** : `fr-hero`, `fr-hero__desc`, `fr-hero__cta` N'EXISTENT PAS dans le CSS officiel (ni dans le clone). Bandeau titre = `<h1>` + `<p class="fr-text--lead">` + `<div class="fr-btns-group fr-btns-group--inline-md">`.
+- **Ne jamais inventer les classes** (vérifiées contre le CSS 1.15.4) : bouton primaire = `fr-btn` seul — `fr-btn--primary` N'EXISTE PAS (les modificateurs sont `--secondary`, `--tertiary`, `--tertiary-no-outline`, `--sm`, `--lg`) ; skiplinks = `fr-skiplinks` + `fr-skiplinks__list` (pas `fr-skip-links`, pas `fr-nav__list`) ; breadcrumb = `fr-breadcrumb__list` / `__link` (pas `__item`) ; tagline du header = `fr-header__service-tagline` (`fr-header__service-description` N'EXISTE PAS).
+- **Pas de composant « hero » en 1.15.4** : `fr-hero`, `fr-hero__desc`, `fr-hero__cta` N'EXISTENT PAS dans le CSS officiel (ni dans le clone). Bandeau titre = `<h1>` + `<p class="fr-text--lead">` + `<div class="fr-btns-group fr-btns-group--inline-md">`.
 - **Callout = `fr-callout`** (pas `fr-call`) : `fr-callout__title`, `fr-callout__text`, modificateurs de couleur `fr-callout--blue-ecume`, `fr-callout--green-menthe`, `fr-callout--orange-terre-battue`, `fr-callout--yellow-moutarde`, `fr-callout--purple-glycine`, etc. (palette DSFR). `fr-callout--info`, `fr-callout--warning`, `fr-callout--error`, `fr-callout--success` **N'EXISTENT PAS** — pour les alertes couleur info/success/error/warning utiliser `fr-alert fr-alert--<type>` à la place.
 - **Liste des liens utiles du footer** : `<ul class="fr-footer__content-list">` avec `<li>` sans classe (`fr-footer__content-item` N'EXISTE PAS) et `<a class="fr-footer__content-link">`.
 - Intégration locale du paquet dsfr-clone/dist : `icons-system.min.css` est sous `utility/icons/icons-system/` et référence `../../../icons/` ; `dsfr.min.css` référence `fonts/` → copier `fonts/` ET `icons/` complets à côté, sinon 404 des icônes/polices.

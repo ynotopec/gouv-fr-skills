@@ -4,7 +4,8 @@ name: fr-gov-add-design-system-icons
 description: DSFR pictograms, SVG artwork, official icon classes
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [dsfr, artwork, pictogram, icon, svg, illustration]
@@ -30,19 +31,23 @@ npm install @gouvfr/dsfr
 ```
 
 ```html
-<!-- Pictogramme SVG (chemins réels, vérifiés dans dist 1.15.3) -->
+<!-- Pictogramme SVG (chemin réel, vérifié dans dist 1.15.4) -->
 <img src="node_modules/@gouvfr/dsfr/dist/artwork/pictograms/buildings/city-hall.svg" alt="Hôtel de ville">
 
-<!-- Icônes par classe (158 icônes fr-fi-*, ex. fr-fi-checkbox-line) -->
+<!-- Icône par classe fr-icon-* (1044 icônes définies en 1.15.4) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/utility/icons/icons.min.css">
 <button class="fr-btn fr-icon-add-line">Ajouter</button>
 ```
 
 ## Procédure
 
-### Emplacement des assets (vérifié dans le paquet 1.15.3, 220 fichiers)
+### Emplacement des assets (vérifié dans le paquet 1.15.4 : 106 fichiers `dist/artwork/`)
 
-- `dist/artwork/pictograms/<thème>/*.svg` — pictogrammes par thème : `accessibility`, `buildings`, `systeme`, etc.
-- `dist/artwork/background/ovoid.svg`, `dist/artwork/light.svg`, `dark.svg` — fonds décoratifs.
+- `dist/artwork/pictograms/<thème>/*.svg` — **102** pictogrammes, thèmes réels :
+  `accessibility`, `buildings`, `digital`, `document`, `environment`, `health`,
+  `institutions`, `leisure`, `map`, `system` (pas `systeme`).
+- `dist/artwork/background/ovoid.svg`, `dist/artwork/light.svg`, `dist/artwork/dark.svg`,
+  `dist/artwork/system.svg` — fonds décoratifs.
 
 ### Classes artwork dans le CSS officiel
 
@@ -52,8 +57,16 @@ décoratifs portent `aria-hidden="true"`.
 
 ### Icônes
 
-Classes utilitaires `fr-fi-*` / `fr-icon-*` en préfixe ou suffixe de composant (ex. `fr-fi-mail-line`,
-`fr-btn--github`). Vérifier le nom exact dans `utility.min.css` avant usage.
+Les icônes ne sont **pas** dans `dsfr.min.css` : elles vivent dans une feuille
+séparée, `dist/utility/icons/icons.min.css`, à importer explicitement. Elle
+définit **1044** classes `fr-icon-*` (ex. `fr-icon-add-line`) ; `dsfr.min.css`
+seul n'en définit aucune.
+
+`fr-fi-*` est l'ancien nommage (DSFR ≤ 1.7) : il ne survit plus que comme
+modificateurs de taille `fr-fi--sm` / `fr-fi--md` / `fr-fi--lg`. Une classe
+comme `fr-fi-checkbox-line` **n'existe pas** — utiliser `fr-icon-checkbox-line`.
+
+Vérifié le 2026-10-22 sur `@gouvfr/dsfr` 1.15.4.
 
 ## Pièges
 - **Classes inventées** : `fr-artwork-ministery`, `fr-artwork-brand`, `fr-artwork-theme-*` n'existent PAS dans le CSS officiel. Toujours contrôler le nom dans le CSS (cf. `fr-gov-set-up-design-system/scripts/verify_dsfr.py`).

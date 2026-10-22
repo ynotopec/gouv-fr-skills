@@ -4,7 +4,8 @@ name: fr-gov-rest-api-conventions
 description: OpenAPI, HTTP status codes, pagination, error responses
 version: 0.1.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, api, rest, openapi, swagger, http, routes, logging]

@@ -4,6 +4,7 @@ name: fr-gov-set-up-cloud-pi-native-cicd
 description: fabnum-cicd setup, workflow pinning, mirror prerequisites
 version: 1.0.1
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

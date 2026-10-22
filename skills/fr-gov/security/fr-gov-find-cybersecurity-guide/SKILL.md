@@ -4,7 +4,7 @@ name: fr-gov-find-cybersecurity-guide
 description: ANSSI publications, topic search, source citations
 version: 0.1.0
 license: MIT
-platforms: [linux, macos]
+platforms: [linux, macos, windows]
 author: etalab-ia
 metadata:
   hermes:

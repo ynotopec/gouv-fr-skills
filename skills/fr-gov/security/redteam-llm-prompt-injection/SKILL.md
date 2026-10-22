@@ -4,7 +4,8 @@ name: redteam-llm-prompt-injection
 description: LLM01, jailbreaks, canary exfiltration, guard evaluation
 version: 1.0.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, audit, redteam, prompt-injection, owasp-llm, llm]

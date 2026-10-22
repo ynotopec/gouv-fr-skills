@@ -4,7 +4,8 @@ name: fr-gov-audit-app-compliance
 description: Application audit, applicable rules, evidence, gaps
 version: 0.1.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, audit, conformance]

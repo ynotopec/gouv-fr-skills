@@ -4,7 +4,7 @@ name: fr-gov-build-collab-suite-ui
 description: LaSuite, Cunningham, React sharing and navigation
 version: 0.1.0
 license: MIT
-platforms: [linux, macos]
+platforms: [linux, macos, windows]
 author: etalab-ia
 metadata:
   hermes:

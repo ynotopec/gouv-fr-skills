@@ -4,15 +4,15 @@ Quand npm n'est pas disponible, intégrer le DSFR via jsDelivr (le paquet npm es
 
 ## URLs CDN
 
-Version vérifiée : 1.15.3. Dernière version : `https://data.jsdelivr.com/v1/packages/npm/@gouvfr/dsfr/resolved`.
+Version vérifiée : 1.15.4. Dernière version : `https://data.jsdelivr.com/v1/packages/npm/@gouvfr/dsfr/resolved`.
 
 ```html
 <!-- dans <head> -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/utility/utility.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/dsfr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/utility/utility.min.css">
 <!-- avant </body> -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.module.min.js"></script>
-<script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.3/dist/dsfr.nomodule.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/dsfr.module.min.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.15.4/dist/dsfr.nomodule.min.js"></script>
 ```
 
 ## Polices

@@ -4,6 +4,7 @@ name: smoke-test-api
 description: Resource listing, media download, async job, credentials
 version: 1.2.1
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

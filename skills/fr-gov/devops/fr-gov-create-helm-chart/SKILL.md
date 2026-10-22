@@ -4,6 +4,7 @@ name: fr-gov-create-helm-chart
 description: CPiN values, Kyverno rules, MIOM labels, Vault secrets
 version: 0.2.0
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

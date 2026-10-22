@@ -4,6 +4,7 @@ name: fr-gov-containerize-app-for-k8s
 description: Rootless Docker, multi-stage builds, OpenShift UID
 version: 0.2.0
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

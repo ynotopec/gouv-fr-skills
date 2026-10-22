@@ -4,7 +4,8 @@ name: fr-gov-choose-tech-stack
 description: Approved frameworks, Prisma, toolchain versions
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, stack, framework, vue, nestjs, fastify, fastapi, prisma, eslint, typescript]
@@ -121,7 +122,7 @@ numérique public.
 **proto** — multi-language version manager. Pin Node à 24.x LTS.
 
 ```shell
-proto install node@24.13.1
+proto install node@24        # ligne LTS 24 (24.22.1 au 2026-10-22)
 ```
 
 Toujours spécifier `"engines"` dans `package.json` :

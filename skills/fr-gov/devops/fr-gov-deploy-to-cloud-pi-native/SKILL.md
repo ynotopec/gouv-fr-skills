@@ -4,7 +4,8 @@ name: fr-gov-deploy-to-cloud-pi-native
 description: DSO console, GitLab mirror, ArgoCD, Vault, Kyverno
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, deployment, cloud-pi-native, argocd, gitops, harbor, vault, kyverno, dso]

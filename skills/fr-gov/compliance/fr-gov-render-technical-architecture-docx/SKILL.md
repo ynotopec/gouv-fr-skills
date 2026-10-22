@@ -4,7 +4,8 @@ name: fr-gov-render-technical-architecture-docx
 description: DAT ministériel, ministerial Word template, typography
 version: 1.0.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, homologation, dat, docx, modele, rendu]

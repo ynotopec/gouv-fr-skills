@@ -10,7 +10,7 @@ Methode (source de verite = le CSS officiel, jamais une liste apprise) :
   4. Verifie l'existence des assets relatifs (href/src) sur le disque.
 
 Usage :
-  python3 verify_dsfr.py INDEX.html [--css FICHIER.css ...] [--version 1.15.3]
+  python3 verify_dsfr.py INDEX.html [--css FICHIER.css ...] [--version 1.15.4]
 
 Sortie : rapport texte ; retour 0 si au moins une classe DSFR est presente,
 sans classe inconnue ni asset local manquant ; retour 1 sinon (y compris
@@ -66,7 +66,7 @@ def main():
     ap.add_argument("html", help="fichier HTML a verifier")
     ap.add_argument("--css", action="append", default=[],
                     help="CSS officiel local (sinon telechargement jsDelivr)")
-    ap.add_argument("--version", default="1.15.3", help="version DSFR pour le telechargement")
+    ap.add_argument("--version", default="1.15.4", help="version DSFR pour le telechargement")
     args = ap.parse_args()
 
     path = Path(args.html)

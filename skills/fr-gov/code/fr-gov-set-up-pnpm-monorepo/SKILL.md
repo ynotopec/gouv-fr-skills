@@ -4,7 +4,8 @@ name: fr-gov-set-up-pnpm-monorepo
 description: Workspaces, Turborepo, shared packages, build cache
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, monorepo, pnpm, turbo, workspace, shared, build-cache]
