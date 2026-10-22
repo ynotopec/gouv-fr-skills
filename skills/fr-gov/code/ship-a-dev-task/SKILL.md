@@ -4,7 +4,7 @@ name: ship-a-dev-task
 description: Proportional workflow, implementation, checks, delivery
 version: 0.1.2
 license: MIT
-platforms: [linux, macos]
+platforms: [linux, macos, windows]
 author: etalab-ia
 metadata:
   hermes:

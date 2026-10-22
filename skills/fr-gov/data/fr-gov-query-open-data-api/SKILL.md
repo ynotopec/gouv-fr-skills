@@ -4,7 +4,7 @@ name: fr-gov-query-open-data-api
 description: data.gouv.fr, Tabular CSV, datasets, usage metrics
 version: 0.1.0
 license: MIT
-platforms: [linux, macos]
+platforms: [linux, macos, windows]
 author: etalab-ia
 metadata:
   hermes:

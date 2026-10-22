@@ -4,7 +4,8 @@ name: fr-gov-query-public-communication-data
 description: Press releases, ministers, public figures, JSONL schemas
 version: 0.1.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [data, open-data, sig, json, communication, ref, schema]

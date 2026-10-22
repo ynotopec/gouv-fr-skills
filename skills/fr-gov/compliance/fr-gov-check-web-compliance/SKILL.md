@@ -4,7 +4,7 @@ name: fr-gov-check-web-compliance
 description: RGAA accessibility, DSFR interface, GDPR checklist
 version: 0.1.1
 license: MIT
-platforms: [linux, macos]
+platforms: [linux, macos, windows]
 author: etalab-ia
 metadata:
   hermes:

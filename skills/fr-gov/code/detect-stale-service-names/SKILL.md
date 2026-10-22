@@ -4,7 +4,8 @@ name: detect-stale-service-names
 description: Rename regressions, manifests, old-to-new mapping
 version: 1.1.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, rebranding, regression, detect-stale-service-names, nomenclature]

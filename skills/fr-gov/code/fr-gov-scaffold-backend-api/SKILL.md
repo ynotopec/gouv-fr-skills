@@ -4,6 +4,7 @@ name: fr-gov-scaffold-backend-api
 description: Fastify, NestJS, FastAPI, logging, error handling
 version: 0.2.1
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

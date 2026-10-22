@@ -4,6 +4,7 @@ name: init-repo
 description: New repository, gitignore, local secret blocking
 version: 1.0.0
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

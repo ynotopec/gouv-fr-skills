@@ -4,7 +4,8 @@ name: fr-gov-build-design-system-emails
 description: DSFR Mail, HTML templates, Outlook, responsive layout
 version: 0.1.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [dsfr, email, template, gouv-fr, mail, accessible]

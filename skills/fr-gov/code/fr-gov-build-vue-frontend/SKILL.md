@@ -4,7 +4,8 @@ name: fr-gov-build-vue-frontend
 description: Nuxt scaffolding, composables, frontend tests
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, frontend, vue3, nuxt, dsfr, vuedsfr, composables, tests]

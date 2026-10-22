@@ -4,6 +4,7 @@ name: fr-gov-project-conventions
 description: Naming, TypeScript strict, branches, commit conventions
 version: 0.2.0
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

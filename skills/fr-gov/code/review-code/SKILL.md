@@ -4,7 +4,8 @@ name: review-code
 description: PR review, technical debt, evidence, verdict
 version: 1.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, quality, code-review, ia, dette-technique, lint, tests, standards]

@@ -4,7 +4,8 @@ name: fr-gov-configure-linting
 description: ESLint flat config, Ruff, EditorConfig, typography
 version: 0.1.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, lint, eslint, ruff, editorconfig, prettier, formatting]

@@ -4,7 +4,8 @@ name: fr-gov-fill-technical-architecture-doc
 description: DAT ministériel, repository evidence, Markdown template
 version: 1.0.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, homologation, dat, aipd, modele, conformite]

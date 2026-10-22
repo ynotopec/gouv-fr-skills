@@ -4,7 +4,8 @@ name: fr-gov-add-design-system-icons
 description: DSFR pictograms, SVG artwork, official icon classes
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [dsfr, artwork, pictogram, icon, svg, illustration]

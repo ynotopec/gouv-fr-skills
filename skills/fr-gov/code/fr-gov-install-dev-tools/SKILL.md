@@ -4,6 +4,7 @@ name: fr-gov-install-dev-tools
 description: Git, Docker, pnpm, proto, uv, environment diagnostics
 version: 0.2.0
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

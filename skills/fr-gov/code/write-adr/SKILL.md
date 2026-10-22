@@ -4,7 +4,8 @@ name: write-adr
 description: Architecture decisions, alternatives, trade-offs
 version: 1.0.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, write-adr, architecture, decision, documentation]

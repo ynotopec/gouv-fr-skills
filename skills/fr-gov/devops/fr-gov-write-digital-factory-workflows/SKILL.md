@@ -4,7 +4,8 @@ name: fr-gov-write-digital-factory-workflows
 description: fabnum-cicd YAML, scans, release-please, Helm publishing
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, ci, cd, github-actions, fabnum-cicd, release-please, trivy, gitleaks]

@@ -35,7 +35,7 @@ Conventions, architecture, backend, frontend, outillage et workflow de développ
 | [`fr-gov-configure-linting`](skills/fr-gov/code/fr-gov-configure-linting/SKILL.md) | ESLint flat config, Ruff, EditorConfig, typography |
 | [`fr-gov-set-up-pnpm-monorepo`](skills/fr-gov/code/fr-gov-set-up-pnpm-monorepo/SKILL.md) | Workspaces, Turborepo, shared packages, build cache |
 | [`fr-gov-install-dev-tools`](skills/fr-gov/code/fr-gov-install-dev-tools/SKILL.md) | Git, Docker, pnpm, proto, uv, environment diagnostics |
-| [`fr-gov-set-up-project-layout`](skills/fr-gov/code/fr-gov-set-up-project-layout/SKILL.md) | OpenCode integration, project files, environment variables |
+| [`fr-gov-set-up-project-layout`](skills/fr-gov/code/fr-gov-set-up-project-layout/SKILL.md) | Project layout, agent integration, environment variables |
 | [`init-repo`](skills/fr-gov/code/init-repo/SKILL.md) | New repository, gitignore, local secret blocking |
 | [`fr-gov-choose-tech-stack`](skills/fr-gov/code/fr-gov-choose-tech-stack/SKILL.md) | Approved frameworks, Prisma, toolchain versions |
 | [`detect-stale-service-names`](skills/fr-gov/code/detect-stale-service-names/SKILL.md) | Rename regressions, manifests, old-to-new mapping |

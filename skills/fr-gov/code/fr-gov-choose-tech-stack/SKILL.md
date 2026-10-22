@@ -4,7 +4,8 @@ name: fr-gov-choose-tech-stack
 description: Approved frameworks, Prisma, toolchain versions
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, stack, framework, vue, nestjs, fastify, fastapi, prisma, eslint, typescript]

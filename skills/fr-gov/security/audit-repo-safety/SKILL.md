@@ -4,7 +4,8 @@ name: audit-repo-safety
 description: Unknown repository, auto-execution, secret leak history
 version: 1.0.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, audit, fr-gov-secure-coding-rules, secrets, gitleaks, ouverture-repo]

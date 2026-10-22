@@ -4,7 +4,8 @@ name: fr-gov-set-up-github-actions-ci
 description: Basic lint-test-build pipeline, CI strategy
 version: 0.2.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, ci, github-actions, pnpm, workflow]

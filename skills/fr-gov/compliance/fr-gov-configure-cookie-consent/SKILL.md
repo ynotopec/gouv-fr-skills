@@ -4,7 +4,8 @@ name: fr-gov-configure-cookie-consent
 description: Tarte au Citron, third-party cookies, consent theme
 version: 0.1.1
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [dsfr, cookie, tarteaucitron, rgpd, consent, management]

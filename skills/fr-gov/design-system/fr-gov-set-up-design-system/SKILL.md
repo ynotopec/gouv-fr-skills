@@ -4,6 +4,7 @@ name: fr-gov-set-up-design-system
 description: DSFR install, CSS assets, HTML checks, NPM or CDN
 version: 0.3.2
 license: MIT
+author: ynotopec
 platforms: [linux, macos]
 metadata:
   hermes:

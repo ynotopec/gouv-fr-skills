@@ -4,7 +4,7 @@ name: fr-gov-build-react-design-system
 description: react-dsfr, Next.js App Router, theme flash prevention
 version: 0.1.0
 license: MIT
-platforms: [linux, macos]
+platforms: [linux, macos, windows]
 author: etalab-ia
 metadata:
   hermes:

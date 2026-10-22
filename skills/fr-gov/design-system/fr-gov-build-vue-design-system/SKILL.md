@@ -4,7 +4,8 @@ name: fr-gov-build-vue-design-system
 description: VueDsfr components, SFC imports, Nuxt integration
 version: 1.0.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [dsfr, vue, vuejs, vue-3, composants, etat, gouv-fr, ui]

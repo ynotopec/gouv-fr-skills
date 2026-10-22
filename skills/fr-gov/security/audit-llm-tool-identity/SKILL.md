@@ -4,7 +4,8 @@ name: audit-llm-tool-identity
 description: SSO subject propagation, per-user vault, session isolation
 version: 1.0.0
 license: MIT
-platforms: [linux, macos]
+author: ynotopec
+platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [gouv-fr, audit, openwebui, sso, keycloak, mcp, llm]
