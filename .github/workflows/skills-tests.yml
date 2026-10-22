@@ -39,5 +39,5 @@ jobs:
         run: python3 scripts/check-skill-catalog.py
       - name: Tester le script d'installation
         run: bash scripts/test-install-skills.sh
-      - name: Migrer les catalogues réellement distribués
+      - name: Tester le validateur et les catalogues distribués
         run: python3 -m unittest discover -s scripts/tests -v
