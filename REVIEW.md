@@ -58,19 +58,18 @@ Trois skills dépendaient d'un projet interne et ont été rendus génériques :
 | Skill | Avant | Après |
 |-------|-------|-------|
 | `code/projet-structure` | bâti sur un CLI interne et des variables de VM | structure de dépôt, intégration agent et variables d'env. lisibles par tous |
-| `dso/smoke-test-api` | contrat d'API figé sur un pipeline de transcription | contrat paramétrable (`--list-path`, `--item-path`, `--job-path`, `--id-param`, `--media-type`, `--job-field`) |
+| `dso/smoke-test-api` | contrat d'API figé sur un service donné | contrat paramétrable (`--list-path`, `--item-path`, `--job-path`, `--id-param`, `--media-type`, `--job-field`) |
 | `dso/service-names` | table de correspondance figée sur un rebranding | table de correspondance **fournie par le projet** (fichier de référence) |
 
 La règle de fond de la revue sur le smoke-test-api est conservée : l'agent ne lit
 pas la valeur d'un secret. Le script lit `SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`
 **dans le processus**, sans jamais l'afficher, et n'affiche ni corps de
 réponse ni en-têtes d'erreur. Couvert par
-`skills/fr-gov/dso/smoke-test-api/tests/test_run_smoke.py` (17 cas), dont un cas
+`skills/fr-gov/devops/smoke-test-api/tests/test_run_smoke.py` (16 cas), dont un cas
 dédié au contrat d'API paramétrable.
 
-Le profil « MirAI next » de `dso/repo-cicd/references/composition.md` devient
-« registre interne » : les règles restent, le registre et l'organisation
-interne ne sont plus nommés.
+Le profil « registre interne » de `dso/repo-cicd/references/composition.md` ne nomme
+plus le registre ni l'organisation interne : les règles restent.
 
 ### Outillage
 
@@ -86,8 +85,8 @@ interne ne sont plus nommés.
 - Les trois chemins du smoke-test-api sont validés avant tout credential ou appel
   réseau. Une option comme `.attacker.invalid/list` ne peut plus modifier l'hôte
   destinataire du bearer. La primitive d'appel vérifie aussi l'origine.
-- Le champ multipart `operation` est configurable avec `--operation` et conserve
-  `transcription` par défaut. L'ancien argument `--meeting-id` reste un alias.
+- Le champ multipart `operation` est configurable avec `--operation`
+  (`upload` par défaut). Aucun nom de champ propre à un service n'est figé.
 - L'installation détecte les anciennes copies et exige `--migrate`. Après pose
   des nouveaux skills, les anciennes copies sont déplacées hors du dossier
   actif avec sauvegarde de leur contenu. Les conflits sont vérifiés avant
@@ -119,7 +118,7 @@ pour chaque nouveau test.
 ### 🔴 Bloquants
 
 #### 1. `gouv-fr-dat-word` : le modèle Word par défaut n'existait pas
-`render_docx.py` visait `../dat-generation/dat/MODELE_DAT_MirAI.docx` — un
+`render_docx.py` visait `../dat-generation/dat/MODELE_DAT.docx` — un
 dossier **inexistant** dans ce dépôt. Tout appel sans `--model` échouait sur
 `Modèle introuvable`, alors que le modèle est présent dans la skill sœur
 `gouv-fr-dat-homologation`.
@@ -165,7 +164,7 @@ pas d'en exposer la valeur au modèle.
 (`SMOKE_TOKEN` ou `INTERNAL_API_TOKEN`) et n'affiche que les statuts. Il forge
 et réutilise le jeton en mémoire, sans étape humaine systématique, argument de
 processus secret, fichier de credential ni redirection HTTP. Il exige des
-données de test explicites et documente les effets du POST de transcription.
+données de test explicites et documente les effets du POST de téléversement.
 Neuf tests à transport simulé couvrent ce comportement, sans appeler de service réel.
 
 #### 6. `scripts/test-install-skills.sh` : écriture hors du bac à sable
@@ -304,11 +303,10 @@ Hermes reconnaît les sections en français. Des headers `## When to Use`, `## H
 portent `category: security`.
 **Correction** : harmonisé.
 
-### 11. Contradiction `.gitignore`
+### 11. Sauvegarde locale versionnée
 
-`.gitignore` listait `backup-local-skills/` en ignoré, alors que ce répertoire **est**
-versionné (souhait explicite de conserver la sauvegarde des skills locaux).
-**Correction** : ligne retirée, commentaire explicitant le choix.
+`backup-local-skills/` versionnait une copie des skills locaux dans un dépôt public.
+**Correction** : répertoire retiré du dépôt ; une sauvegarde locale n'a pas sa place ici.
 
 ---
 

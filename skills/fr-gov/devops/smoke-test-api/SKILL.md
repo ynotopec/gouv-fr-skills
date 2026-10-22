@@ -75,24 +75,22 @@ autorisées ; ne jamais exécuter un exemple tel quel.
 
 | Option | Défaut | Rôle |
 |---|---|---|
-| `--list-path` | `/api/meetings` | Endpoint de la liste des ressources |
-| `--item-path` | `/audio` | Endpoint de la ressource unitaire |
-| `--job-path` | `/api/transcription` | Endpoint du job asynchrone |
-| `--id-param` | `meeting_id` | Nom du paramètre d'identifiant |
+| `--list-path` | `/api/resources` | Endpoint de la liste des ressources |
+| `--item-path` | `/media` | Endpoint de la ressource unitaire |
+| `--job-path` | `/api/jobs` | Endpoint du job asynchrone |
+| `--id-param` | `item_id` | Nom du paramètre d'identifiant |
 | `--media-type` | `audio/webm` | Type de média attendu |
 | `--audio-suffix` | `.m4a` | Extension du fichier de test |
 | `--audio-content-type` | `audio/mp4` | Type de contenu du fichier de test |
 | `--job-field` | `job_id` | Champ contenant l'identifiant du job |
-| `--operation` | `transcription` | Valeur du champ multipart `operation` |
+| `--operation` | `upload` | Valeur du champ multipart `operation` |
 
 Les trois chemins doivent commencer par un unique `/`, sans origine externe,
 fragment, antislash ou caractère de contrôle. Les paramètres de query sont
 autorisés. Tous les endpoints sont validés avant lecture des credentials ou
 appel réseau : ils restent sur l'origine HTTPS fournie par `--base`.
 
-`--meeting-id` reste accepté comme alias de `--item-id`. Le contrat historique
-`operation=transcription` est conservé par défaut ; adapter `--operation` au
-contrat du service si nécessaire.
+`--operation` vaut `upload` par défaut ; l'adapter au contrat du service.
 
 | Appel | Validation |
 |---|---|

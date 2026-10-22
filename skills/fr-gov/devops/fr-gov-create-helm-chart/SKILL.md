@@ -28,7 +28,7 @@ Ne pas utiliser pour le déploiement GitOps lui-même : voir
 
 ## Ce qu'il faut savoir d'abord
 
-- Le `template/` de [`this-is-tobi/helm-charts`](https://github.com/this-is-tobi/helm-charts/tree/main/template) est un **squelette à copier**, pas une dépendance. `ocr-api` l'a copié et renommé. Les charts publiés par tobi (`backup-utils`, `cnpg-cluster`, `vso-utils`) sont des utilitaires que l'on peut, eux, déclarer en `dependencies`.
+- Le `template/` de [`this-is-tobi/helm-charts`](https://github.com/this-is-tobi/helm-charts/tree/main/template) est un **squelette à copier**, pas une dépendance. Le squelette se copie et se renomme dans le dépôt cible. Les charts publiés par tobi (`backup-utils`, `cnpg-cluster`, `vso-utils`) sont des utilitaires que l'on peut, eux, déclarer en `dependencies`.
 - Le chart est un **contrat de values** : composants activables (`enabled`), bloc `global`, `extraObjects` en échappatoire pour tout ce que le chart ne modélise pas.
 - **Les défauts du template échouent sur CPiN** (vérifié en rendant le template) : `runAsUser`/`runAsGroup`/`fsGroup: 1000` figés (le SCC OpenShift alloue l'UID par namespace et rejette un UID hors plage) et aucun label `app`/`env`/`tier` (Kyverno `check-labels`, bloquant en prod).
 
@@ -53,7 +53,7 @@ l'adapter :
 | Sujet | Règle |
 |-------|-------|
 | UID/GID | mettre `runAsUser`, `runAsGroup`, `fsGroup` (pod et conteneur) à `null` ; garder `runAsNonRoot`, `drop:
-[ALL]`, `readOnlyRootFilesystem` ; ajouter `seccompProfile: {type: RuntimeDefault}` comme le fait `ocr-api` (absent des
+[ALL]`, `readOnlyRootFilesystem` ; ajouter `seccompProfile: {type: RuntimeDefault}` (absent des
 défauts du template) |
 | Image | registre Harbor du projet, tag versionné ou digest (`digest` prime sur `tag`), **jamais `latest`** ; l'image
 doit grouper root (`chown -R <uid>:0` dans le Dockerfile) car l'UID est aléatoire |
@@ -104,6 +104,4 @@ entrées à garder (par exemple le volume `tmp`).
 
 ## Pour aller plus loin
 
-- Doc interne : `docs/okf/helm/` (anatomie, conventions de values, sécurité et OpenShift, publication), `docs/okf/cloud-pi-native/contraintes-runtime.md` (table Kyverno), `docs/okf/decisions/dependances-chart.md`.
-- Exemple complet : `IA-Generative/ocr-api/helm`.
 - Skills liés (groupe `devops`) : `fr-gov-write-digital-factory-workflows` (bump et publication du chart), `fr-gov-deploy-to-cloud-pi-native` (environnements, ArgoCD, secrets, quotas).

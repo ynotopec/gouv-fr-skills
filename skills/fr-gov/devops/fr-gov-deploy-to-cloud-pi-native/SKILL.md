@@ -89,12 +89,11 @@ Voir [`references/depannage.md`](references/depannage.md) (symptôme → cause �
 
 ## Limites connues
 
-- Les docs CPiN ne sont pas cohérentes sur le nom du fichier de pipeline (`.gitlab-ci-dso.yaml` dans « Démarrer », `gitlab-ci-dso.yml` ailleurs ; `ocr-api` utilise `.gitlab-ci-dso.yml`) et les catalogues de jobs Kaniko varient : vérifier sur votre instance.
-- L'étape qui met à jour le tag par environnement (dépôt de values séparé chez ocr-api) n'est documentée nulle part dans les sources lues.
+- Les docs CPiN ne sont pas cohérentes sur le nom du fichier de pipeline (`.gitlab-ci-dso.yaml` dans « Démarrer », `gitlab-ci-dso.yml` ailleurs) et les catalogues de jobs Kaniko varient : vérifier sur votre instance.
+- L'étape qui met à jour le tag par environnement (dépôt de values séparé) n'est documentée nulle part dans les sources lues.
 - Route vs Ingress, quotas chiffrés et adresses de proxy ne sont pas documentés : les demander à la Service Team.
 
 ## Pour aller plus loin
 
-- Doc interne : `docs/okf/cloud-pi-native/` (plateforme, dépôts et mirror, GitOps, environnements, secrets, contraintes et Kyverno), `docs/okf/cycle-de-vie/de-commit-a-environnement.md`.
-- Source : [documentation officielle](https://cloud-pi-native.fr) ; exemple `IA-Generative/ocr-api`.
+- Source : [documentation officielle](https://cloud-pi-native.fr).
 - Skills liés (groupe `devops`) : `fr-gov-write-digital-factory-workflows` (CI/CD GitHub, `sync-cpin`), `fr-gov-create-helm-chart` (chart et vérification Kyverno).

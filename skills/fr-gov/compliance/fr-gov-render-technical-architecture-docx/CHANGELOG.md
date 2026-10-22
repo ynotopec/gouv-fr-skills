@@ -62,7 +62,7 @@ Versions notables de la logique de rendu `.docx`. Versionnement `vMAJEUR.MINEUR`
 
 ### Corrigé
 - `fill_cover` traite désormais aussi les **en-têtes/pieds** de toutes les sections et retire la
-  mention « — Modèle » **toutes casses** (le bandeau « DAT MirAI — Modèle » / « [NOM DU SERVICE] »
+  mention « — Modèle » **toutes casses** (le bandeau « DAT — Modèle » / « [NOM DU SERVICE] »
   vit dans l'en-tête, jusque-là non remplacé).
 
 ### Dépendance (optionnelle)
@@ -72,8 +72,8 @@ Versions notables de la logique de rendu `.docx`. Versionnement `vMAJEUR.MINEUR`
 ## [v1.0] — 2026-06-21
 
 ### Ajouté
-- `render_docx.py` : rend un DAT MirAI au format ministériel `.docx` **sur le modèle**
-  `MODELE_DAT_MirAI.docx` (skill sœur `dat-generation`) à partir d'un Markdown fidèle à la
+- `render_docx.py` : rend un DAT au format ministériel `.docx` **sur le modèle**
+  `MODELE_DAT.docx` (skill sœur `dat-generation`) à partir d'un Markdown fidèle à la
   structure du modèle.
 - Conservation de la **page de garde** (renseignée : service / version / date ; mention « — MODÈLE »
   retirée) et du champ **Sommaire (TOC)** ; suppression de la page « Comment utiliser » et de tous les

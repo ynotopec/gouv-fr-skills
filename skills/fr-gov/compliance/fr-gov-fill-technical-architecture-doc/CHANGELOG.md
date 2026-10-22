@@ -26,13 +26,13 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/) ; versionn
 - Rappel **confidentialité** : possibilité de conclure à une **absence de traitement de DCP nécessitant
   une AIPD** avec simple mention au DPO.
 
-### Modifié (modèle `dat/MODELE_DAT_MirAI.docx`)
+### Modifié (modèle `dat/MODELE_DAT.docx`)
 - Encadré d'instruction de la **matrice des flux** (port standard) et **§1** (narration + positionnement).
 
 ## [v1.0] — 2026-06-07
 
 ### Ajouté
-- Modèle de Dossier d'Architecture Technique MirAI (`dat/MODELE_DAT_MirAI.docx`) :
+- Modèle de Dossier d'Architecture Technique (`dat/MODELE_DAT.docx`) :
   page de garde, mode d'emploi, sommaire automatique, sections 1 à 6 avec encadrés
   d'instruction et de référence socle, bloc « Service » répétable, tableaux structurés
   (inventaire des composants, matrice des flux, dimensionnement).
@@ -45,4 +45,3 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/) ; versionn
   sécurité, règles « ne jamais inventer » et « aucune valeur réelle », focus OWASP LLM.
 - Référence du prompt vers ce dépôt comme source de dernière version.
 
-[v1.0]: https://github.com/IA-Generative/gen-document-homologation/releases/tag/v1.0

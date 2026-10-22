@@ -1,22 +1,21 @@
 ---
 
 name: fr-gov-fill-technical-architecture-doc
-description: MirAI DAT, repository evidence, Markdown template
+description: DAT ministériel, repository evidence, Markdown template
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr, homologation, dat, aipd, mirai, conformite]
+    tags: [gouv-fr, homologation, dat, aipd, modele, conformite]
     related_skills: [fr-gov-render-technical-architecture-docx, fr-gov-secure-coding-rules]
 ---
 
 
-# Gouv-fr — Homologation MirAI (DAT)
+# Gouv-fr — Homologation (DAT)
 
-Cette skill **embarque** le modèle et le prompt de référence (anciennement le dépôt
-`IA-Generative/gen-document-homologation`, fusionné ici en 2026-06 pour n'avoir qu'un seul dépôt à
-maintenir). Les artefacts vivent à côté de ce fichier :
+Cette skill **embarque** le modèle et le prompt de référence. Les artefacts vivent à côté de ce
+fichier :
 
 ```
 skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/
@@ -24,7 +23,7 @@ skills/fr-gov/compliance/fr-gov-fill-technical-architecture-doc/
 ├── CHANGELOG.md      # versions des modèles/prompts (tags vX.Y du contenu)
 └── dat/
     ├── PROMPT_coding_assistant_DAT.md   # prompt de référence — fait foi
-    └── MODELE_DAT_MirAI.docx            # modèle Word
+    └── MODELE_DAT.docx            # modèle Word
 ```
 
 D'autres types de documents s'ajouteront sous leurs propres répertoires (`aipd/`, `homologation/`…),
@@ -32,7 +31,7 @@ même convention.
 
 ## Quand utiliser
 
-- Préparer un DAT MirAI à partir du code et des manifestes du dépôt courant.
+- Préparer un DAT à partir du code et des manifestes du dépôt courant.
 - Rassembler les éléments d'homologation avant le rendu du livrable.
 
 Ne couvre que le DAT : AIPD et dossier complet ne sont pas pris en charge.
@@ -41,7 +40,7 @@ Pour le rendu Word, enchaîner sur `fr-gov-render-technical-architecture-docx`.
 ## Étapes
 
 1. **Identifier le type de document** depuis les arguments (défaut : **DAT**).
-   - DAT → prompt `dat/PROMPT_coding_assistant_DAT.md` + modèle `dat/MODELE_DAT_MirAI.docx`.
+   - DAT → prompt `dat/PROMPT_coding_assistant_DAT.md` + modèle `dat/MODELE_DAT.docx`.
    - Si le type demandé n'a pas encore de répertoire dans la skill, le signaler et s'arrêter.
 2. **Lire `CHANGELOG.md`** (racine de la skill) pour connaître la version courante du modèle/prompt
    et la mentionner dans le document produit.

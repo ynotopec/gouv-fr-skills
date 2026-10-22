@@ -9,15 +9,13 @@ Index complet : [`SKILLS.md`](SKILLS.md).
 ## Origines
 
 - **Cloud Pi Native** — https://cloud-pi-native.fr (déploiement, Helm, ArgoCD)
-- **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills` + `docs/okf`
+- **Starter Kit OpenCode** (`dnum-mi/starter-kit-opencode`) — `.agents/skills`
 - **gouv-fr-code-package-mi** (`ynotopec/gouv-fr-code-package-mi`) — core skills fr-gov-code
-- **IA-Generative/agent-skills** — dépôt privé (non clonable publiquement)
 - **Skills de l'État** (`etalab-ia/skills`) — référentiel DINUM/IAE. **4 skills adaptées** : `fr-gov-build-react-design-system`, `fr-gov-build-collab-suite-ui`, `fr-gov-find-cybersecurity-guide`, `fr-gov-query-open-data-api`. Les 3 autres (`rgaa`, `securite-developpement`, `usage-ia-agents-etat`) ne sont pas reprises ; voir [`UPSTREAM.md`](UPSTREAM.md) § *Référentiels externes*.
-- **Skills locaux fr-gov** — migrés et renommés, sauvegarde dans `backup-local-skills/`
 
 ## Organisation
 
-Les skills sont regroupés par usage, sous un unique arbre `gouv-fr/` :
+Les skills sont regroupés par usage, sous un unique arbre `fr-gov/` :
 
 | Groupe | Contenu |
 |---------|---------|

@@ -1,7 +1,7 @@
 # Gabarit .gitlab-ci-dso.yml — une image construite par Kaniko et poussée dans Harbor.
-# Base : IA-Generative/ocr-api/.gitlab-ci-dso.yml (simplifié). NON testé sur une instance CPiN :
-# les noms de jobs du catalogue ($CATALOG_PATH) varient selon les sources (`.kaniko:build-push`
-# chez ocr-api, `.kaniko:simple-build-push` et `.kaniko:build` dans la doc) — les vérifier dans
+# Base : gabarit simplifié. NON testé sur une instance CPiN :
+# les noms de jobs du catalogue ($CATALOG_PATH) varient selon les sources (`.kaniko:build-push`,
+# `.kaniko:simple-build-push`, `.kaniko:build`) — les vérifier dans
 # le projet catalogue de votre instance avant usage.
 include:
   - project: $CATALOG_PATH
@@ -31,7 +31,7 @@ docker-build-app:
     DOCKERFILE: "Dockerfile"
     WORKING_DIR: "."
     IMAGE_NAMES: ""   # calculé dans before_script
-    # Miroir des images de base, fourni par la plateforme (comme ocr-api)
+    # Miroir des images de base, fourni par la plateforme
     EXTRA_BUILD_ARGS: "--build-arg DOCKERHUB_MIRROR_URL=${DOCKERHUB_MIRROR_URL}"
   before_script:
     - |

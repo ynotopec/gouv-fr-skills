@@ -1,6 +1,6 @@
 # Gabarit de CD — une image, un chart Helm dans le dépôt, flux dev (rc) / main (stable), synchro CPiN.
 # Adapter : <APP>, CHART_NAME, HELM_REPOS, variables GITLAB_*.
-# Base : IA-Generative/ocr-api/.github/workflows/cd.yml (version mono-service).
+# Base : workflow mono-service générique.
 name: CD
 
 on:

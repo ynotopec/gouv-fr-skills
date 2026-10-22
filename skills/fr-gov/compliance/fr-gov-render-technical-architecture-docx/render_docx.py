@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Rend un document d'homologation MirAI au format ministériel `.docx`.
+"""Rend un document d'homologation au format ministériel `.docx`.
 
-Construit le `.docx` **sur le modèle** `MODELE_DAT_MirAI.docx` (hérite page de garde,
+Construit le `.docx` **sur le modèle** `MODELE_DAT.docx` (hérite page de garde,
 styles, sommaire/TOC) à partir d'un contenu **Markdown fidèle à la structure du modèle**
 (tel que produit par la skill `dat-generation`).
 
@@ -21,7 +21,7 @@ Le titre `#` et le bloc de méta en tête (avant le premier `##`) sont ignorés 
 
 Usage :
     python render_docx.py --input DAT.md --output private/DAT_x_v0.1.docx \
-        [--model /chemin/MODELE_DAT_MirAI.docx] [--service "Nom"] [--version v0.1] [--date "21 juin 2026"]
+        [--model /chemin/MODELE_DAT.docx] [--service "Nom"] [--version v0.1] [--date "21 juin 2026"]
 
 Dépendance : python-docx (`pip install python-docx`).
 """
@@ -306,7 +306,7 @@ def fill_cover(doc, service, version, date) -> None:
     """Renseigne garde + en-têtes/pieds (service, version, date) et retire « — Modèle ».
 
     Traite le corps ET les en-têtes/pieds de toutes les sections (le bandeau du
-    modèle « DAT MirAI — Modèle » / « [NOM DU SERVICE] » vit dans l'en-tête).
+    modèle « DAT — Modèle » / « [NOM DU SERVICE] » vit dans l'en-tête).
     """
     _fill_paragraphs(doc.paragraphs, service, version, date)
     for section in doc.sections:
@@ -857,11 +857,11 @@ def reorder_sectpr(doc) -> None:
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Rend un DAT MirAI en .docx sur le modèle ministériel.")
+    ap = argparse.ArgumentParser(description="Rend un DAT en .docx sur le modèle ministériel.")
     ap.add_argument("--input", required=True, help="Contenu Markdown fidèle à la structure du modèle")
     ap.add_argument("--output", required=True, help="Chemin du .docx de sortie")
     here = os.path.dirname(os.path.abspath(__file__))
-    default_model = os.path.normpath(os.path.join(here, "..", "fr-gov-fill-technical-architecture-doc", "dat", "MODELE_DAT_MirAI.docx"))
+    default_model = os.path.normpath(os.path.join(here, "..", "fr-gov-fill-technical-architecture-doc", "dat", "MODELE_DAT.docx"))
     ap.add_argument("--model", default=default_model, help="Modèle .docx (défaut : skill fr-gov-fill-technical-architecture-doc)")
     ap.add_argument("--service", default="", help="Nom du service (page de garde)")
     ap.add_argument("--version", default="", help="Version (page de garde)")

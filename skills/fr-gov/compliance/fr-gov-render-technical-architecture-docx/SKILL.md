@@ -1,21 +1,21 @@
 ---
 
 name: fr-gov-render-technical-architecture-docx
-description: MirAI DAT, ministerial Word template, typography
+description: DAT ministériel, ministerial Word template, typography
 version: 1.0.1
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
-    tags: [gouv-fr, homologation, dat, docx, mirai, rendu]
+    tags: [gouv-fr, homologation, dat, docx, modele, rendu]
     related_skills: [fr-gov-fill-technical-architecture-doc, fr-gov-build-design-system-emails]
 ---
 
 
-# Gouv-fr — Homologation MirAI (rendu .docx)
+# Gouv-fr — Homologation (DAT) — rendu .docx
 
 Cette skill **transforme un contenu d'homologation (Markdown) en `.docx` ministériel**, en s'appuyant
-sur le **modèle officiel** `MODELE_DAT_MirAI.docx` (maintenu dans la skill sœur `fr-gov-fill-technical-architecture-doc`).
+sur le **modèle officiel** `MODELE_DAT.docx` (maintenu dans la skill sœur `fr-gov-fill-technical-architecture-doc`).
 Elle est le **pendant « rendu »** de `fr-gov-fill-technical-architecture-doc`, qui produit le **contenu**.
 
 ```
@@ -32,8 +32,8 @@ fr-gov-fill-technical-architecture-doc         →   contenu Markdown fidèle au
 
 - **`python-docx`** (`pip install python-docx`). Si l'environnement courant ne l'a pas, l'installer
   dans un venv jetable.
-- Le **modèle** `MODELE_DAT_MirAI.docx`. Par défaut la skill le lit dans la skill sœur
-  (`../fr-gov-fill-technical-architecture-doc/dat/MODELE_DAT_MirAI.docx`) ; surchargeable via `--model`.
+- Le **modèle** `MODELE_DAT.docx`. Par défaut la skill le lit dans la skill sœur
+  (`../fr-gov-fill-technical-architecture-doc/dat/MODELE_DAT.docx`) ; surchargeable via `--model`.
 - *(Optionnel, pour les diagrammes mermaid)* **`mermaid-cli`** (`npx -y @mermaid-js/mermaid-cli`,
   ou `mmdc` sur le PATH) **+ un Chrome/Chromium local** (auto-détecté ; sinon `--chrome`). Rendu
   **100 % local, aucun service externe**. Absent ⇒ repli automatique en texte à chasse fixe.
@@ -75,7 +75,7 @@ python render_docx.py \
   --input  private/DAT_«service»_v0.1.md \
   --output private/DAT_«service»_v0.1.docx \
   --service "«Nom du service»" --version "v0.1" --date "21 juin 2026" \
-  [--model /chemin/MODELE_DAT_MirAI.docx]
+  [--model /chemin/MODELE_DAT.docx]
 ```
 
 Sortie dans `private/` à la racine du repo cible (créer le dossier s'il manque + **garantir** qu'il

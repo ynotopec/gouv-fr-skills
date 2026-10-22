@@ -1,6 +1,6 @@
 """Tests de non-régression pour le modèle Word par défaut de render_docx.py.
 
-Le modèle `MODELE_DAT_MirAI.docx` est maintenu dans la skill sœur
+Le modèle `MODELE_DAT.docx` est maintenu dans la skill sœur
 `fr-gov-fill-technical-architecture-doc` : le chemin par défaut doit pointer dessus et
 être un fichier réellement présent, sans quoi `render_docx.py` échoue sur
 tout appel sans `--model`.
@@ -19,7 +19,7 @@ import unittest
 SKILL_DIR = pathlib.Path(__file__).resolve().parents[1]
 SCRIPT = SKILL_DIR / "render_docx.py"
 EXPECTED_MODEL = (
-    SKILL_DIR.parent / "fr-gov-fill-technical-architecture-doc" / "dat" / "MODELE_DAT_MirAI.docx"
+    SKILL_DIR.parent / "fr-gov-fill-technical-architecture-doc" / "dat" / "MODELE_DAT.docx"
 )
 
 

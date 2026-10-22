@@ -85,6 +85,5 @@ par défaut (informatif).
 ## Pour aller plus loin
 
 - Catalogue et permissions par workflow : [`references/workflows.md`](references/workflows.md).
-- Doc interne : `docs/okf/cicd/` (contrat des workflows, release et charts, pièges), `docs/okf/decisions/github-app-vs-pat.md`, `docs/okf/cycle-de-vie/`.
-- Sources : `dnum-mi/fabnum-cicd/docs/workflows/`, exemple complet `IA-Generative/ocr-api` (`ci.yml`, `cd.yml`).
+- Sources : `dnum-mi/fabnum-cicd/docs/workflows/`.
 - Déploiement du chart et contraintes CPiN : skills `fr-gov-create-helm-chart` et `fr-gov-deploy-to-cloud-pi-native` (groupe `devops`).
