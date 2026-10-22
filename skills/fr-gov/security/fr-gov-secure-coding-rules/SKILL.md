@@ -37,7 +37,7 @@ Règles de fond, pas d'audit : pour un audit, voir `harden-repo-before-pentest`,
 | 4 | Requêtes SQL paramétrées, jamais de concaténation | zéro finding d'injection | `npx semgrep --config p/sql-injection .` ou `bandit -r src -q` |
 | 5 | TLS vérifié, pas de désactivation | zéro occurrence | `grep -rnE "rejectUnauthorized|NODE_TLS_REJECT_UNAUTHORIZED|verify *= *False|CERT_NONE" src/` |
 | 6 | Dépendances justifiées et à jour | audit sans vulnérabilité haute | `pnpm audit --prod` / `pip-audit` |
-| 7 | Pas de données personnelles, RH ou médicales dans les fixtures | jeu de test synthétique | `grep -rniE "@|nom\|prenom\|ssn\|nir"` sur le dossier de fixtures |
+| 7 | Pas de données personnelles, RH ou médicales dans les fixtures | jeu de test synthétique | `grep -rniE "@|(^|[^a-z])(nom|prenom|ssn|nir)([^a-z]|$)"` sur le dossier de fixtures |
 | 8 | Pas de `sudo`, pas de chemin en dur | zéro occurrence, chemins relatifs ou variables | `grep -rn "sudo \|/home/\|/Users/" src/` |
 | 9 | Secrets contenant `$` injectés sans substitution shell | valeur intacte après injection | voir « Secrets avec `$` » ci-dessous |
 | 10 | Isolation d'exécution réelle (VM, conteneur ou sandbox) | permissions effectives vérifiées, pas supposées | `id`, `mount`, portée du jeton utilisé |

@@ -1,4 +1,4 @@
-# Checklist RGAA 4.1.2 — 106 critères
+# Checklist RGAA 4.1.2 — 105 critères
 
 Source : <https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/>, relevé le 2026-10-22.
 Intitulés repris du référentiel : ne pas les reformuler pendant une évaluation, la déclaration
@@ -118,12 +118,11 @@ Une case cochée vaut pour **toutes** les pages de l'échantillon, pas pour la p
 - [ ] **10.6** Dans chaque page web, chaque lien dont la nature n’est pas évidente est-il visible par rapport au texte environnant 
 - [ ] **10.7** Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visible 
 - [ ] **10.8** Pour chaque page web, les contenus cachés ont-ils vocation à être ignorés par les technologies d’assistance 
-- [ ] **10.9** Dans chaque page web, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée 
-- [ ] **10.10** Dans chaque page web, l’information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente 
-- [ ] **10.11** Pour chaque page web, les contenus peuvent-ils être présentés sans perte d’information ou de fonctionnalité et sans avoir recours soit à un défilement vertical pour une fenêtre ayant une hauteur de 256 px, soit à un défilement horizontal pour une fenêtre ayant une largeur de 320 px (hors cas particuliers) 
-- [ ] **10.12** Dans chaque page web, les propriétés d’espacement du texte peuvent-elles être redéfinies par l’utilisateur sans perte de contenu ou de fonctionnalité (hors cas particuliers) 
-- [ ] **10.13** Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur (hors cas particuliers) 
-- [ ] **10.14** Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage 
+- [ ] **10.9** Dans chaque page web, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée et implémentée de façon pertinente
+- [ ] **10.10** Pour chaque page web, les contenus peuvent-ils être présentés sans perte d’information ou de fonctionnalité et sans avoir recours soit à un défilement vertical pour une fenêtre ayant une hauteur de 256 px, soit à un défilement horizontal pour une fenêtre ayant une largeur de 320 px (hors cas particuliers) 
+- [ ] **10.11** Dans chaque page web, les propriétés d’espacement du texte peuvent-elles être redéfinies par l’utilisateur sans perte de contenu ou de fonctionnalité (hors cas particuliers) 
+- [ ] **10.12** Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur (hors cas particuliers) 
+- [ ] **10.13** Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage 
 
 ## 11. Formulaires (13)
 

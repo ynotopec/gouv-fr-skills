@@ -43,7 +43,7 @@ Une case cochée vaut pour **tout l'échantillon**, jamais pour la page ouverte 
 - Un critère n'est **non applicable** que pour trois raisons : contenu absent, contenu exempté,
   dérogation pour charge disproportionnée **assortie** d'une alternative numérique accessible.
 
-## 1. RGAA — 106 critères, 13 thématiques
+## 1. RGAA — 105 critères, 13 thématiques
 
 Liste complète, intitulés officiels non reformulés : `references/rgaa-checklist.md`.
 RGAA 4.1.2 en vigueur, RGAA 5 annoncé pour fin 2026 — revérifier la version avant un audit officiel.
@@ -56,7 +56,7 @@ RGAA 4.1.2 en vigueur, RGAA 5 annoncé pour fin 2026 — revérifier la version 
 | 4. Multimédia | 13 | 11. Formulaires | 13 |
 | 5. Tableaux | 8 | 12. Navigation | 11 |
 | 6. Liens | 2 | 13. Consultation | 12 |
-| 7. Scripts | 5 | **Total** | **106** |
+| 7. Scripts | 5 | **Total** | **105** |
 
 Les critères de la thématique Scripts exigent un **environnement de test** déclaré (navigateur +
 technologies d'assistance). Sans environnement déclaré, ces critères sont *non évalués* — les
@@ -104,7 +104,7 @@ Critère de sortie : rapport listant, par critère RGAA, `validé` / `non valid�
 ## Pièges
 
 - **Une liste de bonnes pratiques n'est pas une checklist.** Six puces « contraste, clavier, alt,
-  sémantique, ARIA, tests auto » ne couvrent pas 106 critères : cocher ces six lignes et annoncer
+  sémantique, ARIA, tests auto » ne couvrent pas 105 critères : cocher ces six lignes et annoncer
   « conforme RGAA » est un faux positif, pas une évaluation.
 - **Le taux de conformité ne mesure pas l'accessibilité réelle** : 100 % sur un échantillon mal
   choisi reste non conforme. Documenter l'échantillon fait partie du résultat.

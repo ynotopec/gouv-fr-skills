@@ -1,7 +1,7 @@
 # Checklist RGPD — application web de l'État
 
 Sources : règlement (UE) 2016/679 (RGPD), loi n° 78-17 du 6 janvier 1978 modifiée
-(articles 82 et suivants pour les traceurs), doctrine CNIL. Relevé le 2026-10-22.
+(articles 82 et suivants pour les traceurs), doctrine CNIL. Consultation du texte en vigueur le 2026-10-22.
 Les numéros d'articles sont donnés pour que chaque case puisse être opposée dans
 une décision d'homologation ou une mise en demeure.
 
