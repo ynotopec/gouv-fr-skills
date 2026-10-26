@@ -38,6 +38,11 @@ def run_skill(path, root, timeout):
         script = path / SHELL_SUITES[path.name]
         if not script.is_file():
             return dict(row, status='error', detail='Suite shell enregistrée mais absente')
+        # Check required tools (jq is needed by ANSSI guide scripts)
+        try:
+            subprocess.run(['jq', '--version'], capture_output=True, check=True, timeout=10)
+        except (OSError, subprocess.TimeoutExpired):
+            return dict(row, status='skip', detail='Suite shell requiert jq (absent)')
         command = ['sh', str(script)]
     else:
         return row
