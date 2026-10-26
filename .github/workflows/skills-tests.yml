@@ -71,3 +71,28 @@ jobs:
           npm install --global pnpm@10
       - name: Générer, compiler, tester et démarrer sans dépendances de développement
         run: bash scripts/test-scaffold-integration.sh "${{ matrix.framework }}"
+
+  evaluation:
+    name: Évaluation des skills et rapports
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
+          python-version: '3.12'
+      - name: Installer les dépendances de test
+        run: python -m pip install pyyaml python-docx
+      - name: Tester les régressions de l'évaluation
+        run: python -m unittest discover -s scripts/tests -p test_evaluation.py -v
+      - name: Audit structurel du catalogue
+        run: python eval/audit_skills.py
+      - name: Suites comportementales des skills
+        if: ${{ !cancelled() }}
+        run: python eval/integration_tests.py
+      - name: Publier les rapports JSON et HTML
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: skill-evaluation
+          path: eval/generated/
+          if-no-files-found: error

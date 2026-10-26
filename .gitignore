@@ -27,3 +27,6 @@ node_modules/
 # Python test caches
 __pycache__/
 *.py[cod]
+
+# Generated evaluation reports (published as CI artifacts)
+/eval/generated/
