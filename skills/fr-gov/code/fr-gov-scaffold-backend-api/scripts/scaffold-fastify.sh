@@ -29,7 +29,7 @@ pnpm init
 pnpm add fastify @fastify/cors @fastify/swagger @fastify/swagger-ui @sinclair/typebox pino
 
 # Dev dependencies
-pnpm add -D typescript @types/node tsx vitest eslint @antfu/eslint-config pino-pretty
+pnpm add -D typescript@~6.0 @types/node@^24 tsx vitest eslint @antfu/eslint-config pino-pretty
 
 # Create tsconfig
 cat > tsconfig.json << 'EOF'

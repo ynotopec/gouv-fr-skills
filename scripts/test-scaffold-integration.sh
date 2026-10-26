@@ -34,7 +34,7 @@ case "$framework" in
     ;;
   nestjs)
     pnpm build
-    pnpm test --runInBand
+    pnpm test
     pnpm prune --prod
     NODE_ENV=production node dist/main.js > "$task_dir/server.log" 2>&1 &
     endpoint='http://127.0.0.1:3000/'

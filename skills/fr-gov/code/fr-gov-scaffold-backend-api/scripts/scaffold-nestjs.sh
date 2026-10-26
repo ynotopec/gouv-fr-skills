@@ -29,8 +29,8 @@ cd "$NAME"
 
 # Add required dependencies
 pnpm add nestjs-pino pino-http
-pnpm add @nestjs/swagger @prisma/client
-pnpm add -D prisma @antfu/eslint-config
+pnpm add @nestjs/swagger @prisma/client@^7
+pnpm add -D prisma@^7 @antfu/eslint-config
 
 # Nest CLI emits eslint.config.mjs; replace it instead of creating a competing config.
 cat > eslint.config.mjs << 'LINT'

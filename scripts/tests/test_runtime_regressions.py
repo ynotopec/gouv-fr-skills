@@ -25,7 +25,7 @@ elif cmd == 'add' and pathlib.Path('package.json').exists():
     path = pathlib.Path('package.json')
     pkg = json.loads(path.read_text())
     field = 'devDependencies' if '-D' in args else 'dependencies'
-    pkg.setdefault(field, {}).update({a:'*' for a in args if not a.startswith('-')})
+    pkg.setdefault(field, {}).update({a.rsplit('@',1)[0] if '@' in a[1:] else a:'*' for a in args if not a.startswith('-')})
     path.write_text(json.dumps(pkg))
 elif cmd == '@nestjs/cli':
     project = pathlib.Path(args[1]); project.mkdir()
