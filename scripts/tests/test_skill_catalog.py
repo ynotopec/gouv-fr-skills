@@ -42,6 +42,27 @@ class RelatedSkills(unittest.TestCase):
         self.assertTrue(any('references itself' in e for e in errors))
 
 
+class FrontmatterValidation(unittest.TestCase):
+    def test_invalid_frontmatter_is_reported_without_crashing(self):
+        import tempfile
+        import shutil
+        root = Path(__file__).resolve().parents[2]
+        for frontmatter in ('description: [unterminated', 'name: review-code\ndescription: 42',
+                            '- not a mapping', 'name: review-code\nmetadata: []'):
+            with self.subTest(frontmatter=frontmatter), tempfile.TemporaryDirectory() as directory:
+                target = Path(directory) / 'repo'
+                shutil.copytree(root, target, ignore=shutil.ignore_patterns('.git', '__pycache__'))
+                skill = target / 'skills/fr-gov/code/review-code/SKILL.md'
+                skill.write_text('---\n' + frontmatter + '\n---\n## Quand utiliser\n')
+                _, errors = catalog.check(target)
+                self.assertTrue(errors)
+
+    def test_block_style_related_list_is_validated(self):
+        data = {'metadata': {'hermes': {'related_skills': ['missing']}}}
+        self.assertIn('unknown related skill missing', catalog.check_related(PATH, data, NAMES)[0])
+
+
+
 class RealCatalog(unittest.TestCase):
     def test_catalog_is_clean(self):
         _, errors = catalog.check(Path(__file__).resolve().parents[2])
@@ -50,3 +71,4 @@ class RealCatalog(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

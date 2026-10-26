@@ -71,8 +71,10 @@ def check_pod(doc):
     for key in ("runAsUser", "runAsGroup", "fsGroup"):
         if key in spec.get("securityContext", {}):
             warnings.append(f"{name}: {key} figé au niveau du pod (SCC OpenShift)")
-    for container in spec.get("containers", []) + spec.get("initContainers", []):
-        found, warned = check_container(f"{name}/{container['name']}", container, doc["kind"] in LONG_LIVED)
+    containers = [(c, doc["kind"] in LONG_LIVED) for c in spec.get("containers", [])]
+    containers += [(c, c.get("restartPolicy") == "Always") for c in spec.get("initContainers", [])]
+    for container, long_lived in containers:
+        found, warned = check_container(f"{name}/{container['name']}", container, long_lived)
         errors, warnings = errors + found, warnings + warned
     errors += [f"{name}: volume hostPath interdit" for volume in spec.get("volumes", []) if "hostPath" in volume]
     return errors, warnings
@@ -104,3 +106,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

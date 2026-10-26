@@ -92,7 +92,7 @@ COPY --from=build /app/app /app/app
 ENV PATH="/app/.venv/bin:$PATH"
 EXPOSE 8080
 USER 1000
-CMD ["fastapi", "run", "app/main.py"]
+CMD ["fastapi", "run", "app/main.py", "--host", "0.0.0.0", "--port", "8080"]
 ```
 
 ### Kubernetes — securityContext
@@ -138,3 +138,4 @@ Détail et surcharge du chart : `fr-gov-create-helm-chart`.
 - `docker run --rm test` démarre sans se crasher
 - Trivy ne rapporte pas de CVE CRITICAL : `trivy image test`
 - Tester l'image en lecture seule avant de livrer : `docker run --read-only <image>`
+

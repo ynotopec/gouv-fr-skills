@@ -71,6 +71,18 @@ class VerifyDsfrTests(unittest.TestCase):
         self.assertNotIn('ASSET MANQUANT', result.stdout)
         self.assertIn('Classes reconnues : 100.0%', result.stdout)
 
+    def test_comments_and_declarations_do_not_define_classes(self):
+        for css in ('/* .fr-fake */ .fr-btn{}', '.fr-btn{content:".fr-fake"}',
+                    ':root{--fr-fake:1}', '[data-example=".fr-fake"]{}'):
+            with self.subTest(css=css):
+                result = self.check_page('<div class="fr-fake"></div>', css=css)
+                self.assertEqual(result.returncode, 1, result.stdout)
+
+    def test_media_query_and_pseudo_selectors(self):
+        result = self.check_page('<button class="fr-btn"></button>',
+                                css='@media (min-width:1px){.fr-btn:hover{color:red}}')
+        self.assertEqual(result.returncode, 0, result.stdout)
+
     def test_missing_input_returns_usage_error(self):
         with tempfile.TemporaryDirectory() as directory:
             result = subprocess.run(
@@ -83,3 +95,4 @@ class VerifyDsfrTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

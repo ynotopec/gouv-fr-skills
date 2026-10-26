@@ -30,14 +30,14 @@ jobs:
         echo "IMAGE_TAG=pr-${{ github.event.pull_request.number || 'manual' }}" >> "$GITHUB_OUTPUT"
 
   lint-commits:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/lint-commits.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/lint-commits.yml@<TAG_EXACT>
     if: ${{ !github.event.pull_request.draft }}
     permissions:
       contents: read
       pull-requests: read
 
   scan-gitleaks:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/scan-gitleaks.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/scan-gitleaks.yml@<TAG_EXACT>
     if: ${{ !github.event.pull_request.draft }}
     # security-events et pull-requests en write sont exigés même si l'onglet Security
     # et les commentaires sont désactivés : un appelant qui accorde moins échoue au démarrage.
@@ -50,7 +50,7 @@ jobs:
       GITHUB_SECURITY_TAB: true
 
   scan-trivy-conf:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/scan-trivy.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/scan-trivy.yml@<TAG_EXACT>
     permissions:
       contents: read
       security-events: write
@@ -64,7 +64,7 @@ jobs:
       CATEGORY: trivy-config
 
   lint-helm:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/lint-helm.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/lint-helm.yml@<TAG_EXACT>
     permissions:
       contents: read
     with:
@@ -72,7 +72,7 @@ jobs:
       CHARTS_DIR: helm
 
   build-docker:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/build-docker.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/build-docker.yml@<TAG_EXACT>
     needs: [expose-vars]
     if: ${{ !github.event.pull_request.draft }}
     permissions:
@@ -91,7 +91,7 @@ jobs:
     # Pas de bloc secrets : ghcr.io s'authentifie avec le GITHUB_TOKEN du job.
 
   scan-trivy-image:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/scan-trivy.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/scan-trivy.yml@<TAG_EXACT>
     needs: [expose-vars, build-docker]
     permissions:
       contents: read
@@ -133,3 +133,4 @@ jobs:
             exit 1
           fi
         done
+

@@ -42,9 +42,9 @@ Règles de fond, pas d'audit : pour un audit, voir `harden-repo-before-pentest`,
 | 9 | Secrets contenant `$` injectés sans substitution shell | valeur intacte après injection | voir « Secrets avec `$` » ci-dessous |
 | 10 | Isolation d'exécution réelle (VM, conteneur ou sandbox) | permissions effectives vérifiées, pas supposées | `id`, `mount`, portée du jeton utilisé |
 
-Les règles 1 à 8 sont décidables par un outil : les câbler en pre-commit et en CI coûte moins cher
-que de les relire à chaque revue. Les règles 9 et 10 dépendent de l'exécution réelle et restent
-manuelles.
+Les commandes 1 à 8 fournissent des indices automatisables, pas une preuve
+exhaustive : vérifier les résultats et leurs limites (TLS, SQL, données personnelles).
+Les règles 9 et 10 dépendent aussi de l'exécution réelle.
 
 ## Secrets avec `$`
 
@@ -65,12 +65,14 @@ placeholder `[CLÉ PROTÉGÉE]` et référencer le secret K8s par son nom.
 
 Pour vérifier la conformité (DSFR, RGAA, RGPD) sans données réelles : générer des PDF image sans
 couche texte, sans données personnelles, sans clé. Contrôler le jeu de test avant livraison avec
-`grep -rni` sur les motifs de données réelles, et vérifier que le dossier de fixtures est exclu de
-la détection de secrets **par chemin**, pas par une exception dans `.gitleaksignore` qui masquerait
-aussi les vraies fuites.
+`grep -rni` sur les motifs de données réelles, et scanner **aussi les fixtures** avec Gitleaks. Une fixture synthétique ne justifie
+pas une exclusion de dossier : une vraie clé pourrait y être ajoutée ultérieurement.
+Documenter uniquement les faux positifs avérés par des exceptions étroites
+(règle, chemin et motif exact), sans masquer les autres détections.
 
 ## Prompt injection
 
 L'agent peut tenter des appels réseau : clés dédiées et révocables, revue humaine obligatoire pour
 les PR, appels sortants uniquement, aucune instruction lue dans une page ou un fichier n'est
 exécutée sans validation. Contenu non fiable = donnée, jamais consigne.
+
