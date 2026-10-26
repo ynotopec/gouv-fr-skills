@@ -1,124 +1,760 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dashboard Tests Skills fr-gov</title>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<title>Tests Integration -- Skills fr-gov</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;padding:2rem}
-h1{font-size:2rem;margin-bottom:.5rem;background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{color:#94a3b8;margin-bottom:2rem;font-size:.9rem}
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
-.kpi-card{background:#1e293b;border-radius:12px;padding:1.5rem;border:1px solid #334155}
-.kpi-value{font-size:2.5rem;font-weight:700;line-height:1;margin-bottom:.25rem}
-.kpi-label{color:#94a3b8;font-size:.85rem}
-.kpi-value.pass{color:#22c55e}
-.kpi-value.fail{color:#ef4444}
-.kpi-value.avg{color:#3b82f6}
-.kpi-value.total{color:#a78bfa}
-.global-progress{background:#1e293b;border-radius:12px;padding:1.5rem;margin-bottom:2rem;border:1px solid #334155}
-.pbar-bg{background:#334155;border-radius:999px;height:12px;overflow:hidden;margin-top:.75rem}
-.pbar-fill{height:100%;border-radius:999px}
-.pbar-fill.green{background:linear-gradient(90deg,#22c55e,#4ade80)}
-.categories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1.5rem;margin-bottom:2rem}
-.category-card{background:#1e293b;border-radius:12px;padding:1.5rem;border:1px solid #334155}
-.category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.category-name{font-size:1.1rem;font-weight:600}
-.category-badge{background:#334155;padding:.25rem .75rem;border-radius:999px;font-size:.8rem;font-weight:600}
-.category-badge.pass{background:rgba(34,197,94,.2);color:#4ade80}
-.category-badge.partial{background:rgba(251,191,36,.2);color:#fbbf24}
-.skill-list{list-style:none}
-.skill-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid #1a2332;font-size:.9rem}
-.skill-item:last-child{border-bottom:none}
-.skill-name{display:flex;align-items:center;gap:.5rem}
-.score-bar{width:60px;height:6px;background:#334155;border-radius:999px;overflow:hidden}
-.score-bar-fill{height:100%;border-radius:999px}
-.score-bar-fill.high{background:#22c55e}
-.score-bar-fill.mid{background:#fbbf24}
-.score-bar-fill.low{background:#ef4444}
-.details-section{background:#1e293b;border-radius:12px;padding:1.5rem;border:1px solid #334155;margin-bottom:2rem;overflow-x:auto}
-.details-section h2{margin-bottom:1rem;font-size:1.2rem}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
-th,td{text-align:left;padding:.75rem;border-bottom:1px solid #334155}
-th{color:#94a3b8;font-weight:500}
-tr:hover{background:#253347}
-.status-pass{color:#22c55e;font-weight:600}
-.status-fail{color:#ef4444;font-weight:600}
-footer{text-align:center;color:#475569;font-size:.8rem;margin-top:2rem}
-@media(max-width:768px){body{padding:1rem}.categories-grid{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-<h1>\ud83d\udcca Dashboard Tests Skills fr-gov</h1>
-<p class="subtitle">Validation automatique de 42 skills \u2022 fr-gov: 100.0%</p>
-<div class="kpi-grid">
-  <div class="kpi-card"><div class="kpi-value total">42</div><div class="kpi-label">Skills analys\u00e9es</div></div>
-  <div class="kpi-card"><div class="kpi-value pass">42</div><div class="kpi-label">Valid\u00e9es</div></div>
-  <div class="kpi-card"><div class="kpi-value fail">0</div><div class="kpi-label">\u00c9checs</div></div>
-  <div class="kpi-card"><div class="kpi-value avg">94.8%</div><div class="kpi-label">Score moyen</div></div>
+body{font-family:system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0;padding:2rem}
+h1{color:#00c853;margin-bottom:2rem}
+h2{color:#00c853;margin:2rem 0 1rem}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:2rem}
+.kpi-card{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:1.5rem;text-align:center}
+.kpi-value{font-size:2rem;font-weight:bold;color:#00c853}
+.kpi-label{color:#888;font-size:0.9rem}
+.category{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:1.5rem;margin-bottom:1rem}
+.skill{border-bottom:1px solid #333;padding:0.75rem 0}
+.skill:last-child{border-bottom:none}
+.sn{font-weight:bold;color:#fff}
+.sc{color:#888;font-size:0.85rem}
+.sp{color:#00c853}.sf{color:#f44336}.ss{color:#ff9800}
+.check{display:flex;justify-content:space-between;padding:0.25rem 0;font-size:0.85rem}
+.check-pass{color:#00c853}.check-fail{color:#f44336}
+</style></head><body><h1>Tests Integration -- Skills fr-gov</h1>
+<div class="kpi">
+<div class="kpi-card"><div class="kpi-value">42</div><div class="kpi-label">Skills testes</div></div>
+<div class="kpi-card"><div class="kpi-value">36</div><div class="kpi-label">Passes</div></div>
+<div class="kpi-card"><div class="kpi-value">0</div><div class="kpi-label">Echoues</div></div>
+<div class="kpi-card"><div class="kpi-value">6</div><div class="kpi-label">Non testes</div></div>
+<div class="kpi-card"><div class="kpi-value">245/251</div><div class="kpi-label">Checks totaux</div></div>
 </div>
-<div class="global-progress">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <span>Taux de r\u00e9ussite global</span>
-    <span style="font-weight:700;font-size:1.2rem;color:#22c55e">94.8%</span>
-  </div>
-  <div class="pbar-bg"><div class="pbar-fill green" style="width:94.8%"></div></div>
-  <div style="margin-top:.75rem;font-size:.8rem;color:#94a3b8">577 checks globaux satisfaisants sur 608</div>
+<h2>code</h2><div class="category">
+<div class="skill">
+<span class="sn">detect-stale-service-names</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS k8s/deployment.yaml</span>
 </div>
-<h2 style="margin-bottom:1rem">Cat\u00e9gories</h2>
-<div class="categories-grid">
-<div class="category-card"><div class="category-header"><div class="category-name">fr-gov</div><div class="category-badge pass">✅ 100.0%</div></div><div style="font-size:.8rem;color:#94a3b8;margin-bottom:1rem">42 skills \u2022 577/608 checks \u2022 Moy. 94.8%</div><div class="pbar-bg" style="margin-bottom:1rem"><div class="pbar-fill green" style="width:94.8%"></div></div><ul class="skill-list"><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-build-vue-frontend</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-choose-tech-stack</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-install-dev-tools</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-project-conventions</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-scaffold-backend-api</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-set-up-pnpm-monorepo</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-configure-cookie-consent</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-query-open-data-api</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-build-design-system-charts</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-build-design-system-emails</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-build-react-design-system</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-build-vue-design-system</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-set-up-design-system</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-containerize-app-for-k8s</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-create-helm-chart</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-set-up-github-actions-ci</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-build-collab-suite-ui</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:100.0%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">100.0%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-render-technical-architecture-docx</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:94.4%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">94.4%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-set-up-cloud-pi-native-cicd</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:93.8%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">93.8%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>smoke-test-api</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:93.8%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">93.8%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-find-cybersecurity-guide</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:93.8%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">93.8%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>detect-stale-service-names</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-configure-linting</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-rest-api-conventions</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-set-up-project-layout</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>init-repo</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-check-web-compliance</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-fill-technical-architecture-doc</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-query-public-communication-data</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-add-design-system-icons</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-deploy-to-cloud-pi-native</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-write-digital-factory-workflows</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>audit-llm-tool-identity</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>audit-repo-safety</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-secure-coding-rules</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>harden-repo-before-pentest</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill high" style="width:92.9%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">92.9%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>investigate-bug</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill mid" style="width:85.7%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">85.7%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>review-code</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill mid" style="width:85.7%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">85.7%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>ship-a-dev-task</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill mid" style="width:85.7%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">85.7%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>write-adr</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill mid" style="width:85.7%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">85.7%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>fr-gov-audit-app-compliance</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill mid" style="width:85.7%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">85.7%</span></div></li><li class="skill-item"><div class="skill-name"><span>✅</span><span>redteam-llm-prompt-injection</span></div><div style="display:flex;align-items:center;gap:.5rem"><div class="score-bar"><div class="score-bar-fill mid" style="width:85.7%"></div></div><span style="font-family:monospace;font-size:.85rem;color:#94a3b8">85.7%</span></div></li></ul></div>
+<div class="check check-pass"><span>PASS k8s/service.yaml</span>
 </div>
-<div class="details-section">
-  <h2>\ud83d\udccb D\u00e9tail par skill</h2>
-  <table>
-    <thead><tr><th>Skill</th><th>Cat\u00e9gorie</th><th>Checks</th><th>Score</th><th>Fichiers</th><th>Sections</th><th>Statut</th></tr></thead>
-    <tbody><tr><td>fr-gov-build-vue-frontend</td><td>fr-gov/code</td><td>14/14</td><td>100.0%</td><td>1</td><td>22</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-choose-tech-stack</td><td>fr-gov/code</td><td>14/14</td><td>100.0%</td><td>1</td><td>34</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-install-dev-tools</td><td>fr-gov/code</td><td>15/15</td><td>100.0%</td><td>6</td><td>9</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-project-conventions</td><td>fr-gov/code</td><td>16/16</td><td>100.0%</td><td>5</td><td>22</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-scaffold-backend-api</td><td>fr-gov/code</td><td>17/17</td><td>100.0%</td><td>6</td><td>11</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-set-up-pnpm-monorepo</td><td>fr-gov/code</td><td>14/14</td><td>100.0%</td><td>1</td><td>19</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-configure-cookie-consent</td><td>fr-gov/compliance</td><td>14/14</td><td>100.0%</td><td>1</td><td>7</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-query-open-data-api</td><td>fr-gov/data</td><td>14/14</td><td>100.0%</td><td>3</td><td>14</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-build-design-system-charts</td><td>fr-gov/design-system</td><td>14/14</td><td>100.0%</td><td>1</td><td>7</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-build-design-system-emails</td><td>fr-gov/design-system</td><td>14/14</td><td>100.0%</td><td>1</td><td>14</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-build-react-design-system</td><td>fr-gov/design-system</td><td>14/14</td><td>100.0%</td><td>3</td><td>15</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-build-vue-design-system</td><td>fr-gov/design-system</td><td>14/14</td><td>100.0%</td><td>1</td><td>16</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-set-up-design-system</td><td>fr-gov/design-system</td><td>16/16</td><td>100.0%</td><td>5</td><td>18</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-containerize-app-for-k8s</td><td>fr-gov/devops</td><td>14/14</td><td>100.0%</td><td>1</td><td>18</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-create-helm-chart</td><td>fr-gov/devops</td><td>16/16</td><td>100.0%</td><td>5</td><td>9</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-set-up-github-actions-ci</td><td>fr-gov/devops</td><td>14/14</td><td>100.0%</td><td>1</td><td>7</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-build-collab-suite-ui</td><td>fr-gov/lasuite</td><td>14/14</td><td>100.0%</td><td>4</td><td>16</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-render-technical-architecture-docx</td><td>fr-gov/compliance</td><td>17/18</td><td>94.4%</td><td>8</td><td>11</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-set-up-cloud-pi-native-cicd</td><td>fr-gov/devops</td><td>15/16</td><td>93.8%</td><td>9</td><td>7</td><td class="status-pass">PASS</td></tr>
-<tr><td>smoke-test-api</td><td>fr-gov/devops</td><td>15/16</td><td>93.8%</td><td>4</td><td>8</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-find-cybersecurity-guide</td><td>fr-gov/security</td><td>15/16</td><td>93.8%</td><td>6</td><td>5</td><td class="status-pass">PASS</td></tr>
-<tr><td>detect-stale-service-names</td><td>fr-gov/code</td><td>13/14</td><td>92.9%</td><td>1</td><td>8</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-configure-linting</td><td>fr-gov/code</td><td>13/14</td><td>92.9%</td><td>1</td><td>18</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-rest-api-conventions</td><td>fr-gov/code</td><td>13/14</td><td>92.9%</td><td>1</td><td>25</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-set-up-project-layout</td><td>fr-gov/code</td><td>13/14</td><td>92.9%</td><td>1</td><td>6</td><td class="status-pass">PASS</td></tr>
-<tr><td>init-repo</td><td>fr-gov/code</td><td>13/14</td><td>92.9%</td><td>1</td><td>5</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-check-web-compliance</td><td>fr-gov/compliance</td><td>13/14</td><td>92.9%</td><td>3</td><td>12</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-fill-technical-architecture-doc</td><td>fr-gov/compliance</td><td>13/14</td><td>92.9%</td><td>4</td><td>5</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-query-public-communication-data</td><td>fr-gov/data</td><td>13/14</td><td>92.9%</td><td>1</td><td>6</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-add-design-system-icons</td><td>fr-gov/design-system</td><td>13/14</td><td>92.9%</td><td>1</td><td>9</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-deploy-to-cloud-pi-native</td><td>fr-gov/devops</td><td>13/14</td><td>92.9%</td><td>3</td><td>11</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-write-digital-factory-workflows</td><td>fr-gov/devops</td><td>13/14</td><td>92.9%</td><td>4</td><td>8</td><td class="status-pass">PASS</td></tr>
-<tr><td>audit-llm-tool-identity</td><td>fr-gov/security</td><td>13/14</td><td>92.9%</td><td>1</td><td>15</td><td class="status-pass">PASS</td></tr>
-<tr><td>audit-repo-safety</td><td>fr-gov/security</td><td>13/14</td><td>92.9%</td><td>1</td><td>12</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-secure-coding-rules</td><td>fr-gov/security</td><td>13/14</td><td>92.9%</td><td>1</td><td>8</td><td class="status-pass">PASS</td></tr>
-<tr><td>harden-repo-before-pentest</td><td>fr-gov/security</td><td>13/14</td><td>92.9%</td><td>2</td><td>9</td><td class="status-pass">PASS</td></tr>
-<tr><td>investigate-bug</td><td>fr-gov/code</td><td>12/14</td><td>85.7%</td><td>1</td><td>8</td><td class="status-pass">PASS</td></tr>
-<tr><td>review-code</td><td>fr-gov/code</td><td>12/14</td><td>85.7%</td><td>9</td><td>7</td><td class="status-pass">PASS</td></tr>
-<tr><td>ship-a-dev-task</td><td>fr-gov/code</td><td>12/14</td><td>85.7%</td><td>1</td><td>5</td><td class="status-pass">PASS</td></tr>
-<tr><td>write-adr</td><td>fr-gov/code</td><td>12/14</td><td>85.7%</td><td>1</td><td>16</td><td class="status-pass">PASS</td></tr>
-<tr><td>fr-gov-audit-app-compliance</td><td>fr-gov/compliance</td><td>12/14</td><td>85.7%</td><td>2</td><td>6</td><td class="status-pass">PASS</td></tr>
-<tr><td>redteam-llm-prompt-injection</td><td>fr-gov/security</td><td>12/14</td><td>85.7%</td><td>1</td><td>5</td><td class="status-pass">PASS</td></tr>
-    </tbody>
-  </table>
+<div class="check check-pass"><span>PASS NAME_MAPPING.md</span>
 </div>
-<div style="background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:1.5rem;margin-bottom:2rem"><h2 style="color:#22c55e;margin-bottom:.5rem">\u2705 Aucune erreur</h2><p style="color:#94a3b8">Toutes les skills ont pass\u00e9 les checks.</p></div><footer>G\u00e9n\u00e9r\u00e9 automatiquement \u2022 608 checks ex\u00e9cut\u00e9s</footer>
-</body>
-</html>
+<div class="check check-pass"><span>PASS Table</span>
+</div>
+<div class="check check-pass"><span>PASS app: label</span>
+</div>
+<div class="check check-pass"><span>PASS app: service-frontend</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-build-vue-frontend</span> 
+<span class="sc">1 checks -- No test for fr-gov-build-vue-frontend</span> 
+<span class="sskip">[SKIP]</span>
+<div class="check check-fail"><span>FAIL Test exists</span>
+<span>No function in registry</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-choose-tech-stack</span> 
+<span class="sc">1 checks -- No test for fr-gov-choose-tech-stack</span> 
+<span class="sskip">[SKIP]</span>
+<div class="check check-fail"><span>FAIL Test exists</span>
+<span>No function in registry</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-configure-linting</span> 
+<span class="sc">1 checks -- No test for fr-gov-configure-linting</span> 
+<span class="sskip">[SKIP]</span>
+<div class="check check-fail"><span>FAIL Test exists</span>
+<span>No function in registry</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-install-dev-tools</span> 
+<span class="sc">1 checks -- No test for fr-gov-install-dev-tools</span> 
+<span class="sskip">[SKIP]</span>
+<div class="check check-fail"><span>FAIL Test exists</span>
+<span>No function in registry</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-project-conventions</span> 
+<span class="sc">7 checks -- All 7 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS api_client.py</span>
+</div>
+<div class="check check-pass"><span>PASS database.py</span>
+</div>
+<div class="check check-pass"><span>PASS Files have comments</span>
+</div>
+<div class="check check-pass"><span>PASS Classes have comments</span>
+</div>
+<div class="check check-pass"><span>PASS Methods async</span>
+</div>
+<div class="check check-pass"><span>PASS Type hints</span>
+</div>
+<div class="check check-pass"><span>PASS Params used</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-rest-api-conventions</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS /api/v1/</span>
+</div>
+<div class="check check-pass"><span>PASS Pagination</span>
+</div>
+<div class="check check-pass"><span>PASS HTTP 404</span>
+</div>
+<div class="check check-pass"><span>PASS detail</span>
+</div>
+<div class="check check-pass"><span>PASS GET</span>
+</div>
+<div class="check check-pass"><span>PASS PUT</span>
+</div>
+<div class="check check-pass"><span>PASS DELETE</span>
+</div>
+<div class="check check-pass"><span>PASS Docstrings present</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-scaffold-backend-api</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS main.py</span>
+</div>
+<div class="check check-pass"><span>PASS Has FastAPI</span>
+</div>
+<div class="check check-pass"><span>PASS Has /health</span>
+</div>
+<div class="check check-pass"><span>PASS BaseModel</span>
+</div>
+<div class="check check-pass"><span>PASS HTTPException</span>
+</div>
+<div class="check check-pass"><span>PASS routes.py</span>
+</div>
+<div class="check check-pass"><span>PASS requirements.txt</span>
+</div>
+<div class="check check-pass"><span>PASS fastapi in deps</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-set-up-pnpm-monorepo</span> 
+<span class="sc">13 checks -- All 13 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS src/</span>
+</div>
+<div class="check check-pass"><span>PASS src/components/</span>
+</div>
+<div class="check check-pass"><span>PASS src/pages/</span>
+</div>
+<div class="check check-pass"><span>PASS src/services/</span>
+</div>
+<div class="check check-pass"><span>PASS src/styles/</span>
+</div>
+<div class="check check-pass"><span>PASS AGENTS.md</span>
+</div>
+<div class="check check-pass"><span>PASS BACKLOG.md</span>
+</div>
+<div class="check check-pass"><span>PASS TESTS.md</span>
+</div>
+<div class="check check-pass"><span>PASS FEEDBACK.md</span>
+</div>
+<div class="check check-pass"><span>PASS config.yaml</span>
+</div>
+<div class="check check-pass"><span>PASS skills.txt</span>
+</div>
+<div class="check check-pass"><span>PASS config has opencode</span>
+</div>
+<div class="check check-pass"><span>PASS AGENTS content</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-set-up-project-layout</span> 
+<span class="sc">13 checks -- All 13 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS src/</span>
+</div>
+<div class="check check-pass"><span>PASS src/components/</span>
+</div>
+<div class="check check-pass"><span>PASS src/pages/</span>
+</div>
+<div class="check check-pass"><span>PASS src/services/</span>
+</div>
+<div class="check check-pass"><span>PASS src/styles/</span>
+</div>
+<div class="check check-pass"><span>PASS AGENTS.md</span>
+</div>
+<div class="check check-pass"><span>PASS BACKLOG.md</span>
+</div>
+<div class="check check-pass"><span>PASS TESTS.md</span>
+</div>
+<div class="check check-pass"><span>PASS FEEDBACK.md</span>
+</div>
+<div class="check check-pass"><span>PASS config.yaml</span>
+</div>
+<div class="check check-pass"><span>PASS skills.txt</span>
+</div>
+<div class="check check-pass"><span>PASS config has opencode</span>
+</div>
+<div class="check check-pass"><span>PASS AGENTS content</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">init-repo</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS README exists</span>
+</div>
+<div class="check check-pass"><span>PASS .gitignore exists</span>
+</div>
+<div class="check check-pass"><span>PASS LICENSE exists</span>
+</div>
+<div class="check check-pass"><span>PASS .gitignore excludes .env</span>
+</div>
+<div class="check check-pass"><span>PASS README has title</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">investigate-bug</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS BUG_INVESTIGATION.md</span>
+</div>
+<div class="check check-pass"><span>PASS Hypotheses</span>
+</div>
+<div class="check check-pass"><span>PASS Reproduction</span>
+</div>
+<div class="check check-pass"><span>PASS Code block</span>
+</div>
+<div class="check check-pass"><span>PASS Root Cause</span>
+</div>
+<div class="check check-pass"><span>PASS Fallback</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">review-code</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS CODE_REVIEW.md</span>
+</div>
+<div class="check check-pass"><span>PASS Security</span>
+</div>
+<div class="check check-pass"><span>PASS Quality</span>
+</div>
+<div class="check check-pass"><span>PASS Suggestions</span>
+</div>
+<div class="check check-pass"><span>PASS error handling</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">ship-a-dev-task</span> 
+<span class="sc">7 checks -- All 7 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS src/main.py</span>
+</div>
+<div class="check check-pass"><span>PASS tests/test_main.py</span>
+</div>
+<div class="check check-pass"><span>PASS SHIP_CHECKLIST.md</span>
+</div>
+<div class="check check-pass"><span>PASS Implementation</span>
+</div>
+<div class="check check-pass"><span>PASS Tests</span>
+</div>
+<div class="check check-pass"><span>PASS pytest</span>
+</div>
+<div class="check check-pass"><span>PASS import</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">write-adr</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS docs/architecture/</span>
+</div>
+<div class="check check-pass"><span>PASS ADR file</span>
+</div>
+<div class="check check-pass"><span>PASS ADR-001</span>
+</div>
+<div class="check check-pass"><span>PASS Context</span>
+</div>
+<div class="check check-pass"><span>PASS Decision</span>
+</div>
+<div class="check check-pass"><span>PASS Consequences</span>
+</div>
+</div>
+</div>
+<h2>compliance</h2><div class="category">
+<div class="skill">
+<span class="sn">fr-gov-audit-app-compliance</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS checker.py</span>
+</div>
+<div class="check check-pass"><span>PASS DocConformite</span>
+</div>
+<div class="check check-pass"><span>PASS def check</span>
+</div>
+<div class="check check-pass"><span>PASS generate_report</span>
+</div>
+<div class="check check-pass"><span>PASS required_fields</span>
+</div>
+<div class="check check-pass"><span>PASS format_valid</span>
+</div>
+<div class="check check-pass"><span>PASS passed</span>
+</div>
+<div class="check check-pass"><span>PASS metadata_present</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-check-web-compliance</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS checker.py</span>
+</div>
+<div class="check check-pass"><span>PASS DocConformite</span>
+</div>
+<div class="check check-pass"><span>PASS def check</span>
+</div>
+<div class="check check-pass"><span>PASS generate_report</span>
+</div>
+<div class="check check-pass"><span>PASS required_fields</span>
+</div>
+<div class="check check-pass"><span>PASS format_valid</span>
+</div>
+<div class="check check-pass"><span>PASS passed</span>
+</div>
+<div class="check check-pass"><span>PASS metadata_present</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-configure-cookie-consent</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS checker.py</span>
+</div>
+<div class="check check-pass"><span>PASS DocConformite</span>
+</div>
+<div class="check check-pass"><span>PASS def check</span>
+</div>
+<div class="check check-pass"><span>PASS generate_report</span>
+</div>
+<div class="check check-pass"><span>PASS required_fields</span>
+</div>
+<div class="check check-pass"><span>PASS format_valid</span>
+</div>
+<div class="check check-pass"><span>PASS passed</span>
+</div>
+<div class="check check-pass"><span>PASS metadata_present</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-fill-technical-architecture-doc</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS tech-architecture.md</span>
+</div>
+<div class="check check-pass"><span>PASS Contexte</span>
+</div>
+<div class="check check-pass"><span>PASS Architecture</span>
+</div>
+<div class="check check-pass"><span>PASS Frontend</span>
+</div>
+<div class="check check-pass"><span>PASS Securite</span>
+</div>
+<div class="check check-pass"><span>PASS Vault</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-render-technical-architecture-docx</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS checker.py</span>
+</div>
+<div class="check check-pass"><span>PASS DocConformite</span>
+</div>
+<div class="check check-pass"><span>PASS def check</span>
+</div>
+<div class="check check-pass"><span>PASS generate_report</span>
+</div>
+<div class="check check-pass"><span>PASS required_fields</span>
+</div>
+<div class="check check-pass"><span>PASS format_valid</span>
+</div>
+<div class="check check-pass"><span>PASS passed</span>
+</div>
+<div class="check check-pass"><span>PASS metadata_present</span>
+</div>
+</div>
+</div>
+<h2>data</h2><div class="category">
+<div class="skill">
+<span class="sn">fr-gov-query-open-data-api</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS open_data.py</span>
+</div>
+<div class="check check-pass"><span>PASS data.gouv.fr</span>
+</div>
+<div class="check check-pass"><span>PASS csv</span>
+</div>
+<div class="check check-pass"><span>PASS get_format</span>
+</div>
+<div class="check check-pass"><span>PASS search_datasets</span>
+</div>
+<div class="check check-pass"><span>PASS get_dataset_format</span>
+</div>
+<div class="check check-pass"><span>PASS download_resource</span>
+</div>
+<div class="check check-pass"><span>PASS Docstrings present</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-query-public-communication-data</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS communications.py</span>
+</div>
+<div class="check check-pass"><span>PASS type</span>
+</div>
+<div class="check check-pass"><span>PASS press_releases</span>
+</div>
+<div class="check check-pass"><span>PASS minister</span>
+</div>
+<div class="check check-pass"><span>PASS public_figure</span>
+</div>
+<div class="check check-pass"><span>PASS items</span>
+</div>
+</div>
+</div>
+<h2>design-system</h2><div class="category">
+<div class="skill">
+<span class="sn">fr-gov-add-design-system-icons</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS icons.html</span>
+</div>
+<div class="check check-pass"><span>PASS fr-icon-</span>
+</div>
+<div class="check check-pass"><span>PASS fr-icon--sm</span>
+</div>
+<div class="check check-pass"><span>PASS fr-text--danger</span>
+</div>
+<div class="check check-pass"><span>PASS custom-icon.svg</span>
+</div>
+<div class="check check-pass"><span>PASS viewBox</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-build-design-system-charts</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS charts.html</span>
+</div>
+<div class="check check-pass"><span>PASS fr-card</span>
+</div>
+<div class="check check-pass"><span>PASS fr-chart</span>
+</div>
+<div class="check check-pass"><span>PASS canvas</span>
+</div>
+<div class="check check-pass"><span>PASS Chart</span>
+</div>
+<div class="check check-pass"><span>PASS charts.min.js</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-build-design-system-emails</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS confirmation.html</span>
+</div>
+<div class="check check-pass"><span>PASS lang=fr</span>
+</div>
+<div class="check check-pass"><span>PASS fr-text--sm</span>
+</div>
+<div class="check check-pass"><span>PASS role=presentation</span>
+</div>
+<div class="check check-pass"><span>PASS width=100%</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-build-react-design-system</span> 
+<span class="sc">1 checks -- No test for fr-gov-build-react-design-system</span> 
+<span class="sskip">[SKIP]</span>
+<div class="check check-fail"><span>FAIL Test exists</span>
+<span>No function in registry</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-build-vue-design-system</span> 
+<span class="sc">7 checks -- All 7 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS dsfr.min.css</span>
+</div>
+<div class="check check-pass"><span>PASS assets/utility/</span>
+</div>
+<div class="check check-pass"><span>PASS index.html</span>
+</div>
+<div class="check check-pass"><span>PASS dsfr.min.css link</span>
+</div>
+<div class="check check-pass"><span>PASS fr-header</span>
+</div>
+<div class="check check-pass"><span>PASS fr-container</span>
+</div>
+<div class="check check-pass"><span>PASS lang=fr</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-set-up-design-system</span> 
+<span class="sc">7 checks -- All 7 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS dsfr.min.css</span>
+</div>
+<div class="check check-pass"><span>PASS assets/utility/</span>
+</div>
+<div class="check check-pass"><span>PASS index.html</span>
+</div>
+<div class="check check-pass"><span>PASS dsfr.min.css link</span>
+</div>
+<div class="check check-pass"><span>PASS fr-header</span>
+</div>
+<div class="check check-pass"><span>PASS fr-container</span>
+</div>
+<div class="check check-pass"><span>PASS lang=fr</span>
+</div>
+</div>
+</div>
+<h2>devops</h2><div class="category">
+<div class="skill">
+<span class="sn">fr-gov-containerize-app-for-k8s</span> 
+<span class="sc">7 checks -- All 7 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS Dockerfile</span>
+</div>
+<div class="check check-pass"><span>PASS slim</span>
+</div>
+<div class="check check-pass"><span>PASS USER</span>
+</div>
+<div class="check check-pass"><span>PASS EXPOSE</span>
+</div>
+<div class="check check-pass"><span>PASS CMD</span>
+</div>
+<div class="check check-pass"><span>PASS requirements.txt</span>
+</div>
+<div class="check check-pass"><span>PASS pydantic</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-create-helm-chart</span> 
+<span class="sc">9 checks -- All 9 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS chart/Chart.yaml</span>
+</div>
+<div class="check check-pass"><span>PASS chart/values.yaml</span>
+</div>
+<div class="check check-pass"><span>PASS chart/templates/</span>
+</div>
+<div class="check check-pass"><span>PASS Helm syntax</span>
+</div>
+<div class="check check-pass"><span>PASS Helm close</span>
+</div>
+<div class="check check-pass"><span>PASS apiVersion</span>
+</div>
+<div class="check check-pass"><span>PASS replicaCount</span>
+</div>
+<div class="check check-pass"><span>PASS limits</span>
+</div>
+<div class="check check-pass"><span>PASS securityContext</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-deploy-to-cloud-pi-native</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS vault-config.yaml</span>
+</div>
+<div class="check check-pass"><span>PASS kyverno.yaml</span>
+</div>
+<div class="check check-pass"><span>PASS vault://</span>
+</div>
+<div class="check check-pass"><span>PASS kyverno.io</span>
+</div>
+<div class="check check-pass"><span>PASS runAsNonRoot</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-set-up-cloud-pi-native-cicd</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS dso.yml</span>
+</div>
+<div class="check check-pass"><span>PASS scan:</span>
+</div>
+<div class="check check-pass"><span>PASS build:</span>
+</div>
+<div class="check check-pass"><span>PASS deploy:</span>
+</div>
+<div class="check check-pass"><span>PASS registry.dso.fr</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-set-up-github-actions-ci</span> 
+<span class="sc">7 checks -- All 7 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS ci.yml</span>
+</div>
+<div class="check check-pass"><span>PASS lint:</span>
+</div>
+<div class="check check-pass"><span>PASS test:</span>
+</div>
+<div class="check check-pass"><span>PASS actions/checkout</span>
+</div>
+<div class="check check-pass"><span>PASS setup-python</span>
+</div>
+<div class="check check-pass"><span>PASS pytest</span>
+</div>
+<div class="check check-pass"><span>PASS on:</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-write-digital-factory-workflows</span> 
+<span class="sc">4 checks -- All 4 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS release.yml</span>
+</div>
+<div class="check check-pass"><span>PASS tags:</span>
+</div>
+<div class="check check-pass"><span>PASS Create Release</span>
+</div>
+<div class="check check-pass"><span>PASS helm-publish</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">smoke-test-api</span> 
+<span class="sc">1 checks -- No test for smoke-test-api</span> 
+<span class="sskip">[SKIP]</span>
+<div class="check check-fail"><span>FAIL Test exists</span>
+<span>No function in registry</span>
+</div>
+</div>
+</div>
+<h2>lasuite</h2><div class="category">
+<div class="skill">
+<span class="sn">fr-gov-build-collab-suite-ui</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS sharing.html</span>
+</div>
+<div class="check check-pass"><span>PASS fr-card</span>
+</div>
+<div class="check check-pass"><span>PASS Partage</span>
+</div>
+<div class="check check-pass"><span>PASS navigation.js</span>
+</div>
+<div class="check check-pass"><span>PASS hash</span>
+</div>
+<div class="check check-pass"><span>PASS postMessage</span>
+</div>
+</div>
+</div>
+<h2>security</h2><div class="category">
+<div class="skill">
+<span class="sn">audit-llm-tool-identity</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS auth.py</span>
+</div>
+<div class="check check-pass"><span>PASS AuthContext</span>
+</div>
+<div class="check check-pass"><span>PASS user_id</span>
+</div>
+<div class="check check-pass"><span>PASS sub</span>
+</div>
+<div class="check check-pass"><span>PASS isolated</span>
+</div>
+<div class="check check-pass"><span>PASS vault_bound</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">audit-repo-safety</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS SECURITY_AUDIT.md</span>
+</div>
+<div class="check check-pass"><span>PASS secrets</span>
+</div>
+<div class="check check-pass"><span>PASS auto-execution</span>
+</div>
+<div class="check check-pass"><span>PASS CI/CD</span>
+</div>
+<div class="check check-pass"><span>PASS Findings</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-find-cybersecurity-guide</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS guides.py</span>
+</div>
+<div class="check check-pass"><span>PASS ANSSI</span>
+</div>
+<div class="check check-pass"><span>PASS ssi.gouv.fr</span>
+</div>
+<div class="check check-pass"><span>PASS search_guides</span>
+</div>
+<div class="check check-pass"><span>PASS topics</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">fr-gov-secure-coding-rules</span> 
+<span class="sc">6 checks -- All 6 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS config.py</span>
+</div>
+<div class="check check-pass"><span>PASS No hardcoded secrets</span>
+</div>
+<div class="check check-pass"><span>PASS Param queries</span>
+</div>
+<div class="check check-pass"><span>PASS .env in gitignore</span>
+</div>
+<div class="check check-pass"><span>PASS *.key in gitignore</span>
+</div>
+<div class="check check-pass"><span>PASS No triple-quote issues</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">harden-repo-before-pentest</span> 
+<span class="sc">8 checks -- All 8 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS app.py</span>
+</div>
+<div class="check check-pass"><span>PASS SECURITY_AUDIT.md</span>
+</div>
+<div class="check check-pass"><span>PASS sanitize</span>
+</div>
+<div class="check check-pass"><span>PASS rate_limit</span>
+</div>
+<div class="check check-pass"><span>PASS escape_xss</span>
+</div>
+<div class="check check-pass"><span>PASS A01</span>
+</div>
+<div class="check check-pass"><span>PASS Cryptographic</span>
+</div>
+<div class="check check-pass"><span>PASS Injection</span>
+</div>
+</div>
+<div class="skill">
+<span class="sn">redteam-llm-prompt-injection</span> 
+<span class="sc">5 checks -- All 5 checks passed</span> 
+<span class="spass">[PASS]</span>
+<div class="check check-pass"><span>PASS guard.py</span>
+</div>
+<div class="check check-pass"><span>PASS ignore previous</span>
+</div>
+<div class="check check-pass"><span>PASS validate_guard</span>
+</div>
+<div class="check check-pass"><span>PASS guard_applied</span>
+</div>
+<div class="check check-pass"><span>PASS is_injection</span>
+</div>
+</div>
+</div>
+</body></html>

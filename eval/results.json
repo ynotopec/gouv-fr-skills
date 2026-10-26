@@ -1,0 +1,1811 @@
+{
+  "timestamp": "2026-10-26T15:47:39.159665",
+  "total_skills": 42,
+  "passed": 36,
+  "failed": 0,
+  "skipped": 6,
+  "errors": 0,
+  "skills": [
+    {
+      "skill": "fr-gov-scaffold-backend-api",
+      "category": "code",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "main.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Has FastAPI",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Has /health",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "BaseModel",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "HTTPException",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "routes.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "requirements.txt",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fastapi in deps",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.00021266937255859375
+    },
+    {
+      "skill": "fr-gov-build-vue-frontend",
+      "category": "code",
+      "status": "skip",
+      "check_count": 1,
+      "passed": 0,
+      "failed": 1,
+      "pass_rate": 0.0,
+      "checks": [
+        {
+          "check": "Test exists",
+          "passed": false,
+          "detail": "No function in registry"
+        }
+      ],
+      "summary": "No test for fr-gov-build-vue-frontend",
+      "duration_s": 0.0
+    },
+    {
+      "skill": "write-adr",
+      "category": "code",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "docs/architecture/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "ADR file",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "ADR-001",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Context",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Decision",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Consequences",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 0.00012040138244628906
+    },
+    {
+      "skill": "fr-gov-configure-linting",
+      "category": "code",
+      "status": "skip",
+      "check_count": 1,
+      "passed": 0,
+      "failed": 1,
+      "pass_rate": 0.0,
+      "checks": [
+        {
+          "check": "Test exists",
+          "passed": false,
+          "detail": "No function in registry"
+        }
+      ],
+      "summary": "No test for fr-gov-configure-linting",
+      "duration_s": 0.0
+    },
+    {
+      "skill": "investigate-bug",
+      "category": "code",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "BUG_INVESTIGATION.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Hypotheses",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Reproduction",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Code block",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Root Cause",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Fallback",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 0.00011372566223144531
+    },
+    {
+      "skill": "review-code",
+      "category": "code",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "CODE_REVIEW.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Security",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Quality",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Suggestions",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "error handling",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 9.965896606445312e-05
+    },
+    {
+      "skill": "fr-gov-rest-api-conventions",
+      "category": "code",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "/api/v1/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Pagination",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "HTTP 404",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "detail",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "GET",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "PUT",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "DELETE",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Docstrings present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.00010013580322265625
+    },
+    {
+      "skill": "fr-gov-choose-tech-stack",
+      "category": "code",
+      "status": "skip",
+      "check_count": 1,
+      "passed": 0,
+      "failed": 1,
+      "pass_rate": 0.0,
+      "checks": [
+        {
+          "check": "Test exists",
+          "passed": false,
+          "detail": "No function in registry"
+        }
+      ],
+      "summary": "No test for fr-gov-choose-tech-stack",
+      "duration_s": 0.0
+    },
+    {
+      "skill": "detect-stale-service-names",
+      "category": "code",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "k8s/deployment.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "k8s/service.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "NAME_MAPPING.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Table",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "app: label",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "app: service-frontend",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 0.00011897087097167969
+    },
+    {
+      "skill": "fr-gov-set-up-pnpm-monorepo",
+      "category": "code",
+      "status": "pass",
+      "check_count": 13,
+      "passed": 13,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "src/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/components/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/pages/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/services/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/styles/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "AGENTS.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "BACKLOG.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "TESTS.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "FEEDBACK.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "config.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "skills.txt",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "config has opencode",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "AGENTS content",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 13 checks passed",
+      "duration_s": 0.00028634071350097656
+    },
+    {
+      "skill": "ship-a-dev-task",
+      "category": "code",
+      "status": "pass",
+      "check_count": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "src/main.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "tests/test_main.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "SHIP_CHECKLIST.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Implementation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Tests",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "pytest",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "import",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 7 checks passed",
+      "duration_s": 0.0001475811004638672
+    },
+    {
+      "skill": "init-repo",
+      "category": "code",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "README exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": ".gitignore exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "LICENSE exists",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": ".gitignore excludes .env",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "README has title",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 9.179115295410156e-05
+    },
+    {
+      "skill": "fr-gov-project-conventions",
+      "category": "code",
+      "status": "pass",
+      "check_count": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "api_client.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "database.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Files have comments",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Classes have comments",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Methods async",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Type hints",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Params used",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 7 checks passed",
+      "duration_s": 0.00012946128845214844
+    },
+    {
+      "skill": "fr-gov-install-dev-tools",
+      "category": "code",
+      "status": "skip",
+      "check_count": 1,
+      "passed": 0,
+      "failed": 1,
+      "pass_rate": 0.0,
+      "checks": [
+        {
+          "check": "Test exists",
+          "passed": false,
+          "detail": "No function in registry"
+        }
+      ],
+      "summary": "No test for fr-gov-install-dev-tools",
+      "duration_s": 0.0
+    },
+    {
+      "skill": "fr-gov-set-up-project-layout",
+      "category": "code",
+      "status": "pass",
+      "check_count": 13,
+      "passed": 13,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "src/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/components/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/pages/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/services/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "src/styles/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "AGENTS.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "BACKLOG.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "TESTS.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "FEEDBACK.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "config.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "skills.txt",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "config has opencode",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "AGENTS content",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 13 checks passed",
+      "duration_s": 0.00025963783264160156
+    },
+    {
+      "skill": "fr-gov-set-up-github-actions-ci",
+      "category": "devops",
+      "status": "pass",
+      "check_count": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "ci.yml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "lint:",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "test:",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "actions/checkout",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "setup-python",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "pytest",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "on:",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 7 checks passed",
+      "duration_s": 0.0001201629638671875
+    },
+    {
+      "skill": "fr-gov-write-digital-factory-workflows",
+      "category": "devops",
+      "status": "pass",
+      "check_count": 4,
+      "passed": 4,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "release.yml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "tags:",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Create Release",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "helm-publish",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 4 checks passed",
+      "duration_s": 8.20159912109375e-05
+    },
+    {
+      "skill": "fr-gov-deploy-to-cloud-pi-native",
+      "category": "devops",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "vault-config.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "kyverno.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "vault://",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "kyverno.io",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "runAsNonRoot",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 9.465217590332031e-05
+    },
+    {
+      "skill": "fr-gov-set-up-cloud-pi-native-cicd",
+      "category": "devops",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "dso.yml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "scan:",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "build:",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "deploy:",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "registry.dso.fr",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 8.988380432128906e-05
+    },
+    {
+      "skill": "fr-gov-containerize-app-for-k8s",
+      "category": "devops",
+      "status": "pass",
+      "check_count": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "Dockerfile",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "slim",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "USER",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "EXPOSE",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "CMD",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "requirements.txt",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "pydantic",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 7 checks passed",
+      "duration_s": 9.894371032714844e-05
+    },
+    {
+      "skill": "smoke-test-api",
+      "category": "devops",
+      "status": "skip",
+      "check_count": 1,
+      "passed": 0,
+      "failed": 1,
+      "pass_rate": 0.0,
+      "checks": [
+        {
+          "check": "Test exists",
+          "passed": false,
+          "detail": "No function in registry"
+        }
+      ],
+      "summary": "No test for smoke-test-api",
+      "duration_s": 0.0
+    },
+    {
+      "skill": "fr-gov-create-helm-chart",
+      "category": "devops",
+      "status": "pass",
+      "check_count": 9,
+      "passed": 9,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "chart/Chart.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "chart/values.yaml",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "chart/templates/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Helm syntax",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Helm close",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "apiVersion",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "replicaCount",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "limits",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "securityContext",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 9 checks passed",
+      "duration_s": 0.00015974044799804688
+    },
+    {
+      "skill": "fr-gov-build-collab-suite-ui",
+      "category": "lasuite",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "sharing.html",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-card",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Partage",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "navigation.js",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "hash",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "postMessage",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 0.0001049041748046875
+    },
+    {
+      "skill": "fr-gov-build-react-design-system",
+      "category": "design-system",
+      "status": "skip",
+      "check_count": 1,
+      "passed": 0,
+      "failed": 1,
+      "pass_rate": 0.0,
+      "checks": [
+        {
+          "check": "Test exists",
+          "passed": false,
+          "detail": "No function in registry"
+        }
+      ],
+      "summary": "No test for fr-gov-build-react-design-system",
+      "duration_s": 0.0
+    },
+    {
+      "skill": "fr-gov-build-design-system-charts",
+      "category": "design-system",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "charts.html",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-card",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-chart",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "canvas",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Chart",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "charts.min.js",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 8.7738037109375e-05
+    },
+    {
+      "skill": "fr-gov-build-design-system-emails",
+      "category": "design-system",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "confirmation.html",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "lang=fr",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-text--sm",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "role=presentation",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "width=100%",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 7.963180541992188e-05
+    },
+    {
+      "skill": "fr-gov-build-vue-design-system",
+      "category": "design-system",
+      "status": "pass",
+      "check_count": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "dsfr.min.css",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "assets/utility/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "index.html",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "dsfr.min.css link",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-header",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-container",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "lang=fr",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 7 checks passed",
+      "duration_s": 0.0001366138458251953
+    },
+    {
+      "skill": "fr-gov-add-design-system-icons",
+      "category": "design-system",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "icons.html",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-icon-",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-icon--sm",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-text--danger",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "custom-icon.svg",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "viewBox",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 0.00011992454528808594
+    },
+    {
+      "skill": "fr-gov-set-up-design-system",
+      "category": "design-system",
+      "status": "pass",
+      "check_count": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "dsfr.min.css",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "assets/utility/",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "index.html",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "dsfr.min.css link",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-header",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "fr-container",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "lang=fr",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 7 checks passed",
+      "duration_s": 0.00014162063598632812
+    },
+    {
+      "skill": "fr-gov-check-web-compliance",
+      "category": "compliance",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "checker.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "DocConformite",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "def check",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "generate_report",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "required_fields",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "format_valid",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "passed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "metadata_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.0001068115234375
+    },
+    {
+      "skill": "fr-gov-render-technical-architecture-docx",
+      "category": "compliance",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "checker.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "DocConformite",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "def check",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "generate_report",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "required_fields",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "format_valid",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "passed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "metadata_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.00010585784912109375
+    },
+    {
+      "skill": "fr-gov-fill-technical-architecture-doc",
+      "category": "compliance",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "tech-architecture.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Contexte",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Architecture",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Frontend",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Securite",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Vault",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 8.535385131835938e-05
+    },
+    {
+      "skill": "fr-gov-audit-app-compliance",
+      "category": "compliance",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "checker.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "DocConformite",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "def check",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "generate_report",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "required_fields",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "format_valid",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "passed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "metadata_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.00010347366333007812
+    },
+    {
+      "skill": "fr-gov-configure-cookie-consent",
+      "category": "compliance",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "checker.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "DocConformite",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "def check",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "generate_report",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "required_fields",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "format_valid",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "passed",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "metadata_present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.00010418891906738281
+    },
+    {
+      "skill": "fr-gov-query-open-data-api",
+      "category": "data",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "open_data.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "data.gouv.fr",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "csv",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "get_format",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "search_datasets",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "get_dataset_format",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "download_resource",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Docstrings present",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 9.1552734375e-05
+    },
+    {
+      "skill": "fr-gov-query-public-communication-data",
+      "category": "data",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "communications.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "type",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "press_releases",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "minister",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "public_figure",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "items",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 8.440017700195312e-05
+    },
+    {
+      "skill": "audit-llm-tool-identity",
+      "category": "security",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "auth.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "AuthContext",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "user_id",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "sub",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "isolated",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "vault_bound",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 8.153915405273438e-05
+    },
+    {
+      "skill": "redteam-llm-prompt-injection",
+      "category": "security",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "guard.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "ignore previous",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "validate_guard",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "guard_applied",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "is_injection",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 6.914138793945312e-05
+    },
+    {
+      "skill": "harden-repo-before-pentest",
+      "category": "security",
+      "status": "pass",
+      "check_count": 8,
+      "passed": 8,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "app.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "SECURITY_AUDIT.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "sanitize",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "rate_limit",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "escape_xss",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "A01",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Cryptographic",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Injection",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 8 checks passed",
+      "duration_s": 0.00011515617370605469
+    },
+    {
+      "skill": "fr-gov-find-cybersecurity-guide",
+      "category": "security",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "guides.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "ANSSI",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "ssi.gouv.fr",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "search_guides",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "topics",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 6.937980651855469e-05
+    },
+    {
+      "skill": "audit-repo-safety",
+      "category": "security",
+      "status": "pass",
+      "check_count": 5,
+      "passed": 5,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "SECURITY_AUDIT.md",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "secrets",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "auto-execution",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "CI/CD",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Findings",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 5 checks passed",
+      "duration_s": 6.651878356933594e-05
+    },
+    {
+      "skill": "fr-gov-secure-coding-rules",
+      "category": "security",
+      "status": "pass",
+      "check_count": 6,
+      "passed": 6,
+      "failed": 0,
+      "pass_rate": 100.0,
+      "checks": [
+        {
+          "check": "config.py",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "No hardcoded secrets",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "Param queries",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": ".env in gitignore",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "*.key in gitignore",
+          "passed": true,
+          "detail": ""
+        },
+        {
+          "check": "No triple-quote issues",
+          "passed": true,
+          "detail": ""
+        }
+      ],
+      "summary": "All 6 checks passed",
+      "duration_s": 0.00011277198791503906
+    }
+  ]
+}
