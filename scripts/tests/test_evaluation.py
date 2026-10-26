@@ -126,6 +126,51 @@ class Evaluation(unittest.TestCase):
         self.assertNotIn('<script>', source)
         self.assertIn('&lt;img', source)
 
+    def make_shell_suite(self):
+        skill = self.skill.with_name('fr-gov-find-cybersecurity-guide')
+        self.skill.rename(skill)
+        (skill / 'SKILL.md').write_text(
+            '---\nname: fr-gov-find-cybersecurity-guide\ndescription: ANSSI guides\n---\n'
+            '## Quand utiliser\nTrouver un guide.\n')
+        script = skill / integration.SHELL_SUITES[skill.name]
+        script.parent.mkdir()
+        script.write_text('exit 0\n')
+        return script
+
+    def test_broken_jq_generates_error_reports(self):
+        self.make_shell_suite()
+        error = subprocess.CalledProcessError(1, ['jq', '--version'])
+        with mock.patch.object(integration.subprocess, 'run', side_effect=error) as run:
+            code = integration.main(['--root', str(self.root), '--output-dir', str(self.output)])
+        self.assertEqual(code, 1)
+        run.assert_called_once()
+        rows = json.loads((self.output / 'integration.json').read_text())['results']
+        self.assertEqual(rows[0]['status'], 'error')
+        self.assertIn('code 1', rows[0]['detail'])
+        self.assertTrue((self.output / 'integration.html').is_file())
+
+    def test_missing_jq_skips_shell_suite(self):
+        self.make_shell_suite()
+        with mock.patch.object(integration.subprocess, 'run', side_effect=FileNotFoundError('jq')) as run:
+            rows = integration.evaluate(self.root)
+        self.assertEqual(rows[0]['status'], 'skip')
+        run.assert_called_once()
+
+    def test_working_jq_runs_shell_suite(self):
+        script = self.make_shell_suite()
+        real_run = subprocess.run
+
+        def run_command(command, **kwargs):
+            if command == ['jq', '--version']:
+                return subprocess.CompletedProcess(command, 0, stdout=b'jq-1.7\n', stderr=b'')
+            return real_run(command, **kwargs)
+
+        with mock.patch.object(integration.subprocess, 'run', side_effect=run_command) as run:
+            rows = integration.evaluate(self.root)
+        self.assertEqual(rows[0]['status'], 'pass')
+        self.assertEqual(run.call_count, 2)
+        self.assertEqual(run.call_args.args[0], ['sh', str(script)])
+
     def test_cli_exit_codes(self):
         for script in ('audit_skills.py', 'integration_tests.py'):
             with self.subTest(script=script):
