@@ -43,6 +43,8 @@ def run_skill(path, root, timeout):
             subprocess.run(['jq', '--version'], capture_output=True, check=True, timeout=10)
         except (OSError, subprocess.TimeoutExpired):
             return dict(row, status='skip', detail='Suite shell requiert jq (absent)')
+        except subprocess.CalledProcessError as exc:
+            return dict(row, status='error', detail=f'jq --version a échoué (code {exc.returncode})')
         command = ['sh', str(script)]
     else:
         return row
