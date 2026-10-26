@@ -110,6 +110,7 @@ A shared composable + component pattern for DSFR-compatible alerts.
 
 ```ts
 // src/composables/use-toaster.ts
+import { reactive } from 'vue'
 import { getRandomId, type TitleTag } from '@gouvminint/vue-dsfr'
 
 export type Message = {
@@ -122,28 +123,30 @@ export type Message = {
   timeout?: number
 }
 
-const messages: Message[] = reactive<Message[]>([])
-const timeouts: Record<string, number> = {}
-
-export const useToaster = () => {
+// Une instance par application SPA ou par requête SSR, jamais au niveau module.
+export const createToaster = () => {
+  const messages = reactive<Message[]>([])
+  const timeouts: Record<string, ReturnType<typeof setTimeout>> = {}
   const removeMessage = (id: string) => {
     const idx = messages.findIndex(m => m.id === id)
     clearTimeout(timeouts[id])
+    delete timeouts[id]
     if (idx !== -1) messages.splice(idx, 1)
   }
 
   const addMessage = (message: Message) => {
-    message.id ??= getRandomId('toaster')
-    messages.push(message)
+    const id = message.id ?? getRandomId('toaster')
+    messages.push({ ...message, id })
     if (message.timeout) {
-      timeouts[message.id!] = window.setTimeout(
-        () => removeMessage(message.id!),
-        message.timeout
-      )
+      timeouts[id] = setTimeout(() => removeMessage(id), message.timeout)
     }
   }
 
-  return { messages, addMessage, removeMessage }
+  const dispose = () => {
+    Object.keys(timeouts).forEach(removeMessage)
+    messages.splice(0)
+  }
+  return { messages, addMessage, removeMessage, dispose }
 }
 ```
 
@@ -184,15 +187,23 @@ const close = (id: string) => emit('close-message', id)
 ```
 
 ### Utilisation
+
+Créer l'instance dans le composant racine et l'injecter aux enfants au besoin
+(`provide`/`inject`). Sous Nuxt SSR, conserver une instance par requête ; ne pas
+exporter de singleton. Déclencher les notifications à la suite d'une action,
+pas systématiquement pendant le rendu serveur.
 ```vue
 <script setup>
 import AppToaster from '@/components/AppToaster.vue'
-import useToaster from '@/composables/use-toaster'
-const toaster = useToaster()
-toaster.addMessage({ description: 'Saved', type: 'success', closeable: true, titleTag: 'h3', timeout: 3000 })
+import { onUnmounted } from 'vue'
+import { createToaster } from '@/composables/use-toaster'
+const toaster = createToaster()
+onUnmounted(toaster.dispose)
+const notifySaved = () => toaster.addMessage({ description: 'Saved', type: 'success', closeable: true, titleTag: 'h3', timeout: 3000 })
 </script>
 <template>
-  <DsfrHeader /* ... */ />
+  <!-- Autres composants de la page -->
+  <button @click="notifySaved">Tester la notification</button>
   <router-view />
   <AppToaster :messages="toaster.messages" @close-message="toaster.removeMessage($event)" />
 </template>
@@ -256,3 +267,4 @@ Utilise les utilitaires et tokens DSFR **au lieu de réinventer le layout en CSS
 - **`getRandomId` from VueDsfr** — use the library's utility, don't generate your own IDs
 - **Transition group needs CSS** — `pointer-events: none` on container but `pointer-events: all` on alerts so they're clickable
 - **Playwright on Onyxia requires `--no-sandbox`** — the container runs as root without a sandbox; add `args: ['--no-sandbox']` to the browser launch options in `playwright.config.ts` or tests will fail to launch Chromium
+

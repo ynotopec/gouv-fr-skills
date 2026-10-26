@@ -14,42 +14,34 @@ if [[ -z "$NAME" ]]; then
   exit 1
 fi
 
+# Refuser toute cible préexistante, y compris un lien symbolique.
+if [[ "$NAME" == -* || -e "$NAME" || -L "$NAME" ]]; then
+  echo "Error: project destination must be new and must not start with '-'" >&2
+  exit 1
+fi
+
 echo "Creating NestJS project: $NAME"
 
 # Create project with NestJS CLI
-npx @nestjs/cli new "$NAME" --language ts --package-manager pnpm --skip-git
+npx --yes @nestjs/cli new "$NAME" --language ts --package-manager pnpm --skip-git
 
 cd "$NAME"
 
 # Add required dependencies
 pnpm add nestjs-pino pino-http
-pnpm add -D @nestjs/swagger @prisma/client prisma
+pnpm add @nestjs/swagger @prisma/client@^7
+pnpm add -D prisma@^7 @antfu/eslint-config
 
-# Add eslint config override for NestJS
-cat >> eslint.config.js << 'LINT'
-
-// NestJS overrides
-export default [
-  antfu(),
-  {
-    rules: {
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
-  },
-]
-LINT
-
-# Fix the eslint config to properly extend antfu
-cat > eslint.config.js << 'LINT'
+# Nest CLI emits eslint.config.mjs; replace it instead of creating a competing config.
+cat > eslint.config.mjs << 'LINT'
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
   rules: {
     'style/comma-dangle': ['error', 'always-multiline'],
     'no-irregular-whitespace': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/no-explicit-any': 'off',
+    'ts/no-unused-vars': 'warn',
+    'ts/no-explicit-any': 'off',
   },
 })
 LINT
@@ -97,3 +89,4 @@ echo ""
 echo " Structure follows CoFabNum conventions."
 echo " See conventions-cofabnum for full guidelines."
 echo "═══════════════════════════════════════"
+

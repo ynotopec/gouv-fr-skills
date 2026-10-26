@@ -25,6 +25,8 @@ jobs:
         run: python -m unittest discover -s skills/fr-gov/design-system/fr-gov-set-up-design-system/tests -v
       - name: Tests de vérification des appels de workflows
         run: python -m unittest discover -s skills/fr-gov/devops/fr-gov-set-up-cloud-pi-native-cicd/tests -v
+      - name: Tests des règles CPiN (init containers et probes)
+        run: python -m unittest discover -s skills/fr-gov/devops/fr-gov-create-helm-chart/tests -v
       - name: Tests du smoke-test-api (credentials synthétiques, sans réseau)
         run: python -m unittest discover -s skills/fr-gov/devops/smoke-test-api/tests -v
       - name: Générateur du catalogue ANSSI (hors réseau)
@@ -35,9 +37,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
+          python-version: '3.12'
+      - name: Installer le parseur YAML du catalogue
+        run: python -m pip install pyyaml
       - name: Vérifier le catalogue et les migrations
         run: python3 scripts/check-skill-catalog.py
       - name: Tester le script d'installation
         run: bash scripts/test-install-skills.sh
       - name: Tester le validateur et les catalogues distribués
         run: python3 -m unittest discover -s scripts/tests -v
+
+
+  scaffolds:
+    name: Backend généré (${{ matrix.framework }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        framework: [fastapi, fastify, nestjs]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Installer les gestionnaires de paquets
+        run: |
+          python -m pip install uv
+          npm install --global pnpm@10
+      - name: Générer, compiler, tester et démarrer sans dépendances de développement
+        run: bash scripts/test-scaffold-integration.sh "${{ matrix.framework }}"

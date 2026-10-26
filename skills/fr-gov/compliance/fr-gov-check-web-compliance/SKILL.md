@@ -52,7 +52,7 @@ RGAA 4.1.2 en vigueur, RGAA 5 annoncé pour fin 2026 — revérifier la version 
 |---|---|---|---|
 | 1. Images | 9 | 8. Éléments obligatoires | 10 |
 | 2. Cadres | 2 | 9. Structuration de l'information | 4 |
-| 3. Couleurs | 3 | 10. Présentation de l'information | 14 |
+| 3. Couleurs | 3 | 10. Présentation de l'information | 13 |
 | 4. Multimédia | 13 | 11. Formulaires | 13 |
 | 5. Tableaux | 8 | 12. Navigation | 11 |
 | 6. Liens | 2 | 13. Consultation | 12 |
@@ -112,3 +112,4 @@ Critère de sortie : rapport listant, par critère RGAA, `validé` / `non valid�
   alternatives, cohérence des intitulés, pièges au clavier).
 - **RGAA et RGPD ne se recouvrent pas** : deux référentiels, deux jeux de preuves, deux dates.
 - **`non applicable` et `non évalué` ne sont pas synonymes** ; les additionner gonfle le taux.
+

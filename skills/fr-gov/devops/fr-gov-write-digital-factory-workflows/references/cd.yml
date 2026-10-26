@@ -26,7 +26,7 @@ jobs:
 
   # Idempotent : tourne à chaque push, ne publie que s'il y a une release à faire.
   release:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/release-app.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/release-app.yml@<TAG_EXACT>
     permissions:
       issues: write
       pull-requests: write
@@ -41,7 +41,7 @@ jobs:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
 
   build-docker:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/build-docker.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/build-docker.yml@<TAG_EXACT>
     needs: [expose-vars, release]
     if: ${{ needs.release.outputs.release-created == 'true' }}
     permissions:
@@ -61,7 +61,7 @@ jobs:
 
   # Le chart est dans le dépôt : le bump est committé directement (RUN_MODE: local).
   bump-chart:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/update-helm-chart.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/update-helm-chart.yml@<TAG_EXACT>
     needs: [release, build-docker]
     if: ${{ needs.release.outputs.release-created == 'true' }}
     permissions:
@@ -79,7 +79,7 @@ jobs:
 
   # Après le bump : GitLab doit voir le commit du chart, pas l'ancien état.
   sync-cpin:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/sync-cpin.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/sync-cpin.yml@<TAG_EXACT>
     needs: [release, bump-chart]
     if: ${{ needs.release.outputs.release-created == 'true' }}
     permissions: {}
@@ -94,7 +94,7 @@ jobs:
       GIT_MIRROR_TOKEN: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
 
   release-chart:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/release-helm-local.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/release-helm-local.yml@<TAG_EXACT>
     needs: [release, build-docker, bump-chart]
     if: ${{ needs.release.outputs.release-created == 'true' }}
     permissions:
@@ -110,7 +110,7 @@ jobs:
   # Dernier job, sur la branche stable seulement. `needs` = exactement les jobs qui COMMITTENT
   # sur main (release, bump-chart). Sinon release-app échoue sur dev : « is missing N commit(s) ».
   sync-prerelease-branch:
-    uses: dnum-mi/fabnum-cicd/.github/workflows/sync-prerelease-branch.yml@v0
+    uses: dnum-mi/fabnum-cicd/.github/workflows/sync-prerelease-branch.yml@<TAG_EXACT>
     needs: [release, bump-chart]
     if: ${{ github.ref_name == 'main' && needs.release.outputs.release-created == 'true' }}
     permissions:
@@ -118,3 +118,4 @@ jobs:
     with:
       RELEASE_BRANCH: main
       PRERELEASE_BRANCH: dev
+

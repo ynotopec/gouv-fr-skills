@@ -14,16 +14,22 @@ if [[ -z "$NAME" ]]; then
   exit 1
 fi
 
+# Refuser toute cible préexistante, y compris un lien symbolique.
+if [[ "$NAME" == -* || -e "$NAME" || -L "$NAME" ]]; then
+  echo "Error: project destination must be new and must not start with '-'" >&2
+  exit 1
+fi
+
 echo "Creating Fastify project: $NAME"
 
-# Initialize project
+# Initialize project in the requested destination, never in the caller directory.
+mkdir -p "$NAME"
+cd "$NAME"
 pnpm init
-pnpm add fastify @fastify/cors
+pnpm add fastify @fastify/cors @fastify/swagger @fastify/swagger-ui @sinclair/typebox pino
 
 # Dev dependencies
-pnpm add -D typescript @types/node tsx @sinclair/typebox
-pnpm add -D @fastify/swagger @fastify/swagger-ui
-pnpm add -D @fastify/autoload pino-pretty
+pnpm add -D typescript@~6.0 @types/node@^24 tsx vitest eslint @antfu/eslint-config pino-pretty
 
 # Create tsconfig
 cat > tsconfig.json << 'EOF'
@@ -44,11 +50,11 @@ cat > tsconfig.json << 'EOF'
 EOF
 
 # Create source structure
-mkdir -p src/{plugins,routes/cats,test/routes}
+mkdir -p src/{plugins,routes/cats,utils} test/routes
 
 # Entry point
 cat > src/index.ts << 'EOF'
-import { buildApp } from './app'
+import { buildApp } from './app.js'
 
 const PORT = process.env.PORT || 3000
 
@@ -68,10 +74,11 @@ EOF
 
 # App config
 cat > src/app.ts << 'EOF'
-import Fastify, { FastifyInstance } from 'fastify'
+import Fastify, { type FastifyInstance, type FastifyError } from 'fastify'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
 import cors from '@fastify/cors'
+import routes from './routes/index.js'
 
 function allowedOrigins(): string[] {
   return (process.env.CORS_ORIGINS ?? '')
@@ -103,10 +110,10 @@ export async function buildApp(): Promise<FastifyInstance> {
   await fastify.register(fastifySwaggerUI, { routePrefix: '/documentation' })
 
   // Routes
-  await fastify.register(import('./routes/index'), { prefix: '/api/v1' })
+  await fastify.register(routes, { prefix: '/api/v1' })
 
   // Global error handler
-  fastify.setErrorHandler((error, request, reply) => {
+  fastify.setErrorHandler<FastifyError>((error, request, reply) => {
     request.log.error(error)
     const statusCode = error.statusCode ?? 500
     reply.status(statusCode).send({
@@ -138,7 +145,7 @@ EOF
 # Routes index
 cat > src/routes/index.ts << 'EOF'
 import { FastifyPluginAsync } from 'fastify'
-import cats from './cats/index'
+import cats from './cats/index.js'
 
 const routes: FastifyPluginAsync = async (fastify) => {
   await fastify.register(cats, { prefix: '/cats' })
@@ -150,7 +157,7 @@ EOF
 # Cats route
 cat > src/routes/cats/index.ts << 'EOF'
 import { FastifyPluginAsync } from 'fastify'
-import { Type } from '@sinclair/typebox'
+import { Type, type Static } from '@sinclair/typebox'
 
 const catsRoutes: FastifyPluginAsync = async (fastify) => {
   const CatSchema = Type.Object({
@@ -167,9 +174,11 @@ const catsRoutes: FastifyPluginAsync = async (fastify) => {
     return {} // catsService.findById(Number(request.params.id))
   })
 
-  fastify.post('/', {
+  const CatCreateSchema = Type.Omit(CatSchema, ['id'])
+
+  fastify.post<{ Body: Static<typeof CatCreateSchema> }>('/', {
     schema: {
-      body: CatSchema,
+      body: CatCreateSchema,
       response: { 201: CatSchema },
     },
   }, async (request, reply) => {
@@ -198,12 +207,12 @@ EOF
 # Test example
 cat > test/routes/cats.test.ts << 'EOF'
 import { describe, it, expect } from 'vitest'
-import { buildApp } from '../../src/app'
+import { buildApp } from '../../src/app.js'
 
 describe('GET /cats', () => {
   it('should return empty array', async () => {
     const app = await buildApp()
-    const res = await app.inject({ method: 'GET', url: '/api/v1/cats' })
+    const res = await app.inject({ method: 'GET', url: '/api/v1/cats/' })
     expect(res.statusCode).toBe(200)
     expect(JSON.parse(res.body)).toBeInstanceOf(Array)
   })
@@ -214,12 +223,18 @@ describe('POST /cats', () => {
     const app = await buildApp()
     const res = await app.inject({
       method: 'POST',
-      url: '/api/v1/cats',
+      url: '/api/v1/cats/',
       payload: { name: 'Minou', age: 3 },
     })
     expect(res.statusCode).toBe(201)
   })
 })
+EOF
+
+# Lint configuration matches the installed tooling.
+cat > eslint.config.mjs << 'EOF'
+import antfu from '@antfu/eslint-config'
+export default antfu({ rules: { 'no-irregular-whitespace': 'off' } })
 EOF
 
 # Add .editorconfig
@@ -244,7 +259,7 @@ pkg.scripts = {
   build: 'tsc',
   start: 'node dist/index.js',
   lint: 'eslint .',
-  test: 'vitest',
+  test: 'vitest run',
   typecheck: 'tsc --noEmit'
 }
 fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n')
@@ -262,3 +277,4 @@ echo ""
 echo " Structure follows CoFabNum conventions."
 echo " See conventions-cofabnum for full guidelines."
 echo "═══════════════════════════════════════"
+

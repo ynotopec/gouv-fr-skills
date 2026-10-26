@@ -4,7 +4,13 @@
 
 > **Avant tout gros changement : `bash .github/workflows/save-workflow.sh "<motif>"`**
 
-Ce script crée une branche de backup (`backup/AAAA-MM-DD-HHMMSS`) qui permet de revenir en arrière.
+Ce script crée une branche de backup (`backup/AAAAMMJJ-HHMMSS-PID`) contenant
+l'état courant, fichiers non suivis inclus hors `.gitignore`. Il utilise un
+index temporaire : HEAD, fichiers de travail, index utilisateur et stashes
+restent inchangés. Un dépôt doit déjà avoir un premier commit.
+
+Inspecter le contenu avant tout partage : une sauvegarde locale peut contenir
+un travail inachevé ou sensible. Ne pas pousser automatiquement ces branches.
 
 ## Workflow type
 
@@ -49,7 +55,7 @@ git branch -D backup/20260929-170135
 
 ```bash
 git push origin main          # Pusher main
-git push origin backup/*      # Pusher les backups (optionnel)
+git show --stat backup/<identifiant>  # Inspecter une sauvegarde locale
 ```
 
 ## Commandes utiles
@@ -62,3 +68,4 @@ git push origin backup/*      # Pusher les backups (optionnel)
 | `git branch -D backup/...` | Supprimer un backup |
 | `git status --short` | Vérifier les modifications |
 | `git log --oneline -5` | Voir les 5 derniers commits |
+

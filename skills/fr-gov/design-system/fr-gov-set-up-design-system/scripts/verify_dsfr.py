@@ -58,7 +58,14 @@ def fetch_css(version, rel):
 
 
 def css_identifiers(css_text):
-    return set(re.findall(r"fr-[a-zA-Z0-9_-]+", css_text))
+    # Supprimer commentaires et chaînes (content, URLs, sélecteurs d'attributs).
+    css_text = re.sub(r"/\*.*?\*/|\"(?:\\.|[^\"\\])*\"|'(?:\\.|[^'\\])*'", "", css_text, flags=re.S)
+    classes = set()
+    for match in re.finditer(r"([^{}]+)\{", css_text):
+        selector = match[1].strip()
+        if not selector.startswith("@"):
+            classes.update(re.findall(r"(?<![\\\w-])\.(fr-[a-zA-Z0-9_-]+)", selector))
+    return classes
 
 
 def main():
@@ -118,3 +125,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+

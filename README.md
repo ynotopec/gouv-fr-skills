@@ -189,7 +189,7 @@ humaines avec et sans skills. Il ne constitue pas un benchmark déjà exécuté.
 
 ## Tests
 
-Quatre suites de non-régression s'exécutent hors réseau et sont lancées par la
+Les suites de non-régression s'exécutent hors réseau et sont lancées par la
 CI (`Skills tests`) :
 
 ```bash
@@ -207,10 +207,22 @@ python3 -m unittest discover -s skills/fr-gov/devops/fr-gov-set-up-cloud-pi-nati
 # Smoke-test : credentials synthétiques et transport simulé
 python3 -m unittest discover -s skills/fr-gov/devops/smoke-test-api/tests -v
 
+# Règles CPiN : conteneurs applicatifs, init containers et sidecars
+python3 -m unittest discover -s skills/fr-gov/devops/fr-gov-create-helm-chart/tests -v
+
+# Régressions des scripts, catalogue YAML, sauvegarde et migrations
+python3 -m unittest discover -s scripts/tests -v
+
 # Script d'installation (Hermes, OpenCode, Kilo Code, Claude Code)
 python3 scripts/check-skill-catalog.py
 ./scripts/test-install-skills.sh
 ```
+
+Un job CI supplémentaire génère réellement un projet FastAPI, Fastify et NestJS,
+compile et teste chacun, retire les dépendances de développement puis vérifie
+une réponse HTTP. Reproduction (accès aux registres de paquets requis) :
+`bash scripts/test-scaffold-integration.sh fastapi` (ou `fastify`, `nestjs`).
+Les doubles des gestionnaires de paquets servent uniquement aux tests hors réseau.
 
 Le script d'installation s'exécute dans un répertoire temporaire : il n'écrit
 rien dans le répertoire de skills réel de l'utilisateur.
@@ -233,3 +245,4 @@ workflows CI, etc.) restent des prérequis à vérifier selon le besoin.
 ## Workflow
 
 Voir [`WORKFLOW.md`](WORKFLOW.md) — règle d'or : `bash .github/workflows/save-workflow.sh "<motif>"` avant tout gros changement.
+

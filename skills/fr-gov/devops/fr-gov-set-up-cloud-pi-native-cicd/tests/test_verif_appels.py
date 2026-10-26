@@ -90,6 +90,28 @@ jobs:
         self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
         self.assertIn("permission contents:read manquante", result.stdout)
 
+    def test_called_workflow_permissions_are_inherited(self):
+        called = CALLED.replace('jobs:', 'permissions:\n  contents: write\njobs:').replace('    permissions:\n      contents: read\n', '')
+        result = self.check(called, self.caller_with('read'))
+        self.assertEqual(result.returncode, 1, result.stdout)
+        self.assertIn('permission contents:write manquante', result.stdout)
+
+    def test_caller_workflow_permissions_are_inherited(self):
+        caller = CALLER.replace('jobs:', 'permissions:\n  contents: read\njobs:').replace('    permissions:\n      contents: {level}\n', '')
+        result = self.check(CALLED, caller)
+        self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_job_empty_permissions_override_workflow(self):
+        caller = CALLER.replace('jobs:', 'permissions:\n  contents: write\njobs:').replace('    permissions:\n      contents: {level}\n', '    permissions: {}\n')
+        self.assertEqual(self.check(CALLED, caller).returncode, 1)
+
+    def test_permission_shorthand(self):
+        for level, status in [('read-all', 1), ('write-all', 0)]:
+            called = CALLED.replace('contents: read', 'contents: write')
+            caller = CALLER.replace('permissions:\n      contents: {level}', 'permissions: ' + level)
+            self.assertEqual(self.check(called, caller).returncode, status)
+
 
 if __name__ == "__main__":
     unittest.main()
+

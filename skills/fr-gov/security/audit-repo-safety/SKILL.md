@@ -43,7 +43,7 @@ voir `harden-repo-before-pentest`.
   collectes les findings, tu rédiges le rapport, puis tu **présentes le plan de remédiation via le mode
   plan** (Claude Code : `ExitPlanMode` ; autre agent : présente le plan et attends la validation avant d'agir) pour que l'humain valide les actions avant qu'elles ne s'exécutent. C'est ça,
   le « rapport exécutable en mode plan ».
-- **`--setup`** : après un `--check` validé, **applique** uniquement les garde-fous anti-leak **sûrs et
+- **`--setup`** (ou demande explicite de mise en place) : **applique** uniquement les garde-fous anti-leak **sûrs et
   réversibles** (config gitleaks/pre-commit, durcissement `.gitignore`, hook local), step-by-step, en
   expliquant chaque action. **Jamais** de réécriture d'historique, **jamais** de rotation de secret, et
   **aucun** `git push` en automatique — ça reste des décisions humaines que tu prépares et documentes.
@@ -186,3 +186,4 @@ l'historique → **NON**, avec remédiation (rotation + `git filter-repo`/scrub 
 
 > Si la ligne ci-dessus montre encore un nom de variable, ton agent ne substitue pas les
 > arguments : prends-les dans la demande de l'utilisateur.
+

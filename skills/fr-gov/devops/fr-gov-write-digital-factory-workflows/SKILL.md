@@ -15,7 +15,9 @@ metadata:
 
 Assembler les workflows réutilisables de [`dnum-mi/fabnum-cicd`](https://github.com/dnum-mi/fabnum-cicd) en un `ci.yml`
 (pull request) et un `cd.yml` (release + livraison vers Cloud Pi Native).
-Les gabarits de `references/` sont validés contre les entrées et secrets réels des workflows (`@v0`).
+Les gabarits de `references/` sont des instantanés : résoudre une release exacte
+ou un SHA, remplacer `<TAG_EXACT>` et vérifier les contrats à cette révision
+avant usage (`fr-gov-set-up-cloud-pi-native-cicd`).
 
 ## Quand utiliser
 
@@ -49,7 +51,8 @@ son `needs`.
 
 ## Règles
 
-- **Version** : `@v0` (tag flottant, dépôt en `0.x` : un bump mineur peut casser ; `@v0.20` ou un SHA pour figer). **Jamais `@main`** (règle du repo).
+- **Version** : même tag de release exact (`vX.Y.Z`) ou SHA vérifié pour tous les
+  appels. Ne pas utiliser de tag flottant (`@v0`, `@v0.20`, `@main`).
 - **Permissions** par job, au minimum ; l'appelant doit accorder l'union de ce que le workflow appelé déclare (voir `references/workflows.md`).
 - **Jamais `secrets: inherit`** : passer chaque secret nommément.
 - **Credential** : `GITHUB_TOKEN` d'abord ; **GitHub App** (`APP_CLIENT_ID` = Client ID `Iv23li…`, pas l'App ID ; `APP_PRIVATE_KEY` = `.pem` complet) dès qu'une PR de release doit déclencher la CI, pour l'automerge, le dispatch inter-dépôts ou un ruleset. PAT en dernier recours. Fournir un seul des deux secrets App fait échouer le job.
@@ -88,3 +91,4 @@ par défaut (informatif).
 - Catalogue et permissions par workflow : [`references/workflows.md`](references/workflows.md).
 - Sources : `dnum-mi/fabnum-cicd/docs/workflows/`.
 - Déploiement du chart et contraintes CPiN : skills `fr-gov-create-helm-chart` et `fr-gov-deploy-to-cloud-pi-native` (groupe `devops`).
+

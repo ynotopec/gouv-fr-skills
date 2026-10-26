@@ -26,7 +26,8 @@ registre, déploiement) n'est pas généré : il est listé comme prérequis.
 - Brancher un projet GitHub existant sur la CI/CD Cloud Pi Native.
 - Poser le pipeline de PR et le pipeline de release en *appelant* fabnum-cicd.
 
-Lecture seule par défaut : rapport et plan ; n'écrit qu'avec `--setup`.
+Lecture seule pour une demande de vérification ; `--setup` ou une demande
+explicite de mise en place autorise les fichiers nécessaires.
 Ne crée aucun secret, ne pousse rien, n'ouvre aucune PR.
 
 ## Mode d'exécution (lire les arguments AVANT toute action)
@@ -34,7 +35,9 @@ Ne crée aucun secret, ne pousse rien, n'ouvre aucune PR.
 - **`--check` — DÉFAUT** : lecture seule stricte sur le projet cible. Tu lis, tu composes, tu
   présentes les fichiers proposés et le plan, et tu n'écris rien avant validation humaine
   (Claude Code : mode plan, `ExitPlanMode`).
-- **`--setup`** : après un `--check` validé, écrit les fichiers, un par un, en expliquant chacun.
+- **`--setup`** : écrit les fichiers nécessaires à la mise en place demandée.
+  Un `--check` préalable n'est pas obligatoire si la demande autorise déjà ces
+  changements ; poser uniquement les questions indispensables non résolues.
 - `--ref vX.Y.Z` impose une version de `fabnum-cicd` ; sinon, dernière release.
 - Le reste des arguments = chemin du projet ; sinon repo courant.
 
@@ -106,3 +109,4 @@ Détail et justification : [`references/garde-fous.md`](references/garde-fous.md
 
 Si la ligne ci-dessus montre encore un nom de variable, ton agent ne substitue pas les arguments :
 prends-les dans la demande de l'utilisateur.
+

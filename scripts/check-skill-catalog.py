@@ -5,15 +5,25 @@ import csv
 import re
 from pathlib import Path
 
+import yaml
+
 
 def check_related(path, frontmatter, names):
     """Contrôle la liste related_skills d'un skill : cibles connues, pas de soi-même, pas de doublon."""
     errors = []
-    related = re.search(r'related_skills: \[([^\]]*)\]', frontmatter)
-    if not related:
-        return errors
+    if isinstance(frontmatter, str):
+        frontmatter = yaml.safe_load(frontmatter) or {}
+        targets = frontmatter.get('related_skills', [])
+    else:
+        metadata = frontmatter.get('metadata', {})
+        hermes = metadata.get('hermes', {}) if isinstance(metadata, dict) else None
+        if not isinstance(hermes, dict):
+            return [f'{path}: metadata.hermes must be a mapping']
+        targets = hermes.get('related_skills', [])
+    if not isinstance(targets, list) or any(not isinstance(item, str) for item in targets):
+        return [f'{path}: related_skills must be a list of names']
     seen = []
-    for target in (item.strip() for item in related[1].split(',')):
+    for target in targets:
         if not target:
             continue
         if target not in names:
@@ -35,9 +45,19 @@ def check(root):
         errors.append('Duplicate skill names: flat installation would collide')
     for path in skills:
         source = path.read_text()
-        frontmatter = source.split('---', 2)[1]
-        name = re.search(r'^name: (.+)$', frontmatter, re.M)
-        if not name or name[1] != path.parent.name:
+        match = re.match(r'\A---\s*\n(.*?)\n---(?:\s*\n|$)', source, re.S)
+        if not match:
+            errors.append(f'{path}: missing YAML frontmatter delimiters')
+            continue
+        try:
+            frontmatter = yaml.safe_load(match[1])
+        except yaml.YAMLError:
+            errors.append(f'{path}: invalid YAML frontmatter')
+            continue
+        if not isinstance(frontmatter, dict):
+            errors.append(f'{path}: YAML frontmatter must be a mapping')
+            continue
+        if frontmatter.get('name') != path.parent.name:
             errors.append(f'{path}: name differs from folder')
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', path.parent.name):
             errors.append(f'{path}: invalid name')
@@ -48,11 +68,11 @@ def check(root):
         if path.parent.name == path.parent.parent.name:
             errors.append(f'{path}: name duplicates parent group')
         errors.extend(check_related(path, frontmatter, names))
-        description = re.search(r'^description: (.+)$', frontmatter, re.M)
-        if not description:
-            errors.append(f'{path}: missing description')
+        description = frontmatter.get('description')
+        if not isinstance(description, str):
+            errors.append(f'{path}: description must be a string')
         else:
-            text = description[1].strip().strip('"')
+            text = description.strip()
             if len(text) > 60:
                 errors.append(f'{path}: description is {len(text)} chars (max 60)')
             if not text:
@@ -120,3 +140,4 @@ if __name__ == '__main__':
     if errors:
         raise SystemExit('\n'.join(errors))
     print(f'OK: {len(skills)} skills; names, groups, descriptions, routing, links and migrations')
+

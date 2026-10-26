@@ -29,8 +29,8 @@ Conventions de lint et formattage pour les projets JavaScript/TypeScript et Pyth
 ## Comment lancer
 - `pnpm lint` — vérification du lint
 - `pnpm format` — auto-correction
-- `pnpm ruff check` — lint Python
-- `pnpm ruff format` — format Python
+- `uv run ruff check` — lint Python
+- `uv run ruff format` — format Python
 
 ## Référence rapide — EditorConfig
 
@@ -150,5 +150,6 @@ uv run ruff format .
 ## Vérification
 - `pnpm lint` retourne 0 erreurs
 - `pnpm format` n'écrit aucun changement
-- `pnpm ruff check` retourne 0 erreurs (Python)
+- `uv run ruff check` retourne 0 erreurs (Python)
 - VS Code auto-format à la sauvegarde
+

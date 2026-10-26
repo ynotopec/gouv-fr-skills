@@ -1,45 +1,27 @@
-#!/bin/bash
-# Script de sauvegarde avant gros changements
-# Usage: bash .github/workflows/save-workflow.sh "message de sauvegarde"
-
+#!/usr/bin/env bash
+# Snapshot sans modifier le working tree, l'index ni les stashes existants.
 set -euo pipefail
 
-BRANCH=$(git branch --show-current)
-TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+BACKUP_MSG="${1:?Usage: save-workflow.sh <motif>}"
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)-$$
 BACKUP_BRANCH="backup/$TIMESTAMP"
-BACKUP_MSG="$1"
+ROOT=$(git rev-parse --show-toplevel)
+cd "$ROOT"
+HEAD_SHA=$(git rev-parse --verify HEAD)
 
-echo "=== Sauvegarde avant changement ==="
-echo "Branche: $BRANCH"
-echo "Message: $BACKUP_MSG"
-
-# 1. Stash les modifications non commit
-if [[ -n "$(git status --porcelain)" ]]; then
-    echo "⚠️ Modifications non commit détectées, sauvegarde en stash..."
-    git stash push -m "auto-backup-$TIMESTAMP"
+# Un index temporaire inclut aussi les fichiers non suivis, hors gitignore.
+# Ne jamais stasher/pop, ni modifier l'index de l'utilisateur.
+TASK_INDEX=$(mktemp)
+rm -f "$TASK_INDEX"
+trap 'rm -f "$TASK_INDEX" "$TASK_INDEX.lock"' EXIT
+GIT_INDEX_FILE="$TASK_INDEX" git read-tree "$HEAD_SHA"
+GIT_INDEX_FILE="$TASK_INDEX" git add -A -- .
+TREE=$(GIT_INDEX_FILE="$TASK_INDEX" git write-tree)
+if [[ "$TREE" == "$(git rev-parse "$HEAD_SHA^{tree}")" ]]; then
+    SNAPSHOT="$HEAD_SHA"
+else
+    SNAPSHOT=$(printf '%s\n' "backup: $BACKUP_MSG [$TIMESTAMP]" | git commit-tree "$TREE" -p "$HEAD_SHA")
 fi
-
-# 2. Commit tout ce qui est prêt
-git add -A
-git diff --cached --quiet || {
-    echo "📦 Commit: $BACKUP_MSG"
-    git commit -m "backup: $BACKUP_MSG [$TIMESTAMP]"
-}
-
-# 3. Créer une branche de backup
-git branch "$BACKUP_BRANCH"
-
-# 4. Retourner à la branche originale
-if [[ -n "$(git stash list 2>/dev/null)" ]]; then
-    git stash pop
-    echo "📥 Stash restauré"
-fi
-
-echo ""
-echo "=== Backup créé ==="
-echo "  Branche de backup: $BACKUP_BRANCH"
-echo "  Commit: $(git rev-parse HEAD)"
-echo "  Date: $(date -d @$(git log -1 --format=%ct) '+%Y-%m-%d %H:%M')"
-echo ""
-echo "Pour restaurer: git checkout $BACKUP_BRANCH"
-echo "Pour supprimer: git branch -D $BACKUP_BRANCH"
+git branch "$BACKUP_BRANCH" "$SNAPSHOT"
+printf 'Backup créé : %s (%s)\n' "$BACKUP_BRANCH" "$SNAPSHOT"
+printf 'Working tree, index et stashes conservés.\n'

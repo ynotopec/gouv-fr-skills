@@ -23,6 +23,10 @@ NC='\033[0m'
 ISSUES=0
 VUE_ISSUES=0
 
+project_paths() {
+  find "$TARGET" \( -type d \( -name '.*' ! -name '.' -o -name node_modules -o -name dist -o -name build \) -prune \) -o -type "$1" -print
+}
+
 check_kebab() {
   local name="$1"
   local path="$2"
@@ -86,7 +90,7 @@ echo ""
 echo "--- Folders ---"
 while IFS= read -r dir; do
   check_kebab "$(basename "$dir")" "$dir"
-done < <(find "$TARGET" -type d 2>/dev/null)
+done < <(project_paths d)
 
 # Check files
 echo ""
@@ -94,7 +98,7 @@ echo "--- Files ---"
 while IFS= read -r file; do
   check_kebab "$(basename "$file")" "$file"
   check_vue "$(basename "$file")" "$file"
-done < <(find "$TARGET" -type f 2>/dev/null)
+done < <(project_paths f)
 
 echo ""
 echo "═══════════════════════════════════════"
@@ -108,3 +112,4 @@ fi
 echo "═══════════════════════════════════════"
 
 exit $ISSUES
+

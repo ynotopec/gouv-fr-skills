@@ -14,6 +14,12 @@ if [[ -z "$NAME" ]]; then
   exit 1
 fi
 
+# Refuser toute cible préexistante, y compris un lien symbolique.
+if [[ "$NAME" == -* || -e "$NAME" || -L "$NAME" ]]; then
+  echo "Error: project destination must be new and must not start with '-'" >&2
+  exit 1
+fi
+
 echo "Creating FastAPI project: $NAME"
 
 # Initialize with uv
@@ -27,7 +33,7 @@ uv add "fastapi[standard]" pydantic-settings
 uv add --dev ruff pytest httpx
 
 # Create application structure
-mkdir -p app/{models,schemas,routers,services,utils}
+mkdir -p app/{models,schemas,routers,services,utils} tests
 
 # Create __init__.py files
 touch app/__init__.py
@@ -44,6 +50,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 import logging
 
+from app.routers import cats
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -58,7 +66,6 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="My API", version="1.0.0", lifespan=lifespan)
 
 # Routers
-from app.routers import cats
 app.include_router(cats.router)
 EOF
 
@@ -115,7 +122,7 @@ EOF
 
 # Example router
 cat > app/routers/cats.py << 'EOF'
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, status
 from app.schemas.cat import CatCreate, CatResponse
 
 router = APIRouter(prefix="/cats", tags=["cats"])
@@ -203,7 +210,6 @@ EOF
 
 # Pytest example
 cat > tests/test_cats.py << 'EOF'
-import pytest
 from fastapi.testclient import TestClient
 from app.main import app
 
@@ -211,7 +217,7 @@ client = TestClient(app)
 
 
 def test_get_cats():
-    response = client.get("/cats")
+    response = client.get("/cats/")
     assert response.status_code == 200
     assert isinstance(response.json(), list)
 
@@ -223,7 +229,7 @@ def test_get_cat():
 
 
 def test_create_cat():
-    response = client.post("/cats", json={"name": "Minou", "age": 3})
+    response = client.post("/cats/", json={"name": "Minou", "age": 3})
     assert response.status_code == 201
     assert response.json()["name"] == "Minou"
 EOF
@@ -263,3 +269,4 @@ echo ""
 echo " Structure follows CoFabNum conventions."
 echo " See conventions-cofabnum for full guidelines."
 echo "═══════════════════════════════════════"
+
